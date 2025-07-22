@@ -1,0 +1,75 @@
+<!-- /id/index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sulu Edward Julianto | Portofolio</title>
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <script src="../assets/js/theme-toggle.js" defer></script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+  <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">Sulu Edward Julianto</h1>
+      <nav class="space-x-4">
+        <a href="#tentang" class="hover:underline">Tentang</a>
+        <a href="#keahlian" class="hover:underline">Keahlian</a>
+        <a href="#proyek" class="hover:underline">Proyek</a>
+        <a href="#kontak" class="hover:underline">Kontak</a>
+        <a href="/blog" class="hover:underline">Blog</a>
+        <a href="../cv.pdf" class="hover:underline">Unduh CV</a>
+        <button id="theme-toggle" class="ml-4 p-2 rounded bg-gray-300 dark:bg-gray-700">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="min-h-screen flex items-center justify-center" id="hero">
+    <div class="text-center px-4">
+      <h2 class="text-4xl font-bold mb-4">Halo, Saya Sulu Edward Julianto</h2>
+      <p class="text-lg">Selamat datang di portofolio pribadi saya</p>
+    </div>
+  </section>
+
+  <section id="tentang" class="py-16 px-4 max-w-4xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4">Tentang Saya</h3>
+    <p>Saya adalah individu yang antusias terhadap teknologi dan terus belajar. (Silakan ganti deskripsi ini nanti)</p>
+  </section>
+
+  <section id="keahlian" class="py-16 px-4 max-w-4xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4">Keahlian</h3>
+    <ul class="list-disc list-inside">
+      <li>HTML, CSS, JavaScript</li>
+      <li>Python, PHP</li>
+      <li>Git & GitHub</li>
+      <li>... (Tambahkan lainnya)</li>
+    </ul>
+  </section>
+
+  <section id="proyek" class="py-16 px-4 max-w-6xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-8 text-center">Proyek</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded shadow hover:shadow-lg transition">
+        <img src="../assets/img/project1.jpg" alt="Project 1" class="mb-2 rounded">
+        <h4 class="font-bold">Judul Proyek</h4>
+        <p class="text-sm">Deskripsi singkat proyek ini.</p>
+        <a href="https://github.com/" class="text-blue-500 hover:underline">Lihat di GitHub</a>
+      </div>
+      <!-- Tambah proyek lainnya di sini -->
+    </div>
+  </section>
+
+  <section id="kontak" class="py-16 px-4 max-w-4xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4">Kontak</h3>
+    <form action="https://formspree.io/f/your-id" method="POST" class="space-y-4">
+      <input type="text" name="name" placeholder="Nama Anda" required class="w-full p-2 rounded border dark:bg-gray-800" />
+      <input type="email" name="email" placeholder="Email Anda" required class="w-full p-2 rounded border dark:bg-gray-800" />
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Kirim</button>
+    </form>
+  </section>
+
+  <footer class="text-center py-6 text-sm">
+    &copy; 2025 Sulu Edward Julianto. Semua hak dilindungi.
+  </footer>
+</body>
+</html>

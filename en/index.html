@@ -1,0 +1,75 @@
+<!-- /en/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sulu Edward Julianto | Portfolio</title>
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <script src="../assets/js/theme-toggle.js" defer></script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+  <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">Sulu Edward Julianto</h1>
+      <nav class="space-x-4">
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#skills" class="hover:underline">Skills</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+        <a href="/blog" class="hover:underline">Blog</a>
+        <a href="../cv.pdf" class="hover:underline">Download CV</a>
+        <button id="theme-toggle" class="ml-4 p-2 rounded bg-gray-300 dark:bg-gray-700">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="min-h-screen flex items-center justify-center" id="hero">
+    <div class="text-center px-4">
+      <h2 class="text-4xl font-bold mb-4">Hello, I'm Sulu Edward Julianto</h2>
+      <p class="text-lg">Welcome to my personal portfolio</p>
+    </div>
+  </section>
+
+  <section id="about" class="py-16 px-4 max-w-4xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4">About Me</h3>
+    <p>I’m a passionate individual exploring technology and constantly learning. (You can replace this with your full description.)</p>
+  </section>
+
+  <section id="skills" class="py-16 px-4 max-w-4xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4">Skills</h3>
+    <ul class="list-disc list-inside">
+      <li>HTML, CSS, JavaScript</li>
+      <li>Python, PHP</li>
+      <li>Git & GitHub</li>
+      <li>... (Add more)</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="py-16 px-4 max-w-6xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-8 text-center">Projects</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded shadow hover:shadow-lg transition">
+        <img src="../assets/img/project1.jpg" alt="Project 1" class="mb-2 rounded">
+        <h4 class="font-bold">Project Title</h4>
+        <p class="text-sm">Brief description of the project.</p>
+        <a href="https://github.com/" class="text-blue-500 hover:underline">View on GitHub</a>
+      </div>
+      <!-- Add more project cards here -->
+    </div>
+  </section>
+
+  <section id="contact" class="py-16 px-4 max-w-4xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4">Contact</h3>
+    <form action="https://formspree.io/f/your-id" method="POST" class="space-y-4">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 rounded border dark:bg-gray-800" />
+      <input type="email" name="email" placeholder="Your Email" required class="w-full p-2 rounded border dark:bg-gray-800" />
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Send</button>
+    </form>
+  </section>
+
+  <footer class="text-center py-6 text-sm">
+    &copy; 2025 Sulu Edward Julianto. All rights reserved.
+  </footer>
+</body>
+</html>

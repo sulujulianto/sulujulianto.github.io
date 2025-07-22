@@ -1,0 +1,33 @@
+/* assets/css/style.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth transition between themes */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar link hover */
+nav a {
+  @apply text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400;
+}
+
+/* Button styling */
+button {
+  @apply transition-colors duration-300;
+}
+
+/* Project card hover effect */
+.card {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded shadow hover:shadow-lg transition;
+}
+
+/* Form input styling */
+input, textarea {
+  @apply w-full p-2 rounded border dark:bg-gray-800 dark:text-white;
+}
+
+button[type="submit"] {
+  @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700;
+}

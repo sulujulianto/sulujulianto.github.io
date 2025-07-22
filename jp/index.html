@@ -1,0 +1,75 @@
+<!-- /jp/index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sulu Edward Julianto | ポートフォリオ</title>
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <script src="../assets/js/theme-toggle.js" defer></script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+  <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">Sulu Edward Julianto</h1>
+      <nav class="space-x-4">
+        <a href="#about" class="hover:underline">自己紹介</a>
+        <a href="#skills" class="hover:underline">スキル</a>
+        <a href="#projects" class="hover:underline">プロジェクト</a>
+        <a href="#contact" class="hover:underline">連絡先</a>
+        <a href="/blog" class="hover:underline">ブログ</a>
+        <a href="../cv.pdf" class="hover:underline">CVをダウンロード</a>
+        <button id="theme-toggle" class="ml-4 p-2 rounded bg-gray-300 dark:bg-gray-700">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="min-h-screen flex items-center justify-center" id="hero">
+    <div class="text-center px-4">
+      <h2 class="text-4xl font-bold mb-4">こんにちは、Sulu Edward Juliantoです</h2>
+      <p class="text-lg">私のポートフォリオへようこそ</p>
+    </div>
+  </section>
+
+  <section id="about" class="py-16 px-4 max-w-4xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4">自己紹介</h3>
+    <p>私はテクノロジーに情熱を持ち、学び続けることが好きな人間です。（あとで自由に書き換えてください）</p>
+  </section>
+
+  <section id="skills" class="py-16 px-4 max-w-4xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4">スキル</h3>
+    <ul class="list-disc list-inside">
+      <li>HTML、CSS、JavaScript</li>
+      <li>Python、PHP</li>
+      <li>GitとGitHub</li>
+      <li>...（他にあれば追加）</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="py-16 px-4 max-w-6xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-8 text-center">プロジェクト</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded shadow hover:shadow-lg transition">
+        <img src="../assets/img/project1.jpg" alt="プロジェクト1" class="mb-2 rounded">
+        <h4 class="font-bold">プロジェクト名</h4>
+        <p class="text-sm">このプロジェクトの簡単な説明。</p>
+        <a href="https://github.com/" class="text-blue-500 hover:underline">GitHubで見る</a>
+      </div>
+      <!-- 他のプロジェクトをここに追加 -->
+    </div>
+  </section>
+
+  <section id="contact" class="py-16 px-4 max-w-4xl mx-auto">
+    <h3 class="text-2xl font-semibold mb-4">連絡先</h3>
+    <form action="https://formspree.io/f/your-id" method="POST" class="space-y-4">
+      <input type="text" name="name" placeholder="お名前" required class="w-full p-2 rounded border dark:bg-gray-800" />
+      <input type="email" name="email" placeholder="メールアドレス" required class="w-full p-2 rounded border dark:bg-gray-800" />
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">送信</button>
+    </form>
+  </section>
+
+  <footer class="text-center py-6 text-sm">
+    &copy; 2025 Sulu Edward Julianto. 全著作権所有。
+  </footer>
+</body>
+</html>
