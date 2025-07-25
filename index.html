@@ -1,22 +1,44 @@
-<!-- index.html (Welcome Page) -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome | Sulu Edward Julianto</title>
-  <link href="assets/css/style.css" rel="stylesheet" />
+<html lang="en"> <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to the Portfolio of Sulu Edward Julianto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes gradient-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .animated-gradient { background-size: 200% 200%; animation: gradient-animation 15s ease infinite; }
+        .theme-toggle { position: relative; width: 40px; height: 40px; border: none; background-color: transparent; cursor: pointer; overflow: hidden; border-radius: 9999px; }
+        .theme-toggle .icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out; font-size: 20px; }
+        .theme-toggle .sun { color: #f39c12; transform: translate(-50%, -50%) rotate(0deg); }
+        .theme-toggle .moon { color: #f1c40f; transform: translate(-50%, 100%) rotate(360deg); opacity: 0; }
+        .dark .theme-toggle .sun { transform: translate(-50%, -100%) rotate(-360deg); opacity: 0; }
+        .dark .theme-toggle .moon { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
+        @keyframes fade-in-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fade-in-up 0.8s ease-out forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+    </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-  <main class="min-h-screen flex flex-col justify-center items-center text-center">
-    <h1 class="text-4xl font-bold mb-4">Welcome to My Website</h1>
-    <p class="mb-6">Please select your language</p>
-    <div class="flex gap-4">
-      <a href="/en" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">English</a>
-      <a href="/id" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Bahasa Indonesia</a>
-      <a href="/jp" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Japanese</a>
-      <a href="/cn" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Chinese</a>
+<body class="min-h-screen overflow-hidden">
+    <div class="animated-gradient absolute inset-0 bg-gradient-to-br from-cyan-200 via-blue-300 to-purple-300 dark:from-slate-900 dark:via-indigo-900 dark:to-black"></div>
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+
+        <main class="text-center w-full max-w-2xl p-8 md:p-12 rounded-2xl shadow-2xl bg-white/30 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-4 fade-in-up">
+                Sulu Edward Julianto
+            </h1>
+            <p class="text-lg text-slate-700 dark:text-slate-300 mb-8 fade-in-up delay-1">
+                Welcome to my portfolio, a place where I showcase my projects, skills, and journey in the world of technology. Please select a language to enter the portfolio.
+            </p>
+            <div class="grid grid-cols-2 gap-4 fade-in-up delay-2">
+                <a href="./id/" class="w-full px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">Bahasa Indonesia</a>
+                <a href="./en/" class="w-full px-6 py-3 rounded-lg bg-rose-500 hover:bg-rose-600 text-white font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">English</a>
+                <a href="./jp/" class="w-full px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">日本語 (Japanese)</a>
+                <a href="./cn/" class="w-full px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">中文 (Chinese)</a>
+            </div>
+        </main>
     </div>
-  </main>
+
 </body>
 </html>
