@@ -1,44 +1,103 @@
 <!DOCTYPE html>
-<html lang="en"> <head>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to the Portfolio of Sulu Edward Julianto</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="./assets/js/theme.js"></script>
+
     <style>
-        @keyframes gradient-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .animated-gradient { background-size: 200% 200%; animation: gradient-animation 15s ease infinite; }
-        .theme-toggle { position: relative; width: 40px; height: 40px; border: none; background-color: transparent; cursor: pointer; overflow: hidden; border-radius: 9999px; }
-        .theme-toggle .icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out; font-size: 20px; }
-        .theme-toggle .sun { color: #f39c12; transform: translate(-50%, -50%) rotate(0deg); }
-        .theme-toggle .moon { color: #f1c40f; transform: translate(-50%, 100%) rotate(360deg); opacity: 0; }
-        .dark .theme-toggle .sun { transform: translate(-50%, -100%) rotate(-360deg); opacity: 0; }
-        .dark .theme-toggle .moon { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
-        @keyframes fade-in-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in-up { animation: fade-in-up 0.8s ease-out forwards; opacity: 0; }
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.5s, color 0.5s, background-image 0.5s;
+        }
+
+        /* --- Tema Terang --- */
+        body {
+            background-image: linear-gradient(to bottom right, #a5f3fc, #60a5fa);
+            color: #0f172a;
+        }
+        .content-card {
+            background-color: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .content-card h1, .content-card p {
+            color: #0f172a;
+        }
+        #theme-toggle {
+            color: #0f172a;
+        }
+
+        /* --- Tema Gelap --- */
+        html.dark body {
+            background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
+            color: #eff6ff;
+        }
+        html.dark .content-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        html.dark .content-card h1, html.dark .content-card p {
+            color: #eff6ff;
+        }
+        html.dark #theme-toggle {
+            color: #eff6ff;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
     </style>
 </head>
-<body class="min-h-screen overflow-hidden">
-    <div class="animated-gradient absolute inset-0 bg-gradient-to-br from-cyan-200 via-blue-300 to-purple-300 dark:from-slate-900 dark:via-indigo-900 dark:to-black"></div>
-    <div class="relative min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-4">
 
-        <main class="text-center w-full max-w-2xl p-8 md:p-12 rounded-2xl shadow-2xl bg-white/30 dark:bg-slate-800/50 backdrop-blur-lg border border-white/20">
-            <h1 class="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white mb-4 fade-in-up">
-                Sulu Edward Julianto
-            </h1>
-            <p class="text-lg text-slate-700 dark:text-slate-300 mb-8 fade-in-up delay-1">
-                Welcome to my portfolio, a place where I showcase my projects, skills, and journey in the world of technology. Please select a language to enter the portfolio.
-            </p>
-            <div class="grid grid-cols-2 gap-4 fade-in-up delay-2">
-                <a href="./id/" class="w-full px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">Bahasa Indonesia</a>
-                <a href="./en/" class="w-full px-6 py-3 rounded-lg bg-rose-500 hover:bg-rose-600 text-white font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">English</a>
-                <a href="./jp/" class="w-full px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">日本語 (Japanese)</a>
-                <a href="./cn/" class="w-full px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-semibold shadow-lg transform hover:scale-105 transition-all duration-300">中文 (Chinese)</a>
-            </div>
-        </main>
-    </div>
+    <button id="theme-toggle" type="button" class="absolute top-5 right-5 h-12 w-12 flex items-center justify-center rounded-full bg-white/30 dark:bg-slate-800/30 shadow-lg transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-slate-400">
+        <i id="icon-sun" class="fas fa-sun hidden text-2xl"></i>
+        <i id="icon-moon" class="fas fa-moon text-xl"></i>
+    </button>
 
-</body>
+    <main class="w-full max-w-2xl p-8 md:p-10 rounded-2xl text-center fade-in content-card">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Sulu Edward Julianto</h1>
+        <p class="text-base md:text-lg mb-8">
+            Welcome to my portfolio, a place where I showcase my projects, skills, and journey in the world of technology. Please select a language to enter.
+        </p>
+
+        <div class="grid grid-cols-2 justify-center items-center gap-4">
+            <a href="./id/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <span>🇮🇩</span>
+                <span>Bahasa Indonesia</span>
+            </a>
+            <a href="./en/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-gray-600 text-white hover:bg-gray-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <span>🇺🇸</span>
+                <span>English</span>
+            </a>
+            <a href="./jp/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <span>🇯🇵</span>
+                <span>日本語</span>
+            </a>
+            <a href="./cn/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-green-600 text-white hover:bg-green-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <span>🇨🇳</span>
+                <span>中文</span>
+            </a>
+        </div>
+    </main>
+    
+    </body>
 </html>

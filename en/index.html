@@ -1,75 +1,286 @@
-<!-- /en/index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sulu Edward Julianto | Portfolio</title>
-  <link href="../assets/css/style.css" rel="stylesheet" />
-  <script src="../assets/js/theme-toggle.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sulu Edward Julianto's Portfolio</title>
+    
+    <script src="../assets/js/theme.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transition: background-color 0.5s, color 0.5s, background-image 0.5s;
+    }
+
+    /* --- Tema Terang --- */
+    body {
+        background-image: linear-gradient(to bottom right, #a5f3fc, #60a5fa);
+        color: #0f172a;
+    }
+    h1, h2, h3, h4, h5, h6, p, li, span { color: #0f172a; }
+    a { color: #1e3a8a; }
+    a:hover { color: #1d4ed8; }
+    .nav-bg {
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .nav-bg a { color: #0f172a; }
+    #theme-toggle { color: #0f172a; }
+    header .rounded-full {
+        background-image: none;
+        background-color: #000000;
+    }
+    .section-highlight { color: #1d4ed8; }
+    .card {
+        background-color: rgba(255, 255, 255, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+    .filter-btn-active {
+        background-color: #0f172a !important;
+        color: #ffffff !important;
+        border: 1px solid #0f172a !important;
+    }
+    .filter-btn {
+        background-color: #f9fafb;
+        border: 1px solid #d1d5db;
+        color: #0f172a;
+    }
+    .filter-btn:hover {
+        background-color: #e5e7eb;
+    }
+    footer {
+        background-color: transparent;
+        border-top: 1px solid rgba(15, 23, 42, 0.1);
+    }
+    footer p, footer a { color: #0f172a !important; }
+    #contact input, #contact textarea {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        border: 1px solid #d1d5db !important;
+    }
+    #contact .social-icon { color: #0f172a !important; }
+    
+    /* ### PERBAIKAN TOMBOL SCROLL TO TOP DI SINI ### */
+    #to-top-btn {
+        background-color: #0f172a; /* Latar Belakang Hitam */
+        color: #ffffff; /* Ikon Putih */
+    }
+    #to-top-btn:hover {
+        background-color: #1f2937; /* Hitam sedikit lebih terang saat hover */
+    }
+
+    /* --- Tema Gelap --- */
+    html.dark body {
+        background-color: #0c1322;
+        background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
+        color: #94a3b8;
+    }
+    html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6, html.dark a { color: #eff6ff; }
+    html.dark p, html.dark li, html.dark span { color: #94a3b8; }
+    html.dark .nav-bg {
+        background-color: rgba(15, 23, 42, 0.85);
+        border-bottom: 1px solid #374151;
+    }
+    html.dark .nav-bg a { color: #eff6ff; }
+    html.dark #theme-toggle { color: #eff6ff; }
+    html.dark header .rounded-full { background-image: linear-gradient(to bottom right, #38bdf8, #3b82f6) !important; }
+    html.dark footer p, html.dark footer a { color: #94a3b8 !important; }
+    html.dark .section-highlight { color: #60a5fa; }
+    html.dark .card {
+        background: rgba(30, 41, 59, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+    }
+    html.dark .filter-btn-active {
+        background-color: #60a5fa !important;
+        color: #1e293b !important;
+        border: 1px solid #60a5fa !important;
+    }
+    html.dark .filter-btn {
+        background-color: #1e293b;
+        border: 1px solid #374151;
+        color: #94a3b8;
+    }
+    html.dark .filter-btn:hover {
+        background-color: #4b5563;
+    }
+    html.dark #contact input, html.dark #contact textarea {
+        background-color: #374151 !important;
+        color: #eff6ff !important;
+        border: 1px solid #4b5563 !important;
+    }
+    html.dark #contact .social-icon { color: #94a3b8 !important; }
+    
+    /* Mengembalikan warna tombol Scroll to Top di tema gelap */
+    html.dark #to-top-btn {
+        background-color: #2563eb; /* Latar Belakang Biru */
+        color: #ffffff; /* Ikon Putih */
+    }
+    html.dark #to-top-btn:hover {
+        background-color: #3b82f6; /* Biru lebih terang saat hover */
+    }
+</style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
-  <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Sulu Edward Julianto</h1>
-      <nav class="space-x-4">
-        <a href="#about" class="hover:underline">About</a>
-        <a href="#skills" class="hover:underline">Skills</a>
-        <a href="#projects" class="hover:underline">Projects</a>
-        <a href="#contact" class="hover:underline">Contact</a>
-        <a href="/blog" class="hover:underline">Blog</a>
-        <a href="../cv.pdf" class="hover:underline">Download CV</a>
-        <button id="theme-toggle" class="ml-4 p-2 rounded bg-gray-300 dark:bg-gray-700">🌓</button>
-      </nav>
-    </div>
-  </header>
+<body class="dark:text-slate-300">
 
-  <section class="min-h-screen flex items-center justify-center" id="hero">
-    <div class="text-center px-4">
-      <h2 class="text-4xl font-bold mb-4">Hello, I'm Sulu Edward Julianto</h2>
-      <p class="text-lg">Welcome to my personal portfolio</p>
-    </div>
-  </section>
+    <nav class="sticky top-0 z-50 w-full nav-bg backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="text-xl font-bold">Sulu Edward Julianto</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../">Home</a> <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                    <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer">Blog</a>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="h-10 w-10 flex items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i id="icon-sun" class="fas fa-sun hidden"></i>
+                        <i id="icon-moon" class="fas fa-moon"></i>
+                    </button>
+                    <button id="navbar-toggle" class="md:hidden ml-2 h-10 w-10 flex items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-700">About</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-700">Skills</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-700">Projects</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-700">Contact</a>
+            <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-200 dark:hover:bg-slate-700">Blog</a>
+        </div>
+    </nav>
 
-  <section id="about" class="py-16 px-4 max-w-4xl mx-auto">
-    <h3 class="text-2xl font-semibold mb-4">About Me</h3>
-    <p>I’m a passionate individual exploring technology and constantly learning. (You can replace this with your full description.)</p>
-  </section>
+    <main class="pt-16 sm:pt-20">
+        <header id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight">Sulu Edward Julianto</h1>
+                    <p class="mt-4 text-lg">A graduate of Vocational High School in Computer & Network Engineering, currently pursuing a career path as a <span class="font-semibold section-highlight">Software Engineer</span>.</p>
+                    <a href="../assets/CV_SuluEdwardJulianto.pdf" download class="inline-flex items-center gap-2 mt-8 px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition-transform hover:scale-105">
+                        <i class="fas fa-download"></i>
+                        Download CV
+                    </a>
+                </div>
+                <div class="flex justify-center">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl p-2">
+                         <img src="../assets/img/Sulu.png" alt="Sulu Edward's Profile Picture" class="w-full h-full object-cover rounded-full">
+                    </div>
+                </div>
+            </div>
+        </header>
 
-  <section id="skills" class="py-16 px-4 max-w-4xl mx-auto">
-    <h3 class="text-2xl font-semibold mb-4">Skills</h3>
-    <ul class="list-disc list-inside">
-      <li>HTML, CSS, JavaScript</li>
-      <li>Python, PHP</li>
-      <li>Git & GitHub</li>
-      <li>... (Add more)</li>
-    </ul>
-  </section>
+        <section id="about" class="py-24 bg-sky-50 dark:bg-slate-800/20">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">Introduction <span class="section-highlight">About Me</span></h2>
+                <div class="card p-8 rounded-2xl shadow-xl text-center">
+                    <p class="text-lg mb-8">I am a 2021 graduate of a Vocational High School in Computer & Network Engineering. With a deep passion for programming, I am ambitious to become a Software Engineer. I enjoy challenges and love solving problems through code.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 justify-center items-center gap-6">
+                        <!--<img src="../assets/img/about/workspace.jpg" alt="Ruang Kerja" class="w-full h-full object-cover rounded-lg shadow-md">
+                        <img src="../assets/img/about/hobby.jpg" alt="Hobi" class="w-full h-full object-cover rounded-lg shadow-md"> -->
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section id="projects" class="py-16 px-4 max-w-6xl mx-auto">
-    <h3 class="text-2xl font-semibold mb-8 text-center">Projects</h3>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded shadow hover:shadow-lg transition">
-        <img src="../assets/img/project1.jpg" alt="Project 1" class="mb-2 rounded">
-        <h4 class="font-bold">Project Title</h4>
-        <p class="text-sm">Brief description of the project.</p>
-        <a href="https://github.com/" class="text-blue-500 hover:underline">View on GitHub</a>
-      </div>
-      <!-- Add more project cards here -->
-    </div>
-  </section>
+        <section id="skills" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">My Skills</h2>
+                <p class="text-center text-lg mb-12 max-w-2xl mx-auto">The technologies, tools, and systems I use to build applications.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Front-End</h3><ul class="space-y-3"><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-6 h-6" /> HTML5</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-6 h-6" /> CSS3</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-6 h-6" /> JavaScript</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-6 h-6" /> React</li><li class="flex items-center gap-3"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-6 h-6" /> Tailwind CSS</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Back-End</h3><ul class="space-y-3"><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-6 h-6" /> Node.js</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-6 h-6" /> PHP</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6" /> Python</li><li class="flex items-center gap-3"><img src="https://cdn.worldvectorlogo.com/logos/laravel-2.svg"  alt="Laravel" class="w-6 h-6" /> Laravel</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Database & Utilitas</h3><ul class="space-y-3"><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-6 h-6" /> MySQL</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-6 h-6" /> PostgreSQL</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-6 h-6" /> MongoDB</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-6 h-6" /> Firebase</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Sistem Operasi</h3><ul class="space-y-3"><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows" class="w-6 h-6" /> Windows</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="w-6 h-6" /> Linux</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Alat & Teknologi</h3><ul class="space-y-3"><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-6 h-6" /> Git</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-6 h-6" /> GitHub</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-6 h-6" /> VS Code</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Cloud & DevOps</h3><ul class="space-y-3"><li class="flex items-center gap-3"><img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS" class="w-6 h-6" /> AWS</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" class="w-6 h-6" /> GCP</li><li class="flex items-center gap-3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-6 h-6" /> Docker</li></ul></div>
+                </div>
+            </div>
+        </section>
 
-  <section id="contact" class="py-16 px-4 max-w-4xl mx-auto">
-    <h3 class="text-2xl font-semibold mb-4">Contact</h3>
-    <form action="https://formspree.io/f/your-id" method="POST" class="space-y-4">
-      <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 rounded border dark:bg-gray-800" />
-      <input type="email" name="email" placeholder="Your Email" required class="w-full p-2 rounded border dark:bg-gray-800" />
-      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Send</button>
-    </form>
-  </section>
+        <section id="projects" class="py-24 bg-sky-50 dark:bg-slate-800/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">My Works</span> & Projects</h2>
+                <p class="text-center text-lg mb-8">Here are some of the selected projects I've worked on.</p>
+                <div id="portfolio-react-root"></div>
+            </div>
+        </section>
 
-  <footer class="text-center py-6 text-sm">
-    &copy; 2025 Sulu Edward Julianto. All rights reserved.
-  </footer>
+        <section id="contact" class="py-24">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <h2 class="text-3xl font-bold text-center mb-12">Contact <span class="section-highlight">Me</span></h2>
+                <div class="card grid md:grid-cols-2 gap-10 p-8 rounded-2xl shadow-xl">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+                        <p class="mb-6">I'm always open for discussion. Feel free to contact me using the form on the side or through the contact details below.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-map-marker-alt section-highlight w-6 text-center"></i><span>Jakarta, Indonesia</span></div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-paper-plane section-highlight w-6 text-center"></i><span>sulu.julianto@example.com</span></div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-phone-alt section-highlight w-6 text-center"></i><span>+62 812-3456-7890</span></div>
+                        </div>
+                        <div class="mt-8">
+                             <h4 class="font-bold mb-4">Connect with me</h4>
+                             <div class="flex gap-4">
+                                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-2xl transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-2xl transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-2xl transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-2xl transition-transform hover:scale-110"><i class="fab fa-twitter"></i></a>
+                             </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Send a Message</h3>
+                        <form action="https://formsubmit.co/YOUR@EMAIL.COM" method="POST" class="space-y-4">
+                            <input type="hidden" name="_next" value="https://sulujulianto.github.io/en/thank-you.html">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="text" name="name" placeholder="Name" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors">
+                            <input type="email" name="email" placeholder="Email Address" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors">
+                            <textarea name="message" rows="4" placeholder="Your Message" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors"></textarea>
+                            <button type="submit" class="w-full bg-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-800 transition-colors duration-300">
+                                Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-8 dark:bg-slate-800/10 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 All Rights Reserved | Made with ❤️ by Sulu Edward Julianto</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script src="../assets/js/app-en.js" type="text/babel"></script>
+    <a href="#" id="to-top-btn" class="hidden fixed bottom-5 right-5 z-50 h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 hover:bg-blue-700">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
 </body>
 </html>
