@@ -1,9 +1,24 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
+    "target": "es2019",                       
+    "module": "commonjs",
+    "jsx": "react",                           
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "skipLibCheck": true,                     
+    "forceConsistentCasingInFileNames": true, 
+    "strict": true,                           
+    "noEmit": true,                           
+    "rootDir": "./",
+    "resolveJsonModule": true,                
+    "allowJs": true,                          
+    "lib": ["dom", "dom.iterable", "esnext"]  
   },
-  "include": ["assets/js/**/*.ts", "assets/js/**/*.tsx"]
+  "include": [
+    "assets/js/**/*.tsx",                    
+    "assets/js/**/*.js",                      
+    "assets/data/**/*.json"                   
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

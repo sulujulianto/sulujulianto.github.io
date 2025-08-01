@@ -4,14 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to the Portfolio of Sulu Edward Julianto</title>
+    <link rel="icon" href="assets/img/icon.png" type="image/png">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="assets/css/output.css" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <script src="./assets/js/theme.js"></script>
+    <script src="assets/js/theme.js"></script>
 
     <style>
         body {
@@ -19,6 +22,9 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             transition: background-color 0.5s, color 0.5s, background-image 0.5s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* --- Tema Terang --- */
@@ -33,12 +39,6 @@
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
-        .content-card h1, .content-card p {
-            color: #0f172a;
-        }
-        #theme-toggle {
-            color: #0f172a;
-        }
 
         /* --- Tema Gelap --- */
         html.dark body {
@@ -48,12 +48,7 @@
         html.dark .content-card {
             background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        html.dark .content-card h1, html.dark .content-card p {
-            color: #eff6ff;
-        }
-        html.dark #theme-toggle {
-            color: #eff6ff;
+            box-shadow: none;
         }
 
         /* Animasi */
@@ -64,40 +59,230 @@
         .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
+
+        /* --- GAYA NAVBAR DAN FOOTER (TRANSPARAN/MENYATU DENGAN BACKGROUND, TANPA GARIS) --- */
+        .header-footer-bg {
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: none;
+            transition: background-color 0.5s, border-color 0.5s;
+        }
+        html.dark .header-footer-bg {
+            background-color: transparent; 
+            border-bottom: none;
+        }
+        .footer-no-border {
+            border-top: none;
+            border-bottom: none;
+        }
+
+        .header-footer-text-color {
+            color: inherit;
+        }
+        .header-footer-link-hover:hover {
+            color: #1d4ed8;
+        }
+        html.dark .header-footer-link-hover:hover {
+            color: #60a5fa;
+        }
+
+        /* --- GAYA TOMBOL TEMA (SWITCH TOGGLE) --- */
+        .theme-switch-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            cursor: pointer;
+        }
+        .theme-switch-wrapper input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        .theme-switch-wrapper input:checked + .slider {
+            background-color: #2196F3;
+        }
+        .theme-switch-wrapper input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .slider .icon-inside {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            transition: opacity 0.4s;
+        }
+        .slider .icon-sun-on-slider {
+            left: 8px;
+            color: #facc15;
+            opacity: 1;
+        }
+        .slider .icon-moon-on-slider {
+            right: 8px;
+            color: #6366f1;
+            opacity: 0;
+        }
+        html.dark .slider {
+            background-color: #4b5563;
+        }
+        html.dark .slider:before {
+            background-color: #a0aec0;
+        }
+        html.dark .theme-switch-wrapper input:checked + .slider {
+            background-color: #60a5fa;
+        }
+        html.dark .theme-switch-wrapper input:checked + .slider:before {
+            background-color: #eff6ff;
+        }
+
+        /* GAYA TOMBOL SCROLL TO TOP */
+        #to-top-btn {
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 9999px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #to-top-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        html.dark #to-top-btn {
+            background-color: #63b3ed;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        html.dark #to-top-btn:hover {
+            background-color: #4299e1;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex flex-col">
 
-    <button id="theme-toggle" type="button" class="absolute top-5 right-5 h-12 w-12 flex items-center justify-center rounded-full bg-white/30 dark:bg-slate-800/30 shadow-lg transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-slate-400">
-        <i id="icon-sun" class="fas fa-sun hidden text-2xl"></i>
-        <i id="icon-moon" class="fas fa-moon text-xl"></i>
-    </button>
+    <header class="sticky top-0 z-50 w-full header-footer-bg">
+        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8 h-16">
+            <a href="index.html" class="text-2xl font-bold header-footer-text header-footer-link-hover">Sulu Edward Julianto</a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="header-footer-text header-footer-link-hover">Blog</a>
+                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="header-footer-text header-footer-link-hover">GitHub</a>
+                <a href="mailto:sulujulianto.dev@gmail.com" class="header-footer-text header-footer-link-hover">Kontak</a>
+                <label id="theme-toggle" class="theme-switch-wrapper">
+                    <input type="checkbox" id="theme-toggle-checkbox"> <span class="slider">
+                        <i id="icon-sun" class="fas fa-sun icon-inside icon-sun-on-slider"></i> <i id="icon-moon" class="fas fa-moon icon-inside icon-moon-on-slider"></i> </span>
+                </label>
+            </nav>
+            <div class="md:hidden flex items-center space-x-4">
+                <label id="theme-toggle-nav" class="theme-switch-wrapper">
+                    <input type="checkbox" id="theme-toggle-nav-checkbox"> <span class="slider">
+                        <i id="icon-sun-nav" class="fas fa-sun icon-inside icon-sun-on-slider"></i> <i id="icon-moon-nav" class="fas fa-moon icon-inside icon-moon-on-slider"></i> </span>
+                </label>
+                <button id="navbar-toggle" type="button" class="header-footer-text focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
+            <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="block py-2 header-footer-text header-footer-link-hover">Blog</a>
+            <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="block py-2 header-footer-text header-footer-link-hover">GitHub</a>
+            <a href="mailto:sulujulianto.dev@gmail.com" class="block py-2 header-footer-text header-footer-link-hover">Kontak</a>
+        </div>
+    </header>
 
-    <main class="w-full max-w-2xl p-8 md:p-10 rounded-2xl text-center fade-in content-card">
-        <h1 class="text-3xl md:text-5xl font-bold mb-4">Sulu Edward Julianto</h1>
-        <p class="text-base md:text-lg mb-8">
-            Welcome to my portfolio, a place where I showcase my projects, skills, and journey in the world of technology. Please select a language to enter.
-        </p>
+    <main class="flex-grow flex flex-col justify-center items-center p-4 fade-in">
+        <div class="w-full max-w-2xl p-8 md:p-10 rounded-2xl content-card text-center"> 
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">
+                Sulu Edward Julianto
+            </h1>
+            <p class="text-base md:text-lg mb-8">
+                Welcome to my portfolio, a place where I showcase my projects, skills, and journey in the world of technology.
+                <span class="font-semibold section-highlight"><br>Please select a language to enter.</span></p>
+            </p>
 
-        <div class="grid grid-cols-2 justify-center items-center gap-4">
-            <a href="./id/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <span>🇮🇩</span>
-                <span>Bahasa Indonesia</span>
-            </a>
-            <a href="./en/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-gray-600 text-white hover:bg-gray-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <span>🇺🇸</span>
-                <span>English</span>
-            </a>
-            <a href="./jp/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <span>🇯🇵</span>
-                <span>日本語</span>
-            </a>
-            <a href="./cn/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-green-600 text-white hover:bg-green-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <span>🇨🇳</span>
-                <span>中文</span>
-            </a>
+            <div class="grid grid-cols-2 gap-4"> 
+                <a href="./id/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <span>🇮🇩</span>
+                    <span>Bahasa Indonesia</span>
+                </a>
+                <a href="./en/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-gray-600 text-white hover:bg-gray-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <span>🇺🇸</span>
+                    <span>English</span>
+                </a>
+                <a href="./jp/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <span>🇯🇵</span>
+                    <span>日本語</span>
+                </a>
+                <a href="./cn/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-green-600 text-white hover:bg-green-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <span>🇨🇳</span>
+                    <span>中文</span>
+                </a>
+            </div>
         </div>
     </main>
-    
-    </body>
+
+    <footer class="header-footer-bg footer-no-border py-6 mt-auto">
+        <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center space-x-6 text-2xl">
+                <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.x.com/sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
+                    <i class="fab fa-x"></i>
+                </a>
+                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="social-icon text-xl transition-transform hover:scale-110">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                </div>
+                <p class="mb-4 header-footer-text">&copy; <span id="current-year"></span> Sulu Edward Julianto</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
 </html>

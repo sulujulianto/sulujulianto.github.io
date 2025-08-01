@@ -1,0 +1,28 @@
+{
+  "name": "sulujulianto-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website with React, TypeScript, and Tailwind CSS for multi-language support.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind:build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css",
+    "tailwind:watch": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --watch"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "typescript",
+    "tailwind-css",
+    "multi-language",
+    "personal-website"
+  ],
+  "author": "Sulu Edward Julianto",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11"
+  }
+}
