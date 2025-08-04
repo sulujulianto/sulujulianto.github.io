@@ -1,27 +1,19 @@
 <!DOCTYPE html>
-<html lang="cn" class="scroll-smooth">
+<html lang="zh" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>苏鲁·爱德华·朱利安托的个人作品集</title>
+    <title>Sulu Edward Julianto</title>
 
     <link rel="stylesheet" href="../assets/css/output.css"> 
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="../assets/js/theme.js"></script>
     
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="../assets/js/app.tsx" type="text/babel" data-presets="typescript,react"></script>
-
     <style>
-        /* 之前代码中的样式和最终修正 */
         body {
             font-family: 'Poppins', sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -29,7 +21,36 @@
             transition: background-color 0.5s, color 0.5s, background-image 0.5s;
         }
 
-        /* --- 亮色主题 --- */
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem; 
+        }
+        .hero-image {
+            order: 1; 
+        }
+        .hero-text {
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-container {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr)); 
+            }
+            .hero-image {
+                order: initial; 
+                grid-column: 2; 
+            }
+            .hero-text {
+                order: initial; 
+                grid-column: 1;
+                grid-row: 1; 
+            }
+        }
+
+        /* --- Light Theme --- */
         body {
             background-image: linear-gradient(to bottom right, #a5f3fc, #60a5fa);
             color: #0f172a;
@@ -38,16 +59,12 @@
         a { color: #1e3a8a; } 
         a:hover { color: #1d4ed8; } 
 
-        /* 修正: 简历下载按钮文本/图标的特定样式 */
         .cv-download-btn span, .cv-download-btn i {
-            color: #ffffff !important; 
-        }
-        .cv-download-btn:hover span, .cv-download-btn:hover i {
             color: #ffffff !important; 
         }
 
         .section-highlight { color: #1d4ed8; }
-        .card { /* 所有卡片 (关于, 技能, 联系, 项目) 的样式 */
+        .card {
             background-color: rgba(255, 255, 255, 0.65);
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
@@ -65,7 +82,7 @@
         .filter-btn:hover {
             background-color: #e5e7eb;
         }
-       
+        
         #contact input, #contact textarea {
             background-color: #ffffff !important;
             color: #0f172a !important;
@@ -73,7 +90,7 @@
         }
         #contact .social-icon { color: #0f172a !important; }
 
-        /* --- 暗色主题 --- */
+        /* --- Dark Theme --- */
         html.dark body {
             background-color: #0c1322;
             background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
@@ -108,7 +125,7 @@
         }
         html.dark #contact .social-icon { color: #94a3b8 !important; }
 
-        /* --- 额外动画（用于淡入和悬停效果） --- */
+        /* --- Animations --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -117,64 +134,57 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* 技能卡片和项目卡片的动画 */
         .card {
-            transform: translateY(0);
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
         .card:hover {
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         html.dark .card:hover {
             box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.05), 0 4px 6px -2px rgba(255, 255, 255, 0.02);
         }
 
-        /* 技能图标的动画（可选，如果您想要效果） */
         .skill-icon {
             transition: transform 0.2s ease-out;
         }
         .skill-item:hover .skill-icon {
-            transform: scale(1.1); 
+            transform: scale(1.1);
         }
 
-        /* --- 新导航栏和页脚样式 (透明/融合, 无边框) --- */
-        .header-footer-bg { 
-            background-color: transparent; 
-            backdrop-filter: blur(10px); 
+        /* --- Navbar and Footer Styles --- */
+        .header-footer-bg {
+            background-color: transparent;
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-bottom: none; 
+            border-bottom: none;
             transition: background-color 0.5s, border-color 0.5s;
         }
-        html.dark .header-footer-bg {
-            background-color: transparent; 
-            border-bottom: none; 
+        
+        .navbar-light-theme a, .navbar-light-theme button {
+            color: #000000 !important;
         }
-        .footer-no-border { 
-            border-top: none; 
-            border-bottom: none; 
-        }
-
-        .header-footer-text-color {
-            color: inherit; 
-        }
-        .header-footer-link-hover:hover {
-            color: #1d4ed8; 
-        }
-        html.dark .header-footer-link-hover:hover {
-            color: #60a5fa; 
+        .navbar-light-theme a:hover {
+            color: #3b82f6 !important;
         }
 
-        /* --- 主题切换按钮样式 (开关切换) --- */
+        html.dark .navbar-light-theme a, html.dark .navbar-light-theme button {
+            color: #eff6ff !important;
+        }
+        html.dark .navbar-light-theme a:hover {
+            color: #60a5fa !important;
+        }
+
+        /* --- Theme Toggle Button Styles --- */
         .theme-switch-wrapper {
             position: relative;
             display: inline-block;
-            width: 60px; 
-            height: 34px; 
+            width: 60px;
+            height: 34px;
             cursor: pointer;
         }
         .theme-switch-wrapper input {
-            opacity: 0; 
+            opacity: 0;
             width: 0;
             height: 0;
         }
@@ -184,26 +194,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc; 
+            background-color: #ccc;
             transition: .4s;
-            border-radius: 34px; 
+            border-radius: 34px;
         }
         .slider:before {
             position: absolute;
             content: "";
-            height: 26px; 
-            width: 26px; 
-            left: 4px; 
+            height: 26px;
+            width: 26px;
+            left: 4px;
             bottom: 4px;
-            background-color: white; 
+            background-color: white;
             transition: .4s;
-            border-radius: 50%; 
+            border-radius: 50%;
         }
-        .theme-switch-wrapper input:checked + .slider {
-            background-color: #2196F3; 
+        input:checked + .slider {
+            background-color: #2196F3;
         }
-        .theme-switch-wrapper input:checked + .slider:before {
-            transform: translateX(26px); 
+        input:checked + .slider:before {
+            transform: translateX(26px);
         }
         .slider .icon-inside {
             position: absolute;
@@ -213,69 +223,56 @@
             transition: opacity 0.4s;
         }
         .slider .icon-sun-on-slider {
-            left: 8px; 
-            color: #facc15; 
-            opacity: 1; 
+            left: 8px;
+            color: #facc15;
+            opacity: 1;
         }
         .slider .icon-moon-on-slider {
-            right: 8px; 
-            color: #6366f1; 
-            opacity: 0; 
+            right: 8px;
+            color: #6366f1;
+            opacity: 0;
         }
-        .theme-switch-wrapper input:checked + .slider .icon-sun-on-slider {
-            opacity: 0; 
+        input:checked + .slider .icon-sun-on-slider {
+            opacity: 0;
         }
-        .theme-switch-wrapper input:checked + .slider .icon-moon-on-slider {
-            opacity: 1; 
+        input:checked + .slider .icon-moon-on-slider {
+            opacity: 1;
         }
-        html.dark .slider {
-            background-color: #4b5563; 
-        }
-        html.dark .slider:before {
-            background-color: #a0aec0; 
-        }
-        html.dark .theme-switch-wrapper input:checked + .slider {
-            background-color: #60a5fa; 
-        }
-        html.dark .theme-switch-wrapper input:checked + .slider:before {
-            background-color: #eff6ff; 
-        }
+        html.dark .slider { background-color: #4b5563; }
+        html.dark .slider:before { background-color: #a0aec0; }
+        html.dark input:checked + .slider { background-color: #60a5fa; }
+        html.dark input:checked + .slider:before { background-color: #eff6ff; }
 
-
-        /* 滚动到顶部按钮样式 */
+        /* Scroll to Top Button Styles */
         #to-top-btn {
-            background-color: #000000; 
+            background-color: #000000;
             color: #ffffff;
-            border-radius: 9999px; 
-            width: 48px; 
+            border-radius: 9999px;
+            width: 48px;
             height: 48px;
-            display: flex; 
+            display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
         #to-top-btn:hover {
-            background-color: #333333; 
+            background-color: #333333;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         html.dark #to-top-btn {
-            background-color: #2563eb; 
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-color: #2563eb;
         }
         html.dark #to-top-btn:hover {
             background-color: #3b82f6;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
-        /* 修正: 亮色主题下的头像圆形背景 */
         .profile-photo-circle {
-            background-color: #000000; 
+            background-color: #000000;
         }
         html.dark .profile-photo-circle {
-            background-image: linear-gradient(to bottom right, #38bdf8, #3b82f6) !important; 
+            background-image: linear-gradient(to bottom right, #38bdf8, #3b82f6) !important;
         }
-        /* 最终修正: 亮色主题下的页脚文本和社交图标颜色 */
         footer p, footer a {
             color: #000000 !important; 
         }
@@ -286,16 +283,18 @@
 </head>
 <body class="dark:text-slate-300">
 
-    <header class="sticky top-0 z-50 w-full header-footer-bg">
+    <header class="sticky top-0 z-50 w-full header-footer-bg navbar-light-theme">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
-            <a href="../" class="text-xl font-bold header-footer-text header-footer-link-hover">苏鲁·爱德华·朱利安托</a>
+            <a href="../" class="text-xl font-bold">Sulu Edward Julianto</a>
+            
             <nav class="hidden md:flex space-x-8 items-center">
-                <a href="../" class="header-footer-text header-footer-link-hover">首页</a>
-                <a href="#about" class="header-footer-text header-footer-link-hover">关于</a>
-                <a href="#skills" class="header-footer-text header-footer-link-hover">技能</a>
-                <a href="#projects" class="header-footer-text header-footer-link-hover">项目</a>
-                <a href="#contact" class="header-footer-text header-footer-link-hover">联系</a>
-                <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="header-footer-text header-footer-link-hover">博客</a>
+                <a href="../">首页</a>
+                <a href="#tentang">关于我</a>
+                <a href="#skills">技能</a>
+                <a href="#proyek">项目</a>
+                <a href="#sertifikat">证书</a>
+                <a href="#contact">联系我</a>
+                <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer">博客</a>
                 <label id="theme-toggle" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-checkbox">
                     <span class="slider">
@@ -304,6 +303,7 @@
                     </span>
                 </label>
             </nav>
+            
             <div class="md:hidden flex items-center space-x-4">
                 <label id="theme-toggle-nav" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-nav-checkbox">
@@ -312,51 +312,56 @@
                         <i id="icon-moon-nav" class="fas fa-moon icon-inside icon-moon-on-slider hidden"></i>
                     </span>
                 </label>
-                <button id="navbar-toggle" type="button" class="header-footer-text focus:outline-none">
+                <button id="navbar-toggle" type="button" class="focus:outline-none">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
+        
         <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
-            <a href="../" class="block py-2 header-footer-text header-footer-link-hover">首页</a>
-            <a href="#about" class="block py-2 header-footer-text header-footer-link-hover">关于</a>
-            <a href="#skills" class="block py-2 header-footer-text header-footer-link-hover">技能</a>
-            <a href="#projects" class="block py-2 header-footer-text header-footer-link-hover">项目</a>
-            <a href="#contact" class="block py-2 header-footer-text header-footer-link-hover">联系</a>
-            <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="block py-2 header-footer-text header-footer-link-hover">博客</a>
+            <a href="../" class="block py-2">首页</a>
+            <a href="#tentang" class="block py-2">关于我</a>
+            <a href="#skills" class="block py-2">技能</a>
+            <a href="#proyek" class="block py-2">项目</a>
+            <a href="#sertifikat" class="block py-2">证书</a>
+            <a href="#contact" class="block py-2">联系我</a>
+            <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="block py-2">博客</a>
         </div>
     </header>
 
     <main class="pt-16 sm:pt-20 fade-in">
+        
         <header id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-                <div class="text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight">苏鲁·爱德华·朱利安托</h1>
-                    <p class="mt-4 text-lg">我是2021年计算机与网络工程职业高中毕业生。对编程充满热情，立志成为一名<span class="font-semibold section-highlight">软件工程师</span>。我热爱挑战，享受通过代码解决问题的乐趣。</p>
+            <div class="hero-container">
+                <div class="hero-text text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight">Sulu Edward Julianto</h1>
+                    <p class="mt-4 text-lg">一名拥有全栈专业知识的<span class="font-semibold section-highlight">软件工程师</span>，专注于从后端系统到用户界面的Web开发。</p>
                     <a href="../assets/CV_SuluEdwardJulianto.pdf" download class="inline-flex items-center gap-2 mt-8 px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition-transform hover:scale-105 cv-download-btn">
                         <i class="fas fa-download"></i>
                         <span>下载简历</span>
                     </a>
                 </div>
-                <div class="flex justify-center">
+                <div class="hero-image flex justify-center">
                     <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl p-2 profile-photo-circle">
-                         <img src="../assets/img/Sulu.png" alt="苏鲁·爱德华头像" class="w-full h-full object-cover rounded-full">
+                        <img src="../assets/img/about-me/Sulu.png" alt="Sulu Edward 的个人照片" class="w-full h-full object-cover rounded-full">
                     </div>
                 </div>
             </div>
         </header>
 
-        <section id="about" class="py-24"> 
+        <section id="tentang" class="py-24">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12">介绍 <span class="section-highlight">关于我</span></h2>
+                <h2 class="text-3xl font-bold text-center mb-12">自我<span class="section-highlight">介绍</span></h2>
                 <div class="card p-8 rounded-2xl shadow-xl text-center">
-                    <p class="text-lg mb-8">我是2021年计算机与网络工程职业高中毕业生。对编程充满热情，立志成为一名软件工程师。我热爱挑战，享受通过代码解决问题的乐趣。</p>
+                    <p class="text-lg mb-8">
+                    我毕业于职业高中，主修计算机与网络工程，并对软件开发，特别是网页开发充满热情。近年来，我通过自学、个人项目以及对现代技术的持续探索，建立了全端网页开发的技能，从前端到后端都有所掌握。我相信优质的软件来自系统性的理解、对细节的关注，以及持续学习的意愿。我编写的每一行代码都代表着思考、实验和对长期解决方案的承诺。目前，我专注于成为一名不仅精通技术，同时能理解用户需求并构建有意义产品的软件工程师。我坚信，最好的学习来自真实的经验与合作。通过这个作品集，我希望向专业领域展示我的过程、成就与工作理念。
+                    </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 justify-center items-center gap-6 mt-8">
                         <div class="flex justify-center">
-                            <img src="../assets/img/about-workspace.jpg" alt="苏鲁的工作区" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+                            <!-- <img src="../assets/img/about-me/about-workspace.jpg" alt="Ruang Kerja Sulu" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105"> -->
                         </div>
                         <div class="flex justify-center">
-                            <img src="../assets/img/about-hobby.jpg" alt="苏鲁的爱好" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+                            <!-- <img src="../assets/img/about-me/about-hobby.jpg" alt="Hobi Sulu" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105"> -->
                         </div>
                     </div>
                 </div>
@@ -366,55 +371,63 @@
         <section id="skills" class="py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-4">我的技能</h2>
-                <p class="text-center text-lg mb-12 max-w-2xl mx-auto">我用于构建应用程序的技术、工具和系统。</p>
+                <p class="text-center text-lg mb-12 max-w-2xl mx-auto">我使用的技术、工具和系统。</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">前端</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-6 h-6 skill-icon" /> HTML5</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-6 h-6 skill-icon" /> CSS3</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-6 h-6 skill-icon" /> JavaScript</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-6 h-6 skill-icon" /> React</li><li class="flex items-center gap-3 skill-item"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-6 h-6 skill-icon" /> Tailwind CSS</li></ul></div>
-                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">后端</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-6 h-6 skill-icon" /> Node.js</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-6 h-6 skill-icon" /> PHP</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6 skill-icon" /> Python</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.worldvectorlogo.com/logos/laravel-2.svg"  alt="Laravel" class="w-6 h-6 skill-icon" /> Laravel</li></ul></div>
-                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">数据库与实用工具</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-6 h-6 skill-icon" /> MySQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-6 h-6 skill-icon" /> PostgreSQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-6 h-6 skill-icon" /> MongoDB</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-6 h-6 skill-icon" /> Firebase</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">前端开发</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-6 h-6 skill-icon" /> HTML5</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-6 h-6 skill-icon" /> CSS3</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-6 h-6 skill-icon" /> JavaScript</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-6 h-6 skill-icon" /> React</li><li class="flex items-center gap-3 skill-item"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-6 h-6 skill-icon" /> Tailwind CSS</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">后端开发</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-6 h-6 skill-icon" /> Node.js</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-6 h-6 skill-icon" /> PHP</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6 skill-icon" /> Python</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.worldvectorlogo.com/logos/laravel-2.svg" alt="Laravel" class="w-6 h-6 skill-icon" /> Laravel</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">数据库与工具</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-6 h-6 skill-icon" /> MySQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-6 h-6 skill-icon" /> PostgreSQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-6 h-6 skill-icon" /> MongoDB</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-6 h-6 skill-icon" /> Firebase</li></ul></div>
                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">操作系统</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows" class="w-6 h-6 skill-icon" /> Windows</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="w-6 h-6 skill-icon" /> Linux</li></ul></div>
                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">工具与技术</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-6 h-6 skill-icon" /> Git</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-6 h-6 skill-icon" /> GitHub</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-6 h-6 skill-icon" /> VS Code</li></ul></div>
-                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">云与DevOps</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS" class="w-6 h-6 skill-icon" /> AWS</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" class="w-6 h-6 skill-icon" /> GCP</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-6 h-6 skill-icon" /> Docker</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">云服务与DevOps</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS" class="w-6 h-6 skill-icon" /> AWS</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" class="w-6 h-6 skill-icon" /> GCP</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-6 h-6 skill-icon" /> Docker</li></ul></div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="py-24"> 
+        <section id="proyek" class="py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">我的作品</span> 项目</h2>
-                <p class="text-center text-lg mb-8">以下是我完成的一些精选项目。</p>
-                <div id="portfolio-react-root" data-locale="cn"></div> </div>
+                <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">我的</span>项目作品</h2>
+                <p class="text-center text-lg mb-8">展示一些我参与的项目，从个人实验到较为复杂的开发工作</p>
+                <div id="portfolio-react-root" data-locale="zh"></div>
+            </div>
+        </section>
+
+        <section id="sertifikat" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">证书</span>与奖项</h2>
+                <p class="text-center text-lg mb-8">这是我通过培训、课程和自学获得的一些证书。</p>
+                <div id="certificates-react-root" data-locale="zh"></div>
+            </div>
         </section>
 
         <section id="contact" class="py-24">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                 <h2 class="text-3xl font-bold text-center mb-12">联系 <span class="section-highlight">我</span></h2>
+                 <h2 class="text-3xl font-bold text-center mb-12">联系<span class="section-highlight">我</span></h2>
                 <div class="card grid md:grid-cols-2 gap-10 p-8 rounded-2xl shadow-xl">
                     <div>
                         <h3 class="text-2xl font-bold mb-4">联系信息</h3>
-                        <p class="mb-6">我随时欢迎讨论，请随时通过旁边的表格或以下联系方式与我联系。</p>
+                        <p class="mb-6">我乐于参与专业交流、项目合作或探索新的机会，欢迎通过以下联系方式与我联系。</p>
                         <div class="space-y-4">
                             <div class="flex items-center gap-3"><i class="fa-solid fa-map-marker-alt section-highlight w-6 text-center"></i><span>雅加达, 印度尼西亚</span></div>
-                            <div class="flex items-center gap-3"><i class="fa-solid fa-paper-plane section-highlight w-6 text-center"></i><span>sulu.julianto@example.com</span></div>
-                            <div class="flex items-center gap-3"><i class="fa-solid fa-phone-alt section-highlight w-6 text-center"></i><span>+62 812-3456-7890</span></div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-paper-plane section-highlight w-6 text-center"></i><span>sulucodes@email.com</span></div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-phone-alt section-highlight w-6 text-center"></i><span>+62 821-2372-4998</span></div>
                         </div>
                         <div class="mt-8">
-                             <h4 class="font-bold mb-4">与我联系</h4>
+                             <h4 class="font-bold mb-4">关注我</h4>
                              <div class="flex gap-4">
-                                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-2xl transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-2xl transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-twitter"></i></a>
+                                 <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
+                                 <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                                 <a href="https://t.me/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-telegram"></i></a>
                              </div>
                         </div>
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold mb-4">发送消息</h3>
                         <form action="https://formsubmit.co/YOUR@EMAIL.COM" method="POST" class="space-y-4">
-                            <input type="hidden" name="_next" value="https://sulujulianto.github.io/cn/thank-you.html">
+                            <input type="hidden" name="_next" value="https://sulujulianto.github.io/zh/thank-you.html">
                             <input type="hidden" name="_captcha" value="false">
-                            <input type="text" name="name" placeholder="姓名" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors">
-                            <input type="email" name="email" placeholder="电子邮件地址" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors">
-                            <textarea name="message" rows="4" placeholder="您的消息" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors"></textarea>
+                            <input type="text" name="name" placeholder="您的姓名" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors">
+                            <input type="email" name="email" placeholder="您的邮箱地址" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors">
+                            <textarea name="message" rows="4" placeholder="您的留言" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors"></textarea>
                             <button type="submit" class="w-full bg-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-800 transition-colors duration-300">
                                 发送
                             </button>
@@ -427,34 +440,28 @@
 
     <footer class="header-footer-bg footer-no-border py-6 mt-auto">
         <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center space-x-6 text-2xl">
-                <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com/sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.x.com/sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-x"></i>
-                </a>
-                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                </div>
-                <p class="mb-4 header-footer-text">&copy; <span id="current-year"></span> Sulu Edward Julianto</p>
+            <div class="flex justify-center space-x-6 text-2xl mb-4">
+                <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.x.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-x"></i></a>
+                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="transition-transform hover:scale-110"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="header-footer-text">© <span id="current-year"></span> Sulu Edward Julianto</p>
         </div>
     </footer>
 
-    <a href="#" id="to-top-btn" class="hidden fixed bottom-5 right-5 z-50 h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 hover:bg-blue-700"> 
+    <script>
+        // 一个在页脚显示当前年份的简单脚本。
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+
+    <a href="#" id="to-top-btn" class="hidden fixed bottom-5 right-5 z-50 h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 hover:bg-blue-700">
         <i class="fas fa-arrow-up"></i>
     </a>
 

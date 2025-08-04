@@ -1,0 +1,16 @@
+# Folder Dependensi
+/node_modules
+
+# File Sistem Operasi
+.DS_Store
+Thumbs.db
+
+# Folder Editor Kode
+.vscode/
+
+# File Log
+*.log
+
+# File Environment (untuk praktik terbaik)
+.env
+.env.*

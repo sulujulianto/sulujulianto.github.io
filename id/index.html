@@ -3,31 +3,51 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio Sulu Edward Julianto</title>
-    <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
+    <title>Sulu Edward Julianto</title>
 
     <link rel="stylesheet" href="../assets/css/output.css"> 
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="../assets/js/theme.js"></script>
     
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="../assets/js/app.tsx" type="text/babel" data-presets="typescript,react"></script>
-
     <style>
-        /* GAYA DARI KODE ANDA SEBELUMNYA DAN PERBAIKAN AKHIR */
         body {
             font-family: 'Poppins', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             transition: background-color 0.5s, color 0.5s, background-image 0.5s;
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem; 
+        }
+        .hero-image {
+            order: 1; 
+        }
+        .hero-text {
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-container {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr)); 
+            }
+            .hero-image {
+                order: initial; 
+                grid-column: 2; 
+            }
+            .hero-text {
+                order: initial; 
+                grid-column: 1;
+                grid-row: 1; 
+            }
         }
 
         /* --- Tema Terang --- */
@@ -39,16 +59,12 @@
         a { color: #1e3a8a; } 
         a:hover { color: #1d4ed8; } 
 
-        /* PERBAIKAN: Gaya khusus untuk link di CV button agar teksnya tidak hilang */
         .cv-download-btn span, .cv-download-btn i {
-            color: #ffffff !important; 
-        }
-        .cv-download-btn:hover span, .cv-download-btn:hover i {
             color: #ffffff !important; 
         }
 
         .section-highlight { color: #1d4ed8; }
-        .card { /* Gaya untuk semua kartu (tentang, skill, kontak, proyek) */
+        .card {
             background-color: rgba(255, 255, 255, 0.65);
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
@@ -66,7 +82,7 @@
         .filter-btn:hover {
             background-color: #e5e7eb;
         }
-       
+        
         #contact input, #contact textarea {
             background-color: #ffffff !important;
             color: #0f172a !important;
@@ -109,7 +125,7 @@
         }
         html.dark #contact .social-icon { color: #94a3b8 !important; }
 
-        /* --- Animasi Tambahan (untuk fade-in dan efek hover) --- */
+        /* --- Animasi --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -118,64 +134,57 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Animasi untuk kartu skill dan proyek */
         .card {
-            transform: translateY(0);
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
         .card:hover {
-            transform: translateY(-5px); /* Sedikit naik saat hover */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Shadow lebih besar */
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         html.dark .card:hover {
             box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.05), 0 4px 6px -2px rgba(255, 255, 255, 0.02);
         }
 
-        /* Animasi untuk ikon skill (opsional, jika ingin ada efek) */
         .skill-icon {
             transition: transform 0.2s ease-out;
         }
         .skill-item:hover .skill-icon {
-            transform: scale(1.1); /* Ikon sedikit membesar saat hover */
+            transform: scale(1.1);
         }
 
-        /* --- GAYA NAVBAR DAN FOOTER (TRANSPARAN/MENYATU, TANPA GARIS) --- */
-        .header-footer-bg { /* Latar belakang untuk navbar dan footer */
-            background-color: transparent; /* Sepenuhnya transparan */
-            backdrop-filter: blur(10px); /* Efek blur untuk tetap terlihat */
+        /* --- Gaya Navbar dan Footer --- */
+        .header-footer-bg {
+            background-color: transparent;
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-bottom: none; /* MENGHILANGKAN GARIS DI BAWAH HEADER */
+            border-bottom: none;
             transition: background-color 0.5s, border-color 0.5s;
         }
-        html.dark .header-footer-bg {
-            background-color: transparent; 
-            border-bottom: none; /* MENGHILANGKAN GARIS DI BAWAH HEADER */
+        
+        .navbar-light-theme a, .navbar-light-theme button {
+            color: #000000 !important;
         }
-        .footer-no-border { /* Untuk footer agar bordernya hilang */
-            border-top: none; /* MENGHILANGKAN GARIS DI ATAS FOOTER */
-            border-bottom: none; /* Hanya untuk memastikan */
-        }
-
-        .header-footer-text-color {
-            color: inherit; /* Mewarisi warna teks dari body (tema terang/gelap) */
-        }
-        .header-footer-link-hover:hover {
-            color: #1d4ed8; /* Warna hover terang (dari a:hover asli Anda) */
-        }
-        html.dark .header-footer-link-hover:hover {
-            color: #60a5fa; /* Warna hover gelap (dari section-highlight dark asli Anda) */
+        .navbar-light-theme a:hover {
+            color: #3b82f6 !important;
         }
 
-        /* --- GAYA TOMBOL TEMA (SWITCH TOGGLE) --- */
+        html.dark .navbar-light-theme a, html.dark .navbar-light-theme button {
+            color: #eff6ff !important;
+        }
+        html.dark .navbar-light-theme a:hover {
+            color: #60a5fa !important;
+        }
+
+        /* --- Gaya Tombol Tema --- */
         .theme-switch-wrapper {
             position: relative;
             display: inline-block;
-            width: 60px; /* Lebar total switch */
-            height: 34px; /* Tinggi total switch */
+            width: 60px;
+            height: 34px;
             cursor: pointer;
         }
         .theme-switch-wrapper input {
-            opacity: 0; /* Sembunyikan input checkbox asli */
+            opacity: 0;
             width: 0;
             height: 0;
         }
@@ -185,28 +194,27 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc; /* Latar belakang slider terang */
+            background-color: #ccc;
             transition: .4s;
-            border-radius: 34px; /* Bentuk bulat */
+            border-radius: 34px;
         }
         .slider:before {
             position: absolute;
             content: "";
-            height: 26px; /* Tinggi lingkaran */
-            width: 26px; /* Lebar lingkaran */
-            left: 4px; /* Posisi awal lingkaran */
+            height: 26px;
+            width: 26px;
+            left: 4px;
             bottom: 4px;
-            background-color: white; /* Warna lingkaran terang */
+            background-color: white;
             transition: .4s;
-            border-radius: 50%; /* Bentuk lingkaran */
+            border-radius: 50%;
         }
-        .theme-switch-wrapper input:checked + .slider {
-            background-color: #2196F3; /* Latar belakang slider gelap */
+        input:checked + .slider {
+            background-color: #2196F3;
         }
-        .theme-switch-wrapper input:checked + .slider:before {
-            transform: translateX(26px); /* Geser lingkaran ke kanan */
+        input:checked + .slider:before {
+            transform: translateX(26px);
         }
-        /* Icon di dalam slider */
         .slider .icon-inside {
             position: absolute;
             top: 50%;
@@ -215,70 +223,56 @@
             transition: opacity 0.4s;
         }
         .slider .icon-sun-on-slider {
-            left: 8px; /* Posisi ikon matahari */
-            color: #facc15; /* Kuning */
-            opacity: 1; /* Default terlihat untuk matahari */
+            left: 8px;
+            color: #facc15;
+            opacity: 1;
         }
         .slider .icon-moon-on-slider {
-            right: 8px; /* Posisi ikon bulan */
-            color: #6366f1; /* Biru/ungu */
-            opacity: 0; /* Default sembunyikan bulan */
+            right: 8px;
+            color: #6366f1;
+            opacity: 0;
         }
-        .theme-switch-wrapper input:checked + .slider .icon-sun-on-slider {
-            opacity: 0; /* Sembunyikan matahari saat gelap */
+        input:checked + .slider .icon-sun-on-slider {
+            opacity: 0;
         }
-        .theme-switch-wrapper input:checked + .slider .icon-moon-on-slider {
-            opacity: 1; /* Tampilkan bulan saat gelap */
+        input:checked + .slider .icon-moon-on-slider {
+            opacity: 1;
         }
-        /* Mengatur warna slider saat dark mode */
-        html.dark .slider {
-            background-color: #4b5563; /* bg-gray-600 */
-        }
-        html.dark .slider:before {
-            background-color: #a0aec0; /* bg-gray-400 */
-        }
-        html.dark .theme-switch-wrapper input:checked + .slider {
-            background-color: #60a5fa; /* bg-blue-500 */
-        }
-        html.dark .theme-switch-wrapper input:checked + .slider:before {
-            background-color: #eff6ff; /* text-white */
-        }
+        html.dark .slider { background-color: #4b5563; }
+        html.dark .slider:before { background-color: #a0aec0; }
+        html.dark input:checked + .slider { background-color: #60a5fa; }
+        html.dark input:checked + .slider:before { background-color: #eff6ff; }
 
-
-        /* GAYA TOMBOL SCROLL TO TOP */
+        /* Gaya Tombol Scroll ke Atas */
         #to-top-btn {
-            background-color: #000000; /* Perbaikan: Hitam di tema terang */
+            background-color: #000000;
             color: #ffffff;
-            border-radius: 9999px; /* Bulat sempurna */
-            width: 48px; /* Ukuran tetap */
+            border-radius: 9999px;
+            width: 48px;
             height: 48px;
-            display: flex; /* Untuk memusatkan ikon */
+            display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
         #to-top-btn:hover {
-            background-color: #333333; /* Sedikit lebih gelap saat hover */
+            background-color: #333333;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         html.dark #to-top-btn {
-            background-color: #2563eb; /* Biru asli di dark mode */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-color: #2563eb;
         }
         html.dark #to-top-btn:hover {
             background-color: #3b82f6;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
-        /* Perbaikan: Lingkaran Foto Profil di Tema Terang */
         .profile-photo-circle {
-            background-color: #000000; /* Hitam di tema terang */
+            background-color: #000000;
         }
         html.dark .profile-photo-circle {
-            background-image: linear-gradient(to bottom right, #38bdf8, #3b82f6) !important; /* Gradien biru di dark mode */
+            background-image: linear-gradient(to bottom right, #38bdf8, #3b82f6) !important;
         }
-        /* FINAL FIX: Footer text and social icons in Light Theme */
         footer p, footer a {
             color: #000000 !important; 
         }
@@ -289,17 +283,18 @@
 </head>
 <body class="dark:text-slate-300">
 
-    <header class="sticky top-0 z-50 w-full header-footer-bg">
+    <header class="sticky top-0 z-50 w-full header-footer-bg navbar-light-theme">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
-            <a href="../" class="text-xl font-bold header-footer-text header-footer-link-hover">Sulu Edward Julianto</a>
+            <a href="../" class="text-xl font-bold">Sulu Edward Julianto</a>
+            
             <nav class="hidden md:flex space-x-8 items-center">
-                <a href="../" class="header-footer-text header-footer-link-hover">Home</a>
-                <a href="#tentang" class="header-footer-text header-footer-link-hover">Tentang</a>
-                <a href="#skills" class="header-footer-text header-footer-link-hover">Keahlian</a>
-                <a href="#proyek" class="header-footer-text header-footer-link-hover">Proyek</a>
-                <a href="#sertifikat" class="header-footer-text header-footer-link-hover">Sertifikat</a>
-                <a href="#contact" class="header-footer-text header-footer-link-hover">Kontak</a>
-                <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="header-footer-text header-footer-link-hover">Blog</a>
+                <a href="../">Home</a>
+                <a href="#tentang">Tentang</a>
+                <a href="#skills">Keahlian</a>
+                <a href="#proyek">Proyek</a>
+                <a href="#sertifikat">Sertifikat</a>
+                <a href="#contact">Kontak</a>
+                <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer">Blog</a>
                 <label id="theme-toggle" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-checkbox">
                     <span class="slider">
@@ -308,6 +303,7 @@
                     </span>
                 </label>
             </nav>
+            
             <div class="md:hidden flex items-center space-x-4">
                 <label id="theme-toggle-nav" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-nav-checkbox">
@@ -316,36 +312,38 @@
                         <i id="icon-moon-nav" class="fas fa-moon icon-inside icon-moon-on-slider hidden"></i>
                     </span>
                 </label>
-                <button id="navbar-toggle" type="button" class="header-footer-text focus:outline-none">
+                <button id="navbar-toggle" type="button" class="focus:outline-none">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
+        
         <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
-            <a href="../" class="block py-2 header-footer-text header-footer-link-hover">Home</a>
-            <a href="#tentang" class="block py-2 header-footer-text header-footer-link-hover">Tentang</a>
-            <a href="#skills" class="block py-2 header-footer-text header-footer-link-hover">Keahlian</a>
-            <a href="#proyek" class="block py-2 header-footer-text header-footer-link-hover">Proyek</a>
-            <a href="#sertifikat" class="block py-2 header-footer-text header-footer-link-hover">Sertifikat</a>
-            <a href="#contact" class="block py-2 header-footer-text header-footer-link-hover">Kontak</a>
-            <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="block py-2 header-footer-text header-footer-link-hover">Blog</a>
+            <a href="../" class="block py-2">Home</a>
+            <a href="#tentang" class="block py-2">Tentang</a>
+            <a href="#skills" class="block py-2">Keahlian</a>
+            <a href="#proyek" class="block py-2">Proyek</a>
+            <a href="#sertifikat" class="block py-2">Sertifikat</a>
+            <a href="#contact" class="block py-2">Kontak</a>
+            <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="block py-2">Blog</a>
         </div>
     </header>
 
     <main class="pt-16 sm:pt-20 fade-in">
+        
         <header id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-                <div class="text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight">Sulu Edward Julianto</h1>
-                    <p class="mt-4 text-lg">Seorang lulusan SMK Teknik Komputer & Jaringan yang sedang menapaki jalur karier sebagai <span class="font-semibold section-highlight">Software Engineer</span>.</p>
+            <div class="hero-container">
+                <div class="hero-text text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight">Sulu Edward Julianto</h1>
+                    <p class="mt-4 text-lg">Seorang <span class="font-semibold section-highlight">Software Engineer</span> dengan keahlian Full Stack yang berfokus pada pengembangan web dari sistem backend hingga antarmuka pengguna.</p>
                     <a href="../assets/CV_SuluEdwardJulianto.pdf" download class="inline-flex items-center gap-2 mt-8 px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition-transform hover:scale-105 cv-download-btn">
                         <i class="fas fa-download"></i>
                         <span>Download CV</span>
                     </a>
                 </div>
-                <div class="flex justify-center">
+                <div class="hero-image flex justify-center">
                     <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl p-2 profile-photo-circle">
-                         <img src="../assets/img/about-me/Sulu.png" alt="Foto Profil Sulu Edward" class="w-full h-full object-cover rounded-full">
+                        <img src="../assets/img/about-me/Sulu.png" alt="Foto Profil Sulu Edward" class="w-full h-full object-cover rounded-full">
                     </div>
                 </div>
             </div>
@@ -355,13 +353,15 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-12">Perkenalan <span class="section-highlight">Tentang Saya</span></h2>
                 <div class="card p-8 rounded-2xl shadow-xl text-center">
-                    <p class="text-lg mb-8">Saya adalah lulusan SMK Teknik Komputer & Jaringan tahun 2021. Dengan semangat dan ketertarikan mendalam pada pemrograman, saya berambisi untuk menjadi seorang Software Engineer. Saya menyukai tantangan dan senang memecahkan masalah melalui kode.</p>
+                    <p class="text-lg mb-8">
+                    Saya adalah lulusan SMK Teknik Komputer &amp; Jaringan yang tumbuh bersama perkembangan teknologi digital. Dengan membangun fondasi sebagai Full Stack Web Developer, saya terbiasa menghadapi berbagai tantangan mulai dari desain antarmuka hingga arsitektur sistem. Melalui pembelajaran mandiri dan eksplorasi berkelanjutan, saya terus memperluas wawasan dan keterampilan teknis agar siap beradaptasi dengan lanskap teknologi yang dinamis dan terus berkembang. Bagi saya, menjadi seorang Software Engineer bukan sekadar menulis kode, tapi memahami perubahan, menjawab kebutuhan zaman, dan berkontribusi dalam membentuk masa depan digital secara bermakna.
+                    </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 justify-center items-center gap-6 mt-8">
                         <div class="flex justify-center">
-                            <img src="../assets/img/about-me/about-workspace.jpg" alt="Ruang Kerja Sulu" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+                            <!-- <img src="../assets/img/about-me/about-workspace.jpg" alt="Ruang Kerja Sulu" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105"> -->
                         </div>
                         <div class="flex justify-center">
-                            <img src="../assets/img/about-me/about-hobby.jpg" alt="Hobi Sulu" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+                            <!-- <img src="../assets/img/about-me/about-hobby.jpg" alt="Hobi Sulu" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105"> -->
                         </div>
                     </div>
                 </div>
@@ -371,10 +371,10 @@
         <section id="skills" class="py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-4">Keahlian Saya</h2>
-                <p class="text-center text-lg mb-12 max-w-2xl mx-auto">Teknologi, alat, dan sistem yang saya gunakan untuk membangun sebuah aplikasi.</p>
+                <p class="text-center text-lg mb-12 max-w-2xl mx-auto">Teknologi, alat, dan sistem yang saya gunakan.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Front-End</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-6 h-6 skill-icon" /> HTML5</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-6 h-6 skill-icon" /> CSS3</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-6 h-6 skill-icon" /> JavaScript</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-6 h-6 skill-icon" /> React</li><li class="flex items-center gap-3 skill-item"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-6 h-6 skill-icon" /> Tailwind CSS</li></ul></div>
-                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Back-End</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-6 h-6 skill-icon" /> Node.js</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-6 h-6 skill-icon" /> PHP</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6 skill-icon" /> Python</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.worldvectorlogo.com/logos/laravel-2.svg"  alt="Laravel" class="w-6 h-6 skill-icon" /> Laravel</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Front-End</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-6 h-6 skill-icon" /> HTML5</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-6 h-6 skill-icon" /> CSS3</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-6 h-6 skill-icon" /> JavaScript</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-6 h-6 skill-icon" /> React</li><li class="flex items-center gap-3 skill-item"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-6 h-6 skill-icon" /> Tailwind CSS</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Back-End</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-6 h-6 skill-icon" /> Node.js</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-6 h-6 skill-icon" /> PHP</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6 skill-icon" /> Python</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.worldvectorlogo.com/logos/laravel-2.svg" alt="Laravel" class="w-6 h-6 skill-icon" /> Laravel</li></ul></div>
                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Database & Utilitas</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-6 h-6 skill-icon" /> MySQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-6 h-6 skill-icon" /> PostgreSQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-6 h-6 skill-icon" /> MongoDB</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-6 h-6 skill-icon" /> Firebase</li></ul></div>
                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Sistem Operasi</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows" class="w-6 h-6 skill-icon" /> Windows</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="w-6 h-6 skill-icon" /> Linux</li></ul></div>
                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Alat & Teknologi</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-6 h-6 skill-icon" /> Git</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-6 h-6 skill-icon" /> GitHub</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-6 h-6 skill-icon" /> VS Code</li></ul></div>
@@ -386,7 +386,7 @@
         <section id="proyek" class="py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">Karya Saya</span> Proyek</h2>
-                <p class="text-center text-lg mb-8">Berikut adalah beberapa proyek pilihan yang pernah saya kerjakan.</p>
+                <p class="text-center text-lg mb-8">Kumpulan proyek yang saya kembangkan sebagai hasil eksplorasi dan pembelajaran di berbagai bidang.<br>Setiap karya mencerminkan pendekatan saya dalam memahami teknologi dan menyelesaikan tantangan nyata.</p>
                 <div id="portfolio-react-root" data-locale="id"></div>
             </div>
         </section>
@@ -394,7 +394,7 @@
         <section id="sertifikat" class="py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">Sertifikat</span> & Penghargaan</h2>
-                <p class="text-center text-lg mb-8">Ini adalah daftar sertifikat yang telah saya peroleh.</p>
+                <p class="text-center text-lg mb-8">Beberapa sertifikat yang saya peroleh dari pelatihan dan kursus sebagai bagian dari pengembangan diri di bidang teknologi dan keterampilan profesional lainnya.</p>
                 <div id="certificates-react-root" data-locale="id"></div>
             </div>
         </section>
@@ -405,7 +405,7 @@
                 <div class="card grid md:grid-cols-2 gap-10 p-8 rounded-2xl shadow-xl">
                     <div>
                         <h3 class="text-2xl font-bold mb-4">Informasi Kontak</h3>
-                        <p class="mb-6">Saya selalu terbuka untuk diskusi, jangan ragu untuk menghubungi saya melalui form di samping atau detail kontak di bawah ini.</p>
+                        <p class="mb-6">Saya terbuka untuk diskusi profesional, kolaborasi proyek, atau peluang baru. Silakan hubungi saya melalui informasi di bawah ini.</p>
                         <div class="space-y-4">
                             <div class="flex items-center gap-3"><i class="fa-solid fa-map-marker-alt section-highlight w-6 text-center"></i><span>Jakarta, Indonesia</span></div>
                             <div class="flex items-center gap-3"><i class="fa-solid fa-paper-plane section-highlight w-6 text-center"></i><span>sulucodes@email.com</span></div>
@@ -417,8 +417,6 @@
                                 <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
                                 <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
                                 <a href="https://t.me/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-telegram"></i></a>
-                                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-tiktok"></i></a>
-                                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-youtube"></i></a>
                              </div>
                         </div>
                     </div>
@@ -440,18 +438,28 @@
         </section>
     </main>
 
-    <footer class="text-center py-8 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center gap-6 mb-4">
-                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                <a href="https://t.me/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-telegram"></i></a>
-                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-youtube"></i></a>
+    <footer class="header-footer-bg footer-no-border py-6 mt-auto">
+        <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center space-x-6 text-2xl mb-4">
+                <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.x.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-x"></i></a>
+                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="transition-transform hover:scale-110"><i class="fab fa-youtube"></i></a>
             </div>
-            <p>© 2025 Sulu Edward Julianto</p>
+            <p class="header-footer-text">© <span id="current-year"></span> Sulu Edward Julianto</p>
         </div>
     </footer>
+
+    <script>
+        // Skrip sederhana untuk menampilkan tahun saat ini di footer.
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
 
     <a href="#" id="to-top-btn" class="hidden fixed bottom-5 right-5 z-50 h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 hover:bg-blue-700">
         <i class="fas fa-arrow-up"></i>

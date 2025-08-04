@@ -3,30 +3,51 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sulu Edward Julianto's Portfolio</title>
+    <title>Sulu Edward Julianto</title>
 
     <link rel="stylesheet" href="../assets/css/output.css"> 
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="../assets/js/theme.js"></script>
     
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="../assets/js/app.tsx" type="text/babel" data-presets="typescript,react"></script>
-
     <style>
-        /* STYLES FROM YOUR PREVIOUS CODE AND FINAL FIXES */
         body {
             font-family: 'Poppins', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             transition: background-color 0.5s, color 0.5s, background-image 0.5s;
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem; 
+        }
+        .hero-image {
+            order: 1; 
+        }
+        .hero-text {
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-container {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr)); 
+            }
+            .hero-image {
+                order: initial; 
+                grid-column: 2; 
+            }
+            .hero-text {
+                order: initial; 
+                grid-column: 1;
+                grid-row: 1; 
+            }
         }
 
         /* --- Light Theme --- */
@@ -38,16 +59,12 @@
         a { color: #1e3a8a; } 
         a:hover { color: #1d4ed8; } 
 
-        /* FIX: Specific styles for CV download button text/icon */
         .cv-download-btn span, .cv-download-btn i {
-            color: #ffffff !important; 
-        }
-        .cv-download-btn:hover span, .cv-download-btn:hover i {
             color: #ffffff !important; 
         }
 
         .section-highlight { color: #1d4ed8; }
-        .card { /* Styles for all cards (about, skill, contact, projects) */
+        .card {
             background-color: rgba(255, 255, 255, 0.65);
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
@@ -65,7 +82,7 @@
         .filter-btn:hover {
             background-color: #e5e7eb;
         }
-       
+        
         #contact input, #contact textarea {
             background-color: #ffffff !important;
             color: #0f172a !important;
@@ -108,7 +125,7 @@
         }
         html.dark #contact .social-icon { color: #94a3b8 !important; }
 
-        /* --- Additional Animations (for fade-in and hover effects) --- */
+        /* --- Animations --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -117,64 +134,57 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* Animations for skill and project cards */
         .card {
-            transform: translateY(0);
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
         .card:hover {
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         html.dark .card:hover {
             box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.05), 0 4px 6px -2px rgba(255, 255, 255, 0.02);
         }
 
-        /* Animations for skill icons (optional, if you want an effect) */
         .skill-icon {
             transition: transform 0.2s ease-out;
         }
         .skill-item:hover .skill-icon {
-            transform: scale(1.1); 
+            transform: scale(1.1);
         }
 
-        /* --- NEW NAVBAR AND FOOTER STYLES (TRANSPARENT/BLENDING, NO BORDERS) --- */
-        .header-footer-bg { 
-            background-color: transparent; 
-            backdrop-filter: blur(10px); 
+        /* --- Navbar and Footer Styles --- */
+        .header-footer-bg {
+            background-color: transparent;
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-bottom: none; 
+            border-bottom: none;
             transition: background-color 0.5s, border-color 0.5s;
         }
-        html.dark .header-footer-bg {
-            background-color: transparent; 
-            border-bottom: none; 
+        
+        .navbar-light-theme a, .navbar-light-theme button {
+            color: #000000 !important;
         }
-        .footer-no-border { 
-            border-top: none; 
-            border-bottom: none; 
-        }
-
-        .header-footer-text-color {
-            color: inherit; 
-        }
-        .header-footer-link-hover:hover {
-            color: #1d4ed8; 
-        }
-        html.dark .header-footer-link-hover:hover {
-            color: #60a5fa; 
+        .navbar-light-theme a:hover {
+            color: #3b82f6 !important;
         }
 
-        /* --- THEME TOGGLE BUTTON STYLES (SWITCH TOGGLE) --- */
+        html.dark .navbar-light-theme a, html.dark .navbar-light-theme button {
+            color: #eff6ff !important;
+        }
+        html.dark .navbar-light-theme a:hover {
+            color: #60a5fa !important;
+        }
+
+        /* --- Theme Toggle Button Styles --- */
         .theme-switch-wrapper {
             position: relative;
             display: inline-block;
-            width: 60px; 
-            height: 34px; 
+            width: 60px;
+            height: 34px;
             cursor: pointer;
         }
         .theme-switch-wrapper input {
-            opacity: 0; 
+            opacity: 0;
             width: 0;
             height: 0;
         }
@@ -184,26 +194,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc; 
+            background-color: #ccc;
             transition: .4s;
-            border-radius: 34px; 
+            border-radius: 34px;
         }
         .slider:before {
             position: absolute;
             content: "";
-            height: 26px; 
-            width: 26px; 
-            left: 4px; 
+            height: 26px;
+            width: 26px;
+            left: 4px;
             bottom: 4px;
-            background-color: white; 
+            background-color: white;
             transition: .4s;
-            border-radius: 50%; 
+            border-radius: 50%;
         }
-        .theme-switch-wrapper input:checked + .slider {
-            background-color: #2196F3; 
+        input:checked + .slider {
+            background-color: #2196F3;
         }
-        .theme-switch-wrapper input:checked + .slider:before {
-            transform: translateX(26px); 
+        input:checked + .slider:before {
+            transform: translateX(26px);
         }
         .slider .icon-inside {
             position: absolute;
@@ -213,69 +223,56 @@
             transition: opacity 0.4s;
         }
         .slider .icon-sun-on-slider {
-            left: 8px; 
-            color: #facc15; 
-            opacity: 1; 
+            left: 8px;
+            color: #facc15;
+            opacity: 1;
         }
         .slider .icon-moon-on-slider {
-            right: 8px; 
-            color: #6366f1; 
-            opacity: 0; 
+            right: 8px;
+            color: #6366f1;
+            opacity: 0;
         }
-        .theme-switch-wrapper input:checked + .slider .icon-sun-on-slider {
-            opacity: 0; 
+        input:checked + .slider .icon-sun-on-slider {
+            opacity: 0;
         }
-        .theme-switch-wrapper input:checked + .slider .icon-moon-on-slider {
-            opacity: 1; 
+        input:checked + .slider .icon-moon-on-slider {
+            opacity: 1;
         }
-        html.dark .slider {
-            background-color: #4b5563; 
-        }
-        html.dark .slider:before {
-            background-color: #a0aec0; 
-        }
-        html.dark .theme-switch-wrapper input:checked + .slider {
-            background-color: #60a5fa; 
-        }
-        html.dark .theme-switch-wrapper input:checked + .slider:before {
-            background-color: #eff6ff; 
-        }
+        html.dark .slider { background-color: #4b5563; }
+        html.dark .slider:before { background-color: #a0aec0; }
+        html.dark input:checked + .slider { background-color: #60a5fa; }
+        html.dark input:checked + .slider:before { background-color: #eff6ff; }
 
-
-        /* SCROLL TO TOP BUTTON STYLES */
+        /* Scroll to Top Button Styles */
         #to-top-btn {
-            background-color: #000000; 
+            background-color: #000000;
             color: #ffffff;
-            border-radius: 9999px; 
-            width: 48px; 
+            border-radius: 9999px;
+            width: 48px;
             height: 48px;
-            display: flex; 
+            display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
         #to-top-btn:hover {
-            background-color: #333333; 
+            background-color: #333333;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         html.dark #to-top-btn {
-            background-color: #2563eb; 
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-color: #2563eb;
         }
         html.dark #to-top-btn:hover {
             background-color: #3b82f6;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
-        /* FIX: Profile Photo Circle in Light Theme */
         .profile-photo-circle {
-            background-color: #000000; 
+            background-color: #000000;
         }
         html.dark .profile-photo-circle {
-            background-image: linear-gradient(to bottom right, #38bdf8, #3b82f6) !important; 
+            background-image: linear-gradient(to bottom right, #38bdf8, #3b82f6) !important;
         }
-        /* FINAL FIX: Footer text and social icons in Light Theme */
         footer p, footer a {
             color: #000000 !important; 
         }
@@ -286,12 +283,18 @@
 </head>
 <body class="dark:text-slate-300">
 
-    <header class="sticky top-0 z-50 w-full header-footer-bg">
+    <header class="sticky top-0 z-50 w-full header-footer-bg navbar-light-theme">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
-            <a href="../" class="text-xl font-bold header-footer-text header-footer-link-hover">Sulu Edward Julianto</a>
+            <a href="../" class="text-xl font-bold">Sulu Edward Julianto</a>
+            
             <nav class="hidden md:flex space-x-8 items-center">
-                <a href="../" class="header-footer-text header-footer-link-hover">Home</a>
-                <a href="#about">About</a> <a href="#skills">Skills</a> <a href="#projects">Projects</a> <a href="#contact">Contact</a> <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="header-footer-text header-footer-link-hover">Blog</a>
+                <a href="../">Home</a>
+                <a href="#tentang">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#proyek">Projects</a>
+                <a href="#sertifikat">Certificates</a>
+                <a href="#contact">Contact</a>
+                <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer">Blog</a>
                 <label id="theme-toggle" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-checkbox">
                     <span class="slider">
@@ -300,6 +303,7 @@
                     </span>
                 </label>
             </nav>
+            
             <div class="md:hidden flex items-center space-x-4">
                 <label id="theme-toggle-nav" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-nav-checkbox">
@@ -308,51 +312,56 @@
                         <i id="icon-moon-nav" class="fas fa-moon icon-inside icon-moon-on-slider hidden"></i>
                     </span>
                 </label>
-                <button id="navbar-toggle" type="button" class="header-footer-text focus:outline-none">
+                <button id="navbar-toggle" type="button" class="focus:outline-none">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
+        
         <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
-            <a href="../" class="block py-2 header-footer-text header-footer-link-hover">Home</a>
-            <a href="#about" class="block py-2 header-footer-text header-footer-link-hover">About</a>
-            <a href="#skills" class="block py-2 header-footer-text header-footer-link-hover">Skills</a>
-            <a href="#projects" class="block py-2 header-footer-text header-footer-link-hover">Projects</a>
-            <a href="#contact" class="block py-2 header-footer-text header-footer-link-hover">Contact</a>
-            <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="block py-2 header-footer-text header-footer-link-hover">Blog</a>
+            <a href="../" class="block py-2">Home</a>
+            <a href="#tentang" class="block py-2">About</a>
+            <a href="#skills" class="block py-2">Skills</a>
+            <a href="#proyek" class="block py-2">Projects</a>
+            <a href="#sertifikat" class="block py-2">Certificates</a>
+            <a href="#contact" class="block py-2">Contact</a>
+            <a href="https://sulujulianto.github.io/blog" target="_blank" rel="noopener noreferrer" class="block py-2">Blog</a>
         </div>
     </header>
 
     <main class="pt-16 sm:pt-20 fade-in">
+        
         <header id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-                <div class="text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight">Sulu Edward Julianto</h1>
-                    <p class="mt-4 text-lg">A vocational high school graduate in Computer & Network Engineering (2021) with a deep passion for programming, aspiring to become a <span class="font-semibold section-highlight">Software Engineer</span>. I love challenges and enjoy solving problems through code.</p>
+            <div class="hero-container">
+                <div class="hero-text text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight">Sulu Edward Julianto</h1>
+                    <p class="mt-4 text-lg">A <span class="font-semibold section-highlight">Software Engineer</span> with Full Stack expertise, focused on web development from backend systems to user interfaces.</p>
                     <a href="../assets/CV_SuluEdwardJulianto.pdf" download class="inline-flex items-center gap-2 mt-8 px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition-transform hover:scale-105 cv-download-btn">
                         <i class="fas fa-download"></i>
                         <span>Download CV</span>
                     </a>
                 </div>
-                <div class="flex justify-center">
+                <div class="hero-image flex justify-center">
                     <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl p-2 profile-photo-circle">
-                         <img src="../assets/img/Sulu.png" alt="Sulu Edward Profile Photo" class="w-full h-full object-cover rounded-full">
+                        <img src="../assets/img/about-me/Sulu.png" alt="Sulu Edward's Profile Photo" class="w-full h-full object-cover rounded-full">
                     </div>
                 </div>
             </div>
         </header>
 
-        <section id="about" class="py-24"> 
+        <section id="tentang" class="py-24">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-12">Introduction <span class="section-highlight">About Me</span></h2>
                 <div class="card p-8 rounded-2xl shadow-xl text-center">
-                    <p class="text-lg mb-8">I am a 2021 graduate of Computer & Network Engineering vocational high school. With deep enthusiasm and interest in programming, I aspire to become a Software Engineer. I love challenges and enjoy solving problems through code.</p>
+                    <p class="text-lg mb-8">
+                    I am a graduate of a vocational high school in Computer and Network Engineering with a deep passion for software development, particularly in web technologies. In recent years, I've built Full Stack Web Development skills through self study, personal projects, and ongoing exploration of modern technologies from frontend to backend. I believe that great software comes from system understanding, attention to detail, and the willingness to keep learning. Every line of code I write reflects thought, experimentation, and a commitment to long term solutions. My current focus is to become a Software Engineer who not only masters the technical side, but also understands user needs and builds meaningful products. I believe the best learning comes from real-world experience and collaboration. Through this portfolio, I aim to share my process, achievements, and work philosophy with the professional world.
+                    </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 justify-center items-center gap-6 mt-8">
                         <div class="flex justify-center">
-                            <img src="../assets/img/about-workspace.jpg" alt="Sulu's Workspace" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+                            <!-- <img src="../assets/img/about-me/about-workspace.jpg" alt="Ruang Kerja Sulu" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105"> -->
                         </div>
                         <div class="flex justify-center">
-                            <img src="../assets/img/about-hobby.jpg" alt="Sulu's Hobby" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
+                            <!-- <img src="../assets/img/about-me/about-hobby.jpg" alt="Hobi Sulu" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105"> -->
                         </div>
                     </div>
                 </div>
@@ -362,11 +371,11 @@
         <section id="skills" class="py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-4">My Skills</h2>
-                <p class="text-center text-lg mb-12 max-w-2xl mx-auto">Technologies, tools, and systems I use to build applications.</p>
+                <p class="text-center text-lg mb-12 max-w-2xl mx-auto">The technologies, tools, and systems I use.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Front-End</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-6 h-6 skill-icon" /> HTML5</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-6 h-6 skill-icon" /> CSS3</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-6 h-6 skill-icon" /> JavaScript</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-6 h-6 skill-icon" /> React</li><li class="flex items-center gap-3 skill-item"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-6 h-6 skill-icon" /> Tailwind CSS</li></ul></div>
-                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Back-End</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-6 h-6 skill-icon" /> Node.js</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-6 h-6 skill-icon" /> PHP</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6 skill-icon" /> Python</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.worldvectorlogo.com/logos/laravel-2.svg"  alt="Laravel" class="w-6 h-6 skill-icon" /> Laravel</li></ul></div>
-                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Database & Utilities</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-6 h-6 skill-icon" /> MySQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-6 h-6 skill-icon" /> PostgreSQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-6 h-6 skill-icon" /> MongoDB</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-6 h-6 skill-icon" /> Firebase</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Front-End</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-6 h-6 skill-icon" /> HTML5</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-6 h-6 skill-icon" /> CSS3</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-6 h-6 skill-icon" /> JavaScript</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-6 h-6 skill-icon" /> React</li><li class="flex items-center gap-3 skill-item"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-6 h-6 skill-icon" /> Tailwind CSS</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Back-End</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-6 h-6 skill-icon" /> Node.js</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="w-6 h-6 skill-icon" /> PHP</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6 skill-icon" /> Python</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.worldvectorlogo.com/logos/laravel-2.svg" alt="Laravel" class="w-6 h-6 skill-icon" /> Laravel</li></ul></div>
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Databases & Utilities</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-6 h-6 skill-icon" /> MySQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-6 h-6 skill-icon" /> PostgreSQL</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-6 h-6 skill-icon" /> MongoDB</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="w-6 h-6 skill-icon" /> Firebase</li></ul></div>
                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Operating Systems</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows" class="w-6 h-6 skill-icon" /> Windows</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="w-6 h-6 skill-icon" /> Linux</li></ul></div>
                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Tools & Technologies</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-6 h-6 skill-icon" /> Git</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-6 h-6 skill-icon" /> GitHub</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-6 h-6 skill-icon" /> VS Code</li></ul></div>
                     <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"><h3 class="text-xl font-bold mb-4">Cloud & DevOps</h3><ul class="space-y-3"><li class="flex items-center gap-3 skill-item"><img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS" class="w-6 h-6 skill-icon" /> AWS</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" class="w-6 h-6 skill-icon" /> GCP</li><li class="flex items-center gap-3 skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-6 h-6 skill-icon" /> Docker</li></ul></div>
@@ -374,11 +383,20 @@
             </div>
         </section>
 
-        <section id="projects" class="py-24"> 
+        <section id="proyek" class="py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">My Work</span> Projects</h2>
-                <p class="text-center text-lg mb-8">Here are some selected projects I have worked on.</p>
-                <div id="portfolio-react-root" data-locale="en"></div> </div>
+                <p class="text-center text-lg mb-8">A selection of projects I've worked on from personal experiments to more complex development.</p>
+                <div id="portfolio-react-root" data-locale="en"></div>
+            </div>
+        </section>
+
+        <section id="sertifikat" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">Certificates</span> & Awards</h2>
+                <p class="text-center text-lg mb-8">A collection of certificates I’ve earned through training, courses, and self directed learning.</p>
+                <div id="certificates-react-root" data-locale="en"></div>
+            </div>
         </section>
 
         <section id="contact" class="py-24">
@@ -387,19 +405,18 @@
                 <div class="card grid md:grid-cols-2 gap-10 p-8 rounded-2xl shadow-xl">
                     <div>
                         <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
-                        <p class="mb-6">I am always open for discussions, feel free to contact me using the form or the contact details below.</p>
+                        <p class="mb-6">I'm open to professional discussions, project collaborations, or new opportunities. Feel free to contact me using the information below.</p>
                         <div class="space-y-4">
                             <div class="flex items-center gap-3"><i class="fa-solid fa-map-marker-alt section-highlight w-6 text-center"></i><span>Jakarta, Indonesia</span></div>
-                            <div class="flex items-center gap-3"><i class="fa-solid fa-paper-plane section-highlight w-6 text-center"></i><span>sulu.julianto@example.com</span></div>
-                            <div class="flex items-center gap-3"><i class="fa-solid fa-phone-alt section-highlight w-6 text-center"></i><span>+62 812-3456-7890</span></div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-paper-plane section-highlight w-6 text-center"></i><span>sulucodes@email.com</span></div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-phone-alt section-highlight w-6 text-center"></i><span>+62 821-2372-4998</span></div>
                         </div>
                         <div class="mt-8">
                              <h4 class="font-bold mb-4">Connect with me</h4>
                              <div class="flex gap-4">
-                                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-2xl transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-2xl transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-twitter"></i></a>
+                                 <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
+                                 <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                                 <a href="https://t.me/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110"><i class="fab fa-telegram"></i></a>
                              </div>
                         </div>
                     </div>
@@ -423,32 +440,26 @@
 
     <footer class="header-footer-bg footer-no-border py-6 mt-auto">
         <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center space-x-6 text-2xl">
-                <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com/sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.x.com/sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-x"></i>
-                </a>
-                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="social-icon text-xl transition-transform hover:scale-110">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                </div>
-                <p class="mb-4 header-footer-text">&copy; <span id="current-year"></span> Sulu Edward Julianto</p>
+            <div class="flex justify-center space-x-6 text-2xl mb-4">
+                <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.x.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-x"></i></a>
+                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="transition-transform hover:scale-110"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="header-footer-text">© <span id="current-year"></span> Sulu Edward Julianto</p>
         </div>
     </footer>
+
+    <script>
+        // A simple script to display the current year in the footer.
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
 
     <a href="#" id="to-top-btn" class="hidden fixed bottom-5 right-5 z-50 h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 hover:bg-blue-700">
         <i class="fas fa-arrow-up"></i>

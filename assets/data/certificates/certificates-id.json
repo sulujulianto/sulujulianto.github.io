@@ -1,9 +1,16 @@
 [
   {
-    "title": "Test",
-    "description": "Just a test",
-    "category": "frontend",
-    "imageUrl": "",
-    "link": ""
+    "title": "Aplikasi Absensi Karyawan Real-Time",
+    "description": "Aplikasi web untuk manajemen absensi karyawan secara real-time.",
+    "category": "fullstack",
+    "imageUrl": "../assets/img/projects/cartificates-1.jpg",
+    "link": "#"
+  },
+  {
+    "title": "Sistem Informasi Perpustakaan",
+    "description": "Sistem untuk mengelola peminjaman dan pengembalian buku di perpustakaan.",
+    "category": "backend",
+    "imageUrl": "../assets/img/projects/cartificates-2.jpg",
+    "link": "#"
   }
 ]
