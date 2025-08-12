@@ -80,6 +80,58 @@
             color: inherit;
         }
 
+        /* --- Responsive Footer Social Icons --- */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-icons a {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 640px) {
+            .social-icons {
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .social-icons a {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-icons {
+                gap: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .social-icons a {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .social-icons {
+                gap: 0.4rem;
+            }
+            
+            .social-icons a {
+                font-size: 1rem;
+            }
+        }
+
         /* --- Gaya Tombol Tema --- */
         .theme-switch-wrapper {
             position: relative;
@@ -213,21 +265,23 @@
 
     <footer class="header-footer-bg footer-no-border py-6 mt-auto">
         <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center space-x-6 text-2xl mb-4">
-                <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
-                <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.x.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-x"></i></a>
-                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="transition-transform hover:scale-110"><i class="fab fa-youtube"></i></a>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://medium.com/@sulujulianto" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i></a>
+                <a href="https://mastodon.social/@sulujulianto@mastodon.social" target="_blank" rel="noopener noreferrer"><i class="fab fa-mastodon"></i></a>
+                <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/sulucodes" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.x.com/sulucodes" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://threads.net/@sulucodes" target="_blank" rel="noopener noreferrer"><i class="fab fa-threads"></i></a>
+                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="fab fa-youtube"></i></a>
             </div>
             <p class="header-footer-text">© <span id="current-year"></span> Sulu Edward Julianto</p>
         </div>
     </footer>
 
     <script>
-        // Skrip sederhana untuk menampilkan tahun saat ini di footer.
         document.addEventListener('DOMContentLoaded', function() {
             const currentYearSpan = document.getElementById('current-year');
             if (currentYearSpan) {
@@ -235,5 +289,6 @@
             }
         });
     </script>
+
 </body>
 </html>

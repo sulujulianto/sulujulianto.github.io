@@ -1,16 +1,83 @@
 [
   {
-    "title": "Aplikasi Absensi Karyawan Real-Time",
-    "description": "Aplikasi web untuk manajemen absensi karyawan secara real-time.",
-    "category": "fullstack",
-    "imageUrl": "../assets/img/projects/cartificates-1.jpg",
-    "link": "#"
+    "title": "Belajar Dasar Pemrograman Web",
+    "description": "Di sini saya belajar membuat website dari nol, dari kerangka (HTML) sampai ke bagian visualnya (CSS), termasuk memastikan tampilannya bagus di HP maupun desktop.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/id/sertifikat-2.jpg",
+    "link": "https://www.dicoding.com/certificates/KEXLLD21WXG2",
+    "tanggalTerbit": "06-11-2023",
+    "tanggalKadaluarsa": "06-11-2026"
   },
   {
-    "title": "Sistem Informasi Perpustakaan",
-    "description": "Sistem untuk mengelola peminjaman dan pengembalian buku di perpustakaan.",
-    "category": "backend",
-    "imageUrl": "../assets/img/projects/cartificates-2.jpg",
-    "link": "#"
+    "title": "Belajar Membuat Front-End Web untuk Pemula",
+    "description": "Mampu mengubah website statis menjadi aplikasi web interaktif yang dapat merespons aksi pengguna dan menyimpan informasi secara lokal di browser.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/id/sertifikat-3.jpg",
+    "link": "https://www.dicoding.com/certificates/1OP8187J8ZQK",
+    "tanggalTerbit": "06-11-2023",
+    "tanggalKadaluarsa": "06-11-2026"
+  },
+  {
+    "title": "Belajar Back-End Pemula dengan JavaScript",
+    "description": "Mampu membangun dan mendeploy layanan back-end, khususnya dalam membuat RESTful API dengan Node.js untuk operasi data (CRUD).",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/id/sertifikat-8.jpg",
+    "link": "https://www.dicoding.com/certificates/ERZR245J2PYV",
+    "tanggalTerbit": "07-08-2025",
+    "tanggalKadaluarsa": "07-08-2028"
+  },  
+  {
+    "title": "Belajar Dasar Pemrograman JavaScript",
+    "description": "Memahami fondasi JavaScript secara mendalam, dari sintaks dasar hingga konsep penting seperti OOP, functional programming, dan proses asynchronous.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/id/sertifikat-7.jpg",
+    "link": "https://www.dicoding.com/certificates/MEPJ2L53LP3V",
+    "tanggalTerbit": "07-08-2025",
+    "tanggalKadaluarsa": "07-08-2028"
+  },  
+  {
+    "title": "Memulai Pemrograman dengan Python",
+    "description": "Terampil menulis program Python yang terstruktur, mencakup pemahaman tentang logika, control flow, fungsi, hingga pengenalan library populer.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/id/sertifikat-4.jpg",
+    "link": "https://www.dicoding.com/certificates/N9ZO9Y9Y8XG5",
+    "tanggalTerbit": "19-02-2025",
+    "tanggalKadaluarsa": "19-02-2028"
+  }, 
+  {
+    "title": "Belajar Dasar AI",
+    "description": "Memiliki wawasan mendasar mengenai dunia AI dan cabang-cabangnya, dari pengolahan data hingga contoh penerapannya di industri.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/id/sertifikat-5.jpg",
+    "link": "https://www.dicoding.com/certificates/4EXG7Q2GGPRL",
+    "tanggalTerbit": "24-10-2024",
+    "tanggalKadaluarsa": "24-10-2027"
+  },  
+  {
+    "title": "Belajar Dasar Visualisasi Data",
+    "description": "Mampu mengolah data mentah menjadi visualisasi yang efektif dan mudah dipahami menggunakan Google Sheets, dengan menerapkan prinsip-prinsip desain.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/id/sertifikat-6.jpg",
+    "link": "https://www.dicoding.com/certificates/JMZVE4LVRPN9",
+    "tanggalTerbit": "19-02-2025",
+    "tanggalKadaluarsa": "19-02-2028"
+  },
+  {
+    "title": "Belajar Dasar Cloud dan Gen AI di AWS",
+    "description": "Memahami ekosistem AWS Cloud secara mendasar, mulai dari layanan inti seperti komputasi dan penyimpanan, hingga pengenalan konsep Generative AI di platformnya.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/id/sertifikat-1.jpg",
+    "link": "https://www.dicoding.com/certificates/N9ZO23RY6PG5",
+    "tanggalTerbit": "07-07-2025",
+    "tanggalKadaluarsa": "07-07-2028"
+  },
+  {
+    "title": "Belajar Machine Learning untuk Pemula",
+    "description": "",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/id/sertifikat-9.jpg",
+    "link": "",
+    "tanggalTerbit": "07-07-2025",
+    "tanggalKadaluarsa": "07-07-2028"
   }
 ]

@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Web Development",
+    "description": "",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/certificates-1.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-T7PGB62R",
+    "tanggalTerbit": "06-07-2023",
+    "tanggalKadaluarsa": ""
+  },
+  {
+    "title": "Responsive Web Design",
+    "description": "",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/certificates-2.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-CMGHXTCC",
+    "tanggalTerbit": "18-12-2022",
+    "tanggalKadaluarsa": ""
+  },
+  {
+    "title": "Responsive Web Design",
+    "description": "",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/certificates-3.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-JIVDWB9L",
+    "tanggalTerbit": "17-12-2022",
+    "tanggalKadaluarsa": ""
+  }
+]

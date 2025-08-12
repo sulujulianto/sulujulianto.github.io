@@ -15,27 +15,88 @@
         category?: string;
         imageUrl: string;
         link: string;
+        tanggalTerbit?: string;
+        tanggalKadaluarsa?: string;
+        techStack?: string[];
     }
 
-    const Card = ({ title, description, imageUrl, link, isDownloadable = false }: DataItem & { isDownloadable?: boolean }) => (
-        <a 
-          href={link} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          {...(isDownloadable && { download: true })}
-          className="card block overflow-hidden rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-        >
-            <div className="flex flex-col h-full">
-                <div className="w-full h-48 sm:h-56">
+    const Card = ({ title, description, imageUrl, link, tanggalTerbit, tanggalKadaluarsa, techStack, isDownloadable = false, locale = 'id' }: DataItem & { isDownloadable?: boolean, locale?: string }) => {
+
+        const componentLabels = {
+            id: {
+                issued: "Diberikan pada:",
+                expires: "Berlaku sampai:",
+                techStack: "Tech Stack"
+            },
+            en: {
+                issued: "Issued on:",
+                expires: "Valid until:",
+                techStack: "Tech Stack"
+            },
+            jp: {
+                issued: "発行日:",
+                expires: "有効期限:",
+                techStack: "技術スタック"
+            },
+            cn: {
+                issued: "颁发于:",
+                expires: "有效期至:",
+                techStack: "技术栈"
+            }
+        };
+
+        const labels = componentLabels[locale as keyof typeof componentLabels] || componentLabels.id;
+
+        return (
+            <a 
+              href={link} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              {...(isDownloadable && { download: true })}
+              className="card flex flex-col overflow-hidden rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white dark:bg-gray-800"
+            >
+                {/* 1. BAGIAN GAMBAR */}
+                <div className="w-full h-48 flex-shrink-0">
                     <img src={imageUrl} alt={title} className="w-full h-full object-cover" loading="lazy" /> 
                 </div>
-                <div className="p-4 flex-grow flex flex-col">
-                    <h3 className="text-md font-bold mb-2 text-gray-800 dark:text-gray-100">{title}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 flex-grow">{description}</p>
+
+                {/* 2. BAGIAN ISI KARTU */}
+                <div className="p-4 flex flex-col flex-grow">
+                    <h3 className="text-md font-bold mb-2 text-gray-900 dark:text-white">{title}</h3>
+                    
+                    <p className="text-sm text-gray-700 dark:text-gray-300">{description}</p>
+                    
+                    <div className="flex-grow"></div> 
+                    
+                    {/* 3. AREA BAWAH */}
+                    <div className="mt-4 pt-4">
+                        
+                        {/* Tech Stack untuk Proyek (dengan label dinamis) */}
+                        {techStack && techStack.length > 0 && (
+                            <div>
+                                <h4 className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400 mb-2">{labels.techStack}</h4>
+                                <p className="text-sm text-gray-700 dark:text-gray-300">
+                                    {techStack.join(', ')}
+                                </p>
+                            </div>
+                        )}
+
+                        {/* Tanggal untuk Sertifikat (dengan label dinamis) */}
+                        {(tanggalTerbit || tanggalKadaluarsa) && (
+                            <div className="space-y-1">
+                                <p className="text-sm text-gray-700 dark:text-gray-300 h-5">
+                                    {tanggalTerbit ? `${labels.issued} ${tanggalTerbit}` : ''}
+                                </p>
+                                <p className="text-sm text-gray-700 dark:text-gray-300 h-5">
+                                    {tanggalKadaluarsa ? `${labels.expires} ${tanggalKadaluarsa}` : ''}
+                                </p>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
-        </a>
-    );
+            </a>
+        );
+    };
 
     const ProjectsApp = () => {
         const [data, setData] = React.useState<DataItem[]>([]);
@@ -47,10 +108,30 @@
         const locale = container?.dataset.locale || 'id';
 
         const projectCategories = {
-            id: { '*': 'Semua', 'frontend': 'Front-End', 'backend': 'Back-End', 'fullstack': 'Full-Stack' },
-            en: { '*': 'All', 'frontend': 'Front-End', 'backend': 'Back-End', 'fullstack': 'Full-Stack' },
-            jp: { '*': 'すべて', 'frontend': 'フロントエンド', 'backend': 'バックエンド', 'fullstack': 'フルスタック' },
-            cn: { '*': '全部', 'frontend': '前端', 'backend': '后端', 'fullstack': '全栈' },
+            id: {
+                '*': 'Semua',
+                'frontend': 'Front-End',
+                'backend': 'Back-End',
+                'fullstack': 'Full-Stack'
+            },
+            en: {
+                '*': 'All',
+                'frontend': 'Front-End',
+                'backend': 'Back-End',
+                'fullstack': 'Full-Stack'
+            },
+            jp: {
+                '*': 'すべて',
+                'frontend': 'フロントエンド',
+                'backend': 'バックエンド',
+                'fullstack': 'フルスタック'
+            },
+            cn: {
+                '*': '全部',
+                'frontend': '前端',
+                'backend': '后端',
+                'fullstack': '全栈'
+            },
         };
         const categories = projectCategories[locale as keyof typeof projectCategories] || projectCategories.id;
 
@@ -78,7 +159,8 @@
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {isLoading && <p className="text-center col-span-full">Memuat proyek...</p>}
                     {error && <p className="text-center text-red-500 col-span-full">Error: {error}</p>}
-                    {!isLoading && !error && filteredData.map((item, index) => <Card key={`${item.title}-${index}`} {...item} />)}
+                    {/* MODIFIKASI: Mengirim `locale` ke komponen Card */}
+                    {!isLoading && !error && filteredData.map((item, index) => <Card key={`${item.title}-${index}`} {...item} locale={locale} />)}
                 </div>
             </div>
         );
@@ -94,10 +176,34 @@
         const locale = container?.dataset.locale || 'id';
         
         const certificateCategories = {
-            id: { '*': 'Semua', 'programming': 'Pemrograman', 'web-development': 'Pengembangan Web', 'cyber-security': 'Keamanan Siber', 'networking': 'Jaringan' },
-            en: { '*': 'All', 'programming': 'Programming', 'web-development': 'Web Development', 'cyber-security': 'Cyber Security', 'networking': 'Networking' },
-            jp: { '*': 'すべて', 'programming': 'プログラミング', 'web-development': 'ウェブ開発', 'cyber-security': 'サイバーセキュリティ', 'networking': 'ネットワーキング' },
-            cn: { '*': '全部', 'programming': '编程', 'web-development': '网页开发', 'cyber-security': '网络安全', 'networking': '网络' },
+            id: {
+                '*': 'Semua',
+                'programming': 'Pemrograman',
+                'web-development': 'Pengembangan Web',
+                'ai-data': 'AI, Data Science & Cloud',
+                'networking': 'Jaringan'
+            },
+            en: {
+                '*': 'All',
+                'programming': 'Programming',
+                'web-development': 'Web Development',
+                'cyber-security': 'Cyber Security',
+                'networking': 'Networking'
+            },
+            jp: {
+                '*': 'すべて',
+                'programming': 'プログラミング',
+                'web-development': 'ウェブ開発',
+                'cyber-security': 'サイバーセキュリティ',
+                'networking': 'ネットワーキング'
+            },
+            cn: {
+                '*': '全部',
+                'programming': '编程',
+                'web-development': '网页开发',
+                'cyber-security': '网络安全',
+                'networking': '网络'
+            },
         };
         const categories = certificateCategories[locale as keyof typeof certificateCategories] || certificateCategories.id;
 
@@ -125,7 +231,8 @@
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {isLoading && <p className="text-center col-span-full">Memuat sertifikat...</p>}
                     {error && <p className="text-center text-red-500 col-span-full">Error: {error}</p>}
-                    {!isLoading && !error && filteredData.map((item, index) => <Card key={`${item.title}-${index}`} {...item} isDownloadable={true} />)}
+                    {/* MODIFIKASI: Mengirim `locale` ke komponen Card */}
+                    {!isLoading && !error && filteredData.map((item, index) => <Card key={`${item.title}-${index}`} {...item} isDownloadable={true} locale={locale} />)}
                 </div>
             </div>
         );
