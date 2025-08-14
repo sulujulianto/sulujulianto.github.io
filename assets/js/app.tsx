@@ -230,8 +230,7 @@
                 <div className="w-full h-48 flex-shrink-0">
                     <img 
                         src={imageUrl} 
-                        alt={title} 
-                        className="w-full h-full object-cover" 
+                        alt={title}
                         loading="lazy"
                         onError={(e) => {
                             // Fallback untuk gambar rusak
