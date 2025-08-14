@@ -1,11 +1,11 @@
 [
   {
-    "title": "",
+    "title": "Jejak Petualang",
     "description": "",
-    "category": "",
-    "imageUrl": "",
+    "category": "fullstack",
+    "imageUrl": "../assets/img/projects/id/projects-1.png",
     "link": "#",
-    "techStack": [""]
+    "techStack": ["PHP, MySQL, HTML, CSS, dan JavaScript (dengan library TinyMCE)."]
   },
   {
     "title": "",

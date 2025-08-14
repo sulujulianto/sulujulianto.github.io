@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sulu Edward Julianto</title>
-    <link rel="icon" href="assets/img/icon.png" type="image/png">
+    <link rel="icon" href="../assets/img/icon.png" type="image/png">
 
-    <link href="assets/css/output.css" rel="stylesheet"> 
+    <link href="../assets/css/output.css" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <script src="assets/js/theme.js"></script>
+    <script src="../assets/js/theme.js"></script>
 
     <style>
         body {
@@ -204,9 +204,8 @@
         <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8 h-16">
             <a href="index.html" class="text-2xl font-bold header-footer-text">Sulu Edward Julianto</a>
             <nav class="hidden md:flex space-x-8 items-center">
-                <a href="./blog/" class="header-footer-text">Blog</a>
+                <a href="../" class="header-footer-text">Portfolio</a>
                 <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="header-footer-text">GitHub</a>
-                <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="header-footer-text">Linkedin</a>
                 <a href="https://linktr.ee/sulucodes" target="_blank" rel="noopener noreferrer" class="header-footer-text">Contact</a>
                 <label id="theme-toggle" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-checkbox">
@@ -230,43 +229,17 @@
             </div>
         </div>
         <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4">
-            <a href="./blog/" class="block py-2 header-footer-text">Blog</a>
+            <a href="../" class="block py-2 header-footer-text">Portfolio</a>
             <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="block py-2 header-footer-text">GitHub</a>
             <a href="https://linktr.ee/sulucodes" target="_blank" rel="noopener noreferrer" class="header-footer-text">Contact</a>
         </div>
     </header>
 
-    <main class="flex-grow flex flex-col justify-center items-center p-4 fade-in">
-        <div class="w-full max-w-2xl p-8 md:p-10 rounded-2xl content-card text-center"> 
-            <h1 class="text-3xl md:text-5xl font-bold mb-4">
-                Sulu Edward Julianto
-            </h1>
-            <p class="text-base md:text-lg mb-8">
-                Welcome to my portfolio, a place where I showcase my projects, skills, and journey in the world of technology.<br><span class="font-semibold">Please select a language to enter.</span>
-            </p>
-
-            <div class="grid grid-cols-2 gap-4"> 
-                <a href="./id/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="https://flagcdn.com/w40/id.png" alt="Indonesian Flag" class="flag-icon">
-                    <span>Bahasa Indonesia</span>
-                </a>
-                <a href="./en/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-gray-600 text-white hover:bg-gray-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="https://flagcdn.com/w40/us.png" alt="US Flag" class="flag-icon">
-                    <span>English</span>
-                </a>
-                <a href="./jp/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="https://flagcdn.com/w40/jp.png" alt="Japanese Flag" class="flag-icon">
-                    <span>日本語</span>
-                </a>
-                <a href="./cn/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-green-600 text-white hover:bg-green-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="https://flagcdn.com/w40/cn.png" alt="Chinese Flag" class="flag-icon">
-                    <span>中文</span>
-                </a>
-            </div>
-        </div>
+    <main>
+    <!-- Under Constraction -->
     </main>
 
-    <footer class="header-footer-bg footer-no-border py-6 mt-auto">
+        <footer class="header-footer-bg footer-no-border py-6 mt-auto">
         <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center space-x-6 text-2xl mb-4">
                 <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-facebook"></i></a>
@@ -281,6 +254,7 @@
     </footer>
 
     <script>
+        // Skrip sederhana untuk menampilkan tahun saat ini di footer.
         document.addEventListener('DOMContentLoaded', function() {
             const currentYearSpan = document.getElementById('current-year');
             if (currentYearSpan) {
@@ -289,5 +263,13 @@
         });
     </script>
 
+    <a href="#" id="to-top-btn" class="hidden fixed bottom-5 right-5 z-50 h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 hover:bg-blue-700">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="../assets/js/app.tsx" type="text/babel" data-presets="typescript,react"></script>
 </body>
 </html>
