@@ -9,7 +9,7 @@ This site showcases my professional profile, selected projects, and blog article
 
 ## ✨ About Me
 
-I’m **Sulu Julianto**, a **Software Engineer** and **Full Stack Developer** with expertise in crafting responsive, user-friendly, and high-performance websites.  
+I’m **Sulu Edward Julianto**, a **Software Engineer** and **Full Stack Developer** with expertise in crafting responsive, user-friendly, and high-performance websites.  
 I focus on both the technical and creative aspects of web development — from functional design to robust code implementation.
 
 ---
@@ -39,8 +39,6 @@ I focus on both the technical and creative aspects of web development — from f
 ## 🌐 Live Website
 
 - **Portfolio Website:** [sulujulianto.github.io](https://sulujulianto.github.io)  
-- **GitHub:** [github.com/SuluJulianto](https://github.com/SuluJulianto)  
-- **LinkedIn:** [linkedin.com/in/sulujulianto](https://linkedin.com/in/sulujulianto)  
 
 ---
 
@@ -53,3 +51,4 @@ I focus on both the technical and creative aspects of web development — from f
 ---
 
 > Designed & developed with ❤️ by **Sulu Julianto**
+
