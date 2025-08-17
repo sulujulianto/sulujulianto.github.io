@@ -1,11 +1,11 @@
 [
   {
     "title": "Jejak Petualang",
-    "description": "",
+    "description": "Membangun platform e-commerce fungsional dengan sistem keranjang belanja, proses checkout, manajemen ulasan produk, dan panel admin.",
     "category": "fullstack",
     "imageUrl": "",
-    "link": "#",
-    "techStack": ["PHP, MySQL, HTML, CSS, dan JavaScript (dengan library TinyMCE)."]
+    "link": "https://github.com/SuluJulianto/jejakpetualang",
+    "techStack": ["PHP (Native), MySQL, HTML, CSS, dan JavaScript (dengan library TinyMCE)."]
   },
   {
     "title": "",
