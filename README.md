@@ -1,4 +1,4 @@
-# 🌐 Sulu Julianto — Personal Portfolio
+# 🌐 Sulu Edward Julianto — Personal Portfolio
 
 Welcome to **sulujulianto.github.io**, my personal portfolio website.  
 This site showcases my professional profile, selected projects, and blog articles, with a focus on clean design, usability, and performance.
@@ -51,4 +51,5 @@ I focus on both the technical and creative aspects of web development — from f
 ---
 
 > Designed & developed with ❤️ by **Sulu Julianto**
+
 
