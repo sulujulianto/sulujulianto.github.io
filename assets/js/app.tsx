@@ -1,27 +1,9 @@
 'use strict';
-
-/**
- * Sistem Portfolio React dengan TypeScript
- * 
- * Sistem manajemen portfolio multibahasa untuk menampilkan proyek dan sertifikat
- * dengan fitur filtering kategori dan loading dinamis.
- * 
- * @author Portfolio Developer
- * @version 2.0.0
- */
-
 (function() {
-    // Validasi dependensi React
     if (typeof React === 'undefined' || typeof ReactDOM === 'undefined') {
         console.error("Error: React atau ReactDOM tidak ditemukan. Pastikan CDN sudah benar.");
         return;
     }
-
-    /**
-     * Interface Data
-     */
-    
-    /** Data item portfolio (proyek atau sertifikat) */
     interface DataItem {
         title: string;
         description: string;
@@ -33,7 +15,6 @@
         techStack?: string[];
     }
 
-    /** Labels untuk localization */
     interface LocalizedLabels {
         [key: string]: {
             issued: string;
@@ -41,23 +22,17 @@
             techStack: string;
             loading: string;
             error: string;
+            showMore: string;
+            showLess: string;
         };
     }
 
-    /** Labels kategori untuk berbagai bahasa */
     interface CategoryLabels {
         [key: string]: {
             [category: string]: string;
         };
     }
 
-    /**
-     * Konfigurasi Localization
-     * 
-     * Mendukung 4 bahasa: Indonesian, English, Japanese, Chinese
-     */
-    
-    /** Labels UI - Multibahasa */
     const COMPONENT_LABELS: LocalizedLabels = {
         // Indonesian (Default)
         id: {
@@ -65,7 +40,9 @@
             expires: "Berlaku sampai:",
             techStack: "Teknologi",
             loading: "Memuat...",
-            error: "Error:"
+            error: "Error:",
+            showMore: "Lihat Selengkapnya",
+            showLess: "Lihat Lebih Sedikit"
         },
         // English
         en: {
@@ -73,7 +50,9 @@
             expires: "Valid until:",
             techStack: "Tech Stack",
             loading: "Loading...",
-            error: "Error:"
+            error: "Error:",
+            showMore: "Show More",
+            showLess: "Show Less"
         },
         // Japanese
         jp: {
@@ -81,7 +60,9 @@
             expires: "有効期限:",
             techStack: "技術スタック",
             loading: "読み込み中...",
-            error: "エラー:"
+            error: "エラー:",
+            showMore: "もっと見る",
+            showLess: "少なく表示"
         },
         // Chinese (Simplified)
         cn: {
@@ -89,7 +70,9 @@
             expires: "有效期至:",
             techStack: "技术栈",
             loading: "加载中...",
-            error: "错误:"
+            error: "错误:",
+            showMore: "查看更多",
+            showLess: "收起"
         }
     };
 
@@ -153,11 +136,6 @@
         }
     };
 
-    /**
-     * Utility Functions
-     */
-
-    /** Mendapatkan labels yang sesuai berdasarkan locale */
     const resolveLocalizedLabels = (locale: string, labelSet: LocalizedLabels | CategoryLabels): any => {
         switch(locale.toLowerCase()) {
             case 'ja':
@@ -172,10 +150,6 @@
                 return labelSet['id'];
         }
     };
-
-    /**
-     * React Component Props
-     */
 
     interface CardProps extends DataItem {
         isDownloadable?: boolean;
@@ -194,15 +168,18 @@
         error: string | null;
         locale: string;
         isDownloadable?: boolean;
+        showAll?: boolean;
+        onShowMore?: () => void;
+        onShowLess?: () => void;
+        maxInitialItems?: number;
     }
 
-    /**
-     * React Components
-     */
+    interface ShowMoreButtonProps {
+        onClick: () => void;
+        children: React.ReactNode;
+        showAll: boolean;
+    }
 
-    /** 
-     * Komponen Card - Menampilkan item portfolio individual
-     */
     const Card: React.FC<CardProps> = ({ 
         title, 
         description, 
@@ -227,15 +204,11 @@
                 aria-label={`${title} - ${description}`}
             >
                 {/* Gambar */}
-                <div className="w-full h-48 flex-shrink-0">
+                <div className="w-full h-48 flex-shrink-0 overflow-hidden">
                     <img 
                         src={imageUrl} 
                         alt={title}
                         loading="lazy"
-                        onError={(e) => {
-                            // Fallback untuk gambar rusak
-                            const target = e.target as HTMLImageElement;
-                        }}
                     /> 
                 </div>
 
@@ -310,6 +283,21 @@
     );
 
     /** 
+     * Komponen ShowMoreButton - Tombol untuk menampilkan lebih banyak/sedikit item
+     */
+    const ShowMoreButton: React.FC<ShowMoreButtonProps> = ({ onClick, children, showAll }) => (
+        <div className="col-span-full flex justify-center mt-8">
+            <button
+                onClick={onClick}
+                className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                type="button"
+            >
+                {children}
+            </button>
+        </div>
+    );
+
+    /** 
      * Komponen PortfolioGrid - Menampilkan grid portfolio dengan loading & error states
      */
     const PortfolioGrid: React.FC<PortfolioGridProps> = ({ 
@@ -317,7 +305,11 @@
         isLoading, 
         error, 
         locale, 
-        isDownloadable = false 
+        isDownloadable = false,
+        showAll = true,
+        onShowMore,
+        onShowLess,
+        maxInitialItems = 3
     }) => {
         // Dapatkan labels sesuai locale
         const labels = resolveLocalizedLabels(locale, COMPONENT_LABELS);
@@ -353,10 +345,14 @@
             );
         }
 
-        // Render portfolio items
+        // Tentukan data yang akan ditampilkan
+        const displayData = showAll ? data : data.slice(0, maxInitialItems);
+        const hasMoreItems = data.length > maxInitialItems;
+
         return (
             <>
-                {data.map((item, index) => (
+                {/* Render portfolio items */}
+                {displayData.map((item, index) => (
                     <Card 
                         key={`${item.title}-${index}`} 
                         {...item} 
@@ -364,6 +360,19 @@
                         isDownloadable={isDownloadable}
                     />
                 ))}
+
+                {/* Show More/Less Button - hanya untuk certificates */}
+                {!showAll && hasMoreItems && onShowMore && (
+                    <ShowMoreButton onClick={onShowMore} showAll={showAll}>
+                        {labels.showMore} ({data.length - maxInitialItems} lainnya)
+                    </ShowMoreButton>
+                )}
+
+                {showAll && hasMoreItems && onShowLess && (
+                    <ShowMoreButton onClick={onShowLess} showAll={showAll}>
+                        {labels.showLess}
+                    </ShowMoreButton>
+                )}
             </>
         );
     };
@@ -456,21 +465,19 @@
                         error={error}
                         locale={locale}
                         isDownloadable={false}
+                        showAll={true}
                     />
                 </div>
             </div>
         );
     };
-    
-    /** 
-     * CertificatesApp - Aplikasi untuk menampilkan sertifikat dengan filter kategori
-     */
     const CertificatesApp: React.FC = () => {
         // State management
         const [data, setData] = React.useState<DataItem[]>([]);
         const [filter, setFilter] = React.useState<string>('*');
         const [isLoading, setIsLoading] = React.useState<boolean>(true);
         const [error, setError] = React.useState<string | null>(null);
+        const [showAll, setShowAll] = React.useState<boolean>(false);
 
         // Ambil locale dari DOM
         const container = document.getElementById('certificates-react-root');
@@ -507,18 +514,13 @@
                 .finally(() => setIsLoading(false));
         }, [locale]);
 
-        /**
-         * Filtered Data Memoization
-         * Efficiently filters data based on selected category
-         */
+        /** Reset showAll saat filter berubah */
+        React.useEffect(() => {
+            setShowAll(false);
+        }, [filter]);
         const filteredData = React.useMemo(() => {
             return filter === '*' ? data : data.filter(item => item.category === filter);
         }, [data, filter]);
-
-        /**
-         * Available Categories Memoization
-         * Dynamically generates filter options based on available data
-         */
         const availableCategories = React.useMemo(() => {
             if (data.length === 0) return { '*': categories['*'] };
             
@@ -528,6 +530,21 @@
             );
             return Object.fromEntries(categoryEntries);
         }, [data, categories]);
+
+        /** Handler untuk show more */
+        const handleShowMore = () => {
+            setShowAll(true);
+        };
+
+        /** Handler untuk show less */
+        const handleShowLess = () => {
+            setShowAll(false);
+            // Scroll ke atas section certificates
+            const certificatesSection = document.getElementById('certificates-react-root');
+            if (certificatesSection) {
+                certificatesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        };
 
         return (
             <div className="certificates-container">
@@ -552,18 +569,15 @@
                         error={error}
                         locale={locale}
                         isDownloadable={true}
+                        showAll={showAll}
+                        onShowMore={handleShowMore}
+                        onShowLess={handleShowLess}
+                        maxInitialItems={3}
                     />
                 </div>
             </div>
         );
     };
-
-    /**
-     * Application Initialization
-     * 
-     * Initializes React applications for both projects and certificates
-     * based on available DOM containers.
-     */
     const initializeApp = (): void => {
         try {
             // Initialize Projects App
