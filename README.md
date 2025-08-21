@@ -50,7 +50,7 @@ I focus on both the technical and creative aspects of web development — from f
 
 ---
 
-> Designed & developed with ❤️ by **Sulu Julianto**
+> Designed & developed by **Sulu Edward Julianto**
 
 
 
