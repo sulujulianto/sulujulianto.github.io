@@ -1,0 +1,26 @@
+[
+  {
+    "id": "*",
+    "label": "全部"
+  },
+  {
+    "id": "frontend",
+    "label": "前端"
+  },
+  {
+    "id": "backend",
+    "label": "后端"
+  },
+  {
+    "id": "fullstack",
+    "label": "全栈"
+  },
+  {
+    "id": "mobile",
+    "label": "移动"
+  },
+  {
+    "id": "ai-data",
+    "label": "AI·数据"
+  }
+]

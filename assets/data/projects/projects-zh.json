@@ -4,23 +4,11 @@
     "description": "",
     "category": "",
     "imageUrl": "",
-    "link": "#",
-    "techStack": [""]
-  },
-  {
-    "title": "",
-    "description": "",
-    "category": "",
-    "imageUrl": "",
-    "link": "#",
-    "techStack": [""]
-  },
-  {
-    "title": "",
-    "description": "",
-    "category": "",
-    "imageUrl": "",
-    "link": "#",
-    "techStack": [""]
+    "githubUrl": "",
+    "liveUrl": "",
+    "techStack": [],
+    "dateAdded": "",
+    "modalDescription": "",
+    "isFeatured": false
   }
 ]

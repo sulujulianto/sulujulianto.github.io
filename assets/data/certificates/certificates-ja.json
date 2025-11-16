@@ -4,26 +4,10 @@
     "description": "",
     "category": "",
     "imageUrl": "",
-    "link": "#",
+    "fullImageUrl": "",
+    "link": "",
     "tanggalTerbit": "",
-    "tanggalKadaluarsa": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "category": "",
-    "imageUrl": "",
-    "link": "#",
-    "tanggalTerbit": "",
-    "tanggalKadaluarsa": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "category": "",
-    "imageUrl": "",
-    "link": "#",
-    "tanggalTerbit": "",
-    "tanggalKadaluarsa": ""
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
   }
 ]

@@ -1,29 +1,32 @@
 [
   {
     "title": "Web Development",
-    "description": "",
+    "description": "Comprehensive training on semantic HTML, responsive CSS, and interaction patterns for modern web experiences.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/certificates-1.jpg",
     "link": "https://www.sololearn.com/certificates/CC-T7PGB62R",
-    "tanggalTerbit": "06-07-2023",
-    "tanggalKadaluarsa": ""
+    "tanggalTerbit": "2023-07-06",
+    "tanggalKadaluarsa": "",
+    "isFeatured": true
   },
   {
     "title": "Responsive Web Design",
-    "description": "",
+    "description": "Built adaptive layouts, mastered media queries, and implemented accessibility-first UI components.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/certificates-2.jpg",
     "link": "https://www.sololearn.com/certificates/CT-CMGHXTCC",
-    "tanggalTerbit": "18-12-2022",
-    "tanggalKadaluarsa": ""
+    "tanggalTerbit": "2022-12-18",
+    "tanggalKadaluarsa": "",
+    "isFeatured": true
   },
   {
     "title": "Responsive Web Design",
-    "description": "",
+    "description": "Focused on fluid grids, scalable typography, and mobile-friendly interactions for content-heavy pages.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/certificates-3.jpg",
     "link": "https://www.sololearn.com/certificates/CT-JIVDWB9L",
-    "tanggalTerbit": "17-12-2022",
-    "tanggalKadaluarsa": ""
+    "tanggalTerbit": "2022-12-17",
+    "tanggalKadaluarsa": "",
+    "isFeatured": true
   }
 ]

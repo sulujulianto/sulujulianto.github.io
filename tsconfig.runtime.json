@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "module": "es2015",
+    "outDir": "./assets/js/dist",
+    "declaration": false,
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "rootDir": "./assets/js"
+  },
+  "include": [
+    "assets/js/app.tsx"
+  ]
+}

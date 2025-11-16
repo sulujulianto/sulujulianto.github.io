@@ -1,16 +1,28 @@
-# Folder Dependensi
+# Dependency folders
 /node_modules
+/.pnp
+.pnp.js
 
-# File Sistem Operasi
+# Build / cache artifacts
+/dist
+/.cache
+.parcel-cache
+*.tsbuildinfo
+
+# Editor / tooling folders
+.vscode/
+.idea/
+
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Folder Editor Kode
-.vscode/
-
-# File Log
+# Logs & reports
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# File Environment (untuk praktik terbaik)
+# Environment files
 .env
 .env.*

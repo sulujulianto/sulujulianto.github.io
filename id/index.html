@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="../assets/css/output.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -549,7 +550,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">Karya Saya</span> Proyek</h2>
                 <p class="text-center text-lg mb-8">Kumpulan proyek yang saya kembangkan sebagai hasil eksplorasi dan pembelajaran di berbagai bidang.<br>Setiap karya mencerminkan pendekatan saya dalam memahami teknologi dan menyelesaikan tantangan nyata.</p>
-                <div id="portfolio-react-root" data-locale="id"></div>
+                <div id="portfolio-react-root" data-locale="id" data-base-path="../" data-mode="featured" data-highlight-count="3" data-full-url="projects.html" data-show-filters="false"></div>
             </div>
         </section>
 
@@ -557,7 +558,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">Sertifikat</span> & Penghargaan</h2>
                 <p class="text-center text-lg mb-8">Beberapa sertifikat yang saya peroleh dari pelatihan dan kursus sebagai bagian dari pengembangan diri di bidang teknologi dan keterampilan profesional lainnya.</p>
-                <div id="certificates-react-root" data-locale="id"></div>
+                <div id="certificates-react-root" data-locale="id" data-base-path="../" data-mode="featured" data-highlight-count="3" data-full-url="certificates.html" data-show-filters="false"></div>
             </div>
         </section>
 
@@ -698,10 +699,9 @@
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="../assets/js/app.tsx" type="text/babel" data-presets="typescript,react"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin defer></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin defer></script>
+    <script src="../assets/js/dist/app.js" defer></script>
 </body>
 
 </html>

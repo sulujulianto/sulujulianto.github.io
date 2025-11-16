@@ -5,8 +5,9 @@
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/id/sertifikat-2.jpg",
     "link": "https://www.dicoding.com/certificates/KEXLLD21WXG2",
-    "tanggalTerbit": "06-11-2023",
-    "tanggalKadaluarsa": "06-11-2026"
+    "tanggalTerbit": "2023-11-06",
+    "tanggalKadaluarsa": "2026-11-06",
+    "isFeatured": true
   },
   {
     "title": "Belajar Membuat Front-End Web untuk Pemula",
@@ -14,8 +15,9 @@
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/id/sertifikat-3.jpg",
     "link": "https://www.dicoding.com/certificates/1OP8187J8ZQK",
-    "tanggalTerbit": "06-11-2023",
-    "tanggalKadaluarsa": "06-11-2026"
+    "tanggalTerbit": "2023-11-06",
+    "tanggalKadaluarsa": "2026-11-06",
+    "isFeatured": true
   },
   {
     "title": "Belajar Back-End Pemula dengan JavaScript",
@@ -23,44 +25,49 @@
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/id/sertifikat-8.jpg",
     "link": "https://www.dicoding.com/certificates/ERZR245J2PYV",
-    "tanggalTerbit": "07-08-2025",
-    "tanggalKadaluarsa": "07-08-2028"
-  },  
+    "tanggalTerbit": "2025-08-07",
+    "tanggalKadaluarsa": "2028-08-07",
+    "isFeatured": true
+  },
   {
     "title": "Belajar Dasar Pemrograman JavaScript",
     "description": "Memahami fondasi JavaScript secara mendalam, dari sintaks dasar hingga konsep penting seperti OOP, functional programming, dan proses asynchronous.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/id/sertifikat-7.jpg",
     "link": "https://www.dicoding.com/certificates/MEPJ2L53LP3V",
-    "tanggalTerbit": "07-08-2025",
-    "tanggalKadaluarsa": "07-08-2028"
-  },  
+    "tanggalTerbit": "2025-08-07",
+    "tanggalKadaluarsa": "2028-08-07",
+    "isFeatured": false
+  },
   {
     "title": "Memulai Pemrograman dengan Python",
     "description": "Terampil menulis program Python yang terstruktur, mencakup pemahaman tentang logika, control flow, fungsi, hingga pengenalan library populer.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/id/sertifikat-4.jpg",
     "link": "https://www.dicoding.com/certificates/N9ZO9Y9Y8XG5",
-    "tanggalTerbit": "19-02-2025",
-    "tanggalKadaluarsa": "19-02-2028"
-  }, 
+    "tanggalTerbit": "2025-02-19",
+    "tanggalKadaluarsa": "2028-02-19",
+    "isFeatured": false
+  },
   {
     "title": "Belajar Dasar AI",
     "description": "Memiliki wawasan mendasar mengenai dunia AI dan cabang-cabangnya, dari pengolahan data hingga contoh penerapannya di industri.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/id/sertifikat-5.jpg",
     "link": "https://www.dicoding.com/certificates/4EXG7Q2GGPRL",
-    "tanggalTerbit": "24-10-2024",
-    "tanggalKadaluarsa": "24-10-2027"
-  },  
+    "tanggalTerbit": "2024-10-24",
+    "tanggalKadaluarsa": "2027-10-24",
+    "isFeatured": false
+  },
   {
     "title": "Belajar Dasar Visualisasi Data",
     "description": "Mampu mengolah data mentah menjadi visualisasi yang efektif dan mudah dipahami menggunakan Google Sheets, dengan menerapkan prinsip-prinsip desain.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/id/sertifikat-6.jpg",
     "link": "https://www.dicoding.com/certificates/JMZVE4LVRPN9",
-    "tanggalTerbit": "19-02-2025",
-    "tanggalKadaluarsa": "19-02-2028"
+    "tanggalTerbit": "2025-02-19",
+    "tanggalKadaluarsa": "2028-02-19",
+    "isFeatured": false
   },
   {
     "title": "Belajar Dasar Cloud dan Gen AI di AWS",
@@ -68,8 +75,9 @@
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/id/sertifikat-1.jpg",
     "link": "https://www.dicoding.com/certificates/N9ZO23RY6PG5",
-    "tanggalTerbit": "07-07-2025",
-    "tanggalKadaluarsa": "07-07-2028"
+    "tanggalTerbit": "2025-07-07",
+    "tanggalKadaluarsa": "2028-07-07",
+    "isFeatured": false
   },
   {
     "title": "Belajar Machine Learning untuk Pemula",
@@ -77,7 +85,8 @@
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/id/sertifikat-9.jpg",
     "link": "https://www.dicoding.com/certificates/1RXYQY1VQZVM",
-    "tanggalTerbit": "13-08-2025",
-    "tanggalKadaluarsa": "13-08-2028"
+    "tanggalTerbit": "2025-08-13",
+    "tanggalKadaluarsa": "2028-08-13",
+    "isFeatured": false
   }
 ]

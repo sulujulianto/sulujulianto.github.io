@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>資格アーカイブ — Sulu Edward Julianto</title>
+    <link rel="icon" href="../assets/img/icon.png" type="image/png">
+
+    <link rel="stylesheet" href="../assets/css/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="../assets/js/theme.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.5s, color 0.5s, background-image 0.5s;
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem; 
+        }
+        .hero-image {
+            order: 1; 
+        }
+        .hero-text {
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-container {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr)); 
+            }
+            .hero-image {
+                order: initial; 
+                grid-column: 2; 
+            }
+            .hero-text {
+                order: initial; 
+                grid-column: 1;
+                grid-row: 1; 
+            }
+        }
+
+        /* --- Tema Terang --- */
+        body {
+            background-image: linear-gradient(to bottom right, #a5f3fc, #60a5fa);
+            color: #0f172a;
+        }
+        h1, h2, h3, h4, h5, h6, p, li, span { color: #0f172a; }
+        a { color: #1e3a8a; } 
+        a:hover { color: #1d4ed8; } 
+
+        .cv-download-btn span, .cv-download-btn i {
+            color: #ffffff !important; 
+        }
+
+        .section-highlight { color: #1d4ed8; }
+        .card {
+            background-color: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        .filter-btn-active {
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+            border: 1px solid #0f172a !important;
+        }
+        .filter-btn {
+            background-color: #f9fafb;
+            border: 1px solid #d1d5db;
+            color: #0f172a;
+        }
+        .filter-btn:hover {
+            background-color: #e5e7eb;
+        }
+        
+        #contact input, #contact textarea {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border: 1px solid #d1d5db !important;
+        }
+        #contact .social-icon { color: #0f172a !important; }
+
+        /* --- Tema Gelap --- */
+        html.dark body {
+            background-color: #0c1322;
+            background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
+            color: #94a3b8;
+        }
+        html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6, html.dark a { color: #eff6ff; }
+        html.dark p, html.dark li, html.dark span { color: #94a3b8; }
+        
+        html.dark .section-highlight { color: #60a5fa; }
+        html.dark .card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: none;
+        }
+        html.dark .filter-btn-active {
+            background-color: #60a5fa !important;
+            color: #1e293b !important;
+            border: 1px solid #60a5fa !important;
+        }
+        html.dark .filter-btn {
+            background-color: #1e293b;
+            border: 1px solid #374151;
+            color: #94a3b8;
+        }
+        html.dark .filter-btn:hover {
+            background-color: #4b5563;
+        }
+        html.dark #contact input, html.dark #contact textarea {
+            background-color: #374151 !important;
+            color: #eff6ff !important;
+            border: 1px solid #4b5563 !important;
+        }
+        html.dark #contact .social-icon { color: #94a3b8 !important; }
+
+        /* --- Animasi --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .card {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        html.dark .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.05), 0 4px 6px -2px rgba(255, 255, 255, 0.02);
+        }
+
+        .skill-icon {
+            transition: transform 0.2s ease-out;
+        }
+        .skill-item:hover .skill-icon {
+            transform: scale(1.1);
+        }
+
+        /* --- Gaya Navbar dan Footer --- */
+        .header-footer-bg {
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: none;
+            transition: background-color 0.5s, border-color 0.5s;
+        }
+        
+        .navbar-light-theme a, .navbar-light-theme button {
+            color: #000000 !important;
+        }
+        .navbar-light-theme a:hover {
+            color: #3b82f6 !important;
+        }
+
+        html.dark .navbar-light-theme a, html.dark .navbar-light-theme button {
+            color: #eff6ff !important;
+        }
+        html.dark .navbar-light-theme a:hover {
+            color: #60a5fa !important;
+        }
+
+        /* --- Gaya Tombol Tema --- */
+        .theme-switch-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            cursor: pointer;
+        }
+        .theme-switch-wrapper input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .slider .icon-inside {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            transition: opacity 0.4s;
+        }
+        .slider .icon-sun-on-slider {
+            left: 8px;
+            color: #facc15;
+            opacity: 1;
+        }
+        .slider .icon-moon-on-slider {
+            right: 8px;
+            color: #6366f1;
+            opacity: 0;
+        }
+        input:checked + .slider .icon-sun-on-slider {
+            opacity: 0;
+        }
+        input:checked + .slider .icon-moon-on-slider {
+            opacity: 1;
+        }
+        html.dark .slider { background-color: #4b5563; }
+        html.dark .slider:before { background-color: #a0aec0; }
+        html.dark input:checked + .slider { background-color: #60a5fa; }
+        html.dark input:checked + .slider:before { background-color: #eff6ff; }
+
+        /* Gaya Tombol Scroll ke Atas */
+        #to-top-btn {
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 9999px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #to-top-btn:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        html.dark #to-top-btn {
+            background-color: #2563eb;
+        }
+        html.dark #to-top-btn:hover {
+            background-color: #3b82f6;
+        }
+        .profile-photo-circle {
+            background-color: #000000;
+        }
+        html.dark .profile-photo-circle {
+            background-image: linear-gradient(to bottom right, #38bdf8, #3b82f6) !important;
+        }
+        footer p, footer a {
+            color: #000000 !important; 
+        }
+        html.dark footer p, html.dark footer a {
+            color: #94a3b8 !important; 
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="sticky top-0 z-50 w-full header-footer-bg navbar-light-theme">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold">Sulu Edward Julianto</a>
+
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="index.html">ホーム</a>
+                <a href="index.html#tentang">自己紹介</a>
+                <a href="index.html#skills">スキル</a>
+                <a href="index.html#proyek">プロジェクト</a>
+                <a href="index.html#sertifikat">資格</a>
+                <a href="index.html#contact">連絡先</a>
+                <a href="../blog/">ブログ</a>
+                <label id="theme-toggle" class="theme-switch-wrapper">
+                    <input type="checkbox" id="theme-toggle-checkbox">
+                    <span class="slider">
+                        <i id="icon-sun" class="fas fa-sun icon-inside icon-sun-on-slider"></i>
+                        <i id="icon-moon" class="fas fa-moon icon-inside icon-moon-on-slider hidden"></i>
+                    </span>
+                </label>
+            </nav>
+
+            <div class="md:hidden flex items-center space-x-4">
+                <label id="theme-toggle-nav" class="theme-switch-wrapper">
+                    <input type="checkbox" id="theme-toggle-nav-checkbox">
+                    <span class="slider">
+                        <i id="icon-sun-nav" class="fas fa-sun icon-inside icon-sun-on-slider"></i>
+                        <i id="icon-moon-nav" class="fas fa-moon icon-inside icon-moon-on-slider hidden"></i>
+                    </span>
+                </label>
+                <button id="navbar-toggle" type="button" class="focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
+            <a href="index.html" class="block py-2">ホーム</a>
+            <a href="index.html#tentang" class="block py-2">自己紹介</a>
+            <a href="index.html#skills" class="block py-2">スキル</a>
+            <a href="index.html#proyek" class="block py-2">プロジェクト</a>
+            <a href="index.html#sertifikat" class="block py-2">資格</a>
+            <a href="index.html#contact" class="block py-2">連絡先</a>
+            <a href="../blog/" class="block py-2">ブログ</a>
+        </div>
+    </header>
+
+    <main class="flex-grow bg-gradient-to-br from-cyan-200 to-blue-400 dark:from-slate-900 dark:to-slate-800">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="text-center mb-12 fade-in">
+                <p class="text-sm uppercase tracking-widest text-slate-700 dark:text-slate-300 mb-2">資格ライブラリ</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">取得証明の一覧</h1>
+                <p class="text-lg text-slate-700 dark:text-slate-200 max-w-3xl mx-auto">
+                    日本語ページで紹介する資格をすべて掲載しています。発行日の新しい順に並べ、学習の歩みを追いやすくしました。
+                </p>
+            </div>
+            <div id="certificates-react-root" data-locale="ja" data-base-path="../" data-mode="full" data-batch-size="8" data-grid-columns="4"></div>
+        </section>
+    </main>
+
+    <footer class="header-footer-bg footer-no-border py-6 mt-auto">
+        <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center space-x-6 text-2xl mb-4">
+                <a href="https://facebook.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.x.com/sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-twitter"></i></a>
+                <a href="https://threads.net/@sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-threads"></i></a>
+                <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@sulucodes" target="_blank" class="transition-transform hover:scale-110"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="header-footer-text">© <span id="current-year"></span> Sulu Edward Julianto</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
+        });
+    </script>
+
+    <a href="#" id="to-top-btn" class="hidden fixed bottom-5 right-5 z-50 h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 hover:bg-blue-700">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin defer></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin defer></script>
+    <script src="../assets/js/dist/app.js" defer></script>
+</body>
+</html>

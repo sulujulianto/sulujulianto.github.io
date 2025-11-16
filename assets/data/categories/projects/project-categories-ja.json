@@ -1,0 +1,26 @@
+[
+  {
+    "id": "*",
+    "label": "すべて"
+  },
+  {
+    "id": "frontend",
+    "label": "フロントエンド"
+  },
+  {
+    "id": "backend",
+    "label": "バックエンド"
+  },
+  {
+    "id": "fullstack",
+    "label": "フルスタック"
+  },
+  {
+    "id": "mobile",
+    "label": "モバイル"
+  },
+  {
+    "id": "ai-data",
+    "label": "AI・データ"
+  }
+]

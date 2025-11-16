@@ -1,0 +1,26 @@
+[
+  {
+    "id": "*",
+    "label": "All"
+  },
+  {
+    "id": "frontend",
+    "label": "Front-End"
+  },
+  {
+    "id": "backend",
+    "label": "Back-End"
+  },
+  {
+    "id": "fullstack",
+    "label": "Full-Stack"
+  },
+  {
+    "id": "mobile",
+    "label": "Mobile"
+  },
+  {
+    "id": "ai-data",
+    "label": "AI & Data"
+  }
+]

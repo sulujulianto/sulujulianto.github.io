@@ -1,0 +1,22 @@
+[
+  {
+    "id": "*",
+    "label": "すべて"
+  },
+  {
+    "id": "programming",
+    "label": "プログラミング"
+  },
+  {
+    "id": "web-development",
+    "label": "ウェブ開発"
+  },
+  {
+    "id": "ai-data",
+    "label": "AI・データ・クラウド"
+  },
+  {
+    "id": "networking",
+    "label": "ネットワーク"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "*",
+    "label": "All"
+  },
+  {
+    "id": "programming",
+    "label": "Programming"
+  },
+  {
+    "id": "web-development",
+    "label": "Web Development"
+  },
+  {
+    "id": "ai-data",
+    "label": "AI, Data & Cloud"
+  },
+  {
+    "id": "networking",
+    "label": "Networking"
+  }
+]

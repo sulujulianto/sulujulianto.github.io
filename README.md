@@ -1,56 +1,74 @@
 # 🌐 Sulu Edward Julianto — Personal Portfolio
 
-Welcome to **sulujulianto.github.io**, my personal portfolio website.  
-This site showcases my professional profile, selected projects, and blog articles, with a focus on clean design, usability, and performance.
+This repository powers **sulujulianto.github.io**—a multi-language personal portfolio currently deployed via GitHub Pages.  
 
-> 🎯 My goal is to create elegant and effective web solutions using modern development tools and best practices.
-
----
-
-## ✨ About Me
-
-I’m **Sulu Edward Julianto**, a Junior **Software Engineer** and **Full Stack Developer** with expertise in crafting responsive, user-friendly, and high-performance websites.  
-I focus on both the technical and creative aspects of web development, from functional design to robust code implementation.
+> 🎯 Goal: deliver a fast, responsive, and maintainable profile that still feels professional to fellow developers.
 
 ---
 
-## 🚀 Highlights
+## ✨ Key Features
 
-- **🌍 Multi-Language Support** — Indonesian, English, Japanese, and Chinese  
-- **📰 Blog Section** — Articles and tutorials on technology and development  
-- **📂 Project Showcase** — A curated list of my best works  
-- **📱 Responsive Design** — Optimized for all devices  
-- **⚡ Fast & Lightweight** — Minimal load time and optimized assets  
+- **Full locale coverage** (ID / EN / JA / ZH) with dedicated project & certificate data per language.
+- **Project & certificate vaults** with modal detail views, featured highlights, and optional hi-res assets.
+- **Dark/light theme**, subtle animations, and responsive grids optimized for desktop & mobile.
+- **Static blog** for Markdown-based posts.
+- **Contact section** using FormSubmit plus direct channels (email/phone/Telegram) for mobile users.
+
+---
+
+## 🗂 Project Structure
+
+```
+.
+├── assets
+│   ├── css          # Tailwind entry (main.css) + modal styling
+│   ├── js           # React widgets + compiled dist/app.js
+│   └── data
+│       ├── projects/projects-<locale>.json
+│       ├── certificates/certificates-<locale>.json
+│       └── categories/
+│           ├── projects/<locale>.json
+│           └── certificates/<locale>.json
+├── <locale>/index.html  # Locale-specific landing pages
+└── blog/                # Static blog page
+```
+
+Tips:
+- Add or edit projects/certificates by updating the JSON files.  
+- Use `fullImageUrl` on certificates to open high-res versions in new tabs without bloating the main grid.  
+- `assets/js/dist/app.js` is generated from `assets/js/app.tsx` so that GitHub Pages serves a plain JS bundle (no runtime Babel).
 
 ---
 
 ## 🛠 Tech Stack
 
-- **HTML5**  
-- **CSS3**  
-- **Tailwind CSS**  
-- **JavaScript**  
-- **TypeScript**  
-- **PostCSS**  
-- **Markdown**  
+- HTML5, CSS3, Tailwind CSS
+- TypeScript + React 18 (rendered via `dist/app.js`)
+- PostCSS / Autoprefixer
+- FormSubmit (contact form integration)
+- GitHub Pages (current hosting; easily migratable)
 
 ---
 
-## 🌐 Live Website
+## 🚀 Local Development
 
-- **Portfolio Website:** [sulujulianto.github.io](https://sulujulianto.github.io)  
+```bash
+npm install            # install dev dependencies
+npm run tailwind:build # regenerate assets/css/output.css
+npm run ts:build       # compile assets/js/dist/app.js
+npm run dev            # or use Live Server/http-server for preview
+```
+
+> When migrating to a custom domain or another hosting provider, keep relative paths (`../`) consistent or adjust build tooling accordingly.
 
 ---
 
 ## 📬 Contact
 
-💌 **Email:** [sulucodes@gmail.com](mailto:sulucodes@gmail.com)  
-💼 **LinkedIn:** [linkedin.com/in/sulujulianto](https://linkedin.com/in/sulujulianto)  
-🐙 **GitHub:** [SuluJulianto](https://github.com/SuluJulianto)  
+- Email: [sulucodes@gmail.com](mailto:sulucodes@gmail.com)  
+- LinkedIn: [linkedin.com/in/sulujulianto](https://linkedin.com/in/sulujulianto)  
+- GitHub: [github.com/SuluJulianto](https://github.com/SuluJulianto)
 
 ---
 
-> Designed & developed by **Sulu Edward Julianto**
-
-
-
+Designed & maintained by **Sulu Edward Julianto**.

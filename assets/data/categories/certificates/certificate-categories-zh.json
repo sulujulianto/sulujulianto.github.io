@@ -1,0 +1,22 @@
+[
+  {
+    "id": "*",
+    "label": "全部"
+  },
+  {
+    "id": "programming",
+    "label": "编程"
+  },
+  {
+    "id": "web-development",
+    "label": "网页开发"
+  },
+  {
+    "id": "ai-data",
+    "label": "AI·数据·云"
+  },
+  {
+    "id": "networking",
+    "label": "网络"
+  }
+]

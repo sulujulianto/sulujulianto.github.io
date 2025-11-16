@@ -1,0 +1,22 @@
+[
+  {
+    "id": "*",
+    "label": "Semua"
+  },
+  {
+    "id": "programming",
+    "label": "Pemrograman"
+  },
+  {
+    "id": "web-development",
+    "label": "Pengembangan Web"
+  },
+  {
+    "id": "ai-data",
+    "label": "AI, Data & Cloud"
+  },
+  {
+    "id": "networking",
+    "label": "Jaringan"
+  }
+]
