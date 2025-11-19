@@ -216,10 +216,11 @@
         const sentinelRef = React.useRef(null);
         const [categoryDefinitions, setCategoryDefinitions] = React.useState(() => buildCategoryList(undefined, ALL_CATEGORY_LABEL[localeKey]));
         React.useEffect(() => {
+            const abortController = new AbortController();
             const dataPath = `${basePath}assets/data/projects/projects-${localeKey}.json`;
             setIsLoading(true);
             setError(null);
-            fetch(dataPath)
+            fetch(dataPath, { signal: abortController.signal })
                 .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Cannot load ${dataPath} (${response.status})`);
@@ -232,8 +233,13 @@
                 }
                 setData(sortByNewest(json, (item) => item.dateAdded));
             })
-                .catch((err) => setError(err.message))
+                .catch((err) => {
+                if (err.name !== 'AbortError') {
+                    setError(err.message);
+                }
+            })
                 .finally(() => setIsLoading(false));
+            return () => abortController.abort();
         }, [basePath, localeKey]);
         React.useEffect(() => {
             const path = `${basePath}assets/data/categories/projects/${localeKey}.json`;
@@ -359,10 +365,11 @@
         const sentinelRef = React.useRef(null);
         const [categoryDefinitions, setCategoryDefinitions] = React.useState(() => buildCategoryList(undefined, ALL_CATEGORY_LABEL[localeKey]));
         React.useEffect(() => {
+            const abortController = new AbortController();
             const dataPath = `${basePath}assets/data/certificates/certificates-${localeKey}.json`;
             setIsLoading(true);
             setError(null);
-            fetch(dataPath)
+            fetch(dataPath, { signal: abortController.signal })
                 .then((response) => {
                 if (!response.ok) {
                     throw new Error(`Cannot load ${dataPath} (${response.status})`);
@@ -375,8 +382,13 @@
                 }
                 setData(sortByNewest(json, (item) => item.tanggalTerbit));
             })
-                .catch((err) => setError(err.message))
+                .catch((err) => {
+                if (err.name !== 'AbortError') {
+                    setError(err.message);
+                }
+            })
                 .finally(() => setIsLoading(false));
+            return () => abortController.abort();
         }, [basePath, localeKey]);
         React.useEffect(() => {
             const path = `${basePath}assets/data/categories/certificates/${localeKey}.json`;

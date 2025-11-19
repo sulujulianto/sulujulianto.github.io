@@ -1,14 +1,26 @@
 [
   {
     "title": "Jejak Petualang",
-    "description": "Membangun platform e-commerce fungsional dengan sistem keranjang belanja, proses checkout, manajemen ulasan produk, dan panel admin.",
+    "description": "Platform e-commerce modern untuk penjualan produk petualangan outdoor. Dilengkapi sistem keranjang belanja, checkout, manajemen produk, dan panel admin yang komprehensif.",
     "category": "fullstack",
     "imageUrl": "../assets/img/projects/id/jejakpetualang.jpg",
-    "githubUrl": "https://github.com/SuluJulianto/jejakpetualang",
+    "githubUrl": "https://github.com/sulujulianto/jejakpetualang",
     "liveUrl": "",
-    "techStack": ["PHP (Native)","MySQL","HTML","CSS","JavaScript","TinyMCE"],
-    "dateAdded": "2024-12-10",
-    "modalDescription": "Saya merancang katalog, keranjang, checkout, serta panel admin yang saling terhubung sehingga owner bisa memantau setiap pesanan dan laporan penjualan harian.",
+    "techStack": ["PHP (Native)", "MySQL", "HTML", "CSS", "JavaScript"],
+    "dateAdded": "2025-08-20",
+    "modalDescription": "Jejak Petualang adalah platform e-commerce yang saya kembangkan untuk memudahkan penjualan produk outdoor dan petualangan secara online. Website ini punya dua sisi utama: untuk customer yang ingin belanja, dan untuk admin yang mengelola toko.\n\nDi sisi customer, user bisa register dan login untuk mulai belanja. Mereka bisa browse produk dengan fitur search dan filter kategori, lihat detail produk lengkap dengan harga dan stok, lalu add to cart. Proses checkout-nya straightforward dengan form pengisian alamat pengiriman. Ada juga halaman akun untuk tracking riwayat pesanan dan kasih review produk yang udah dibeli.\n\nUntuk admin, tersedia dashboard yang nunjukin statistik penjualan secara real-time. Admin bisa kelola semua aspek toko: tambah/edit/hapus produk, atur kategori, update status pesanan, kelola data customer, sampai bikin voucher dan promo. Semua dirancang supaya operasional toko jalan lancar.\n\nSecara teknis, saya build ini pakai PHP native untuk backend dengan MySQL sebagai database. Frontend-nya pakai HTML, CSS, dan JavaScript buat interaksi yang smooth. Security juga jadi concern utama dengan implementasi validasi input di semua form. Design-nya responsive jadi bisa diakses dari device apapun. Project ini udah siap deploy dan bisa langsung dipakai untuk bisnis real.",
+    "isFeatured": true
+  },
+  {
+    "title": "Nusantara Trans",
+    "description": "Sistem pemesanan tiket bus online end-to-end dengan pemilihan kursi real-time, keranjang belanja, payment gateway, dan panel admin. Dibangun dengan PHP 8, PDO, dan Bootstrap 5 dengan standar produksi.",
+    "category": "fullstack",
+    "imageUrl": "../assets/img/projects/id/nusantaratrans.jpg",
+    "githubUrl": "https://github.com/sulujulianto/nusantaratrans",
+    "liveUrl": "",
+    "techStack": ["PHP (Native)", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap5"],
+    "dateAdded": "2025-11-19",
+    "modalDescription": "Nusantara Trans adalah sistem booking tiket bus online yang saya develop dari awal sampai akhir. Projectnya cukup kompleks karena harus handle pemilihan kursi real-time, payment flow, sampe panel admin yang lengkap.\n\nYang menarik dari project ini, visitor bisa langsung eksplor rute bus tanpa perlu login dulu. Mereka bisa filter berdasarkan kota dan tanggal keberangkatan, lalu lihat visualisasi kursi yang available. Pas udah pilih kursi, sistem langsung lock kursi tersebut di cart supaya gak kejadian double booking. Ada fitur promo code juga yang bisa diapply saat checkout.\n\nUser yang udah register punya dashboard sendiri buat lihat tiket mereka, status payment, dan bisa request refund kalau ada pembatalan. Untuk admin, dashboardnya lebih advance dengan metrics seperti total revenue, jumlah booking per hari, dan daftar refund yang perlu di-approve. Admin juga bisa full control manage bus, rute, promo aktif, dan monitoring semua booking yang masuk dengan detail lengkap.\n\nDari sisi teknis, saya pakai PHP 8 dengan PDO prepared statements buat keamanan database. UI-nya build pakai Bootstrap 5 supaya responsive dan modern. Yang penting banget di project ini adalah security - saya implement CSRF protection di semua form, input sanitization, dan multi-session system yang pisahin state user sama admin. Database schema-nya juga udah dioptimasi dan disediain full SQL dump buat kemudahan setup. Project ini production-ready dan udah mengikuti best practices PHP modern.",
     "isFeatured": true
   }
 ]
