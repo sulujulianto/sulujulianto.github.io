@@ -440,6 +440,12 @@
 
         React.useEffect(() => {
             if (!hasMore) return;
+
+            if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+                setVisibleCount(baseData.length);
+                return;
+            }
+
             const sentinel = sentinelRef.current;
             if (!sentinel) return;
 
@@ -644,6 +650,12 @@
 
         React.useEffect(() => {
             if (!hasMore) return;
+
+            if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+                setVisibleCount(baseData.length);
+                return;
+            }
+
             const sentinel = sentinelRef.current;
             if (!sentinel) return;
 
