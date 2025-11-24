@@ -22,5 +22,17 @@
     "dateAdded": "2025-11-19",
     "modalDescription": "Nusantara Trans adalah sistem booking tiket bus online yang saya develop dari awal sampai akhir. Projectnya cukup kompleks karena harus handle pemilihan kursi real-time, payment flow, sampe panel admin yang lengkap.\n\nYang menarik dari project ini, visitor bisa langsung eksplor rute bus tanpa perlu login dulu. Mereka bisa filter berdasarkan kota dan tanggal keberangkatan, lalu lihat visualisasi kursi yang available. Pas udah pilih kursi, sistem langsung lock kursi tersebut di cart supaya gak kejadian double booking. Ada fitur promo code juga yang bisa diapply saat checkout.\n\nUser yang udah register punya dashboard sendiri buat lihat tiket mereka, status payment, dan bisa request refund kalau ada pembatalan. Untuk admin, dashboardnya lebih advance dengan metrics seperti total revenue, jumlah booking per hari, dan daftar refund yang perlu di-approve. Admin juga bisa full control manage bus, rute, promo aktif, dan monitoring semua booking yang masuk dengan detail lengkap.\n\nDari sisi teknis, saya pakai PHP 8 dengan PDO prepared statements buat keamanan database. UI-nya build pakai Bootstrap 5 supaya responsive dan modern. Yang penting banget di project ini adalah security - saya implement CSRF protection di semua form, input sanitization, dan multi-session system yang pisahin state user sama admin. Database schema-nya juga udah dioptimasi dan disediain full SQL dump buat kemudahan setup. Project ini production-ready dan udah mengikuti best practices PHP modern.",
     "isFeatured": true
+  },
+  {
+    "title": "Japan Travel",
+    "description": "",
+    "category": "fullstack",
+    "imageUrl": "../assets/img/projects/id/japanese-travel.jpg",
+    "githubUrl": "https://github.com/sulujulianto/japanesetravel",
+    "liveUrl": "",
+    "techStack": [],
+    "dateAdded": "2025-11-24",
+    "modalDescription": "",
+    "isFeatured": true
   }
 ]

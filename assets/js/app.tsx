@@ -226,33 +226,67 @@
         item: ProjectItem;
         labels: ComponentLabels;
         categoryLabels: Record<string, string>;
-        onClick: () => void;
+        onAction: () => void;
         animationIndex: number;
-    }> = ({ item, labels, categoryLabels, onClick, animationIndex }) => (
-        <button
-            type="button"
-            onClick={onClick}
-            className="card flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear"
-            style={{ '--card-index': animationIndex } as React.CSSProperties}
-        >
-            <div className="w-full h-48 overflow-hidden">
-                <img src={item.imageUrl} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
-            </div>
-            <div className="p-5 flex flex-col flex-grow">
-                <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
-                    {item.category && (categoryLabels[item.category] || item.category)}
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{item.title}</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3 flex-grow">{item.description}</p>
-                {item.techStack && item.techStack.length > 0 && (
-                    <div className="mt-4">
-                        <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
-                        <p className="text-sm text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
+        asLink?: string | null;
+    }> = ({ item, labels, categoryLabels, onAction, animationIndex, asLink = null }) => {
+        const className =
+            'card flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
+
+        if (asLink) {
+            return (
+                <a
+                    href={asLink}
+                    className={className}
+                    style={{ '--card-index': animationIndex } as React.CSSProperties}
+                    onClick={onAction}
+                >
+                    <div className="w-full h-48 overflow-hidden">
+                        <img src={item.imageUrl} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
                     </div>
-                )}
-            </div>
-        </button>
-    );
+                    <div className="p-5 flex flex-col flex-grow">
+                        <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
+                            {item.category && (categoryLabels[item.category] || item.category)}
+                        </div>
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{item.title}</h3>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3 flex-grow">{item.description}</p>
+                        {item.techStack && item.techStack.length > 0 && (
+                            <div className="mt-4">
+                                <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
+                                <p className="text-sm text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
+                            </div>
+                        )}
+                    </div>
+                </a>
+            );
+        }
+
+        return (
+            <button
+                type="button"
+                onClick={onAction}
+                className={className}
+                style={{ '--card-index': animationIndex } as React.CSSProperties}
+            >
+                <div className="w-full h-48 overflow-hidden">
+                    <img src={item.imageUrl} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
+                </div>
+                <div className="p-5 flex flex-col flex-grow">
+                    <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
+                        {item.category && (categoryLabels[item.category] || item.category)}
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{item.title}</h3>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3 flex-grow">{item.description}</p>
+                    {item.techStack && item.techStack.length > 0 && (
+                        <div className="mt-4">
+                            <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
+                            <p className="text-sm text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
+                        </div>
+                    )}
+                </div>
+            </button>
+        );
+    };
 
     const ProjectModal: React.FC<{
         project: ProjectItem;
@@ -528,16 +562,28 @@
                         isLoading={isLoading}
                         error={error}
                         labels={labels}
-                        renderCard={(item, index) => (
-                            <ProjectCard
-                                key={`${item.title}-${index}`}
-                                item={item}
-                                labels={labels}
-                                categoryLabels={categoryLabels}
-                                onClick={() => setSelectedProject(item)}
-                                animationIndex={index}
-                            />
-                        )}
+                        renderCard={(item, index) => {
+                            const shouldNavigate = mode === 'featured' && !!fullUrl;
+                            const handleAction = () => {
+                                if (shouldNavigate && fullUrl) {
+                                    window.location.href = fullUrl;
+                                    return;
+                                }
+                                setSelectedProject(item);
+                            };
+
+                            return (
+                                <ProjectCard
+                                    key={`${item.title}-${index}`}
+                                    item={item}
+                                    labels={labels}
+                                    categoryLabels={categoryLabels}
+                                    onAction={handleAction}
+                                    asLink={shouldNavigate && fullUrl ? fullUrl : null}
+                                    animationIndex={index}
+                                />
+                            );
+                        }}
                     />
                 </div>
                 {hasMore && <div ref={sentinelRef} className="h-10 w-full" aria-hidden="true"></div>}

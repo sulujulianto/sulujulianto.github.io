@@ -138,16 +138,31 @@
         }
         return React.createElement(React.Fragment, null, data.map((item, index) => renderCard(item, index)));
     };
-    const ProjectCard = ({ item, labels, categoryLabels, onClick, animationIndex }) => (React.createElement("button", { type: "button", onClick: onClick, className: "card flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear", style: { '--card-index': animationIndex } },
-        React.createElement("div", { className: "w-full h-48 overflow-hidden" },
-            React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-cover" })),
-        React.createElement("div", { className: "p-5 flex flex-col flex-grow" },
-            React.createElement("div", { className: "flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2" }, item.category && (categoryLabels[item.category] || item.category)),
-            React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2" }, item.title),
-            React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300 line-clamp-3 flex-grow" }, item.description),
-            item.techStack && item.techStack.length > 0 && (React.createElement("div", { className: "mt-4" },
-                React.createElement("p", { className: "text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1" }, labels.techStack),
-                React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300" }, item.techStack.join(', ')))))));
+    const ProjectCard = ({ item, labels, categoryLabels, onAction, animationIndex, asLink = null }) => {
+        const className = 'card flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
+        if (asLink) {
+            return (React.createElement("a", { href: asLink, className: className, style: { '--card-index': animationIndex }, onClick: onAction },
+                React.createElement("div", { className: "w-full h-48 overflow-hidden" },
+                    React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-cover" })),
+                React.createElement("div", { className: "p-5 flex flex-col flex-grow" },
+                    React.createElement("div", { className: "flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2" }, item.category && (categoryLabels[item.category] || item.category)),
+                    React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2" }, item.title),
+                    React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300 line-clamp-3 flex-grow" }, item.description),
+                    item.techStack && item.techStack.length > 0 && (React.createElement("div", { className: "mt-4" },
+                        React.createElement("p", { className: "text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1" }, labels.techStack),
+                        React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300" }, item.techStack.join(', ')))))));
+        }
+        return (React.createElement("button", { type: "button", onClick: onAction, className: className, style: { '--card-index': animationIndex } },
+            React.createElement("div", { className: "w-full h-48 overflow-hidden" },
+                React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-cover" })),
+            React.createElement("div", { className: "p-5 flex flex-col flex-grow" },
+                React.createElement("div", { className: "flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2" }, item.category && (categoryLabels[item.category] || item.category)),
+                React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2" }, item.title),
+                React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300 line-clamp-3 flex-grow" }, item.description),
+                item.techStack && item.techStack.length > 0 && (React.createElement("div", { className: "mt-4" },
+                    React.createElement("p", { className: "text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1" }, labels.techStack),
+                    React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300" }, item.techStack.join(', ')))))));
+    };
     const ProjectModal = ({ project, labels, categoryLabels, onClose }) => {
         React.useEffect(() => {
             const handleEsc = (event) => {
@@ -332,7 +347,17 @@
         return (React.createElement("div", null,
             showFiltersProjects && (React.createElement("div", { className: "flex flex-wrap justify-center gap-3 mb-10", role: "group", "aria-label": "Project categories" }, availableCategories.map((category) => (React.createElement(FilterButton, { key: category.id, isActive: filter === category.id, onClick: () => setFilter(category.id) }, category.label))))),
             React.createElement("div", { className: gridClass, role: "list" },
-                React.createElement(PortfolioGrid, { data: visibleData, isLoading: isLoading, error: error, labels: labels, renderCard: (item, index) => (React.createElement(ProjectCard, { key: `${item.title}-${index}`, item: item, labels: labels, categoryLabels: categoryLabels, onClick: () => setSelectedProject(item), animationIndex: index })) })),
+                React.createElement(PortfolioGrid, { data: visibleData, isLoading: isLoading, error: error, labels: labels, renderCard: (item, index) => {
+                        const shouldNavigate = mode === 'featured' && !!fullUrl;
+                        const handleAction = () => {
+                            if (shouldNavigate && fullUrl) {
+                                window.location.href = fullUrl;
+                                return;
+                            }
+                            setSelectedProject(item);
+                        };
+                        return (React.createElement(ProjectCard, { key: `${item.title}-${index}`, item: item, labels: labels, categoryLabels: categoryLabels, onAction: handleAction, asLink: shouldNavigate && fullUrl ? fullUrl : null, animationIndex: index }));
+                    } })),
             hasMore && React.createElement("div", { ref: sentinelRef, className: "h-10 w-full", "aria-hidden": "true" }),
             mode === 'featured' && fullUrl && (React.createElement("div", { className: "text-center mt-10" },
                 React.createElement("a", { href: fullUrl, className: "inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700" },
