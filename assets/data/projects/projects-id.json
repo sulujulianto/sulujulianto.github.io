@@ -1,38 +1,38 @@
 [
   {
     "title": "Jejak Petualang",
-    "description": "Platform e-commerce modern untuk penjualan produk petualangan outdoor. Dilengkapi sistem keranjang belanja, checkout, manajemen produk, dan panel admin yang komprehensif.",
+    "description": "Aplikasi e-commerce full-stack untuk peralatan outdoor, lengkap dengan panel admin dan manajemen transaksi.",
     "category": "fullstack",
     "imageUrl": "../assets/img/projects/id/jejakpetualang.jpg",
     "githubUrl": "https://github.com/sulujulianto/jejakpetualang",
     "liveUrl": "",
-    "techStack": ["PHP (Native)", "MySQL", "HTML", "CSS", "JavaScript"],
+    "techStack": ["PHP Native", "MySQL", "JavaScript", "HTML5", "CSS3"],
     "dateAdded": "2025-08-20",
-    "modalDescription": "Jejak Petualang adalah platform e-commerce yang saya kembangkan untuk memudahkan penjualan produk outdoor dan petualangan secara online. Website ini punya dua sisi utama: untuk customer yang ingin belanja, dan untuk admin yang mengelola toko.\n\nDi sisi customer, user bisa register dan login untuk mulai belanja. Mereka bisa browse produk dengan fitur search dan filter kategori, lihat detail produk lengkap dengan harga dan stok, lalu add to cart. Proses checkout-nya straightforward dengan form pengisian alamat pengiriman. Ada juga halaman akun untuk tracking riwayat pesanan dan kasih review produk yang udah dibeli.\n\nUntuk admin, tersedia dashboard yang nunjukin statistik penjualan secara real-time. Admin bisa kelola semua aspek toko: tambah/edit/hapus produk, atur kategori, update status pesanan, kelola data customer, sampai bikin voucher dan promo. Semua dirancang supaya operasional toko jalan lancar.\n\nSecara teknis, saya build ini pakai PHP native untuk backend dengan MySQL sebagai database. Frontend-nya pakai HTML, CSS, dan JavaScript buat interaksi yang smooth. Security juga jadi concern utama dengan implementasi validasi input di semua form. Design-nya responsive jadi bisa diakses dari device apapun. Project ini udah siap deploy dan bisa langsung dipakai untuk bisnis real.",
+    "modalDescription": "Membangun sistem toko online dari nol menggunakan PHP Native untuk memahami logika dasar backend tanpa bantuan framework. Fitur mencakup alur belanja lengkap (Keranjang, Checkout, Riwayat Pesanan) untuk pelanggan, serta Dashboard Admin yang kompleks untuk mengelola produk, stok, kategori, promo voucher, dan memvalidasi status pesanan pengguna.",
     "isFeatured": true
   },
   {
     "title": "Nusantara Trans",
-    "description": "Sistem pemesanan tiket bus online end-to-end dengan pemilihan kursi real-time, keranjang belanja, payment gateway, dan panel admin. Dibangun dengan PHP 8, PDO, dan Bootstrap 5 dengan standar produksi.",
+    "description": "Platform pemesanan tiket bus end-to-end dengan fitur pemilihan kursi visual real-time dan dashboard admin lengkap, dibangun menggunakan PHP Native.",
     "category": "fullstack",
     "imageUrl": "../assets/img/projects/id/nusantaratrans.jpg",
     "githubUrl": "https://github.com/sulujulianto/nusantaratrans",
     "liveUrl": "",
-    "techStack": ["PHP (Native)", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap5"],
+    "techStack": ["PHP 8", "MySQL", "Bootstrap 5", "JavaScript", "PDO", "CSS3"],
     "dateAdded": "2025-11-19",
-    "modalDescription": "Nusantara Trans adalah sistem booking tiket bus online yang saya develop dari awal sampai akhir. Projectnya cukup kompleks karena harus handle pemilihan kursi real-time, payment flow, sampe panel admin yang lengkap.\n\nYang menarik dari project ini, visitor bisa langsung eksplor rute bus tanpa perlu login dulu. Mereka bisa filter berdasarkan kota dan tanggal keberangkatan, lalu lihat visualisasi kursi yang available. Pas udah pilih kursi, sistem langsung lock kursi tersebut di cart supaya gak kejadian double booking. Ada fitur promo code juga yang bisa diapply saat checkout.\n\nUser yang udah register punya dashboard sendiri buat lihat tiket mereka, status payment, dan bisa request refund kalau ada pembatalan. Untuk admin, dashboardnya lebih advance dengan metrics seperti total revenue, jumlah booking per hari, dan daftar refund yang perlu di-approve. Admin juga bisa full control manage bus, rute, promo aktif, dan monitoring semua booking yang masuk dengan detail lengkap.\n\nDari sisi teknis, saya pakai PHP 8 dengan PDO prepared statements buat keamanan database. UI-nya build pakai Bootstrap 5 supaya responsive dan modern. Yang penting banget di project ini adalah security - saya implement CSRF protection di semua form, input sanitization, dan multi-session system yang pisahin state user sama admin. Database schema-nya juga udah dioptimasi dan disediain full SQL dump buat kemudahan setup. Project ini production-ready dan udah mengikuti best practices PHP modern.",
+    "modalDescription": "NusantaraTrans adalah aplikasi full-stack untuk reservasi tiket bus rute Kalimantan & IKN. Fitur utamanya mencakup pemilihan kursi interaktif (denah visual), sistem keranjang dengan penguncian kursi sementara, dan alur checkout yang aman (CSRF protection). Dilengkapi panel admin komprehensif untuk manajemen armada, pengaturan rute dinamis, approval refund, serta laporan pendapatan.",
     "isFeatured": true
   },
   {
     "title": "Japan Travel",
-    "description": "",
+    "description": "Platform wisata Jepang all in one. Menggabungkan katalog destinasi, toko oleh-oleh online, dan sistem ulasan pengunjung dalam satu aplikasi.",
     "category": "fullstack",
     "imageUrl": "../assets/img/projects/id/japanese-travel.jpg",
     "githubUrl": "https://github.com/sulujulianto/japanesetravel",
     "liveUrl": "",
-    "techStack": [],
-    "dateAdded": "2025-11-24",
-    "modalDescription": "",
+    "techStack": ["Laravel 12", "Tailwind CSS", "Alpine.js", "MySQL", "Vite"],
+    "dateAdded": "2025-11-20",
+    "modalDescription": "Aplikasi web modern yang dibangun menggunakan Laravel 12. Fiturnya sudah sangat lengkap: mendukung multi-bahasa (Indonesia/Inggris), tema gelap/terang (dark mode), serta sistem role untuk User dan Admin. Admin memiliki dashboard statistik untuk memantau pendapatan dan stok souvenir, sementara pengguna bisa merencanakan perjalanan sekaligus belanja oleh-oleh.",
     "isFeatured": true
   }
 ]

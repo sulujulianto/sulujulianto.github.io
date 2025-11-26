@@ -231,7 +231,7 @@
         asLink?: string | null;
     }> = ({ item, labels, categoryLabels, onAction, animationIndex, asLink = null }) => {
         const className =
-            'card flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
+            'card h-full flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
 
         if (asLink) {
             return (
@@ -244,15 +244,15 @@
                     <div className="w-full h-48 overflow-hidden">
                         <img src={item.imageUrl} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
                     </div>
-                    <div className="p-5 flex flex-col flex-grow">
-                        <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
-                            {item.category && (categoryLabels[item.category] || item.category)}
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{item.title}</h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3 flex-grow">{item.description}</p>
-                        {item.techStack && item.techStack.length > 0 && (
-                            <div className="mt-4">
-                                <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
+            <div className="p-5 flex flex-col flex-grow gap-2">
+                <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
+                    {item.category && (categoryLabels[item.category] || item.category)}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{item.title}</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
+                {item.techStack && item.techStack.length > 0 && (
+                    <div className="mt-4">
+                        <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
                                 <p className="text-sm text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
                             </div>
                         )}
@@ -275,8 +275,8 @@
                     <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
                         {item.category && (categoryLabels[item.category] || item.category)}
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{item.title}</h3>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3 flex-grow">{item.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
                     {item.techStack && item.techStack.length > 0 && (
                         <div className="mt-4">
                             <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
@@ -805,9 +805,9 @@
                                             className="w-full h-full object-contain"
                                         />
                                     </div>
-                                    <div className="p-5 flex flex-col flex-grow">
-                                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{item.title}</h3>
-                                        <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-4 flex-grow">{item.description}</p>
+                                <div className="p-5 flex flex-col flex-grow gap-2">
+                                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                                    <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
                                         <div className="mt-4 text-sm text-gray-700 dark:text-gray-300 space-y-1">
                                             {item.tanggalTerbit && (
                                                 <p><span className="font-semibold">{labels.issued}</span> {item.tanggalTerbit}</p>
