@@ -115,12 +115,13 @@ html.dark .project-modal__close {
 .project-modal__image {
   position: relative;
   overflow: hidden;
+  max-height: 360px;
 }
 
 .project-modal__image img {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
   display: block;
 }
 

@@ -140,28 +140,23 @@
     };
     const ProjectCard = ({ item, labels, categoryLabels, onAction, animationIndex, asLink = null }) => {
         const className = 'card h-full flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
+        const imageBlock = (React.createElement("div", { className: "w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center", style: { aspectRatio: '16 / 9', maxHeight: '210px' } },
+            React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-contain" })));
+        const body = (React.createElement("div", { className: "p-5 flex flex-col flex-grow gap-2" },
+            React.createElement("div", { className: "flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2" }, item.category && (categoryLabels[item.category] || item.category)),
+            React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white" }, item.title),
+            React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300 flex-grow" }, item.description),
+            item.techStack && item.techStack.length > 0 && (React.createElement("div", { className: "mt-2" },
+                React.createElement("p", { className: "text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1" }, labels.techStack),
+                React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300" }, item.techStack.join(', '))))));
         if (asLink) {
             return (React.createElement("a", { href: asLink, className: className, style: { '--card-index': animationIndex }, onClick: onAction },
-                React.createElement("div", { className: "w-full h-48 overflow-hidden" },
-                    React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-cover" })),
-                React.createElement("div", { className: "p-5 flex flex-col flex-grow gap-2" },
-                    React.createElement("div", { className: "flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2" }, item.category && (categoryLabels[item.category] || item.category)),
-                    React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white" }, item.title),
-                    React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300 flex-grow" }, item.description),
-                    item.techStack && item.techStack.length > 0 && (React.createElement("div", { className: "mt-4" },
-                        React.createElement("p", { className: "text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1" }, labels.techStack),
-                        React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300" }, item.techStack.join(', ')))))));
+                imageBlock,
+                body));
         }
         return (React.createElement("button", { type: "button", onClick: onAction, className: className, style: { '--card-index': animationIndex } },
-            React.createElement("div", { className: "w-full h-48 overflow-hidden" },
-                React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-cover" })),
-            React.createElement("div", { className: "p-5 flex flex-col flex-grow" },
-                React.createElement("div", { className: "flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2" }, item.category && (categoryLabels[item.category] || item.category)),
-                React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white mb-2" }, item.title),
-                React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300 flex-grow" }, item.description),
-                item.techStack && item.techStack.length > 0 && (React.createElement("div", { className: "mt-4" },
-                    React.createElement("p", { className: "text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1" }, labels.techStack),
-                    React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300" }, item.techStack.join(', ')))))));
+            imageBlock,
+            body));
     };
     const ProjectModal = ({ project, labels, categoryLabels, onClose }) => {
         React.useEffect(() => {

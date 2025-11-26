@@ -233,6 +233,31 @@
         const className =
             'card h-full flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
 
+        const imageBlock = (
+            <div
+                className="w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center"
+                style={{ aspectRatio: '16 / 9', maxHeight: '210px' }}
+            >
+                <img src={item.imageUrl} alt={item.title} loading="lazy" className="w-full h-full object-contain" />
+            </div>
+        );
+
+        const body = (
+            <div className="p-5 flex flex-col flex-grow gap-2">
+                <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
+                    {item.category && (categoryLabels[item.category] || item.category)}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{item.title}</h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
+                {item.techStack && item.techStack.length > 0 && (
+                    <div className="mt-2">
+                        <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
+                        <p className="text-sm text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
+                    </div>
+                )}
+            </div>
+        );
+
         if (asLink) {
             return (
                 <a
@@ -241,22 +266,8 @@
                     style={{ '--card-index': animationIndex } as React.CSSProperties}
                     onClick={onAction}
                 >
-                    <div className="w-full h-48 overflow-hidden">
-                        <img src={item.imageUrl} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
-                    </div>
-            <div className="p-5 flex flex-col flex-grow gap-2">
-                <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
-                    {item.category && (categoryLabels[item.category] || item.category)}
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{item.title}</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
-                {item.techStack && item.techStack.length > 0 && (
-                    <div className="mt-4">
-                        <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
-                                <p className="text-sm text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
-                            </div>
-                        )}
-                    </div>
+                    {imageBlock}
+                    {body}
                 </a>
             );
         }
@@ -268,22 +279,8 @@
                 className={className}
                 style={{ '--card-index': animationIndex } as React.CSSProperties}
             >
-                <div className="w-full h-48 overflow-hidden">
-                    <img src={item.imageUrl} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
-                </div>
-                <div className="p-5 flex flex-col flex-grow">
-                    <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
-                        {item.category && (categoryLabels[item.category] || item.category)}
-                    </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
-                    {item.techStack && item.techStack.length > 0 && (
-                        <div className="mt-4">
-                            <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
-                            <p className="text-sm text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
-                        </div>
-                    )}
-                </div>
+                {imageBlock}
+                {body}
             </button>
         );
     };
