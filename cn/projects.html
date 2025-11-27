@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>项目仓库 — Sulu Edward Julianto</title>
+    <title>项目作品集 — Sulu Edward Julianto</title>
     <link rel="icon" href="../assets/img/icon.png" type="image/png">
 
     <link rel="stylesheet" href="../assets/css/output.css">
@@ -51,7 +51,7 @@
             }
         }
 
-        /* --- Tema Terang --- */
+        /* --- Light Theme --- */
         body {
             background-image: linear-gradient(to bottom right, #a5f3fc, #60a5fa);
             color: #0f172a;
@@ -91,7 +91,7 @@
         }
         #contact .social-icon { color: #0f172a !important; }
 
-        /* --- Tema Gelap --- */
+        /* --- Dark Theme --- */
         html.dark body {
             background-color: #0c1322;
             background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
@@ -126,7 +126,7 @@
         }
         html.dark #contact .social-icon { color: #94a3b8 !important; }
 
-        /* --- Animasi --- */
+        /* --- Animations --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -153,7 +153,7 @@
             transform: scale(1.1);
         }
 
-        /* --- Gaya Navbar dan Footer --- */
+        /* --- Navbar and Footer Styles --- */
         .header-footer-bg {
             background-color: transparent;
             backdrop-filter: blur(10px);
@@ -176,7 +176,7 @@
             color: #60a5fa !important;
         }
 
-        /* --- Gaya Tombol Tema --- */
+        /* --- Theme Toggle Button Styles --- */
         .theme-switch-wrapper {
             position: relative;
             display: inline-block;
@@ -244,7 +244,7 @@
         html.dark input:checked + .slider { background-color: #60a5fa; }
         html.dark input:checked + .slider:before { background-color: #eff6ff; }
 
-        /* Gaya Tombol Scroll ke Atas */
+        /* Scroll to Top Button Styles */
         #to-top-btn {
             background-color: #000000;
             color: #ffffff;
@@ -333,10 +333,9 @@
     <main class="flex-grow bg-gradient-to-br from-cyan-200 to-blue-400 dark:from-slate-900 dark:to-slate-800">
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
             <div class="text-center mb-12 fade-in">
-                <p class="text-sm uppercase tracking-widest text-slate-700 dark:text-slate-300 mb-2">项目仓库</p>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">全部项目与实验</h1>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">项目作品集</h1>
                 <p class="text-lg text-slate-700 dark:text-slate-200 max-w-3xl mx-auto">
-                    中文页面下的所有项目都集中在这里，并按时间倒序排列，方便查看最新成果。
+                    已完成的软件开发项目合集，涵盖从 Web 应用程序到后端系统的各类作品。
                 </p>
             </div>
             <div id="portfolio-react-root" data-locale="zh" data-base-path="../" data-mode="full" data-batch-size="8" data-grid-columns="4"></div>
@@ -358,9 +357,11 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             const currentYearSpan = document.getElementById('current-year');
-            if (currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
         });
     </script>
 
