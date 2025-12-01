@@ -329,19 +329,21 @@
                         </button>
                     </header>
 
-                    <div className="project-modal__image">
-                        <img src={project.imageUrl} alt={project.title} />
-                    </div>
+                    <div className="project-modal__content">
+                        <div className="project-modal__image">
+                            <img src={project.imageUrl} alt={project.title} />
+                        </div>
 
-                    <div className="project-modal__body">
-                        <p className="project-modal__description">{detailedDescription}</p>
+                        <div className="project-modal__body">
+                            <p className="project-modal__description">{detailedDescription}</p>
 
-                        {project.techStack && project.techStack.length > 0 && (
-                            <div>
-                                <p className="project-modal__label">{labels.techStack}</p>
-                                <p className="project-modal__tech">{project.techStack.join(', ')}</p>
-                            </div>
-                        )}
+                            {project.techStack && project.techStack.length > 0 && (
+                                <div>
+                                    <p className="project-modal__label">{labels.techStack}</p>
+                                    <p className="project-modal__tech">{project.techStack.join(', ')}</p>
+                                </div>
+                            )}
+                        </div>
                     </div>
 
                     <div className="project-modal__actions">
