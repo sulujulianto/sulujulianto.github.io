@@ -33,6 +33,18 @@
     "techStack": ["Laravel 12", "Tailwind CSS", "Alpine.js", "MySQL", "Vite"],
     "dateAdded": "2025-11-20",
     "modalDescription": "Aplikasi web modern yang dibangun menggunakan Laravel 12. Fiturnya sudah sangat lengkap: mendukung multi-bahasa (Indonesia/Inggris), tema gelap/terang (dark mode), serta sistem role untuk User dan Admin. Admin memiliki dashboard statistik untuk memantau pendapatan dan stok souvenir, sementara pengguna bisa merencanakan perjalanan sekaligus belanja oleh-oleh.",
+    "isFeatured": false
+  },
+  {
+    "title": "Sistem Informasi Wilayah Indonesia (API & CLI)",
+    "description": "RESTful API berkinerja tinggi dan CLI tool untuk menyediakan data administratif Indonesia (38 Provinsi, Kabupaten, Kota) dengan dukungan caching dan pencarian fuzzy.",
+    "category": "backend",
+    "imageUrl": "../assets/img/projects/id/sistem-wilayah-indonesia.jpg",
+    "githubUrl": "https://github.com/sulujulianto/sistem-wilayah-indonesia",
+    "liveUrl": "",
+    "techStack": ["Python 3.12", "FastAPI", "Docker", "GitHub Actions (CI/CD)","Pytest", "REST API" ],
+    "dateAdded": "2025-12-04",
+    "modalDescription": "Sistem Informasi Wilayah Indonesia adalah sebuah solusi backend open-source yang dirancang untuk menyediakan akses data administratif Indonesia secara akurat dan terstandarisasi. Proyek ini memuat data lengkap yang mencakup 38 provinsi (termasuk Daerah Otonomi Baru di Papua), 416 kabupaten, dan 98 kota, dengan rujukan utama pada Permendagri No. 137/2017 serta data dari Badan Pusat Statistik (BPS).\n\nAplikasi ini dibangun menggunakan Python modern dengan framework FastAPI untuk memastikan performa yang cepat dan ringan. Di dalamnya telah tertanam berbagai fitur teknis unggulan, seperti mekanisme caching otomatis (ETag) untuk efisiensi bandwidth dan algoritma pencarian wilayah yang fleksibel (fuzzy search). Selain fungsionalitas, proyek ini juga menekankan kualitas kode yang tinggi melalui penerapan pipeline CI/CD otomatis (testing & linting) serta dikemas menggunakan Docker agar siap dijalankan di lingkungan produksi mana pun dengan mudah.",
     "isFeatured": true
   }
 ]
