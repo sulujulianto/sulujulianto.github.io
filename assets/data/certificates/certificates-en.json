@@ -1,32 +1,382 @@
 [
   {
-    "title": "Web Development",
-    "description": "Comprehensive training on semantic HTML, responsive CSS, and interaction patterns for modern web experiences.",
+    "title": "Angular + NestJS",
+    "description": "Engineered scalable full-stack applications by unifying Angular’s component based frontend with robust NestJS backend services.",
     "category": "web-development",
-    "imageUrl": "../assets/img/certificates/en/certificates-1.jpg",
-    "link": "https://www.sololearn.com/certificates/CC-T7PGB62R",
-    "tanggalTerbit": "2023-07-06",
+    "imageUrl": "../assets/img/certificates/en/angular-nestjs.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-LFLS9TIS",
+    "tanggalTerbit": "2022-12-25",
     "tanggalKadaluarsa": "",
     "isFeatured": true
   },
   {
-    "title": "Responsive Web Design",
-    "description": "Built adaptive layouts, mastered media queries, and implemented accessibility-first UI components.",
+    "title": "React + Redux",
+    "description": "Built high-performance user interfaces and implemented predictable global state management for complex web applications.",
     "category": "web-development",
-    "imageUrl": "../assets/img/certificates/en/certificates-2.jpg",
-    "link": "https://www.sololearn.com/certificates/CT-CMGHXTCC",
+    "imageUrl": "../assets/img/certificates/en/react-redux.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-LUBUY7HU",
     "tanggalTerbit": "2022-12-18",
     "tanggalKadaluarsa": "",
     "isFeatured": true
   },
   {
-    "title": "Responsive Web Design",
-    "description": "Focused on fluid grids, scalable typography, and mobile-friendly interactions for content-heavy pages.",
+    "title": "Data Science",
+    "description": "Executed end-to-end data analysis workflows, from cleaning raw datasets to training predictive machine learning models.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/en/data-science.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-5YICQTFP",
+    "tanggalTerbit": "2022-12-28",
+    "tanggalKadaluarsa": "",
+    "isFeatured": true
+  },
+  {
+    "title": "Web Development",
+    "description": "Mastered the core triad of modern web technologies HTML, CSS, and JavaScript to build responsive and interactive web solutions.",
     "category": "web-development",
-    "imageUrl": "../assets/img/certificates/en/certificates-3.jpg",
+    "imageUrl": "../assets/img/certificates/en/web-development.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-T7PGB62R",
+    "tanggalTerbit": "2023-07-06",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Web Development Fundamentals",
+    "description": "Gained a solid grasp of internet protocols (HTTP/HTTPS), browser rendering, and the core technologies powering the web.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/web-development-fundamentals.jpg",
     "link": "https://www.sololearn.com/certificates/CT-JIVDWB9L",
     "tanggalTerbit": "2022-12-17",
     "tanggalKadaluarsa": "",
-    "isFeatured": true
+    "isFeatured": false
+  },
+  {
+    "title": "JavaScript Intermediate",
+    "description": "Deepened scripting expertise by mastering ES6+ features, asynchronous programming, and clean code architectural patterns.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/javascript-intermediate.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-T7XYBHU3",
+    "tanggalTerbit": "2023-03-17",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "JavaScript",
+    "description": "Developed dynamic, interactive web functionalities and mastered the core logic required for modern client-side development.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/javascript.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-XKQPRIVE",
+    "tanggalTerbit": "2022-12-05",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Game Development with JS",
+    "description": "Programmed interactive browser-based games, utilizing HTML5 Canvas and object-oriented logic for rendering graphics.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/game-development-with-js.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-2L6LYFNX",
+    "tanggalTerbit": "2022-12-27",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Responsive Web Design",
+    "description": "Crafted adaptive user interfaces that ensure seamless viewing experiences across mobile, tablet, and desktop devices.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/responsive-web-design.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-CMGHXTCC",
+    "tanggalTerbit": "2022-12-18",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "CSS",
+    "description": "Designed visually engaging web layouts using advanced selectors, Flexbox grid systems, and smooth animations.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/css.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-706VG1KZ",
+    "tanggalTerbit": "2022-11-29",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "HTML",
+    "description": "Constructed the structural backbone of web pages using semantic HTML5 to optimize accessibility and SEO.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/html.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-SIZQG4ME",
+    "tanggalTerbit": "2022-11-25",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "PHP",
+    "description": "Implemented server-side logic to process user data and manage dynamic content generation efficiently.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/php.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-XRBIWL3P",
+    "tanggalTerbit": "2022-12-06",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "jQuery",
+    "description": "Streamlined DOM manipulation and event handling tasks to accelerate frontend development workflows.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/jquery.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-BMWB8LF7",
+    "tanggalTerbit": "2022-12-09",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Coding for Marketers",
+    "description": "Bridged the gap between tech and marketing by using code to automate analytics and optimize digital campaigns.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/en/coding-for-marketers.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-LHJALO5Q",
+    "tanggalTerbit": "2022-12-27",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Machine Learning",
+    "description": "Built and fine-tuned classification and regression models to solve real-world problems using standard ML libraries.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/en/machine-learning.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-YA3LUDFQ",
+    "tanggalTerbit": "2022-12-16",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Python for Data Science",
+    "description": "Leveraged powerful libraries like Pandas and NumPy to manipulate, visualize, and extract insights from large datasets.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/en/python-for-data-science.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-DK6EW7XR",
+    "tanggalTerbit": "2022-11-15",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Python Data Structures",
+    "description": "Optimized code performance and memory usage by choosing the right data structures for specific algorithms.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/en/python-data-structures.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-Z0ANGDS6",
+    "tanggalTerbit": "2022-11-15",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Python for Finance",
+    "description": "Applied Python to financial engineering tasks, including risk assessment, algorithmic trading strategies, and data visualization.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/en/python-for-finance.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-6JBJ3PBJ",
+    "tanggalTerbit": "2022-11-24",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "R",
+    "description": "Conducted statistical analysis and created compelling data visualizations using the R programming environment.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/en/r.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-LX7IMNDC",
+    "tanggalTerbit": "2022-12-11",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "SQL Intermediate",
+    "description": "Designed complex database queries using Joins, Unions, and Subqueries to handle sophisticated data retrieval needs.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/en/sql-intermediate.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-GVJSIPGC",
+    "tanggalTerbit": "2023-03-18",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "SQL",
+    "description": "Managed relational database systems and performed essential data operations (CRUD) with precision.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/en/sql.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-FG2B4AY7",
+    "tanggalTerbit": "2022-12-11",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Tech for Everyone",
+    "description": "Acquired a broad perspective on the digital landscape, focusing on internet safety, privacy, and emerging tech trends.",
+    "category": "ai-data",
+    "imageUrl": "../assets/img/certificates/en/tech-for-everyone.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-MVAF6ZMD",
+    "tanggalTerbit": "2023-03-21",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Go",
+    "description": "Mastered Google's Go language fundamentals, focusing on concurrency, efficient memory handling, and modern backend development.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/go.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-XNTYJ9AR",
+    "tanggalTerbit": "2022-12-28",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Introduction to Java",
+    "description": "Acquired foundational knowledge in Java syntax, object-oriented concepts, and core programming logic.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/introduction-to-java.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-XAKTDG45",
+    "tanggalTerbit": "2023-07-09",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Java Intermediate",
+    "description": "Mastered Object-Oriented Programming principles, exception handling, and file operations to build robust Java applications.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/java-intermediate.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-HLFCB8YQ",
+    "tanggalTerbit": "2023-03-18",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Java",
+    "description": "Developed backend logic and reliable applications using the fundamental syntax and structure of Java.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/java.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-FGHBRKP8",
+    "tanggalTerbit": "2022-12-06",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Kotlin",
+    "description": "Built concise and safe Android-ready applications leveraging Kotlin's modern features and interoperability.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/kotlin.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-IV1DFLIF",
+    "tanggalTerbit": "2022-11-12",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "C++ Intermediate",
+    "description": "Implemented high-efficiency code using advanced C++ concepts like pointers, memory management, and templates.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/cpp-intermediate.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-G55JUPEL",
+    "tanggalTerbit": "2023-03-25",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "C++",
+    "description": "Developed performance-critical applications by utilizing the speed and low-level control of the C++ language.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/cpp.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-AQNUSQLG",
+    "tanggalTerbit": "2022-12-08",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "C# Intermediate",
+    "description": "Enhanced application capabilities using C# advanced features such as Generics, LINQ, and Delegates.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/c-sharp-intermediate.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-DQBMJBBX",
+    "tanggalTerbit": "2023-03-27",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "C#",
+    "description": "Created scalable logic for .NET applications using C# fundamentals and Object-Oriented principles.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/c-sharp.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-FTCWACTK",
+    "tanggalTerbit": "2022-12-09",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "C Intermediate",
+    "description": "Mastered system-level programming with deep dives into memory allocation, pointers, and struct management.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/c-intermediate.jpg",
+    "link": "https://www.sololearn.com/certificates/CC-TVPQQYR7",
+    "tanggalTerbit": "2023-03-22",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "C",
+    "description": "Wrote efficient, close-to-metal code, gaining a strong understanding of compilation and computer architecture.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/c.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-PGTWA7CH",
+    "tanggalTerbit": "2022-12-06",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Intermediate Python",
+    "description": "Wrote cleaner, more efficient Python scripts using functional programming tools like Lambda and Decorators.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/intermediate-python.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-BC2UHFSY",
+    "tanggalTerbit": "2022-11-17",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Python Core",
+    "description": "Solidified programming logic and mastered the Python standard library for versatile application development.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/python-core.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-LWXUVJGX",
+    "tanggalTerbit": "2022-11-24",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Python for Beginners",
+    "description": "Kickstarted the software development journey by mastering foundational Python syntax and algorithmic thinking.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/python-for-beginners.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-DEBVHPZL",
+    "tanggalTerbit": "2022-11-09",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Ruby",
+    "description": "Developed elegant, maintainable code using Ruby's expressive syntax and developer-centric philosophy.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/ruby.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-GI8FRNB9",
+    "tanggalTerbit": "2022-12-11",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
+  },
+  {
+    "title": "Swift 4",
+    "description": "Built type-safe, performant iOS-ready code using modern Swift programming paradigms.",
+    "category": "programming",
+    "imageUrl": "../assets/img/certificates/en/swift-4.jpg",
+    "link": "https://www.sololearn.com/certificates/CT-BIAYDXAK",
+    "tanggalTerbit": "2022-12-10",
+    "tanggalKadaluarsa": "",
+    "isFeatured": false
   }
 ]
