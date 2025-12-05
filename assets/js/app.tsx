@@ -15,9 +15,9 @@
         title: string;
         description: string;
         category?: string;
-        imageUrl: string;
-        githubUrl?: string;
-        liveUrl?: string;
+    imageUrl: string;
+    githubUrl?: string;
+    liveUrl?: string;
         techStack?: string[];
         dateAdded?: string;
         modalDescription?: string;
@@ -251,8 +251,8 @@
                 <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
                 {item.techStack && item.techStack.length > 0 && (
                     <div className="mt-2">
-                        <p className="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1">{labels.techStack}</p>
-                        <p className="text-sm text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
+                        <p className="text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white mb-1">{labels.techStack}</p>
+                        <p className="text-sm font-normal text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
                     </div>
                 )}
             </div>
@@ -543,6 +543,36 @@
             }
         }, [availableCategories, filter]);
 
+        const CertificateImage: React.FC<{ item: CertificateItem }> = ({ item }) => {
+            const [isPortrait, setIsPortrait] = React.useState(false);
+
+            const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+                const img = event.currentTarget;
+                if (img.naturalHeight > img.naturalWidth) {
+                    setIsPortrait(true);
+                }
+            };
+
+            const containerStyle = isPortrait
+                ? { height: '240px', padding: '12px' }
+                : { aspectRatio: '5 / 3' };
+
+            return (
+                <div
+                    className="w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center"
+                    style={containerStyle}
+                >
+                    <img
+                        src={item.imageUrl}
+                        alt={item.title}
+                        loading="lazy"
+                        className="w-full h-full object-contain"
+                        onLoad={handleLoad}
+                    />
+                </div>
+            );
+        };
+
         return (
             <div>
                 {showFiltersProjects && (
@@ -764,6 +794,64 @@
             }
         }, [availableCategories, filter]);
 
+        const CertificateImage: React.FC<{ item: CertificateItem }> = ({ item }) => {
+            const [isPortrait, setIsPortrait] = React.useState(false);
+
+            const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+                const img = event.currentTarget;
+                if (img.naturalHeight > img.naturalWidth) {
+                    setIsPortrait(true);
+                }
+            };
+
+            const containerStyle: React.CSSProperties = isPortrait
+                ? {
+                      position: 'relative',
+                      overflow: 'hidden',
+                      height: '240px',
+                      padding: '12px',
+                  }
+                : {
+                      position: 'relative',
+                      overflow: 'hidden',
+                      aspectRatio: '5 / 3',
+                  };
+
+            const portraitBgStyle: React.CSSProperties = isPortrait
+                ? {
+                      position: 'absolute',
+                      inset: 0,
+                      backgroundImage: `url(${item.imageUrl})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      filter: 'blur(12px)',
+                      transform: 'scale(1.1)',
+                      opacity: 0.35,
+                  }
+                : {};
+
+            const imgStyle: React.CSSProperties = isPortrait
+                ? {
+                      position: 'relative',
+                      maxHeight: '90%',
+                      maxWidth: '70%',
+                      objectFit: 'contain',
+                  }
+                : {
+                      position: 'relative',
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                  };
+
+            return (
+                <div className="w-full flex items-center justify-center bg-slate-100 dark:bg-slate-800" style={containerStyle}>
+                    {isPortrait && <div style={portraitBgStyle} aria-hidden="true"></div>}
+                    <img src={item.imageUrl} alt={item.title} loading="lazy" style={imgStyle} onLoad={handleLoad} />
+                </div>
+            );
+        };
+
         return (
             <div>
                 {showFiltersCertificates && (
@@ -783,7 +871,7 @@
                         error={error}
                         labels={labels}
                         renderCard={(item, index) => {
-                            const detailUrl = item.link || item.fullImageUrl || item.imageUrl;
+                            const detailUrl = (item.link && item.link !== '#') ? item.link : item.fullImageUrl || item.imageUrl;
                             const Wrapper: React.ElementType = detailUrl ? 'a' : 'div';
                             const wrapperProps = detailUrl
                                 ? { href: detailUrl, target: '_blank', rel: 'noopener noreferrer' }
@@ -796,23 +884,20 @@
                                     style={{ '--card-index': index } as React.CSSProperties}
                                     {...wrapperProps}
                                 >
-                                    <div className="w-full overflow-hidden" style={{ aspectRatio: '5 / 3' }}>
-                                        <img
-                                            src={item.imageUrl}
-                                            alt={item.title}
-                                            loading="lazy"
-                                            className="w-full h-full object-contain"
-                                        />
-                                    </div>
-                                <div className="p-5 flex flex-col flex-grow gap-2">
-                                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
-                                    <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
+                                    <CertificateImage item={item} />
+                                    <div className="p-5 flex flex-col flex-grow gap-2">
+                                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                                        <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
                                         <div className="mt-4 text-sm text-gray-700 dark:text-gray-300 space-y-1">
                                             {item.tanggalTerbit && (
-                                                <p><span className="font-semibold">{labels.issued}</span> {item.tanggalTerbit}</p>
+                                                <p>
+                                                    <span className="font-semibold">{labels.issued}</span> {item.tanggalTerbit}
+                                                </p>
                                             )}
                                             {item.tanggalKadaluarsa && (
-                                                <p><span className="font-semibold">{labels.expires}</span> {item.tanggalKadaluarsa}</p>
+                                                <p>
+                                                    <span className="font-semibold">{labels.expires}</span> {item.tanggalKadaluarsa}
+                                                </p>
                                             )}
                                         </div>
                                     </div>

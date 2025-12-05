@@ -147,8 +147,8 @@
             React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white" }, item.title),
             React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300 flex-grow" }, item.description),
             item.techStack && item.techStack.length > 0 && (React.createElement("div", { className: "mt-2" },
-                React.createElement("p", { className: "text-xs font-semibold uppercase text-gray-500 dark:text-gray-400 mb-1" }, labels.techStack),
-                React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300" }, item.techStack.join(', '))))));
+                React.createElement("p", { className: "text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white mb-1" }, labels.techStack),
+                React.createElement("p", { className: "text-sm font-normal text-gray-700 dark:text-gray-300" }, item.techStack.join(', '))))));
         if (asLink) {
             return (React.createElement("a", { href: asLink, className: className, style: { '--card-index': animationIndex }, onClick: onAction },
                 imageBlock,
@@ -340,6 +340,20 @@
                 setFilter('*');
             }
         }, [availableCategories, filter]);
+        const CertificateImage = ({ item }) => {
+            const [isPortrait, setIsPortrait] = React.useState(false);
+            const handleLoad = (event) => {
+                const img = event.currentTarget;
+                if (img.naturalHeight > img.naturalWidth) {
+                    setIsPortrait(true);
+                }
+            };
+            const containerStyle = isPortrait
+                ? { height: '240px', padding: '12px' }
+                : { aspectRatio: '5 / 3' };
+            return (React.createElement("div", { className: "w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center", style: containerStyle },
+                React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-contain", onLoad: handleLoad })));
+        };
         return (React.createElement("div", null,
             showFiltersProjects && (React.createElement("div", { className: "flex flex-wrap justify-center gap-3 mb-10", role: "group", "aria-label": "Project categories" }, availableCategories.map((category) => (React.createElement(FilterButton, { key: category.id, isActive: filter === category.id, onClick: () => setFilter(category.id) }, category.label))))),
             React.createElement("div", { className: gridClass, role: "list" },
@@ -493,18 +507,66 @@
                 setFilter('*');
             }
         }, [availableCategories, filter]);
+        const CertificateImage = ({ item }) => {
+            const [isPortrait, setIsPortrait] = React.useState(false);
+            const handleLoad = (event) => {
+                const img = event.currentTarget;
+                if (img.naturalHeight > img.naturalWidth) {
+                    setIsPortrait(true);
+                }
+            };
+            const containerStyle = isPortrait
+                ? {
+                    position: 'relative',
+                    overflow: 'hidden',
+                    height: '240px',
+                    padding: '12px',
+                }
+                : {
+                    position: 'relative',
+                    overflow: 'hidden',
+                    aspectRatio: '5 / 3',
+                };
+            const portraitBgStyle = isPortrait
+                ? {
+                    position: 'absolute',
+                    inset: 0,
+                    backgroundImage: `url(${item.imageUrl})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    filter: 'blur(12px)',
+                    transform: 'scale(1.1)',
+                    opacity: 0.35,
+                }
+                : {};
+            const imgStyle = isPortrait
+                ? {
+                    position: 'relative',
+                    maxHeight: '90%',
+                    maxWidth: '70%',
+                    objectFit: 'contain',
+                }
+                : {
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                };
+            return (React.createElement("div", { className: "w-full flex items-center justify-center bg-slate-100 dark:bg-slate-800", style: containerStyle },
+                isPortrait && React.createElement("div", { style: portraitBgStyle, "aria-hidden": "true" }),
+                React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", style: imgStyle, onLoad: handleLoad })));
+        };
         return (React.createElement("div", null,
             showFiltersCertificates && (React.createElement("div", { className: "flex flex-wrap justify-center gap-3 mb-10", role: "group", "aria-label": "Certificate categories" }, availableCategories.map((category) => (React.createElement(FilterButton, { key: category.id, isActive: filter === category.id, onClick: () => setFilter(category.id) }, category.label))))),
             React.createElement("div", { className: gridClass, role: "list" },
                 React.createElement(PortfolioGrid, { data: visibleData, isLoading: isLoading, error: error, labels: labels, renderCard: (item, index) => {
-                        const detailUrl = item.link || item.fullImageUrl || item.imageUrl;
+                        const detailUrl = (item.link && item.link !== '#') ? item.link : item.fullImageUrl || item.imageUrl;
                         const Wrapper = detailUrl ? 'a' : 'div';
                         const wrapperProps = detailUrl
                             ? { href: detailUrl, target: '_blank', rel: 'noopener noreferrer' }
                             : { role: 'article' };
                         return (React.createElement(Wrapper, { key: `${item.title}-${index}`, className: "card flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white/70 dark:bg-slate-800 card-appear", style: { '--card-index': index }, ...wrapperProps },
-                            React.createElement("div", { className: "w-full overflow-hidden", style: { aspectRatio: '5 / 3' } },
-                                React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-contain" })),
+                            React.createElement(CertificateImage, { item: item }),
                             React.createElement("div", { className: "p-5 flex flex-col flex-grow gap-2" },
                                 React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white mb-2" }, item.title),
                                 React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300 flex-grow" }, item.description),

@@ -184,22 +184,22 @@ html.dark .project-modal__description {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 700;
-  font-size: 0.75rem;
-  color: #64748b;
+  font-size: 0.85rem;
+  color: #0f172a;
   margin-bottom: 0.3rem;
 }
 
 html.dark .project-modal__label {
-  color: #a5b4cf;
+  color: #e2e8f0;
 }
 
 .project-modal__tech {
-  color: #1e293b;
-  font-weight: 500;
+  color: #1f2937;
+  font-weight: 400;
 }
 
 html.dark .project-modal__tech {
-  color: #e2e8f0;
+  color: #cbd5e1;
 }
 
 .project-modal__actions {
