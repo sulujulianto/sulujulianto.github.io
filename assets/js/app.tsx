@@ -15,9 +15,9 @@
         title: string;
         description: string;
         category?: string;
-    imageUrl: string;
-    githubUrl?: string;
-    liveUrl?: string;
+        imageUrl: string;
+        githubUrl?: string;
+        liveUrl?: string;
         techStack?: string[];
         dateAdded?: string;
         modalDescription?: string;
