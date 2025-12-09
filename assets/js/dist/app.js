@@ -253,7 +253,7 @@
             return () => abortController.abort();
         }, [basePath, localeKey]);
         React.useEffect(() => {
-            const path = `${basePath}assets/data/categories/projects/${localeKey}.json`;
+            const path = `${basePath}assets/data/categories/projects/project-categories-${localeKey}.json`;
             const fallbackList = buildCategoryList(undefined, ALL_CATEGORY_LABEL[localeKey]);
             setCategoryDefinitions(fallbackList);
             fetch(path)
@@ -426,7 +426,7 @@
             return () => abortController.abort();
         }, [basePath, localeKey]);
         React.useEffect(() => {
-            const path = `${basePath}assets/data/categories/certificates/${localeKey}.json`;
+            const path = `${basePath}assets/data/categories/certificates/certificate-categories-${localeKey}.json`;
             const fallbackList = buildCategoryList(undefined, ALL_CATEGORY_LABEL[localeKey]);
             setCategoryDefinitions(fallbackList);
             fetch(path)
@@ -520,12 +520,18 @@
                     position: 'relative',
                     overflow: 'hidden',
                     height: '240px',
-                    padding: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                 }
                 : {
                     position: 'relative',
                     overflow: 'hidden',
-                    aspectRatio: '5 / 3',
+                    aspectRatio: '16 / 9',
+                    display: 'flex',
+                    alignItems: 'stretch',
+                    justifyContent: 'stretch',
+                    backgroundColor: 'transparent',
                 };
             const portraitBgStyle = isPortrait
                 ? {
@@ -536,7 +542,7 @@
                     backgroundPosition: 'center',
                     filter: 'blur(12px)',
                     transform: 'scale(1.1)',
-                    opacity: 0.35,
+                    opacity: 0.25,
                 }
                 : {};
             const imgStyle = isPortrait
@@ -545,12 +551,16 @@
                     maxHeight: '90%',
                     maxWidth: '70%',
                     objectFit: 'contain',
+                    display: 'block',
                 }
                 : {
                     position: 'relative',
                     width: '100%',
                     height: '100%',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
                     objectFit: 'contain',
+                    display: 'block',
                 };
             return (React.createElement("div", { className: "w-full flex items-center justify-center bg-slate-100 dark:bg-slate-800", style: containerStyle },
                 isPortrait && React.createElement("div", { style: portraitBgStyle, "aria-hidden": "true" }),
