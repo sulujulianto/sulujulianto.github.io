@@ -16,6 +16,9 @@ import { formatDateToYYYYMMDD } from "../../utils/date-utils";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
+	if (blogEntries.length === 0) {
+		return [];
+	}
 	return blogEntries.map((entry) => ({
 		params: { slug: entry.slug },
 		props: { entry },

@@ -1,3 +1,5 @@
+import path from "node:path";
+import fs from "node:fs";
 import { type CollectionEntry, getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
@@ -9,7 +11,12 @@ async function getRawSortedPosts() {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
-	const sorted = allBlogPosts.sort((a, b) => {
+	const contentRoot = path.resolve(process.cwd(), "src", "content", "posts");
+	const existingPosts = allBlogPosts.filter((post) =>
+		fs.existsSync(path.join(contentRoot, post.id)),
+	);
+
+	const sorted = existingPosts.sort((a, b) => {
 		const dateA = new Date(a.data.published);
 		const dateB = new Date(b.data.published);
 		return dateA > dateB ? -1 : 1;

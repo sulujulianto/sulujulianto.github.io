@@ -1,74 +1,41 @@
-# 🌐 Sulu Edward Julianto — Personal Portfolio
+# sulujulianto.github.io
 
-This repository powers **sulujulianto.github.io**—a multi-language personal portfolio currently deployed via GitHub Pages.  
+Repo ini berisi:
+- Portfolio statis di root.
+- Blog statis di `/blog` yang dihasilkan dari source di `/blog-fuwari`.
 
-> 🎯 Goal: deliver a fast, responsive, and maintainable profile that still feels professional to fellow developers.
+## Struktur folder
+- `/` : portfolio (jangan diubah struktur/format tanpa perlu)
+- `/blog` : output build blog (jangan edit manual)
+- `/blog-fuwari` : source blog (Astro + Fuwari)
+- `/docs` : dokumentasi pemeliharaan
 
----
-
-## ✨ Key Features
-
-- **Full locale coverage** (ID / EN / JA / ZH) with dedicated project & certificate data per language.
-- **Project & certificate vaults** with modal detail views, featured highlights, and optional hi-res assets.
-- **Dark/light theme**, subtle animations, and responsive grids optimized for desktop & mobile.
-- **Static blog** for Markdown-based posts.
-- **Contact section** using FormSubmit plus direct channels (email/phone/Telegram) for mobile users.
-
----
-
-## 🗂 Project Structure
-
-```
-.
-├── assets
-│   ├── css          # Tailwind entry (main.css) + modal styling
-│   ├── js           # React widgets + compiled dist/app.js
-│   └── data
-│       ├── projects/projects-<locale>.json
-│       ├── certificates/certificates-<locale>.json
-│       └── categories/
-│           ├── projects/<locale>.json
-│           └── certificates/<locale>.json
-├── <locale>/index.html  # Locale-specific landing pages
-└── blog/                # Static blog page
-```
-
-Tips:
-- Add or edit projects/certificates by updating the JSON files.  
-- Use `fullImageUrl` on certificates to open high-res versions in new tabs without bloating the main grid.  
-- `assets/js/dist/app.js` is generated from `assets/js/app.tsx` so that GitHub Pages serves a plain JS bundle (no runtime Babel).
-
----
-
-## 🛠 Tech Stack
-
-- HTML5, CSS3, Tailwind CSS
-- TypeScript + React 18 (rendered via `dist/app.js`)
-- PostCSS / Autoprefixer
-- FormSubmit (contact form integration)
-- GitHub Pages (current hosting; easily migratable)
-
----
-
-## 🚀 Local Development
-
+## Quick commands (blog)
+Dari root repo:
 ```bash
-npm install            # install dev dependencies
-npm run tailwind:build # regenerate assets/css/output.css
-npm run ts:build       # compile assets/js/dist/app.js
-npm run dev            # or use Live Server/http-server for preview
+npm run blog:dev
+npm run blog:build
+npm run blog:doctor
+```
+Atau langsung:
+```bash
+cd blog-fuwari
+pnpm dev
+pnpm build
+pnpm doctor
 ```
 
-> When migrating to a custom domain or another hosting provider, keep relative paths (`../`) consistent or adjust build tooling accordingly.
+## Cara menambah post
+Ringkasnya: buat file markdown baru di `blog-fuwari/src/content/posts/` lalu build.
+Panduan lengkap: `docs/WRITE-POSTS.md`.
 
----
+## Update Fuwari
+Panduan aman update template ada di: `docs/UPDATE-FUWARI.md`.
 
-## 📬 Contact
+## Banner & favicon
+- Banner: `blog-fuwari/public/assets/images/banner.webp`
+- Favicon: `blog-fuwari/public/favicon/icon.png`
+Catatan: favicon sering cache, lakukan hard refresh bila belum berubah.
 
-- Email: [sulucodes@gmail.com](mailto:sulucodes@gmail.com)  
-- LinkedIn: [linkedin.com/in/sulujulianto](https://linkedin.com/in/sulujulianto)  
-- GitHub: [github.com/SuluJulianto](https://github.com/SuluJulianto)
-
----
-
-Designed & maintained by **Sulu Edward Julianto**.
+## Recovery / setup ulang
+Lihat `docs/SETUP-BARU.md`.

@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind:build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css",
     "tailwind:watch": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --watch",
-    "ts:build": "tsc -p tsconfig.runtime.json"
+    "ts:build": "tsc -p tsconfig.runtime.json",
+    "blog:dev": "cd blog-fuwari && pnpm dev",
+    "blog:build": "cd blog-fuwari && pnpm build",
+    "blog:doctor": "cd blog-fuwari && pnpm doctor"
   },
   "keywords": [
     "portfolio",

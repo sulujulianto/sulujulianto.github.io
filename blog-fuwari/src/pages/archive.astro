@@ -6,9 +6,15 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPostsList } from "../utils/content-utils";
 
 const sortedPostsList = await getSortedPostsList();
+const hasPosts = sortedPostsList.length > 0;
 ---
 
 <MainGridLayout title={i18n(I18nKey.archive)}>
-    <ArchivePanel sortedPosts={sortedPostsList} client:only="svelte"></ArchivePanel>
+    {hasPosts ? (
+        <ArchivePanel sortedPosts={sortedPostsList} client:only="svelte"></ArchivePanel>
+    ) : (
+        <div class="card-base px-8 py-6 text-center text-75">
+            Belum ada postingan. Silakan buat post baru di blog-fuwari/src/content/posts/.
+        </div>
+    )}
 </MainGridLayout>
-

@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Sulu Edward Julianto</title><description>Blog</description><link>https://sulujulianto.github.io/</link><language>en</language><item><title>Mulai Menulis</title><link>https://sulujulianto.github.io/blog/posts/mulai-menulis/</link><guid isPermaLink="true">https://sulujulianto.github.io/blog/posts/mulai-menulis/</guid><description>Template awal untuk mulai menulis artikel.</description><pubDate>Sun, 28 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Ini adalah template awal untuk menulis artikel.
-Silakan ganti teks ini dengan topik yang ingin dibahas.&lt;/p&gt;
-&lt;h2&gt;Problem&lt;/h2&gt;
-&lt;p&gt;Jelaskan masalah atau konteks yang ingin diselesaikan.&lt;/p&gt;
-&lt;h2&gt;Solution&lt;/h2&gt;
-&lt;p&gt;Tuliskan solusi atau pendekatan yang kamu lakukan.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;const message = &quot;Mulai menulis dengan struktur yang jelas.&quot;;
-console.log(message);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2&gt;Notes&lt;/h2&gt;
-&lt;p&gt;Tambahkan catatan tambahan, referensi, atau langkah lanjutan.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/covers/nama-file.webp&quot; alt=&quot;Contoh gambar&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;Letakkan gambar di public/assets/covers/ lalu referensikan /assets/covers/nama-file.webp.&lt;/p&gt;
-</content:encoded></item></channel></rss>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Sulu Edward Julianto</title><description>Blog</description><link>https://sulujulianto.github.io/</link><language>en</language></channel></rss>
