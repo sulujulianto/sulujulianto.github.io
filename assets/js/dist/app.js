@@ -511,28 +511,17 @@
             const [isPortrait, setIsPortrait] = React.useState(false);
             const handleLoad = (event) => {
                 const img = event.currentTarget;
-                if (img.naturalHeight > img.naturalWidth) {
-                    setIsPortrait(true);
-                }
+                const isImagePortrait = img.naturalHeight > img.naturalWidth;
+                setIsPortrait(isImagePortrait);
             };
-            const containerStyle = isPortrait
-                ? {
-                    position: 'relative',
-                    overflow: 'hidden',
-                    height: '240px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }
-                : {
-                    position: 'relative',
-                    overflow: 'hidden',
-                    aspectRatio: '16 / 9',
-                    display: 'flex',
-                    alignItems: 'stretch',
-                    justifyContent: 'stretch',
-                    backgroundColor: 'transparent',
-                };
+            const containerStyle = {
+                position: 'relative',
+                overflow: 'hidden',
+                aspectRatio: '1414 / 1000',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            };
             const portraitBgStyle = isPortrait
                 ? {
                     position: 'absolute',
@@ -548,8 +537,9 @@
             const imgStyle = isPortrait
                 ? {
                     position: 'relative',
-                    maxHeight: '90%',
-                    maxWidth: '70%',
+                    height: '100%',
+                    width: 'auto',
+                    maxWidth: '100%',
                     objectFit: 'contain',
                     display: 'block',
                 }
@@ -557,9 +547,8 @@
                     position: 'relative',
                     width: '100%',
                     height: '100%',
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    objectFit: 'contain',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
                     display: 'block',
                 };
             return (React.createElement("div", { className: "w-full flex items-center justify-center bg-slate-100 dark:bg-slate-800", style: containerStyle },

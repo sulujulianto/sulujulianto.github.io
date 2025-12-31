@@ -1,10 +1,10 @@
 ---
 title: "Judul Postingan"
 published: 2025-01-01
-updated: 2025-01-01
+updated: 2025-01-02
 description: "Ringkasan singkat isi postingan."
-image: "/assets/covers/nama-file.webp"
-tags: ["Blog"]
+image: "./cover.webp"
+tags: ["Blog", "lang:id"]
 category: "General"
 draft: true
 lang: "id"
@@ -29,4 +29,4 @@ console.log(message);
 
 Tambahkan catatan tambahan.
 
-![Contoh gambar](/assets/covers/nama-file.webp)
+![Contoh gambar](./images/contoh.webp)

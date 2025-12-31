@@ -1,48 +1,76 @@
-# Update Fuwari (Fork/Upstream) Tanpa Merusak Kustomisasi
+# Update Fuwari Tanpa Merusak Kustomisasi
 
-## Konsep
-Folder `/blog-fuwari` adalah source vendor dari template Fuwari. Semua kustomisasi berada di sini dan hasil build berada di `/blog`.
+## Prinsip utama
+- `/blog-fuwari` adalah source template (vendor) yang sudah dikustom.
+- `/blog` adalah output build. **Jangan edit manual**.
 
-## File kustom yang harus dipertahankan
+## MUST-KEEP (wajib dipertahankan untuk repo ini)
+**Konfigurasi dan script:**
 - `blog-fuwari/src/config.ts`
-- `blog-fuwari/src/content/spec/about.md`
-- `blog-fuwari/src/content/posts/` (postingan Anda)
 - `blog-fuwari/astro.config.mjs`
-- `blog-fuwari/package.json` (scripts build, prebuild, doctor, clean)
+- `blog-fuwari/package.json` (scripts prebuild/build/doctor)
+- `blog-fuwari/scripts/clean-blog-outdir.mjs`
+- `blog-fuwari/scripts/ensure-blog-nojekyll.mjs`
+- `blog-fuwari/scripts/doctor.mjs`
+
+**Halaman dan util yang sudah dikustom:**
+- `blog-fuwari/src/pages/[...page].astro`
+- `blog-fuwari/src/pages/archive.astro`
+- `blog-fuwari/src/pages/posts/[...slug].astro`
+- `blog-fuwari/src/utils/content-utils.ts`
+
+**Konten blog:**
+- `blog-fuwari/src/content/spec/about.md`
+- `blog-fuwari/src/content/posts/**` (semua post + `_TEMPLATE.md`)
+
+**Asset public:**
 - `blog-fuwari/public/assets/images/banner.webp`
+- `blog-fuwari/public/assets/images/avatar.jpg` (jika dipakai)
 - `blog-fuwari/public/favicon/icon.png`
 
-## Metode 1 (GitHub UI)
-1) Buka repo Fuwari Anda (fork) di GitHub.
-2) Klik "Sync fork" untuk update dari upstream.
-3) Download zip terbaru.
-4) Ganti isi `/blog-fuwari` dengan versi baru.
-5) Kembalikan file kustom (lihat daftar di atas).
-6) Jalankan `pnpm install` dan `pnpm build`.
+**Root repo:**
+- `.nojekyll`
+- `README.md`
+- `docs/**`
+- `package.json` (script blog:dev/blog:build/blog:doctor)
 
-## Metode 2 (Git)
-1) Tambahkan upstream:
-```bash
-git remote add upstream https://github.com/saicaca/fuwari.git
-```
-2) Ambil update:
-```bash
-git fetch upstream
-```
-3) Update folder blog-fuwari (manual copy dari upstream atau merge branch).
-4) Restore file kustom.
-5) `pnpm install` lalu `pnpm build`.
+## Metode 1 (rekomendasi): Replace manual yang aman
+1) Backup folder `blog-fuwari` ke tempat lain.
+2) Ambil template Fuwari terbaru (zip) ke folder sementara.
+3) Replace isi `blog-fuwari` dengan versi terbaru.
+4) Kembalikan semua file pada daftar MUST-KEEP.
+5) Jalankan:
+   ```bash
+   cd blog-fuwari
+   pnpm install
+   pnpm doctor
+   pnpm build
+   ```
+6) Verifikasi hasil di `/blog`.
 
-## Cara aman merge
-1) Backup file kustom ke tempat aman.
-2) Update template Fuwari.
-3) Restore file kustom.
-4) `pnpm install`.
-5) `pnpm build`.
-6) Cek hasil di `/blog`.
+## Metode 2 (opsional): Workflow git upstream
+1) Tambah remote upstream:
+   ```bash
+   git remote add upstream https://github.com/saicaca/fuwari.git
+   git fetch upstream
+   ```
+2) Tarik perubahan upstream ke branch sementara.
+3) Sync isi `/blog-fuwari` dengan upstream.
+4) Restore semua file pada daftar MUST-KEEP.
+5) Jalankan `pnpm install`, `pnpm doctor`, `pnpm build`.
+
+## Cara mengetahui perubahan upstream
+Gunakan diff sederhana dari folder sementara:
+```bash
+diff -qr fuwari-upstream/ blog-fuwari/
+```
+Atau bandingkan file tertentu dengan `git diff`.
 
 ## Checklist setelah update
-- `blog-fuwari/astro.config.mjs` base dan outDir masih benar.
-- `blog-fuwari/package.json` build masih menunjuk ke `../blog` + `_pagefind`.
-- Banner dan favicon tampil di `/blog`.
-- Blog bisa di-build tanpa error.
+- [ ] `pnpm install` (di `blog-fuwari`)
+- [ ] `pnpm doctor`
+- [ ] `pnpm build`
+- [ ] `/blog/.nojekyll` ada
+- [ ] `blog/assets/images/banner.webp` ada
+- [ ] `blog/favicon/icon.png` ada
+- [ ] Post dan halaman tampil normal

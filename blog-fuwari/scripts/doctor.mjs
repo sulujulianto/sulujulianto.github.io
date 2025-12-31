@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { execSync } from "node:child_process";
 
 const rootDir = path.resolve(process.cwd(), "..");
 const outDir = path.join(rootDir, "blog");
@@ -31,10 +32,26 @@ addCheck(
 
 const pkgJson = fs.existsSync(pkgPath) ? JSON.parse(fs.readFileSync(pkgPath, "utf-8")) : {};
 const buildScript = pkgJson.scripts?.build || "";
+const prebuildScript = pkgJson.scripts?.prebuild || "";
 addCheck(
   "package.json: build script",
   buildScript.includes("pagefind --site ../blog") && buildScript.includes("_pagefind"),
   "build should run pagefind to ../blog/_pagefind"
+);
+addCheck(
+  "package.json: prebuild script",
+  prebuildScript.includes("clean-blog-outdir.mjs"),
+  "prebuild should run scripts/clean-blog-outdir.mjs"
+);
+
+const cleanScriptPath = path.join(process.cwd(), "scripts", "clean-blog-outdir.mjs");
+const cleanScriptText = fs.existsSync(cleanScriptPath)
+  ? fs.readFileSync(cleanScriptPath, "utf-8")
+  : "";
+addCheck(
+  "clean-blog-outdir safety",
+  cleanScriptText.includes("endsWith") && cleanScriptText.includes("path.relative"),
+  "clean script should validate outDir safety"
 );
 
 const bannerPath = path.join(process.cwd(), "public", "assets", "images", "banner.webp");
@@ -52,6 +69,26 @@ addCheck(
   fs.existsSync(outNoJekyll),
   "run pnpm build to create /blog/.nojekyll"
 );
+
+if (fs.existsSync(path.join(rootDir, "node_modules"))) {
+  console.log("WARN - root node_modules exists (OK if not tracked in git)");
+}
+
+try {
+  const tracked = execSync("git ls-files node_modules", {
+    cwd: rootDir,
+    stdio: ["ignore", "pipe", "ignore"],
+  })
+    .toString()
+    .trim();
+  addCheck(
+    "node_modules not tracked",
+    tracked.length === 0,
+    "node_modules still tracked in git"
+  );
+} catch {
+  console.log("WARN - git not available, skip tracked node_modules check");
+}
 
 let failed = 0;
 for (const c of checks) {

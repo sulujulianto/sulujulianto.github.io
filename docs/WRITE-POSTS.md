@@ -1,20 +1,23 @@
-# Cara Membuat Postingan (Rapi, Ada Cover, Gambar, Multi Bahasa)
+# Cara Membuat Postingan (Rapi, Ada Cover, Multi Bahasa)
 
 ## Lokasi post
-Semua post berada di:
+Semua postingan berada di:
 ```
 blog-fuwari/src/content/posts/
 ```
 
 ## Rekomendasi struktur (1 folder per post)
+Contoh struktur yang rapi:
 ```
-blog-fuwari/src/content/posts/nama-slug/
+blog-fuwari/src/content/posts/my-first-post/
   index.md
   cover.webp
-  gambar-1.webp
+  images/
+    diagram.webp
+    screenshot.webp
 ```
 
-## Contoh frontmatter lengkap
+## Template frontmatter lengkap (copy-paste)
 ```md
 ---
 title: "Judul Postingan"
@@ -22,45 +25,61 @@ published: 2025-01-01
 updated: 2025-01-02
 description: "Ringkasan singkat isi postingan."
 image: "./cover.webp"
-tags: ["Blog", "Tutorial"]
+tags: ["Blog", "Tutorial", "lang:id"]
 category: "General"
 draft: false
 lang: "id"
 ---
 ```
+Catatan:
+- `updated` opsional, boleh dihapus jika tidak dipakai.
+- `image` opsional, tetapi disarankan untuk cover.
+- `draft: true` menyembunyikan postingan dari build.
 
-## Tentang lang
-- `lang` dipakai untuk menandai bahasa konten (mis: id, en, ja, zh).
-- Disarankan konsisten untuk setiap post.
-- Jika ingin bahasa sebagai tag juga, gunakan pola seperti `lang:id` di tags.
+## Tentang `lang`
+- `lang` menandai bahasa konten: `id`, `en`, `ja`, `zh`.
+- Konsisten gunakan `lang` agar metadata rapi.
+- Jika ingin bahasa juga muncul sebagai tag, gunakan pola `lang:id`.
 
-## Cara menaruh cover
-- Jika cover berada di folder post: `image: "./cover.webp"`
-- Jika cover di public: `image: "/assets/covers/nama-file.webp"`
+## Aturan cover image
+- Simpan cover di folder post, lalu referensikan:
+  - `image: "./cover.webp"`
+- Alternatif (public): simpan di `blog-fuwari/public/assets/covers/` lalu referensikan:
+  - `image: "/assets/covers/nama-file.webp"`
 
 ## Gambar di isi post
-Gunakan relative path (direkomendasikan):
+Gunakan path relatif dari folder post:
 ```md
-![Contoh gambar](./gambar-1.webp)
+![Contoh gambar](./images/diagram.webp)
 ```
 
 ## Contoh code block
-```ts
-const message = "Halo blog";
-console.log(message);
+```js
+const title = "Halo Blog";
+console.log(title);
 ```
 
-## Draft (tidak ikut build)
-- Set `draft: true` untuk menyembunyikan post.
-- File yang diawali underscore tidak ikut build, misalnya `_TEMPLATE.md`.
+```ts
+type Post = { title: string; published: string };
+const post: Post = { title: "Contoh", published: "2025-01-01" };
+```
+
+```bash
+npm run blog:build
+```
+
+## Draft workflow
+- Gunakan `draft: true` agar tidak muncul di listing.
+- File yang diawali underscore tidak ikut build (misal `_TEMPLATE.md`).
 
 ## Setelah menulis
 ```bash
-cd blog-fuwari
-pnpm build
+npm run blog:build
 ```
 
-## Tips
-- Pakai slug yang aman: huruf kecil, tanpa spasi, pakai tanda minus.
-- Gunakan format gambar webp agar ringan.
-- Favicon dan banner sering cache, hard refresh jika tidak berubah.
+## Kesalahan umum + solusi cepat
+- **Path gambar salah**: pastikan path relatif `./` sesuai folder post.
+- **Lupa build**: jalankan `npm run blog:build` setelah menambah post.
+- **Draft masih true**: ubah ke `false` sebelum publish.
+- **Slug tidak aman**: gunakan huruf kecil, angka, dan tanda minus.
+- **Gambar terlalu besar**: kompres ke WebP (lebih ringan di web).
