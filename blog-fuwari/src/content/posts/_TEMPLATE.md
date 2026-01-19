@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Judul Postingan"
 published: 2025-01-01
 updated: 2025-01-02
@@ -29,4 +29,4 @@ console.log(message);
 
 Tambahkan catatan tambahan.
 
-![Contoh gambar](./images/contoh.webp)
+![Contoh gambar](./images/contoh.webp) -->

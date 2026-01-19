@@ -1,1 +1,12 @@
-export default new Map();
+
+import __ASTRO_IMAGE_IMPORT_Z2vyRAJ from "./images/juaragcp-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_Z15kcFr from "./images/juaragcp-02.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_1tOoM3 from "./images/idf-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_Z2a846A from "./images/idf-02.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_20WyIe from "./images/ppkpi-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_UC10i from "./images/dicoding-ml-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_1UtC1R from "./images/bbpvp-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_166uR9 from "./images/devfest-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_2wlaMr from "./images/devfest-02.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md";
+export default new Map([["./images/juaragcp-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md", __ASTRO_IMAGE_IMPORT_Z2vyRAJ], ["./images/juaragcp-02.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md", __ASTRO_IMAGE_IMPORT_Z15kcFr], ["./images/idf-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md", __ASTRO_IMAGE_IMPORT_1tOoM3], ["./images/idf-02.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md", __ASTRO_IMAGE_IMPORT_Z2a846A], ["./images/ppkpi-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md", __ASTRO_IMAGE_IMPORT_20WyIe], ["./images/dicoding-ml-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md", __ASTRO_IMAGE_IMPORT_UC10i], ["./images/bbpvp-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md", __ASTRO_IMAGE_IMPORT_1UtC1R], ["./images/devfest-01.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md", __ASTRO_IMAGE_IMPORT_166uR9], ["./images/devfest-02.webp?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Frecap-2025%2Findex.md", __ASTRO_IMAGE_IMPORT_2wlaMr]]);
+		
