@@ -170,11 +170,11 @@ Buat saya, momen ini terasa seperti “ringkasan” dari seluruh proses 2025: be
 
 ## Notes
 
-Terima kasih untuk semua pihak yang menjadi bagian dari perjalanan pertumbuhan saya di 2025: instruktur dan teman-teman di JuaraGCP, relasi dan wawasan yang saya dapatkan dari Indonesia Digital Forum, para instruktur dan rekan di PPKPI Jakarta, mentor dan komunitas belajar di Dicoding & DBS Foundation, pembimbing dan rekan di BBPVP Bekasi, serta GDG Depok yang memberi ruang untuk belajar, tampil, dan berbagi.
+Terima kasih untuk semua pihak yang menjadi bagian dari perjalanan pertumbuhan saya di 2025: teman-teman di JuaraGCP, relasi dan wawasan yang saya dapatkan dari Indonesia Digital Forum, para instruktur/pembimbing dan rekan-rekan di PPKPI Jakarta & BBPVP Bekasi, dan komunitas belajar di Dicoding & DBS Foundation, serta GDG Depok yang memberi ruang untuk belajar, tampil, dan berbagi.
 
 Dan terima kasih paling utama untuk **Tuhan Yesus**, karena penyertaan-Nya membuat saya tetap punya arah, harapan, dan keberanian untuk terus bertumbuh.
 
-Memasuki 2026, fokus saya jelas: memperkuat fundamental, memperbanyak proyek yang rapi dan siap ditunjukkan, memperdalam stack yang saya pilih, dan lebih aktif membangun networking. Target saya sederhana tapi serius: semakin dekat ke karier full-time di bidang software development, bukan cuma “ingin”, tapi benar-benar siap.
+Memasuki 2026, fokus saya jelas yaitu memperkuat fundamental, memperbanyak proyek yang rapi dan siap ditunjukkan, memperdalam stack yang saya pilih, dan lebih aktif membangun networking. Target saya sederhana tapi serius dengan semakin dekat ke karier full-time di bidang software development, bukan cuma “ingin”, tapi benar-benar siap.
 
 ```ts
 const highlights2025 = [
