@@ -54,7 +54,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "/assets/images/avatar.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "Sulu Edward Julianto",
-	bio: "Software Engineer & Full Stack Developer. Building scalable and functional web application systems.",
+	bio: "Full-Stack Software Engineer. Dedicated to crafting scalable, modern, and highly maintainable web applications.",
 	// Sosial media yang tampil di profil (ikon dari https://icones.js.org/).
 	links: [
 		{
