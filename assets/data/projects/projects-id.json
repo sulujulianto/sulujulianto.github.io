@@ -1,50 +1,86 @@
 [
   {
     "title": "Jejak Petualang",
-    "description": "Aplikasi e-commerce full-stack untuk peralatan outdoor, lengkap dengan panel admin dan manajemen transaksi.",
+    "description": "Aplikasi e-commerce peralatan outdoor yang dibangun dari nol menggunakan PHP Native, sebagai proyek akhir ujian kompetensi nasional BNSP.",
     "category": "fullstack",
     "imageUrl": "../assets/img/projects/id/jejakpetualang.webp",
     "githubUrl": "https://github.com/sulujulianto/jejakpetualang",
     "liveUrl": "",
     "techStack": ["PHP Native", "MySQL", "JavaScript", "HTML5", "CSS3"],
     "dateAdded": "2025-08-20",
-    "modalDescription": "Membangun sistem toko online dari nol menggunakan PHP Native untuk memahami logika dasar backend tanpa bantuan framework. Fitur mencakup alur belanja lengkap (Keranjang, Checkout, Riwayat Pesanan) untuk pelanggan, serta Dashboard Admin yang kompleks untuk mengelola produk, stok, kategori, promo voucher, dan memvalidasi status pesanan pengguna.",
-    "isFeatured": true
+    "modalDescription": "Proyek ini dikembangkan sebagai syarat kelulusan sertifikasi BNSP Junior Web Developer di PPKPI Jakarta. Dibangun secara sengaja menggunakan PHP Native dan MySQL tanpa framework untuk membuktikan penguasaan fundamental: logika autentikasi, manajemen sesi, dan keamanan query database secara langsung.\n\nDari sisi fitur, aplikasi ini memiliki alur belanja yang lengkap untuk pelanggan mulai dari katalog produk, keranjang belanja, proses checkout, hingga riwayat dan ulasan pesanan. Panel admin mencakup manajemen produk, kategori, pesanan, pengguna, dan kode voucher. Seluruh sistem ini selesai dibangun dan berhasil dipertahankan di hadapan asesor dalam sidang sertifikasi.",
+    "isFeatured": false
   },
   {
     "title": "Nusantara Trans",
-    "description": "Platform pemesanan tiket bus end-to-end dengan fitur pemilihan kursi visual real-time dan dashboard admin lengkap, dibangun menggunakan PHP Native.",
+    "description": "Platform pemesanan tiket bus dengan denah kursi visual real-time, sistem penguncian kursi, dan dashboard operasional admin yang lengkap.",
     "category": "fullstack",
     "imageUrl": "../assets/img/projects/id/nusantaratrans.webp",
     "githubUrl": "https://github.com/sulujulianto/nusantaratrans",
     "liveUrl": "",
-    "techStack": ["PHP 8", "MySQL", "Bootstrap 5", "JavaScript", "PDO", "CSS3"],
+    "techStack": ["PHP 8", "PDO", "MySQL", "Bootstrap 5", "JavaScript", "CSS3"],
     "dateAdded": "2025-11-19",
-    "modalDescription": "NusantaraTrans adalah aplikasi full-stack untuk reservasi tiket bus rute Kalimantan & IKN. Fitur utamanya mencakup pemilihan kursi interaktif (denah visual), sistem keranjang dengan penguncian kursi sementara, dan alur checkout yang aman (CSRF protection). Dilengkapi panel admin komprehensif untuk manajemen armada, pengaturan rute dinamis, approval refund, serta laporan pendapatan.",
-    "isFeatured": true
+    "modalDescription": "Nusantara Trans adalah platform reservasi tiket bus rute antarkota yang dibangun dengan PHP 8 dan PDO untuk memastikan keamanan query database melalui prepared statements.\n\nFitur teknis yang menonjol adalah mekanisme penguncian kursi sementara via tabel cart_items dengan expiry time, yang mencegah dua pengguna memesan kursi yang sama secara bersamaan. Sistem ini juga dilengkapi CSRF protection di seluruh form, pemisahan namespace sesi antara pengguna dan admin, serta denah kursi visual yang menampilkan status tersedia dan terisi secara real-time.\n\nPanel admin mencakup manajemen armada bus, konfigurasi rute dinamis, monitoring booking, pengelolaan kode promo, dan approval proses refund. Seluruh alur dari pencarian rute hingga konfirmasi pembayaran sudah terintegrasi dalam satu sistem.",
+    "isFeatured": false
   },
   {
     "title": "Japan Travel",
-    "description": "Platform wisata Jepang all in one. Menggabungkan katalog destinasi, toko oleh-oleh online, dan sistem ulasan pengunjung dalam satu aplikasi.",
+    "description": "Platform wisata dan toko suvenir Jepang berbasis Laravel 12 dengan integrasi payment gateway Midtrans dan PayPal, mendukung dua bahasa dan tema gelap.",
     "category": "fullstack",
     "imageUrl": "../assets/img/projects/id/japanese-travel.webp",
     "githubUrl": "https://github.com/sulujulianto/japanesetravel",
     "liveUrl": "",
-    "techStack": ["Laravel 12", "Tailwind CSS", "Alpine.js", "MySQL", "Vite"],
+    "techStack": ["Laravel 12", "Tailwind CSS", "MySQL", "Midtrans", "PayPal", "Chart.js", "Vite"],
     "dateAdded": "2025-11-20",
-    "modalDescription": "Aplikasi web modern yang dibangun menggunakan Laravel 12. Fiturnya sudah sangat lengkap: mendukung multi-bahasa (Indonesia/Inggris), tema gelap/terang (dark mode), serta sistem role untuk User dan Admin. Admin memiliki dashboard statistik untuk memantau pendapatan dan stok souvenir, sementara pengguna bisa merencanakan perjalanan sekaligus belanja oleh-oleh.",
-    "isFeatured": false
+    "modalDescription": "Japan Travel adalah aplikasi web full-stack yang dibangun di atas Laravel 12 dengan standar pengembangan yang mendekati tingkat produksi. Aplikasi ini menggabungkan katalog destinasi wisata, toko suvenir, dan sistem ulasan dalam satu platform.\n\nDari sisi teknis, proyek ini mengimplementasikan dua payment gateway sekaligus, yaitu Midtrans Snap untuk pasar Indonesia dan PayPal Checkout untuk transaksi internasional, lengkap dengan verifikasi webhook signature dan idempotency key untuk mencegah duplikasi transaksi.\n\nFitur lainnya mencakup dukungan dua bahasa Indonesia dan Inggris menggunakan spatie/laravel-translatable, toggle tema gelap dan terang, autentikasi terpisah untuk pengguna dan admin, dashboard KPI dengan visualisasi data menggunakan Chart.js, serta rate limiting pada endpoint login dan webhook. Kualitas kode dijaga melalui PHPStan, Laravel Pint, PHPUnit, dan pipeline CI/CD otomatis via GitHub Actions.",
+    "isFeatured": true
   },
   {
-    "title": "Sistem Informasi Wilayah Indonesia (API & CLI)",
-    "description": "RESTful API berkinerja tinggi dan CLI tool untuk menyediakan data administratif Indonesia (38 Provinsi, Kabupaten, Kota) dengan dukungan caching dan pencarian fuzzy.",
+    "title": "Sistem Informasi Wilayah Indonesia",
+    "description": "RESTful API dan CLI tool untuk data administratif Indonesia mencakup 38 provinsi, 416 kabupaten, dan 98 kota, dengan caching ETag dan pencarian fleksibel.",
     "category": "backend",
     "imageUrl": "../assets/img/projects/id/sistem-wilayah-indonesia.webp",
     "githubUrl": "https://github.com/sulujulianto/sistem-wilayah-indonesia",
     "liveUrl": "",
-    "techStack": ["Python 3.12", "FastAPI", "Docker", "GitHub Actions (CI/CD)","Pytest", "REST API" ],
+    "techStack": ["Python 3.12", "FastAPI", "Docker", "GitHub Actions", "Pytest", "Shell Script"],
     "dateAdded": "2025-12-04",
-    "modalDescription": "Sistem Informasi Wilayah Indonesia adalah sebuah solusi backend open-source yang dirancang untuk menyediakan akses data administratif Indonesia secara akurat dan terstandarisasi. Proyek ini memuat data lengkap yang mencakup 38 provinsi (termasuk Daerah Otonomi Baru di Papua), 416 kabupaten, dan 98 kota, dengan rujukan utama pada Permendagri No. 137/2017 serta data dari Badan Pusat Statistik (BPS).\n\nAplikasi ini dibangun menggunakan Python modern dengan framework FastAPI untuk memastikan performa yang cepat dan ringan. Di dalamnya telah tertanam berbagai fitur teknis unggulan, seperti mekanisme caching otomatis (ETag) untuk efisiensi bandwidth dan algoritma pencarian wilayah yang fleksibel (fuzzy search). Selain fungsionalitas, proyek ini juga menekankan kualitas kode yang tinggi melalui penerapan pipeline CI/CD otomatis (testing & linting) serta dikemas menggunakan Docker agar siap dijalankan di lingkungan produksi mana pun dengan mudah.",
+    "modalDescription": "Sistem Informasi Wilayah Indonesia adalah proyek backend open-source yang menyediakan data administratif Indonesia secara terstandarisasi, mencakup 38 provinsi termasuk Daerah Otonomi Baru di Papua, 416 kabupaten, dan 98 kota dengan rujukan pada Permendagri No. 137/2017 dan data BPS.\n\nAPI dibangun menggunakan FastAPI dengan versioning endpoint (/v1), mendukung pagination, pencarian lintas wilayah, caching headers ETag dengan respons 304 untuk efisiensi bandwidth, serta konfigurasi CORS via environment variable.\n\nProyek ini dirancang dengan standar open-source yang lengkap: tersedia CHANGELOG.md, CONTRIBUTING.md, DATA_SOURCES.md, DEPLOYMENT.md, Makefile untuk automation, file api.http untuk testing tanpa Postman, dan GitHub Release tag yang terstruktur. Pipeline CI/CD otomatis menjalankan linting, type checking dengan mypy, dan test suite setiap ada perubahan kode.",
     "isFeatured": true
+  },
+  {
+    "title": "KosPintar",
+    "description": "Sistem manajemen kos digital yang membantu pemilik kos mengelola kamar, penghuni, dan pembayaran bulanan lengkap dengan notifikasi otomatis via WhatsApp.",
+    "category": "fullstack",
+    "imageUrl": "../assets/img/projects/id/kospintar.webp",
+    "githubUrl": "",
+    "liveUrl": "",
+    "techStack": ["Laravel 12", "React", "Inertia.js", "MySQL", "Tailwind CSS", "Xendit"],
+    "dateAdded": "2026-01-01",
+    "modalDescription": "KosPintar hadir untuk menggantikan cara konvensional pengelolaan kos yang masih mengandalkan buku catatan dan pesan WhatsApp manual. Aplikasi ini dirancang khusus untuk konteks Indonesia dengan dua peran pengguna: pemilik kos dan penyewa.\n\nPemilik kos dapat memantau status seluruh kamar, mencatat pembayaran bulanan, melihat laporan pendapatan, dan menerima peringatan otomatis ketika ada tagihan yang mendekati jatuh tempo. Sistem secara otomatis mengirimkan notifikasi via WhatsApp kepada penyewa tujuh hari sebelum tanggal pembayaran. Setiap kamar memiliki QR code unik yang dapat dicetak untuk akses informasi cepat.\n\nPenyewa dapat login untuk melihat status tagihan, riwayat pembayaran, dan mengunggah bukti transfer. Dibangun menggunakan Laravel 12 dengan React via Inertia.js, sehingga pengalaman pengguna terasa seperti aplikasi modern tanpa kompleksitas API terpisah.",
+    "isFeatured": false
+  },
+  {
+    "title": "LokerKita",
+    "description": "Agregator lowongan kerja informal Indonesia yang mengumpulkan berbagai peluang kerja dari berbagai sumber dalam satu platform dengan pencarian dan filter yang mudah.",
+    "category": "fullstack",
+    "imageUrl": "../assets/img/projects/id/lokerkita.webp",
+    "githubUrl": "",
+    "liveUrl": "",
+    "techStack": ["Node.js", "Fastify", "React", "PostgreSQL", "Redis", "JWT", "Tailwind CSS"],
+    "dateAdded": "2026-01-01",
+    "modalDescription": "LokerKita menjawab masalah yang dihadapi pencari kerja informal di Indonesia: informasi lowongan tersebar di berbagai grup WhatsApp, Instagram, dan Facebook tanpa satu tempat yang merangkumnya.\n\nPlatform ini memungkinkan siapa saja menelusuri lowongan berdasarkan kota, kategori pekerjaan, dan jenis kontrak tanpa perlu membuat akun. Pemberi kerja dapat mendaftarkan diri dan mengajukan lowongan yang akan tayang setelah melalui proses moderasi admin, memastikan kualitas konten yang terjaga.\n\nSecara teknis, backend dibangun menggunakan Node.js dengan Fastify untuk performa tinggi, PostgreSQL sebagai database utama, dan Redis untuk caching hasil pencarian agar respons tetap cepat meski trafik tinggi. Autentikasi menggunakan JWT dengan mekanisme refresh token, dilengkapi rate limiting per IP untuk mencegah spam submission.",
+    "isFeatured": true
+  },
+  {
+    "title": "AntrianKu",
+    "description": "Sistem antrian digital untuk UMKM yang memungkinkan pelanggan mengambil nomor antrian via scan QR dan memantau giliran secara real-time langsung dari browser.",
+    "category": "fullstack",
+    "imageUrl": "../assets/img/projects/id/antriankku.webp",
+    "githubUrl": "",
+    "liveUrl": "",
+    "techStack": ["Next.js 14", "Supabase", "Pusher", "Tailwind CSS", "Vercel", "PWA"],
+    "dateAdded": "2026-01-01",
+    "modalDescription": "AntrianKu menyelesaikan masalah antrian manual di warung makan, bengkel, dan klinik kecil yang masih menggunakan kertas atau tidak memiliki sistem antrian sama sekali.\n\nOperator cukup membuka dashboard di tablet atau laptop untuk memulai sesi antrian dan memanggil nomor berikutnya dengan satu klik. Pelanggan cukup scan QR code yang ditempel di meja, langsung mendapat nomor antrian di browser tanpa perlu menginstal aplikasi apapun. Status antrian diperbarui secara real-time menggunakan Pusher, dan pelanggan mendapat notifikasi browser ketika giliran mereka hampir tiba.\n\nDibangun menggunakan Next.js 14 App Router dengan Supabase sebagai backend dan database, sehingga seluruh infrastruktur dapat berjalan tanpa biaya di tahap awal. Aplikasi ini juga mendukung Progressive Web App sehingga dapat diinstal di layar utama HP seperti aplikasi native.",
+    "isFeatured": false
   }
 ]
