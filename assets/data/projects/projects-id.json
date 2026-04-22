@@ -82,5 +82,17 @@
     "dateAdded": "2026-01-01",
     "modalDescription": "AntrianKu menyelesaikan masalah antrian manual di warung makan, bengkel, dan klinik kecil yang masih menggunakan kertas atau tidak memiliki sistem antrian sama sekali.\n\nOperator cukup membuka dashboard di tablet atau laptop untuk memulai sesi antrian dan memanggil nomor berikutnya dengan satu klik. Pelanggan cukup scan QR code yang ditempel di meja, langsung mendapat nomor antrian di browser tanpa perlu menginstal aplikasi apapun. Status antrian diperbarui secara real-time menggunakan Pusher, dan pelanggan mendapat notifikasi browser ketika giliran mereka hampir tiba.\n\nDibangun menggunakan Next.js 14 App Router dengan Supabase sebagai backend dan database, sehingga seluruh infrastruktur dapat berjalan tanpa biaya di tahap awal. Aplikasi ini juga mendukung Progressive Web App sehingga dapat diinstal di layar utama HP seperti aplikasi native.",
     "isFeatured": false
+  },
+  {
+    "title": "Pixel Heist Co-op",
+    "description": "Game stealth multiplayer lokal yang memenangkan Firebase Studio Challenge di DevFest Depok 2025, dibangun menggunakan Firebase Studio dan Google Gemini.",
+    "category": "game",
+    "imageUrl": "../assets/img/projects/id/pixel-heist.webp",
+    "githubUrl": "https://github.com/sulujulianto/pixel-heist-coop",
+    "liveUrl": "",
+    "techStack": ["Next.js", "TypeScript", "Tailwind CSS", "Firebase App Hosting", "Project IDX", "Google Gemini", "Firestore"],
+    "dateAdded": "2025-12-13",
+    "modalDescription": "Pixel Heist Co-op adalah game stealth multiplayer lokal yang dikembangkan menggunakan Firebase Studio dan Google Gemini sebagai bagian dari Firebase Studio Challenge pada DevFest Depok 2025 yang diselenggarakan oleh GDG Depok dan Women Techmakers Depok.\n\nGame ini menampilkan mekanisme pergerakan player dan NPC yang dinamis dengan sinkronisasi data real-time ke Firestore, memungkinkan dua pemain berkolaborasi dalam satu sesi permainan secara lokal.\n\nProyek ini terpilih sebagai pemenang dari seluruh peserta challenge dan dipresentasikan secara langsung sebagai lightning talk speaker di hadapan peserta DevFest Depok 2025 yang berlangsung di Balai Sidang UI, Depok pada 13 Desember 2025.",
+    "isFeatured": false
   }
 ]
