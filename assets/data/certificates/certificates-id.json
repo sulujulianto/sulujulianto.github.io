@@ -1,12 +1,22 @@
 [
   {
     "title": "Junior Web Developer (BNSP)",
-    "description": "Tersertifikasi kompeten oleh Negara (BNSP) dalam mengimplementasikan antarmuka pengguna (UI), menulis kode pemrograman terstruktur, menggunakan library standar, dan menerapkan best practices pengembangan web.",
+    "description": "Sertifikasi BNSP dengan kompetensi teruji dalam implementasi antarmuka pengguna, pemrograman terstruktur, eksekusi bahasa pemrograman, pengorganisasian file kode, penggunaan library pre-existing, serta penulisan kode sesuai guidelines dan best practices.",
     "category": "web-development",
-    "imageUrl": "../assets/img/certificates/id/junior-web-developer-bnsp.jpg",
-    "fullImageUrl": "../assets/img/certificates/id/junior-web-developer-bnsp.jpg",
+    "imageUrl": "../assets/img/certificates/id/junior-web-developer-bnsp.webp",
+    "fullImageUrl": "../assets/img/certificates/id/junior-web-developer-bnsp.webp",
     "tanggalTerbit": "2025-09-04",
     "tanggalKadaluarsa": "2028-09-04",
+    "isFeatured": true
+  },
+  {
+    "title": "Web Development With Node.js and React (BNSP)",
+    "description": "Sertifikasi BNSP spesifik mencakup implementasi pemrograman berorientasi objek, perancangan entitas dan relasi antar entitas, manipulasi data melalui SQL, penerapan akses basis data, serta pengelolaan proyek dengan source code versioning.",
+    "category": "web-development",
+    "imageUrl": "../assets/img/certificates/id/web-development-with-node-js-and-react-bnsp.webp",
+    "fullImageUrl": "../assets/img/certificates/id/web-development-with-node-js-and-react-bnsp.webp",
+    "tanggalTerbit": "2025-12-15",
+    "tanggalKadaluarsa": "2028-12-15",
     "isFeatured": true
   },
   {
@@ -27,7 +37,7 @@
     "link": "https://www.dicoding.com/certificates/ERZR245J2PYV",
     "tanggalTerbit": "2025-08-07",
     "tanggalKadaluarsa": "2028-08-07",
-    "isFeatured": true
+    "isFeatured": false
   },
   {
     "title": "Belajar Machine Learning untuk Pemula",
