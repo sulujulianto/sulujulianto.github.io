@@ -6,6 +6,7 @@
   "scripts": {
     "audit:portfolio": "node scripts/audit-portfolio-data.mjs",
     "test:language": "npm run ts:build && node --test tests/language-resolver.test.mjs",
+    "test:ui-locale": "node --test tests/ui-locale-id.test.mjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind:build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css",
     "tailwind:watch": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --watch",
