@@ -1,0 +1,299 @@
+{
+  "locale": "zh",
+  "shared": {
+    "brand": "Sulu Edward Julianto",
+    "navigation": {
+      "home": "首页",
+      "about": "关于我",
+      "skills": "技能",
+      "projects": "项目",
+      "certificates": "证书",
+      "contact": "联系我",
+      "blog": "博客"
+    },
+    "footer": {
+      "copyrightSymbol": "©",
+      "owner": "Sulu Edward Julianto"
+    }
+  },
+  "pages": {
+    "home": {
+      "documentTitle": "Sulu Edward Julianto - 软件工程师",
+      "hero": {
+        "name": "Sulu Edward Julianto",
+        "tagline": "初级全栈开发者。致力于构建可扩展且功能完善的 Web 应用程序。",
+        "downloadCv": "下载简历",
+        "hireMe": "联系我",
+        "profileImageAlt": "Sulu Edward 个人照片"
+      },
+      "about": {
+        "heading": {
+          "lead": "关于",
+          "highlight": "我"
+        },
+        "description": "我是一名专注于现代 Web 开发的初级全栈开发者。拥有计算机网络工程背景，这份作品集是我 IT 职业生涯的记录存档，汇集了我的 Web 项目、技术探索，以及我在软件开发领域的持续学习过程，并侧重于深化对系统设计的理解。"
+      },
+      "skills": {
+        "heading": "专业技能",
+        "introduction": "我在构建功能完善且可扩展的软件解决方案时，所使用的技术、编程语言与开发工具。",
+        "groups": {
+          "frontEnd": {
+            "heading": "前端开发",
+            "technologies": {
+              "html5": {
+                "label": "HTML5",
+                "imageAlt": "HTML5"
+              },
+              "css3": {
+                "label": "CSS3",
+                "imageAlt": "CSS3"
+              },
+              "react": {
+                "label": "React",
+                "imageAlt": "React"
+              },
+              "vue": {
+                "label": "Vue.js",
+                "imageAlt": "Vue.js"
+              },
+              "tailwind": {
+                "label": "Tailwind CSS",
+                "imageAlt": "Tailwind CSS"
+              }
+            }
+          },
+          "backEnd": {
+            "heading": "后端开发",
+            "technologies": {
+              "node": {
+                "label": "Node.js",
+                "imageAlt": "Node.js"
+              },
+              "next": {
+                "label": "Next.js",
+                "imageAlt": "Next.js"
+              },
+              "laravel": {
+                "label": "Laravel",
+                "imageAlt": "Laravel"
+              },
+              "django": {
+                "label": "Django (Python)",
+                "imageAlt": "Django"
+              },
+              "gin": {
+                "label": "Gin (Go)",
+                "imageAlt": "Gin"
+              }
+            }
+          },
+          "database": {
+            "heading": "数据库",
+            "technologies": {
+              "mysql": {
+                "label": "MySQL",
+                "imageAlt": "MySQL"
+              },
+              "postgresql": {
+                "label": "PostgreSQL",
+                "imageAlt": "PostgreSQL"
+              },
+              "mongodb": {
+                "label": "MongoDB",
+                "imageAlt": "MongoDB"
+              },
+              "firebase": {
+                "label": "Firebase",
+                "imageAlt": "Firebase"
+              }
+            }
+          },
+          "programmingLanguages": {
+            "heading": "编程语言",
+            "technologies": {
+              "javascript": {
+                "label": "JavaScript",
+                "imageAlt": "JavaScript"
+              },
+              "python": {
+                "label": "Python",
+                "imageAlt": "Python"
+              },
+              "php": {
+                "label": "PHP",
+                "imageAlt": "PHP"
+              },
+              "go": {
+                "label": "Go",
+                "imageAlt": "Go"
+              }
+            }
+          },
+          "operatingSystems": {
+            "heading": "操作系统",
+            "technologies": {
+              "windows": {
+                "label": "Windows",
+                "imageAlt": "Windows"
+              },
+              "linux": {
+                "label": "Linux",
+                "imageAlt": "Linux"
+              }
+            }
+          },
+          "tools": {
+            "heading": "工具与平台",
+            "technologies": {
+              "git": {
+                "label": "Git",
+                "imageAlt": "Git"
+              },
+              "github": {
+                "label": "GitHub",
+                "imageAlt": "GitHub"
+              },
+              "vsCode": {
+                "label": "VS Code",
+                "imageAlt": "VS Code"
+              }
+            }
+          },
+          "cloud": {
+            "heading": "云服务",
+            "technologies": {
+              "aws": {
+                "label": "AWS",
+                "imageAlt": "AWS"
+              },
+              "gcp": {
+                "label": "GCP",
+                "imageAlt": "GCP"
+              }
+            }
+          },
+          "devOps": {
+            "heading": "运维开发 (DevOps)",
+            "technologies": {
+              "docker": {
+                "label": "Docker",
+                "imageAlt": "Docker"
+              },
+              "jenkins": {
+                "label": "Jenkins",
+                "imageAlt": "Jenkins"
+              }
+            }
+          },
+          "networkInfrastructure": {
+            "heading": "网络技术",
+            "technologies": {
+              "windowsServer": {
+                "label": "Windows Server",
+                "imageAlt": "Windows Server"
+              },
+              "cisco": {
+                "label": "思科网络 (Cisco)",
+                "imageAlt": "Cisco"
+              },
+              "linuxServer": {
+                "label": "Linux Server",
+                "imageAlt": "Linux Server"
+              },
+              "tcpIp": {
+                "label": "TCP/IP 协议",
+                "imageAlt": "Network Protocols"
+              }
+            }
+          }
+        }
+      },
+      "featuredProjects": {
+        "heading": {
+          "lead": "项目",
+          "highlight": "精选"
+        },
+        "introduction": "精选的部分项目，代表了我的学习历程与探索。"
+      },
+      "featuredCertificates": {
+        "heading": {
+          "highlight": "资质",
+          "tail": "与荣誉"
+        },
+        "introduction": "标志着我 IT 职业生涯中重要里程碑的精选认证与专业荣誉。"
+      },
+      "contact": {
+        "heading": {
+          "lead": "联系",
+          "highlight": "我"
+        },
+        "information": {
+          "heading": "联系方式",
+          "introduction": "我非常期待探讨新的职业机会、项目合作，或者交流关于技术的想法。欢迎通过以下任何方式与我取得联系。",
+          "channels": {
+            "email": {
+              "label": "sulucodes@gmail.com",
+              "title": "Kirim Email"
+            },
+            "linkedin": {
+              "label": "linkedin.com/in/sulujulianto",
+              "title": "Profil LinkedIn"
+            },
+            "whatsapp": {
+              "label": "+62 821-2372-4998 (WA Business)",
+              "title": "Hubungi via WhatsApp"
+            },
+            "telegram": {
+              "label": "@sulucodes",
+              "title": "Hubungi via Telegram"
+            }
+          }
+        },
+        "form": {
+          "heading": "发送消息",
+          "fields": {
+            "name": {
+              "ariaLabel": "您的姓名",
+              "placeholder": "您的完整姓名"
+            },
+            "email": {
+              "ariaLabel": "您的电子邮箱",
+              "placeholder": "您的电子邮箱地址"
+            },
+            "message": {
+              "ariaLabel": "留言内容",
+              "placeholder": "请在这里输入您的留言..."
+            }
+          },
+          "submit": "发送消息",
+          "submitting": "发送中...",
+          "subject": "来自作品集网站的新消息",
+          "success": {
+            "heading": "成功！",
+            "message": "您的消息已发送。"
+          },
+          "failure": {
+            "heading": "失败！",
+            "message": "发送消息时出现错误。"
+          }
+        }
+      }
+    },
+    "projects": {
+      "documentTitle": "项目作品集 — Sulu Edward Julianto",
+      "heading": {
+        "lead": "项目",
+        "highlight": "精选"
+      },
+      "introduction": "我完成的所有项目存档，记录了我的学习过程以及对各种技术的适应能力。"
+    },
+    "certificates": {
+      "documentTitle": "资质与荣誉 — Sulu Edward Julianto",
+      "heading": {
+        "highlight": "资质",
+        "tail": "与荣誉"
+      },
+      "introduction": "支撑我技术能力的专业资质、培训及行业认证的完整记录。"
+    }
+  }
+}
