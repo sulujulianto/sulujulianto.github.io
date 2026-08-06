@@ -132,7 +132,8 @@ const buildDatasetSnapshot = (type, locale, raw, records) => {
     const sorted = [...records].sort(
         (left, right) => parseDateLikeRuntime(right[dateField]) - parseDateLikeRuntime(left[dateField]),
     );
-    const featured = sorted.filter((record) => record.isFeatured === true);
+    const onlyFeatured = sorted.filter((record) => record.isFeatured);
+    const effectiveFeatured = onlyFeatured.length > 0 ? onlyFeatured : sorted;
 
     return {
         file: file(locale),
@@ -143,7 +144,7 @@ const buildDatasetSnapshot = (type, locale, raw, records) => {
             placeholder: records.filter((record) => !isNonEmptyTitle(record)).length,
             featured: records.filter((record) => record.isFeatured === true).length,
         },
-        effectiveFeatured: featured.map((record) => ({
+        effectiveFeatured: effectiveFeatured.map((record) => ({
             title: record.title ?? null,
             date: record[dateField] ?? null,
         })),
@@ -362,7 +363,9 @@ if (baseline) {
                 : 'counts unavailable';
             console.log(`  ${result.passed ? 'PASS' : 'FAIL'} ${name}: ${detail}`);
             const featuredOrder = result.effectiveFeatured.length
-                ? result.effectiveFeatured.map((item) => `${item.title} (${item.date})`).join(' > ')
+                ? result.effectiveFeatured
+                      .map((item) => `${item.title || '<empty title>'} (${item.date || '<empty date>'})`)
+                      .join(' > ')
                 : 'none';
             console.log(`       Effective featured: ${featuredOrder}`);
         }

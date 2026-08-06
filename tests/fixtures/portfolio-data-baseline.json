@@ -239,7 +239,20 @@
           "placeholder": 3,
           "featured": 0
         },
-        "effectiveFeatured": [],
+        "effectiveFeatured": [
+          {
+            "title": "",
+            "date": ""
+          },
+          {
+            "title": "",
+            "date": ""
+          },
+          {
+            "title": "",
+            "date": ""
+          }
+        ],
         "records": [
           {
             "title": "",
@@ -282,7 +295,12 @@
           "placeholder": 1,
           "featured": 0
         },
-        "effectiveFeatured": [],
+        "effectiveFeatured": [
+          {
+            "title": "",
+            "date": ""
+          }
+        ],
         "records": [
           {
             "title": "",
@@ -909,7 +927,12 @@
           "placeholder": 1,
           "featured": 0
         },
-        "effectiveFeatured": [],
+        "effectiveFeatured": [
+          {
+            "title": "",
+            "date": ""
+          }
+        ],
         "records": [
           {
             "title": "",
@@ -933,7 +956,12 @@
           "placeholder": 1,
           "featured": 0
         },
-        "effectiveFeatured": [],
+        "effectiveFeatured": [
+          {
+            "title": "",
+            "date": ""
+          }
+        ],
         "records": [
           {
             "title": "",
@@ -1189,4 +1217,3 @@
     }
   }
 }
-
