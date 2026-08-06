@@ -7,7 +7,9 @@
     "audit:portfolio": "node scripts/audit-portfolio-data.mjs",
     "test:language": "npm run ts:build && node --test tests/language-resolver.test.mjs",
     "test:ui-locale": "node --test tests/ui-locale-id.test.mjs tests/ui-locale-en.test.mjs tests/ui-locale-ja.test.mjs tests/ui-locale-zh.test.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:css": "node --test tests/css-build.test.mjs",
+    "test": "npm run test:language && npm run test:ui-locale && npm run test:css",
+    "verify": "npm run tailwind:build && npm run audit:portfolio && npm test",
     "tailwind:build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css",
     "tailwind:watch": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --watch",
     "ts:build": "tsc -p tsconfig.runtime.json",
@@ -27,7 +29,6 @@
   "license": "ISC",
   "devDependencies": {
     "@alloc/quick-lru": "^5.2.0",
-    "@tailwindcss/cli": "^4.1.11",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "arg": "^5.0.2",
@@ -45,7 +46,7 @@
     "postcss-nested": "^7.0.2",
     "postcss-selector-parser": "^7.1.0",
     "sucrase": "^3.35.0",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "3.4.19",
     "typescript": "^5.9.2"
   }
 }
