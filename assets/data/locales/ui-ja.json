@@ -1,0 +1,299 @@
+{
+  "locale": "ja",
+  "shared": {
+    "brand": "Sulu Edward Julianto",
+    "navigation": {
+      "home": "ホーム",
+      "about": "プロフィール",
+      "skills": "スキル",
+      "projects": "プロジェクト",
+      "certificates": "資格",
+      "contact": "お問い合わせ",
+      "blog": "ブログ"
+    },
+    "footer": {
+      "copyrightSymbol": "©",
+      "owner": "Sulu Edward Julianto"
+    }
+  },
+  "pages": {
+    "home": {
+      "documentTitle": "Sulu Edward Julianto - ソフトウェアエンジニア",
+      "hero": {
+        "name": "Sulu Edward Julianto",
+        "tagline": "ジュニア・フルスタック開発者。スケーラブルで機能的なWebアプリケーションを構築します。",
+        "downloadCv": "履歴書をダウンロード",
+        "hireMe": "お問い合わせ",
+        "profileImageAlt": "プロフィール写真"
+      },
+      "about": {
+        "heading": {
+          "lead": "",
+          "highlight": "プロフィール"
+        },
+        "description": "私はモダンなWeb開発に注力しているジュニア・フルスタック開発者です。コンピュータネットワーク工学の背景を持ち、このポートフォリオは私のITキャリアの記録（アーカイブ）です。ここではWebプロジェクトや技術的な探求、そしてシステム設計への理解を深めることに重点を置いた、ソフトウェア開発における継続的な学習プロセスをまとめています。"
+      },
+      "skills": {
+        "heading": "技術スキル",
+        "introduction": "機能的でスケーラブルなソフトウェアソリューションを構築するために使用している技術、プログラミング言語、およびツールの紹介です。",
+        "groups": {
+          "frontEnd": {
+            "heading": "フロントエンド",
+            "technologies": {
+              "html5": {
+                "label": "HTML5",
+                "imageAlt": "HTML5"
+              },
+              "css3": {
+                "label": "CSS3",
+                "imageAlt": "CSS3"
+              },
+              "react": {
+                "label": "React",
+                "imageAlt": "React"
+              },
+              "vue": {
+                "label": "Vue.js",
+                "imageAlt": "Vue.js"
+              },
+              "tailwind": {
+                "label": "Tailwind CSS",
+                "imageAlt": "Tailwind CSS"
+              }
+            }
+          },
+          "backEnd": {
+            "heading": "バックエンド",
+            "technologies": {
+              "node": {
+                "label": "Node.js",
+                "imageAlt": "Node.js"
+              },
+              "next": {
+                "label": "Next.js",
+                "imageAlt": "Next.js"
+              },
+              "laravel": {
+                "label": "Laravel",
+                "imageAlt": "Laravel"
+              },
+              "django": {
+                "label": "Django (Python)",
+                "imageAlt": "Django"
+              },
+              "gin": {
+                "label": "Gin (Go)",
+                "imageAlt": "Gin"
+              }
+            }
+          },
+          "database": {
+            "heading": "データベース",
+            "technologies": {
+              "mysql": {
+                "label": "MySQL",
+                "imageAlt": "MySQL"
+              },
+              "postgresql": {
+                "label": "PostgreSQL",
+                "imageAlt": "PostgreSQL"
+              },
+              "mongodb": {
+                "label": "MongoDB",
+                "imageAlt": "MongoDB"
+              },
+              "firebase": {
+                "label": "Firebase",
+                "imageAlt": "Firebase"
+              }
+            }
+          },
+          "programmingLanguages": {
+            "heading": "プログラミング言語",
+            "technologies": {
+              "javascript": {
+                "label": "JavaScript",
+                "imageAlt": "JavaScript"
+              },
+              "python": {
+                "label": "Python",
+                "imageAlt": "Python"
+              },
+              "php": {
+                "label": "PHP",
+                "imageAlt": "PHP"
+              },
+              "go": {
+                "label": "Go",
+                "imageAlt": "Go"
+              }
+            }
+          },
+          "operatingSystems": {
+            "heading": "OS",
+            "technologies": {
+              "windows": {
+                "label": "Windows",
+                "imageAlt": "Windows"
+              },
+              "linux": {
+                "label": "Linux",
+                "imageAlt": "Linux"
+              }
+            }
+          },
+          "tools": {
+            "heading": "開発ツール",
+            "technologies": {
+              "git": {
+                "label": "Git",
+                "imageAlt": "Git"
+              },
+              "github": {
+                "label": "GitHub",
+                "imageAlt": "GitHub"
+              },
+              "vsCode": {
+                "label": "VS Code",
+                "imageAlt": "VS Code"
+              }
+            }
+          },
+          "cloud": {
+            "heading": "クラウド",
+            "technologies": {
+              "aws": {
+                "label": "AWS",
+                "imageAlt": "AWS"
+              },
+              "gcp": {
+                "label": "GCP",
+                "imageAlt": "GCP"
+              }
+            }
+          },
+          "devOps": {
+            "heading": "DevOps",
+            "technologies": {
+              "docker": {
+                "label": "Docker",
+                "imageAlt": "Docker"
+              },
+              "jenkins": {
+                "label": "Jenkins",
+                "imageAlt": "Jenkins"
+              }
+            }
+          },
+          "networkInfrastructure": {
+            "heading": "ネットワーク",
+            "technologies": {
+              "windowsServer": {
+                "label": "Windows Server",
+                "imageAlt": "Windows Server"
+              },
+              "cisco": {
+                "label": "Cisco Networking",
+                "imageAlt": "Cisco"
+              },
+              "linuxServer": {
+                "label": "Linux Server",
+                "imageAlt": "Linux Server"
+              },
+              "tcpIp": {
+                "label": "TCP/IP",
+                "imageAlt": "Network Protocols"
+              }
+            }
+          }
+        }
+      },
+      "featuredProjects": {
+        "heading": {
+          "lead": "実績",
+          "highlight": "プロジェクト"
+        },
+        "introduction": "私の学習プロセスと探求を代表する、注目のプロジェクトです。"
+      },
+      "featuredCertificates": {
+        "heading": {
+          "highlight": "資格",
+          "tail": "・受賞歴"
+        },
+        "introduction": "私のITキャリアにおける重要なマイルストーンとなる、主要な認定資格とプロフェッショナルな実績です。"
+      },
+      "contact": {
+        "heading": {
+          "lead": "お",
+          "highlight": "問い合わせ"
+        },
+        "information": {
+          "heading": "連絡先情報",
+          "introduction": "プロフェッショナルな機会、プロジェクトの協業、または技術に関する情報交換など、いつでも歓迎いたします。以下のいずれかの方法でお気軽にご連絡ください。",
+          "channels": {
+            "email": {
+              "label": "sulucodes@gmail.com",
+              "title": "Kirim Email"
+            },
+            "linkedin": {
+              "label": "linkedin.com/in/sulujulianto",
+              "title": "Profil LinkedIn"
+            },
+            "whatsapp": {
+              "label": "+62 821-2372-4998 (WA Business)",
+              "title": "Hubungi via WhatsApp"
+            },
+            "telegram": {
+              "label": "@sulucodes",
+              "title": "Hubungi via Telegram"
+            }
+          }
+        },
+        "form": {
+          "heading": "メッセージを送る",
+          "fields": {
+            "name": {
+              "ariaLabel": "お名前",
+              "placeholder": "お名前"
+            },
+            "email": {
+              "ariaLabel": "メールアドレス",
+              "placeholder": "メールアドレス"
+            },
+            "message": {
+              "ariaLabel": "メッセージ",
+              "placeholder": "メッセージをご記入ください..."
+            }
+          },
+          "submit": "送信する",
+          "submitting": "送信中...",
+          "subject": "ポートフォリオサイトからの新しいメッセージ",
+          "success": {
+            "heading": "成功しました！",
+            "message": "メッセージが送信されました。"
+          },
+          "failure": {
+            "heading": "エラー！",
+            "message": "メッセージの送信中に問題が発生しました。"
+          }
+        }
+      }
+    },
+    "projects": {
+      "documentTitle": "プロジェクトポートフォリオ — Sulu Edward Julianto",
+      "heading": {
+        "lead": "実績",
+        "highlight": "プロジェクト"
+      },
+      "introduction": "様々な技術への適応と学習プロセスを記録した、これまでに手掛けた全プロジェクトのアーカイブです。"
+    },
+    "certificates": {
+      "documentTitle": "資格・受賞歴 — Sulu Edward Julianto",
+      "heading": {
+        "highlight": "資格",
+        "tail": "・受賞歴"
+      },
+      "introduction": "私の技術力を裏付ける、技術資格、研修、および業界認定の包括的な記録です。"
+    }
+  }
+}
