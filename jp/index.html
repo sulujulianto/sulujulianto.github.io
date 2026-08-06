@@ -372,9 +372,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
             <a href="../" class="text-xl font-bold">Sulu Edward Julianto</a>
             
-            <nav class="hidden md:flex space-x-8 items-center">
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-sm xl:text-base">
                 <a href="../">ホーム</a>
                 <a href="#tentang">プロフィール</a>
+                <a href="#riwayat">経歴</a>
                 <a href="#skills">スキル</a>
                 <a href="#proyek">プロジェクト</a>
                 <a href="#sertifikat">資格</a>
@@ -389,7 +390,7 @@
                 </label>
             </nav>
             
-            <div class="md:hidden flex items-center space-x-4">
+            <div class="lg:hidden flex items-center space-x-4">
                 <label id="theme-toggle-nav" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-nav-checkbox">
                     <span class="slider">
@@ -403,9 +404,10 @@
             </div>
         </div>
         
-        <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
+        <div id="mobile-menu" class="lg:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
             <a href="../" class="block py-2">ホーム</a>
             <a href="#tentang" class="block py-2">プロフィール</a>
+            <a href="#riwayat" class="block py-2">経歴</a>
             <a href="#skills" class="block py-2">スキル</a>
             <a href="#proyek" class="block py-2">プロジェクト</a>
             <a href="#sertifikat" class="block py-2">資格</a>
@@ -444,18 +446,19 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-12"><span class="section-highlight">プロフィール</span></h2>
                 <div class="card p-8 rounded-2xl shadow-xl text-center">
-                    <p class="text-lg mb-8">
+                    <p class="text-lg">
                         私はモダンなWeb開発に注力しているジュニア・フルスタック開発者です。コンピュータネットワーク工学の背景を持ち、このポートフォリオは私のITキャリアの記録（アーカイブ）です。ここではWebプロジェクトや技術的な探求、そしてシステム設計への理解を深めることに重点を置いた、ソフトウェア開発における継続的な学習プロセスをまとめています。
                     </p>
-                    <!-- <div class="grid grid-cols-1 sm:grid-cols-2 justify-center items-center gap-6 mt-8">
-                        <div class="flex justify-center">
-                            <img src="../assets/img/about-me/about-workspace.jpg" alt="作業環境" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
-                        </div>
-                        <div class="flex justify-center">
-                            <img src="../assets/img/about-me/about-hobby.jpg" alt="趣味・活動" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
-                        </div>
-                    </div> -->
+                    <div id="about-gallery-root" data-locale="ja" data-base-path="../"></div>
                 </div>
+            </div>
+        </section>
+
+        <section id="riwayat" class="py-24 scroll-mt-16">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4"><span class="section-highlight">経歴</span></h2>
+                <p class="text-center text-lg mb-12 max-w-2xl mx-auto">学歴と職歴を新しい順にまとめています。</p>
+                <div id="history-react-root" data-locale="ja" data-base-path="../"></div>
             </div>
         </section>
 

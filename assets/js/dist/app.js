@@ -92,6 +92,44 @@
             modalPreview: '访问网站',
         },
     };
+    const HISTORY_LABELS = {
+        id: {
+            experience: 'Pengalaman',
+            education: 'Pendidikan',
+            emptyExperience: 'Belum ada data pengalaman.',
+            emptyEducation: 'Belum ada data pendidikan.',
+            unavailable: 'Riwayat belum dapat ditampilkan.',
+            present: 'Sekarang',
+            gallery: 'Galeri Tentang Saya',
+        },
+        en: {
+            experience: 'Experience',
+            education: 'Education',
+            emptyExperience: 'No experience data yet.',
+            emptyEducation: 'No education data yet.',
+            unavailable: 'History is currently unavailable.',
+            present: 'Present',
+            gallery: 'About Me gallery',
+        },
+        ja: {
+            experience: '職歴',
+            education: '学歴',
+            emptyExperience: '職歴データはまだありません。',
+            emptyEducation: '学歴データはまだありません。',
+            unavailable: '経歴を現在表示できません。',
+            present: '現在',
+            gallery: 'プロフィールギャラリー',
+        },
+        zh: {
+            experience: '工作经历',
+            education: '教育经历',
+            emptyExperience: '暂无工作经历数据。',
+            emptyEducation: '暂无教育经历数据。',
+            unavailable: '暂时无法显示个人经历。',
+            present: '至今',
+            gallery: '关于我图片集',
+        },
+    };
     const parseDate = (value) => {
         if (!value)
             return 0;
@@ -110,6 +148,49 @@
     };
     const sortByNewest = (items, getter) => {
         return [...items].sort((a, b) => parseDate(getter(b)) - parseDate(getter(a)));
+    };
+    const localeCode = {
+        id: 'id-ID',
+        en: 'en-US',
+        ja: 'ja-JP',
+        zh: 'zh-CN',
+    };
+    const formatMonthYear = (value, locale) => {
+        const match = /^(\d{4})-(\d{2})$/.exec(value);
+        if (!match)
+            return value;
+        const year = Number(match[1]);
+        const month = Number(match[2]);
+        if (month < 1 || month > 12)
+            return value;
+        return new Intl.DateTimeFormat(localeCode[locale], {
+            month: 'short',
+            year: 'numeric',
+            timeZone: 'UTC',
+        }).format(new Date(Date.UTC(year, month - 1, 1)));
+    };
+    const timelineTimestamp = (item) => {
+        if (!item.end)
+            return Number.MAX_SAFE_INTEGER;
+        return parseDate(`${item.end}-01`) || parseDate(`${item.start}-01`);
+    };
+    const sortTimeline = (items) => {
+        return [...items].sort((a, b) => timelineTimestamp(b) - timelineTimestamp(a));
+    };
+    const normalizeTimelineItems = (items) => {
+        if (!Array.isArray(items))
+            return [];
+        return items.filter((item) => item &&
+            typeof item.start === 'string' &&
+            item.start.trim() !== '' &&
+            typeof item.title === 'string' &&
+            item.title.trim() !== '');
+    };
+    const readJson = async (url) => {
+        const response = await fetch(url);
+        if (!response.ok)
+            throw new Error(`HTTP ${response.status}`);
+        return response.json();
     };
     const parsePositiveNumber = (value, fallback) => {
         const parsed = Number(value);
@@ -585,7 +666,107 @@
                     labels.viewAll,
                     React.createElement("i", { className: "fas fa-arrow-right" }))))));
     };
+    const AboutGalleryApp = () => {
+        const container = document.getElementById('about-gallery-root');
+        const locale = normalizeLocale(container === null || container === void 0 ? void 0 : container.dataset.locale);
+        const basePath = (container === null || container === void 0 ? void 0 : container.dataset.basePath) || './';
+        const labels = HISTORY_LABELS[locale];
+        const [images, setImages] = React.useState([]);
+        React.useEffect(() => {
+            let active = true;
+            readJson(`${basePath}assets/data/about/about-images.json`)
+                .then((result) => {
+                if (!active)
+                    return;
+                const validImages = Array.isArray(result.images)
+                    ? result.images.filter((item) => item && typeof item.src === 'string' && item.src.trim())
+                    : [];
+                setImages(validImages);
+            })
+                .catch((error) => console.error('Gagal memuat galeri Tentang Saya.', error));
+            return () => {
+                active = false;
+            };
+        }, [basePath]);
+        if (images.length === 0)
+            return null;
+        return (React.createElement("div", { className: "grid grid-cols-2 gap-3 sm:gap-6 mt-8", "aria-label": labels.gallery }, images.map((image, index) => (React.createElement("figure", { key: `${image.src}-${index}`, className: "min-w-0 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 shadow-md" },
+            React.createElement("div", { className: "aspect-[4/3] overflow-hidden" },
+                React.createElement("img", { src: `${basePath}${image.src.replace(/^\.\//, '')}`, alt: image.alt || `${labels.gallery} ${index + 1}`, loading: "lazy", className: "h-full w-full object-cover transition-transform duration-300 hover:scale-105" })),
+            image.caption && React.createElement("figcaption", { className: "px-3 py-2 text-xs sm:text-sm text-left" }, image.caption))))));
+    };
+    const HistoryApp = () => {
+        const container = document.getElementById('history-react-root');
+        const locale = normalizeLocale(container === null || container === void 0 ? void 0 : container.dataset.locale);
+        const basePath = (container === null || container === void 0 ? void 0 : container.dataset.basePath) || './';
+        const labels = HISTORY_LABELS[locale];
+        const [activeTab, setActiveTab] = React.useState('experience');
+        const [data, setData] = React.useState({ experience: [], education: [] });
+        const [isLoading, setIsLoading] = React.useState(true);
+        const [hasError, setHasError] = React.useState(false);
+        React.useEffect(() => {
+            let active = true;
+            setIsLoading(true);
+            readJson(`${basePath}assets/data/history/history-${locale}.json`)
+                .then((result) => {
+                if (!active)
+                    return;
+                setData({
+                    experience: normalizeTimelineItems(result.experience),
+                    education: normalizeTimelineItems(result.education),
+                });
+                setHasError(false);
+            })
+                .catch((error) => {
+                if (!active)
+                    return;
+                console.error('Gagal memuat data riwayat.', error);
+                setHasError(true);
+            })
+                .finally(() => {
+                if (active)
+                    setIsLoading(false);
+            });
+            return () => {
+                active = false;
+            };
+        }, [basePath, locale]);
+        const items = sortTimeline(activeTab === 'experience' ? data.experience || [] : data.education || []);
+        const panelId = `history-${activeTab}-panel`;
+        return (React.createElement("div", { className: "card w-full overflow-hidden rounded-2xl p-5 sm:p-8 shadow-xl" },
+            React.createElement("div", { className: "grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1 dark:bg-slate-800", role: "tablist", "aria-label": "History" }, ['experience', 'education'].map((tab) => {
+                const isActive = activeTab === tab;
+                return (React.createElement("button", { key: tab, id: `history-${tab}-tab`, type: "button", role: "tab", "aria-selected": isActive, "aria-controls": `history-${tab}-panel`, onClick: () => setActiveTab(tab), className: `rounded-lg px-3 py-3 text-sm sm:text-base font-semibold transition-colors ${isActive
+                        ? 'bg-blue-600 text-white shadow-md'
+                        : 'bg-transparent text-slate-700 hover:bg-white/70 dark:text-slate-200 dark:hover:bg-slate-700'}` },
+                    React.createElement("span", { style: isActive ? { color: '#ffffff' } : undefined }, labels[tab])));
+            })),
+            React.createElement("div", { id: panelId, role: "tabpanel", "aria-labelledby": `history-${activeTab}-tab`, className: "mt-5 sm:mt-8" },
+                isLoading && React.createElement("p", { className: "py-8 text-center text-sm text-slate-500 dark:text-slate-400" }, "\u2026"),
+                !isLoading && hasError && (React.createElement("p", { className: "rounded-xl bg-slate-100 px-4 py-8 text-center text-sm text-slate-500 dark:bg-slate-800 dark:text-slate-400" }, labels.unavailable)),
+                !isLoading && !hasError && items.length === 0 && (React.createElement("p", { className: "rounded-xl bg-slate-100 px-4 py-8 text-center text-sm text-slate-500 dark:bg-slate-800 dark:text-slate-400" }, activeTab === 'experience' ? labels.emptyExperience : labels.emptyEducation)),
+                !isLoading && !hasError && items.length > 0 && (React.createElement("div", { className: "space-y-4" }, items.map((item, index) => (React.createElement("article", { key: `${item.start}-${item.title}-${index}`, className: "grid grid-cols-1 gap-2 rounded-xl border border-slate-200 p-4 text-left sm:p-5 md:grid-cols-3 md:gap-6 dark:border-slate-700" },
+                    React.createElement("p", { className: "text-sm font-semibold text-blue-700 dark:text-blue-300" },
+                        formatMonthYear(item.start, locale),
+                        " \u2013",
+                        ' ',
+                        item.end ? formatMonthYear(item.end, locale) : labels.present),
+                    React.createElement("div", { className: "md:col-span-2" },
+                        React.createElement("h3", { className: "text-base sm:text-lg font-bold" }, item.title),
+                        (item.organization || item.location) && (React.createElement("p", { className: "mt-1 text-sm font-medium text-slate-600 dark:text-slate-300" }, [item.organization, item.location].filter(Boolean).join(' · '))),
+                        item.description && React.createElement("p", { className: "mt-2 text-sm leading-relaxed" }, item.description))))))))));
+    };
     const initializeApp = () => {
+        const aboutGalleryContainer = document.getElementById('about-gallery-root');
+        if (aboutGalleryContainer) {
+            const root = ReactDOMClient.createRoot(aboutGalleryContainer);
+            root.render(React.createElement(AboutGalleryApp));
+        }
+        const historyContainer = document.getElementById('history-react-root');
+        if (historyContainer) {
+            const root = ReactDOMClient.createRoot(historyContainer);
+            root.render(React.createElement(HistoryApp));
+        }
         const projectContainer = document.getElementById('portfolio-react-root');
         if (projectContainer) {
             const root = ReactDOMClient.createRoot(projectContainer);

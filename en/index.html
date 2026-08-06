@@ -373,9 +373,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
             <a href="../" class="text-xl font-bold">Sulu Edward Julianto</a>
             
-            <nav class="hidden md:flex space-x-8 items-center">
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-sm xl:text-base">
                 <a href="../">Home</a>
                 <a href="#tentang">About</a>
+                <a href="#riwayat">History</a>
                 <a href="#skills">Skills</a>
                 <a href="#proyek">Projects</a>
                 <a href="#sertifikat">Certificates</a>
@@ -390,7 +391,7 @@
                 </label>
             </nav>
             
-            <div class="md:hidden flex items-center space-x-4">
+            <div class="lg:hidden flex items-center space-x-4">
                 <label id="theme-toggle-nav" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-nav-checkbox">
                     <span class="slider">
@@ -404,9 +405,10 @@
             </div>
         </div>
         
-        <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
+        <div id="mobile-menu" class="lg:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
             <a href="../" class="block py-2">Home</a>
             <a href="#tentang" class="block py-2">About</a>
+            <a href="#riwayat" class="block py-2">History</a>
             <a href="#skills" class="block py-2">Skills</a>
             <a href="#proyek" class="block py-2">Projects</a>
             <a href="#sertifikat" class="block py-2">Certificates</a>
@@ -445,18 +447,19 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-12">About <span class="section-highlight">Me</span></h2>
                 <div class="card p-8 rounded-2xl shadow-xl text-center">
-                    <p class="text-lg mb-8">
+                    <p class="text-lg">
                         I am a Junior Full-Stack Developer focused on modern web development. With a background in Computer and Network Engineering, this portfolio serves as an archive of my IT journey, documenting my web projects, technological explorations, and my continuous learning process in software development, with a focus on improving my understanding of my system design.
                     </p>
-                    <!-- <div class="grid grid-cols-1 sm:grid-cols-2 justify-center items-center gap-6 mt-8">
-                        <div class="flex justify-center">
-                            <img src="../assets/img/about-me/about-workspace.jpg" alt="Workspace" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
-                        </div>
-                        <div class="flex justify-center">
-                            <img src="../assets/img/about-me/about-hobby.jpg" alt="My Activities" class="w-full max-w-sm h-auto object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105">
-                        </div>
-                    </div> -->
+                    <div id="about-gallery-root" data-locale="en" data-base-path="../"></div>
                 </div>
+            </div>
+        </section>
+
+        <section id="riwayat" class="py-24 scroll-mt-16">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">My <span class="section-highlight">History</span></h2>
+                <p class="text-center text-lg mb-12 max-w-2xl mx-auto">My education and work journey, ordered from the most recent.</p>
+                <div id="history-react-root" data-locale="en" data-base-path="../"></div>
             </div>
         </section>
 
