@@ -1,0 +1,299 @@
+{
+  "locale": "en",
+  "shared": {
+    "brand": "Sulu Edward Julianto",
+    "navigation": {
+      "home": "Home",
+      "about": "About",
+      "skills": "Skills",
+      "projects": "Projects",
+      "certificates": "Certificates",
+      "contact": "Contact",
+      "blog": "Blog"
+    },
+    "footer": {
+      "copyrightSymbol": "©",
+      "owner": "Sulu Edward Julianto"
+    }
+  },
+  "pages": {
+    "home": {
+      "documentTitle": "Sulu Edward Julianto - Software Engineer",
+      "hero": {
+        "name": "Sulu Edward Julianto",
+        "tagline": "Junior Full-Stack Developer. Building scalable, functional, and modern web applications.",
+        "downloadCv": "Download CV",
+        "hireMe": "Hire Me",
+        "profileImageAlt": "Sulu Edward Profile Photo"
+      },
+      "about": {
+        "heading": {
+          "lead": "About",
+          "highlight": "Me"
+        },
+        "description": "I am a Junior Full-Stack Developer focused on modern web development. With a background in Computer and Network Engineering, this portfolio serves as an archive of my IT journey, documenting my web projects, technological explorations, and my continuous learning process in software development, with a focus on improving my understanding of my system design."
+      },
+      "skills": {
+        "heading": "Technical Skills",
+        "introduction": "A collection of technologies, programming languages, and tools I use to build scalable and functional software solutions.",
+        "groups": {
+          "frontEnd": {
+            "heading": "Front-End",
+            "technologies": {
+              "html5": {
+                "label": "HTML5",
+                "imageAlt": "HTML5"
+              },
+              "css3": {
+                "label": "CSS3",
+                "imageAlt": "CSS3"
+              },
+              "react": {
+                "label": "React",
+                "imageAlt": "React"
+              },
+              "vue": {
+                "label": "Vue.js",
+                "imageAlt": "Vue.js"
+              },
+              "tailwind": {
+                "label": "Tailwind CSS",
+                "imageAlt": "Tailwind CSS"
+              }
+            }
+          },
+          "backEnd": {
+            "heading": "Back-End",
+            "technologies": {
+              "node": {
+                "label": "Node.js",
+                "imageAlt": "Node.js"
+              },
+              "next": {
+                "label": "Next.js",
+                "imageAlt": "Next.js"
+              },
+              "laravel": {
+                "label": "Laravel",
+                "imageAlt": "Laravel"
+              },
+              "django": {
+                "label": "Django (Python)",
+                "imageAlt": "Django"
+              },
+              "gin": {
+                "label": "Gin (Go)",
+                "imageAlt": "Gin"
+              }
+            }
+          },
+          "database": {
+            "heading": "Database",
+            "technologies": {
+              "mysql": {
+                "label": "MySQL",
+                "imageAlt": "MySQL"
+              },
+              "postgresql": {
+                "label": "PostgreSQL",
+                "imageAlt": "PostgreSQL"
+              },
+              "mongodb": {
+                "label": "MongoDB",
+                "imageAlt": "MongoDB"
+              },
+              "firebase": {
+                "label": "Firebase",
+                "imageAlt": "Firebase"
+              }
+            }
+          },
+          "programmingLanguages": {
+            "heading": "Programming Languages",
+            "technologies": {
+              "javascript": {
+                "label": "JavaScript",
+                "imageAlt": "JavaScript"
+              },
+              "python": {
+                "label": "Python",
+                "imageAlt": "Python"
+              },
+              "php": {
+                "label": "PHP",
+                "imageAlt": "PHP"
+              },
+              "go": {
+                "label": "Go",
+                "imageAlt": "Go"
+              }
+            }
+          },
+          "operatingSystems": {
+            "heading": "Operating Systems",
+            "technologies": {
+              "windows": {
+                "label": "Windows",
+                "imageAlt": "Windows"
+              },
+              "linux": {
+                "label": "Linux",
+                "imageAlt": "Linux"
+              }
+            }
+          },
+          "tools": {
+            "heading": "Tools & Technology",
+            "technologies": {
+              "git": {
+                "label": "Git",
+                "imageAlt": "Git"
+              },
+              "github": {
+                "label": "GitHub",
+                "imageAlt": "GitHub"
+              },
+              "vsCode": {
+                "label": "VS Code",
+                "imageAlt": "VS Code"
+              }
+            }
+          },
+          "cloud": {
+            "heading": "Cloud Platforms",
+            "technologies": {
+              "aws": {
+                "label": "AWS",
+                "imageAlt": "AWS"
+              },
+              "gcp": {
+                "label": "GCP",
+                "imageAlt": "GCP"
+              }
+            }
+          },
+          "devOps": {
+            "heading": "DevOps",
+            "technologies": {
+              "docker": {
+                "label": "Docker",
+                "imageAlt": "Docker"
+              },
+              "jenkins": {
+                "label": "Jenkins",
+                "imageAlt": "Jenkins"
+              }
+            }
+          },
+          "networkInfrastructure": {
+            "heading": "Networking",
+            "technologies": {
+              "windowsServer": {
+                "label": "Windows Server",
+                "imageAlt": "Windows Server"
+              },
+              "cisco": {
+                "label": "Cisco Networking",
+                "imageAlt": "Cisco"
+              },
+              "linuxServer": {
+                "label": "Linux Server",
+                "imageAlt": "Linux Server"
+              },
+              "tcpIp": {
+                "label": "TCP/IP",
+                "imageAlt": "Network Protocols"
+              }
+            }
+          }
+        }
+      },
+      "featuredProjects": {
+        "heading": {
+          "lead": "Project",
+          "highlight": "Portfolio"
+        },
+        "introduction": "A selection of featured projects representing my learning journey and explorations."
+      },
+      "featuredCertificates": {
+        "heading": {
+          "highlight": "Certifications",
+          "tail": "& Awards"
+        },
+        "introduction": "Selected certifications and professional milestones that mark significant steps in my IT career journey."
+      },
+      "contact": {
+        "heading": {
+          "lead": "Get in",
+          "highlight": "Touch"
+        },
+        "information": {
+          "heading": "Contact Information",
+          "introduction": "I am always open to discussing professional opportunities, project collaborations, or simply exchanging ideas about technology. Feel free to reach out through any of the channels below.",
+          "channels": {
+            "email": {
+              "label": "sulucodes@gmail.com",
+              "title": "Kirim Email"
+            },
+            "linkedin": {
+              "label": "linkedin.com/in/sulujulianto",
+              "title": "Profil LinkedIn"
+            },
+            "whatsapp": {
+              "label": "+62 821-2372-4998 (WA Business)",
+              "title": "Hubungi via WhatsApp"
+            },
+            "telegram": {
+              "label": "@sulucodes",
+              "title": "Hubungi via Telegram"
+            }
+          }
+        },
+        "form": {
+          "heading": "Send a Message",
+          "fields": {
+            "name": {
+              "ariaLabel": "Your Name",
+              "placeholder": "Your Full Name"
+            },
+            "email": {
+              "ariaLabel": "Your Email",
+              "placeholder": "Your Email Address"
+            },
+            "message": {
+              "ariaLabel": "Your Message",
+              "placeholder": "Write your message here..."
+            }
+          },
+          "submit": "Send Message",
+          "submitting": "Sending...",
+          "subject": "New Message from Portfolio Website",
+          "success": {
+            "heading": "Success!",
+            "message": "Your message has been sent."
+          },
+          "failure": {
+            "heading": "Error!",
+            "message": "Something went wrong while sending your message."
+          }
+        }
+      }
+    },
+    "projects": {
+      "documentTitle": "Project Portfolio — Sulu Edward Julianto",
+      "heading": {
+        "lead": "Project",
+        "highlight": "Portfolio"
+      },
+      "introduction": "A complete archive of my projects, documenting my learning process and adaptability across various technologies."
+    },
+    "certificates": {
+      "documentTitle": "Certifications & Awards — Sulu Edward Julianto",
+      "heading": {
+        "highlight": "Certifications",
+        "tail": "& Awards"
+      },
+      "introduction": "A comprehensive record of the technical qualifications, training, and industry certifications that support my technical competencies."
+    }
+  }
+}
