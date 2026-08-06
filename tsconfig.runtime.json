@@ -10,6 +10,7 @@
     "rootDir": "./assets/js"
   },
   "include": [
-    "assets/js/app.tsx"
+    "assets/js/app.tsx",
+    "assets/js/language-resolver.ts"
   ]
 }
