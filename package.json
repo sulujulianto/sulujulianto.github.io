@@ -4,6 +4,7 @@
   "description": "Personal portfolio website with React, TypeScript, and Tailwind CSS for multi-language support.",
   "private": true,
   "scripts": {
+    "audit:portfolio": "node scripts/audit-portfolio-data.mjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind:build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css",
     "tailwind:watch": "tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --watch",

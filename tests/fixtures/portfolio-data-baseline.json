@@ -1,0 +1,1192 @@
+{
+  "schemaVersion": 1,
+  "knownMissingAssets": [
+    "assets/img/projects/id/antriankku.webp",
+    "assets/img/projects/id/kospintar.webp",
+    "assets/img/projects/id/lokerkita.webp"
+  ],
+  "requiredAssets": [
+    "assets/data/CV/EN/CV_SuluEdwardJulianto.pdf",
+    "assets/data/CV/ID/CV_SuluEdwardJulianto.pdf"
+  ],
+  "datasets": {
+    "projects": {
+      "id": {
+        "file": "assets/data/projects/projects-id.json",
+        "sha256": "53cd1b72ec2b4938f258f4ce3e5d97cf58ce4b274731152f7983e28b96cc2bf9",
+        "counts": {
+          "total": 8,
+          "displayable": 8,
+          "placeholder": 0,
+          "featured": 3
+        },
+        "effectiveFeatured": [
+          {
+            "title": "LokerKita",
+            "date": "2026-01-01"
+          },
+          {
+            "title": "Sistem Informasi Wilayah Indonesia",
+            "date": "2025-12-04"
+          },
+          {
+            "title": "Japan Travel",
+            "date": "2025-11-20"
+          }
+        ],
+        "records": [
+          {
+            "title": "Jejak Petualang",
+            "category": "fullstack",
+            "dateAdded": "2025-08-20",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/projects/id/jejakpetualang.webp",
+            "githubUrl": "https://github.com/sulujulianto/jejakpetualang",
+            "liveUrl": "",
+            "techStack": [
+              "PHP Native",
+              "MySQL",
+              "JavaScript",
+              "HTML5",
+              "CSS3"
+            ]
+          },
+          {
+            "title": "Nusantara Trans",
+            "category": "fullstack",
+            "dateAdded": "2025-11-19",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/projects/id/nusantaratrans.webp",
+            "githubUrl": "https://github.com/sulujulianto/nusantaratrans",
+            "liveUrl": "",
+            "techStack": [
+              "PHP 8",
+              "PDO",
+              "MySQL",
+              "Bootstrap 5",
+              "JavaScript",
+              "CSS3"
+            ]
+          },
+          {
+            "title": "Japan Travel",
+            "category": "fullstack",
+            "dateAdded": "2025-11-20",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/projects/id/japanese-travel.webp",
+            "githubUrl": "https://github.com/sulujulianto/japanesetravel",
+            "liveUrl": "",
+            "techStack": [
+              "Laravel 12",
+              "Tailwind CSS",
+              "MySQL",
+              "Midtrans",
+              "PayPal",
+              "Chart.js",
+              "Vite"
+            ]
+          },
+          {
+            "title": "Sistem Informasi Wilayah Indonesia",
+            "category": "backend",
+            "dateAdded": "2025-12-04",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/projects/id/sistem-wilayah-indonesia.webp",
+            "githubUrl": "https://github.com/sulujulianto/sistem-wilayah-indonesia",
+            "liveUrl": "",
+            "techStack": [
+              "Python 3.12",
+              "FastAPI",
+              "Docker",
+              "GitHub Actions",
+              "Pytest",
+              "Shell Script"
+            ]
+          },
+          {
+            "title": "KosPintar",
+            "category": "fullstack",
+            "dateAdded": "2026-01-01",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/projects/id/kospintar.webp",
+            "githubUrl": "",
+            "liveUrl": "",
+            "techStack": [
+              "Laravel 12",
+              "React",
+              "Inertia.js",
+              "MySQL",
+              "Tailwind CSS",
+              "Xendit"
+            ]
+          },
+          {
+            "title": "LokerKita",
+            "category": "fullstack",
+            "dateAdded": "2026-01-01",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/projects/id/lokerkita.webp",
+            "githubUrl": "",
+            "liveUrl": "",
+            "techStack": [
+              "Node.js",
+              "Fastify",
+              "React",
+              "PostgreSQL",
+              "Redis",
+              "JWT",
+              "Tailwind CSS"
+            ]
+          },
+          {
+            "title": "AntrianKu",
+            "category": "fullstack",
+            "dateAdded": "2026-01-01",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/projects/id/antriankku.webp",
+            "githubUrl": "",
+            "liveUrl": "",
+            "techStack": [
+              "Next.js 14",
+              "Supabase",
+              "Pusher",
+              "Tailwind CSS",
+              "Vercel",
+              "PWA"
+            ]
+          },
+          {
+            "title": "Pixel Heist Co-op",
+            "category": "game",
+            "dateAdded": "2025-12-13",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/projects/id/pixel-heist.webp",
+            "githubUrl": "https://github.com/sulujulianto/pixel-heist-coop",
+            "liveUrl": "",
+            "techStack": [
+              "Next.js",
+              "TypeScript",
+              "Tailwind CSS",
+              "Firebase App Hosting",
+              "Project IDX",
+              "Google Gemini",
+              "Firestore"
+            ]
+          }
+        ]
+      },
+      "en": {
+        "file": "assets/data/projects/projects-en.json",
+        "sha256": "f9df5cb41e89ccd91dcd4baced577845b7810a2fb0044c61dfd4e6f775008dd4",
+        "counts": {
+          "total": 3,
+          "displayable": 1,
+          "placeholder": 2,
+          "featured": 1
+        },
+        "effectiveFeatured": [
+          {
+            "title": "Atlas Country API",
+            "date": "2025-11-26"
+          }
+        ],
+        "records": [
+          {
+            "title": "Atlas Country API",
+            "category": "backend",
+            "dateAdded": "2025-11-26",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/projects/en/atlas-country-api.webp",
+            "githubUrl": "https://github.com/sulujulianto/atlas-country-api",
+            "liveUrl": "",
+            "techStack": [
+              "Python 3.12",
+              "FastAPI",
+              "Pydantic",
+              "Docker",
+              "GitHub Actions",
+              "Pytest"
+            ]
+          },
+          {
+            "title": "",
+            "category": "",
+            "dateAdded": "",
+            "isFeatured": false,
+            "imageUrl": "",
+            "githubUrl": "",
+            "liveUrl": "",
+            "techStack": []
+          },
+          {
+            "title": "",
+            "category": "",
+            "dateAdded": "",
+            "isFeatured": false,
+            "imageUrl": "",
+            "githubUrl": "",
+            "liveUrl": "",
+            "techStack": []
+          }
+        ]
+      },
+      "ja": {
+        "file": "assets/data/projects/projects-ja.json",
+        "sha256": "f238817460b8661cb8d60afe8bca04fa345ab79dab634fb75f41840d5ef97489",
+        "counts": {
+          "total": 3,
+          "displayable": 0,
+          "placeholder": 3,
+          "featured": 0
+        },
+        "effectiveFeatured": [],
+        "records": [
+          {
+            "title": "",
+            "category": "",
+            "dateAdded": "",
+            "isFeatured": false,
+            "imageUrl": "",
+            "githubUrl": "",
+            "liveUrl": "",
+            "techStack": []
+          },
+          {
+            "title": "",
+            "category": "",
+            "dateAdded": "",
+            "isFeatured": false,
+            "imageUrl": "",
+            "githubUrl": "",
+            "liveUrl": "",
+            "techStack": []
+          },
+          {
+            "title": "",
+            "category": "",
+            "dateAdded": "",
+            "isFeatured": false,
+            "imageUrl": "",
+            "githubUrl": "",
+            "liveUrl": "",
+            "techStack": []
+          }
+        ]
+      },
+      "zh": {
+        "file": "assets/data/projects/projects-zh.json",
+        "sha256": "65dd0787afad5d9124f4cf12ec134a15076b089be08cf4699a5f1931b80c51fe",
+        "counts": {
+          "total": 1,
+          "displayable": 0,
+          "placeholder": 1,
+          "featured": 0
+        },
+        "effectiveFeatured": [],
+        "records": [
+          {
+            "title": "",
+            "category": "",
+            "dateAdded": "",
+            "isFeatured": false,
+            "imageUrl": "",
+            "githubUrl": "",
+            "liveUrl": "",
+            "techStack": []
+          }
+        ]
+      }
+    },
+    "certificates": {
+      "id": {
+        "file": "assets/data/certificates/certificates-id.json",
+        "sha256": "7c56a7943dc81bccf1ced0c85e556532598611635fa51b65f5b9f0ddc77b6ad5",
+        "counts": {
+          "total": 12,
+          "displayable": 12,
+          "placeholder": 0,
+          "featured": 3
+        },
+        "effectiveFeatured": [
+          {
+            "title": "Web Development With Node.js and React (BNSP)",
+            "date": "2025-12-15"
+          },
+          {
+            "title": "Belajar Fundamental Deep Learning",
+            "date": "2025-11-03"
+          },
+          {
+            "title": "Junior Web Developer (BNSP)",
+            "date": "2025-09-04"
+          }
+        ],
+        "records": [
+          {
+            "title": "Junior Web Developer (BNSP)",
+            "category": "web-development",
+            "tanggalTerbit": "2025-09-04",
+            "tanggalKadaluarsa": "2028-09-04",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/certificates/id/junior-web-developer-bnsp.webp",
+            "fullImageUrl": "../assets/img/certificates/id/junior-web-developer-bnsp.webp",
+            "link": null,
+            "techStack": null
+          },
+          {
+            "title": "Web Development With Node.js and React (BNSP)",
+            "category": "web-development",
+            "tanggalTerbit": "2025-12-15",
+            "tanggalKadaluarsa": "2028-12-15",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/certificates/id/web-development-with-node-js-and-react-bnsp.webp",
+            "fullImageUrl": "../assets/img/certificates/id/web-development-with-node-js-and-react-bnsp.webp",
+            "link": null,
+            "techStack": null
+          },
+          {
+            "title": "Belajar Fundamental Deep Learning",
+            "category": "ai-data",
+            "tanggalTerbit": "2025-11-03",
+            "tanggalKadaluarsa": "2028-11-03",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/certificates/id/belajar-fundamental-deep-learning.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/L4PQ2972OZO1",
+            "techStack": null
+          },
+          {
+            "title": "Belajar Back-End Pemula dengan JavaScript",
+            "category": "web-development",
+            "tanggalTerbit": "2025-08-07",
+            "tanggalKadaluarsa": "2028-08-07",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/id/belajar-back-end-pemula-dengan-javascript.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/ERZR245J2PYV",
+            "techStack": null
+          },
+          {
+            "title": "Belajar Machine Learning untuk Pemula",
+            "category": "ai-data",
+            "tanggalTerbit": "2025-08-13",
+            "tanggalKadaluarsa": "2028-08-13",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/id/belajar-machine-learning-untuk-pemula.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/1RXYQY1VQZVM",
+            "techStack": null
+          },
+          {
+            "title": "Belajar Membuat Front-End Web untuk Pemula",
+            "category": "web-development",
+            "tanggalTerbit": "2026-01-21",
+            "tanggalKadaluarsa": "2029-01-21",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/id/belajar-membuat-front-end-web-untuk-pemula.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/1OP8187J8ZQK",
+            "techStack": null
+          },
+          {
+            "title": "Belajar Dasar Pemrograman Web",
+            "category": "web-development",
+            "tanggalTerbit": "2026-01-20",
+            "tanggalKadaluarsa": "2029-01-20",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/id/belajar-dasar-pemrograman-web.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/KEXLLD21WXG2",
+            "techStack": null
+          },
+          {
+            "title": "Belajar Dasar Pemrograman JavaScript",
+            "category": "programming",
+            "tanggalTerbit": "2025-08-07",
+            "tanggalKadaluarsa": "2028-08-07",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/id/belajar-dasar-pemrograman-javascript.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/MEPJ2L53LP3V",
+            "techStack": null
+          },
+          {
+            "title": "Belajar Dasar AI",
+            "category": "ai-data",
+            "tanggalTerbit": "2025-10-23",
+            "tanggalKadaluarsa": "2028-10-23",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/id/belajar-dasar-ai.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/4EXG7Q2GGPRL",
+            "techStack": null
+          },
+          {
+            "title": "Belajar Dasar Visualisasi Data",
+            "category": "ai-data",
+            "tanggalTerbit": "2025-02-19",
+            "tanggalKadaluarsa": "2028-02-19",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/id/belajar-dasar-visualisasi-data.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/JMZVE4LVRPN9",
+            "techStack": null
+          },
+          {
+            "title": "Belajar Dasar Cloud dan Gen AI di AWS",
+            "category": "ai-data",
+            "tanggalTerbit": "2025-07-07",
+            "tanggalKadaluarsa": "2028-07-07",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/id/belajar-dasar-cloud-dan-gen-ai-di-aws.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/N9ZO23RY6PG5",
+            "techStack": null
+          },
+          {
+            "title": "Memulai Pemrograman dengan Python",
+            "category": "programming",
+            "tanggalTerbit": "2025-02-19",
+            "tanggalKadaluarsa": "2028-02-19",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/id/memulai-pemrograman-dengan-python.webp",
+            "fullImageUrl": null,
+            "link": "https://www.dicoding.com/certificates/N9ZO9Y9Y8XG5",
+            "techStack": null
+          }
+        ]
+      },
+      "en": {
+        "file": "assets/data/certificates/certificates-en.json",
+        "sha256": "187f069b62c2bf0c19b95db4ef08609aec49f54e844afcb7cc91d854274f92bd",
+        "counts": {
+          "total": 38,
+          "displayable": 38,
+          "placeholder": 0,
+          "featured": 3
+        },
+        "effectiveFeatured": [
+          {
+            "title": "Data Science",
+            "date": "2022-12-28"
+          },
+          {
+            "title": "Angular + NestJS",
+            "date": "2022-12-25"
+          },
+          {
+            "title": "React + Redux",
+            "date": "2022-12-18"
+          }
+        ],
+        "records": [
+          {
+            "title": "Angular + NestJS",
+            "category": "web-development",
+            "tanggalTerbit": "2022-12-25",
+            "tanggalKadaluarsa": "",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/certificates/en/angular-nestjs.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-LFLS9TIS",
+            "techStack": null
+          },
+          {
+            "title": "React + Redux",
+            "category": "web-development",
+            "tanggalTerbit": "2022-12-18",
+            "tanggalKadaluarsa": "",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/certificates/en/react-redux.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-LUBUY7HU",
+            "techStack": null
+          },
+          {
+            "title": "Data Science",
+            "category": "ai-data",
+            "tanggalTerbit": "2022-12-28",
+            "tanggalKadaluarsa": "",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/certificates/en/data-science.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-5YICQTFP",
+            "techStack": null
+          },
+          {
+            "title": "Web Development",
+            "category": "web-development",
+            "tanggalTerbit": "2023-07-06",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/web-development.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CC-T7PGB62R",
+            "techStack": null
+          },
+          {
+            "title": "Web Development Fundamentals",
+            "category": "web-development",
+            "tanggalTerbit": "2022-12-17",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/web-development-fundamentals.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-JIVDWB9L",
+            "techStack": null
+          },
+          {
+            "title": "JavaScript Intermediate",
+            "category": "web-development",
+            "tanggalTerbit": "2023-03-17",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/javascript-intermediate.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CC-T7XYBHU3",
+            "techStack": null
+          },
+          {
+            "title": "JavaScript",
+            "category": "web-development",
+            "tanggalTerbit": "2022-12-05",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/javascript.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-XKQPRIVE",
+            "techStack": null
+          },
+          {
+            "title": "Game Development with JS",
+            "category": "web-development",
+            "tanggalTerbit": "2022-12-27",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/game-development-with-js.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-2L6LYFNX",
+            "techStack": null
+          },
+          {
+            "title": "Responsive Web Design",
+            "category": "web-development",
+            "tanggalTerbit": "2022-12-18",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/responsive-web-design.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-CMGHXTCC",
+            "techStack": null
+          },
+          {
+            "title": "CSS",
+            "category": "web-development",
+            "tanggalTerbit": "2022-11-29",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/css.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-706VG1KZ",
+            "techStack": null
+          },
+          {
+            "title": "HTML",
+            "category": "web-development",
+            "tanggalTerbit": "2022-11-25",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/html.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-SIZQG4ME",
+            "techStack": null
+          },
+          {
+            "title": "PHP",
+            "category": "web-development",
+            "tanggalTerbit": "2022-12-06",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/php.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-XRBIWL3P",
+            "techStack": null
+          },
+          {
+            "title": "jQuery",
+            "category": "web-development",
+            "tanggalTerbit": "2022-12-09",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/jquery.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-BMWB8LF7",
+            "techStack": null
+          },
+          {
+            "title": "Coding for Marketers",
+            "category": "web-development",
+            "tanggalTerbit": "2022-12-27",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/coding-for-marketers.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-LHJALO5Q",
+            "techStack": null
+          },
+          {
+            "title": "Machine Learning",
+            "category": "ai-data",
+            "tanggalTerbit": "2022-12-16",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/machine-learning.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-YA3LUDFQ",
+            "techStack": null
+          },
+          {
+            "title": "Python for Data Science",
+            "category": "ai-data",
+            "tanggalTerbit": "2022-11-15",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/python-for-data-science.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-DK6EW7XR",
+            "techStack": null
+          },
+          {
+            "title": "Python Data Structures",
+            "category": "ai-data",
+            "tanggalTerbit": "2022-11-15",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/python-data-structures.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-Z0ANGDS6",
+            "techStack": null
+          },
+          {
+            "title": "Python for Finance",
+            "category": "ai-data",
+            "tanggalTerbit": "2022-11-24",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/python-for-finance.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-6JBJ3PBJ",
+            "techStack": null
+          },
+          {
+            "title": "R",
+            "category": "ai-data",
+            "tanggalTerbit": "2022-12-11",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/r.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-LX7IMNDC",
+            "techStack": null
+          },
+          {
+            "title": "SQL Intermediate",
+            "category": "ai-data",
+            "tanggalTerbit": "2023-03-18",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/sql-intermediate.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CC-GVJSIPGC",
+            "techStack": null
+          },
+          {
+            "title": "SQL",
+            "category": "ai-data",
+            "tanggalTerbit": "2022-12-11",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/sql.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-FG2B4AY7",
+            "techStack": null
+          },
+          {
+            "title": "Tech for Everyone",
+            "category": "ai-data",
+            "tanggalTerbit": "2023-03-21",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/tech-for-everyone.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CC-MVAF6ZMD",
+            "techStack": null
+          },
+          {
+            "title": "Go",
+            "category": "programming",
+            "tanggalTerbit": "2022-12-28",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/go.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-XNTYJ9AR",
+            "techStack": null
+          },
+          {
+            "title": "Introduction to Java",
+            "category": "programming",
+            "tanggalTerbit": "2023-07-09",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/introduction-to-java.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CC-XAKTDG45",
+            "techStack": null
+          },
+          {
+            "title": "Java Intermediate",
+            "category": "programming",
+            "tanggalTerbit": "2023-03-18",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/java-intermediate.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CC-HLFCB8YQ",
+            "techStack": null
+          },
+          {
+            "title": "Java",
+            "category": "programming",
+            "tanggalTerbit": "2022-12-06",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/java.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-FGHBRKP8",
+            "techStack": null
+          },
+          {
+            "title": "Kotlin",
+            "category": "programming",
+            "tanggalTerbit": "2022-11-12",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/kotlin.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-IV1DFLIF",
+            "techStack": null
+          },
+          {
+            "title": "C++ Intermediate",
+            "category": "programming",
+            "tanggalTerbit": "2023-03-25",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/cpp-intermediate.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CC-G55JUPEL",
+            "techStack": null
+          },
+          {
+            "title": "C++",
+            "category": "programming",
+            "tanggalTerbit": "2022-12-08",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/cpp.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-AQNUSQLG",
+            "techStack": null
+          },
+          {
+            "title": "C# Intermediate",
+            "category": "programming",
+            "tanggalTerbit": "2023-03-27",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/c-sharp-intermediate.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CC-DQBMJBBX",
+            "techStack": null
+          },
+          {
+            "title": "C#",
+            "category": "programming",
+            "tanggalTerbit": "2022-12-09",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/c-sharp.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-FTCWACTK",
+            "techStack": null
+          },
+          {
+            "title": "C Intermediate",
+            "category": "programming",
+            "tanggalTerbit": "2023-03-22",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/c-intermediate.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CC-TVPQQYR7",
+            "techStack": null
+          },
+          {
+            "title": "C",
+            "category": "programming",
+            "tanggalTerbit": "2022-12-06",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/c.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-PGTWA7CH",
+            "techStack": null
+          },
+          {
+            "title": "Intermediate Python",
+            "category": "programming",
+            "tanggalTerbit": "2022-11-17",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/intermediate-python.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-BC2UHFSY",
+            "techStack": null
+          },
+          {
+            "title": "Python Core",
+            "category": "programming",
+            "tanggalTerbit": "2022-11-24",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/python-core.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-LWXUVJGX",
+            "techStack": null
+          },
+          {
+            "title": "Python for Beginners",
+            "category": "programming",
+            "tanggalTerbit": "2022-11-09",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/python-for-beginners.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-DEBVHPZL",
+            "techStack": null
+          },
+          {
+            "title": "Ruby",
+            "category": "programming",
+            "tanggalTerbit": "2022-12-11",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/ruby.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-GI8FRNB9",
+            "techStack": null
+          },
+          {
+            "title": "Swift 4",
+            "category": "programming",
+            "tanggalTerbit": "2022-12-10",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "../assets/img/certificates/en/swift-4.webp",
+            "fullImageUrl": null,
+            "link": "https://www.sololearn.com/certificates/CT-BIAYDXAK",
+            "techStack": null
+          }
+        ]
+      },
+      "ja": {
+        "file": "assets/data/certificates/certificates-ja.json",
+        "sha256": "57a966904805bd0d66714ce5342c88cef7d44e03f04489505ecb23fbb982dff2",
+        "counts": {
+          "total": 1,
+          "displayable": 0,
+          "placeholder": 1,
+          "featured": 0
+        },
+        "effectiveFeatured": [],
+        "records": [
+          {
+            "title": "",
+            "category": "",
+            "tanggalTerbit": "",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "",
+            "fullImageUrl": "",
+            "link": "",
+            "techStack": null
+          }
+        ]
+      },
+      "zh": {
+        "file": "assets/data/certificates/certificates-zh.json",
+        "sha256": "57a966904805bd0d66714ce5342c88cef7d44e03f04489505ecb23fbb982dff2",
+        "counts": {
+          "total": 1,
+          "displayable": 0,
+          "placeholder": 1,
+          "featured": 0
+        },
+        "effectiveFeatured": [],
+        "records": [
+          {
+            "title": "",
+            "category": "",
+            "tanggalTerbit": "",
+            "tanggalKadaluarsa": "",
+            "isFeatured": false,
+            "imageUrl": "",
+            "fullImageUrl": "",
+            "link": "",
+            "techStack": null
+          }
+        ]
+      }
+    }
+  },
+  "categories": {
+    "projects": {
+      "id": {
+        "file": "assets/data/categories/projects/project-categories-id.json",
+        "sha256": "df3c96bd00f12129c9ad51cac5bea5b8b990ca3213f965b1bc79990647fb83f0",
+        "count": 6,
+        "records": [
+          {
+            "id": "*",
+            "label": "Semua"
+          },
+          {
+            "id": "frontend",
+            "label": "Front-End"
+          },
+          {
+            "id": "backend",
+            "label": "Back-End"
+          },
+          {
+            "id": "fullstack",
+            "label": "Full-Stack"
+          },
+          {
+            "id": "mobile",
+            "label": "Mobile"
+          },
+          {
+            "id": "ai-data",
+            "label": "AI & Data"
+          }
+        ]
+      },
+      "en": {
+        "file": "assets/data/categories/projects/project-categories-en.json",
+        "sha256": "56ec6b18e5542c1f879c2cf8019a31b4e46b4ef713132592598c6358624544a4",
+        "count": 6,
+        "records": [
+          {
+            "id": "*",
+            "label": "All"
+          },
+          {
+            "id": "frontend",
+            "label": "Front-End"
+          },
+          {
+            "id": "backend",
+            "label": "Back-End"
+          },
+          {
+            "id": "fullstack",
+            "label": "Full-Stack"
+          },
+          {
+            "id": "mobile",
+            "label": "Mobile"
+          },
+          {
+            "id": "ai-data",
+            "label": "AI & Data"
+          }
+        ]
+      },
+      "ja": {
+        "file": "assets/data/categories/projects/project-categories-ja.json",
+        "sha256": "94fa55853ee3b586cb213104cc15cdcaa8fd963f027db34f3c4f14e72354b0a2",
+        "count": 6,
+        "records": [
+          {
+            "id": "*",
+            "label": "すべて"
+          },
+          {
+            "id": "frontend",
+            "label": "フロントエンド"
+          },
+          {
+            "id": "backend",
+            "label": "バックエンド"
+          },
+          {
+            "id": "fullstack",
+            "label": "フルスタック"
+          },
+          {
+            "id": "mobile",
+            "label": "モバイル"
+          },
+          {
+            "id": "ai-data",
+            "label": "AI・データ"
+          }
+        ]
+      },
+      "zh": {
+        "file": "assets/data/categories/projects/project-categories-zh.json",
+        "sha256": "870dbb4ec0d07fc0ec35a642108e08ff9023f584a9c9681c3489e369c421642f",
+        "count": 6,
+        "records": [
+          {
+            "id": "*",
+            "label": "全部"
+          },
+          {
+            "id": "frontend",
+            "label": "前端"
+          },
+          {
+            "id": "backend",
+            "label": "后端"
+          },
+          {
+            "id": "fullstack",
+            "label": "全栈"
+          },
+          {
+            "id": "mobile",
+            "label": "移动"
+          },
+          {
+            "id": "ai-data",
+            "label": "AI·数据"
+          }
+        ]
+      }
+    },
+    "certificates": {
+      "id": {
+        "file": "assets/data/categories/certificates/certificate-categories-id.json",
+        "sha256": "f362470984f0000bef855c9100f91cec13b079728db4a989dffd949360e38bf3",
+        "count": 5,
+        "records": [
+          {
+            "id": "*",
+            "label": "Semua"
+          },
+          {
+            "id": "programming",
+            "label": "Pemrograman"
+          },
+          {
+            "id": "web-development",
+            "label": "Pengembangan Web"
+          },
+          {
+            "id": "ai-data",
+            "label": "AI, Data & Cloud"
+          },
+          {
+            "id": "networking",
+            "label": "Jaringan"
+          }
+        ]
+      },
+      "en": {
+        "file": "assets/data/categories/certificates/certificate-categories-en.json",
+        "sha256": "7ba12e469cf25827cae2c8aea29178703b815d7f005d1480af1207a6db765062",
+        "count": 5,
+        "records": [
+          {
+            "id": "*",
+            "label": "All"
+          },
+          {
+            "id": "programming",
+            "label": "Programming"
+          },
+          {
+            "id": "web-development",
+            "label": "Web Development"
+          },
+          {
+            "id": "ai-data",
+            "label": "AI, Data & Cloud"
+          },
+          {
+            "id": "networking",
+            "label": "Networking"
+          }
+        ]
+      },
+      "ja": {
+        "file": "assets/data/categories/certificates/certificate-categories-ja.json",
+        "sha256": "3c97c241f2b4dcddd34a43a7994658ee45834337fe08af1f525548d0c1212a7f",
+        "count": 5,
+        "records": [
+          {
+            "id": "*",
+            "label": "すべて"
+          },
+          {
+            "id": "programming",
+            "label": "プログラミング"
+          },
+          {
+            "id": "web-development",
+            "label": "ウェブ開発"
+          },
+          {
+            "id": "ai-data",
+            "label": "AI・データ・クラウド"
+          },
+          {
+            "id": "networking",
+            "label": "ネットワーク"
+          }
+        ]
+      },
+      "zh": {
+        "file": "assets/data/categories/certificates/certificate-categories-zh.json",
+        "sha256": "5b95d6f8945b08d8ab00f65316a02a9d572c3851bffae30a5ad78733b95737e3",
+        "count": 5,
+        "records": [
+          {
+            "id": "*",
+            "label": "全部"
+          },
+          {
+            "id": "programming",
+            "label": "编程"
+          },
+          {
+            "id": "web-development",
+            "label": "网页开发"
+          },
+          {
+            "id": "ai-data",
+            "label": "AI·数据·云"
+          },
+          {
+            "id": "networking",
+            "label": "网络"
+          }
+        ]
+      }
+    }
+  }
+}
+
