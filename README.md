@@ -5,7 +5,11 @@ Repo ini berisi dua bagian utama:
 - Blog statis di `/blog` yang dibangun dari source `/blog-fuwari` (Astro + Fuwari).
 
 ## Struktur folder
-- `/` : portfolio (jangan ubah struktur/format tanpa kebutuhan)
+- `/index.html` : halaman utama portfolio multibahasa
+- `/projects.html` : arsip proyek multibahasa
+- `/certificates.html` : arsip sertifikat multibahasa
+- `/id`, `/en`, `/jp`, `/cn` : redirect kompatibilitas untuk URL lama
+- `/assets/data/locales` : katalog teks antarmuka per bahasa
 - `/blog` : output build blog (jangan edit manual)
 - `/blog-fuwari` : source blog (Astro + Fuwari)
 - `/docs` : dokumentasi dan panduan perawatan
@@ -24,6 +28,11 @@ Atau:
 python3 -m http.server 8080
 ```
 Buka URL yang muncul di terminal.
+
+Bahasa portfolio dipilih melalui `?lang=id|en|ja|zh`, lalu disimpan di
+`localStorage` dengan kunci `portfolio.lang`. Jika parameter dan pilihan
+tersimpan tidak tersedia, situs menggunakan bahasa browser dan kembali ke
+Bahasa Indonesia sebagai fallback.
 
 ### Develop portfolio (Tailwind + TypeScript)
 ```bash

@@ -5,6 +5,7 @@
     "navigation": {
       "home": "Home",
       "about": "Tentang",
+      "history": "Riwayat",
       "skills": "Keahlian",
       "projects": "Proyek",
       "certificates": "Sertifikat",
@@ -32,6 +33,13 @@
           "highlight": "Saya"
         },
         "description": "Saya adalah seorang Junior Full-Stack Developer yang berfokus pada pengembangan aplikasi web modern. Memiliki latar belakang pendidikan Teknik Komputer & Jaringan (TKJ), portofolio ini adalah catatan perjalanan karir IT saya, tempat saya mendokumentasikan setiap proyek web, eksplorasi teknologi, serta proses pembelajaran saya dalam software development dengan fokus pada system design."
+      },
+      "history": {
+        "heading": {
+          "lead": "Riwayat",
+          "highlight": "Saya"
+        },
+        "introduction": "Perjalanan pendidikan dan pengalaman kerja saya, disusun dari yang terbaru."
       },
       "skills": {
         "heading": "Keahlian Teknis",
@@ -294,6 +302,15 @@
         "tail": "& Penghargaan"
       },
       "introduction": "Catatan komprehensif mengenai kualifikasi, pelatihan, dan sertifikasi industri yang mendukung kompetensi teknis saya."
+    },
+    "notFound": {
+      "documentTitle": "Halaman Tidak Ditemukan — Sulu Edward Julianto",
+      "description": "Halaman yang Anda cari tidak ditemukan.",
+      "eyebrow": "Kesalahan 404",
+      "heading": "Halaman tidak ditemukan",
+      "message": "Tautan mungkin sudah berubah, dipindahkan, atau tidak pernah tersedia.",
+      "returnHome": "Kembali ke Beranda",
+      "themeToggle": "Ganti tema"
     }
   }
 }

@@ -50,6 +50,9 @@ test('required shared and page fields are present', () => {
     assert.equal(typeof catalog.pages.projects.introduction, 'string');
     assert.equal(typeof catalog.pages.certificates.documentTitle, 'string');
     assert.equal(typeof catalog.pages.certificates.introduction, 'string');
+    assert.equal(typeof catalog.pages.notFound.documentTitle, 'string');
+    assert.equal(typeof catalog.pages.notFound.description, 'string');
+    assert.equal(typeof catalog.pages.notFound.returnHome, 'string');
 });
 
 test('selected values remain exact copies of Indonesian source text', () => {
@@ -66,6 +69,7 @@ test('selected values remain exact copies of Indonesian source text', () => {
         catalog.pages.certificates.documentTitle,
         'Sertifikasi & Penghargaan — Sulu Edward Julianto',
     );
+    assert.equal(catalog.pages.notFound.heading, 'Halaman tidak ditemukan');
 });
 
 test('every catalog leaf is a non-empty string', () => {

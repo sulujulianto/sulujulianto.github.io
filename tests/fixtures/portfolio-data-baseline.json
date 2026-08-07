@@ -982,8 +982,8 @@
     "projects": {
       "id": {
         "file": "assets/data/categories/projects/project-categories-id.json",
-        "sha256": "df3c96bd00f12129c9ad51cac5bea5b8b990ca3213f965b1bc79990647fb83f0",
-        "count": 6,
+        "sha256": "2f04a03704e8baee5b953c47443b2d7a4908bd16b5fea79994f491574450a988",
+        "count": 7,
         "records": [
           {
             "id": "*",
@@ -1008,13 +1008,17 @@
           {
             "id": "ai-data",
             "label": "AI & Data"
+          },
+          {
+            "id": "game",
+            "label": "Game"
           }
         ]
       },
       "en": {
         "file": "assets/data/categories/projects/project-categories-en.json",
-        "sha256": "56ec6b18e5542c1f879c2cf8019a31b4e46b4ef713132592598c6358624544a4",
-        "count": 6,
+        "sha256": "5c9e4a1597c02664bad35e670c8327f0b1a8210e48026957014346b510c65937",
+        "count": 7,
         "records": [
           {
             "id": "*",
@@ -1039,13 +1043,17 @@
           {
             "id": "ai-data",
             "label": "AI & Data"
+          },
+          {
+            "id": "game",
+            "label": "Game"
           }
         ]
       },
       "ja": {
         "file": "assets/data/categories/projects/project-categories-ja.json",
-        "sha256": "94fa55853ee3b586cb213104cc15cdcaa8fd963f027db34f3c4f14e72354b0a2",
-        "count": 6,
+        "sha256": "04e6f5b20441e5e64e9b489a85110ee4400b4ba5bf52b8ff1da3a9fc977aebed",
+        "count": 7,
         "records": [
           {
             "id": "*",
@@ -1070,13 +1078,17 @@
           {
             "id": "ai-data",
             "label": "AI・データ"
+          },
+          {
+            "id": "game",
+            "label": "ゲーム"
           }
         ]
       },
       "zh": {
         "file": "assets/data/categories/projects/project-categories-zh.json",
-        "sha256": "870dbb4ec0d07fc0ec35a642108e08ff9023f584a9c9681c3489e369c421642f",
-        "count": 6,
+        "sha256": "6a8893ac0ca8f56b9db8afda8473806e9af9c5c6eec66ce48112b539ee4f4d3c",
+        "count": 7,
         "records": [
           {
             "id": "*",
@@ -1101,6 +1113,10 @@
           {
             "id": "ai-data",
             "label": "AI·数据"
+          },
+          {
+            "id": "game",
+            "label": "游戏"
           }
         ]
       }

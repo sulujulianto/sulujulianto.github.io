@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Tidak Ditemukan — Sulu Edward Julianto</title>
+    <meta name="description" content="Halaman yang Anda cari tidak ditemukan." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="icon" href="/assets/img/icon.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/output.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dist/language-resolver.js" defer></script>
+    <script src="/assets/js/dist/locale-manager.js" defer></script>
+
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, #a5f3fc, #60a5fa);
+            color: #0f172a;
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.5s, color 0.5s, background-image 0.5s;
+        }
+
+        html.dark body {
+            background-color: #0c1322;
+            background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
+            color: #e2e8f0;
+        }
+
+        .header-footer-bg {
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .brand-link {
+            color: #0f172a;
+        }
+
+        html.dark .brand-link {
+            color: #eff6ff;
+        }
+
+        .theme-switch-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            cursor: pointer;
+        }
+
+        .theme-switch-wrapper input {
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            border-radius: 34px;
+            background-color: #cbd5e1;
+            transition: 0.4s;
+        }
+
+        .slider::before {
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            content: '';
+            transition: 0.4s;
+        }
+
+        input:checked + .slider {
+            background-color: #60a5fa;
+        }
+
+        input:checked + .slider::before {
+            transform: translateX(26px);
+        }
+
+        .slider .icon-inside {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            transition: opacity 0.4s;
+        }
+
+        .slider .icon-sun-on-slider {
+            left: 8px;
+            color: #facc15;
+        }
+
+        .slider .icon-moon-on-slider {
+            right: 8px;
+            color: #6366f1;
+            opacity: 0;
+        }
+
+        input:checked + .slider .icon-sun-on-slider {
+            opacity: 0;
+        }
+
+        input:checked + .slider .icon-moon-on-slider {
+            opacity: 1;
+        }
+
+        html.dark .slider {
+            background-color: #4b5563;
+        }
+
+        html.dark .slider::before {
+            background-color: #eff6ff;
+        }
+
+        html.dark input:checked + .slider {
+            background-color: #60a5fa;
+        }
+
+        .error-card {
+            border: 1px solid rgb(255 255 255 / 0.72);
+            background-color: rgb(255 255 255 / 0.62);
+            box-shadow: 0 24px 60px rgb(15 23 42 / 0.18);
+        }
+
+        html.dark .error-card {
+            border-color: rgb(148 163 184 / 0.2);
+            background-color: rgb(30 41 59 / 0.72);
+            box-shadow: 0 24px 60px rgb(0 0 0 / 0.32);
+        }
+
+        .error-code {
+            color: #1d4ed8;
+        }
+
+        html.dark .error-code {
+            color: #93c5fd;
+        }
+
+        .error-heading {
+            color: #0f172a;
+        }
+
+        html.dark .error-heading {
+            color: #eff6ff;
+        }
+
+        .error-message {
+            color: #334155;
+        }
+
+        html.dark .error-message,
+        html.dark .footer-text {
+            color: #94a3b8;
+        }
+
+        .home-button,
+        .home-button:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body data-page="notFound" class="min-h-screen flex flex-col">
+    <header class="header-footer-bg w-full">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a href="/" data-route="home" data-i18n="shared.brand" class="brand-link shrink-0 whitespace-nowrap text-base font-bold tracking-tight sm:text-xl">Sulu Edward Julianto</a>
+
+            <div class="flex shrink-0 items-center gap-2 sm:gap-3">
+                <div class="language-picker language-picker-desktop hidden sm:block" data-language-picker>
+                    <button id="language-selector-desktop" type="button" data-language-selector class="language-trigger" aria-label="Pilih bahasa: Bahasa Indonesia" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu-desktop">
+                        <i class="fas fa-globe language-picker-icon" aria-hidden="true"></i>
+                        <span class="language-current" data-language-current>Bahasa Indonesia</span>
+                        <i class="fas fa-chevron-down language-picker-chevron" aria-hidden="true"></i>
+                    </button>
+                    <div id="language-menu-desktop" data-language-menu class="language-menu" role="listbox" aria-label="Pilih bahasa" hidden>
+                        <button type="button" class="language-option" data-language-option="id" role="option" aria-selected="true"><span>Bahasa Indonesia</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="en" role="option" aria-selected="false"><span>English</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="ja" role="option" aria-selected="false"><span>日本語</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="zh" role="option" aria-selected="false"><span>中文</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+
+                <div class="language-picker language-picker-mobile sm:hidden" data-language-picker>
+                    <button id="language-selector-mobile" type="button" data-language-selector class="language-trigger" aria-label="Pilih bahasa: Bahasa Indonesia" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu-mobile">
+                        <i class="fas fa-globe language-picker-icon" aria-hidden="true"></i>
+                        <span class="language-current" data-language-current>ID</span>
+                        <i class="fas fa-chevron-down language-picker-chevron" aria-hidden="true"></i>
+                    </button>
+                    <div id="language-menu-mobile" data-language-menu class="language-menu" role="listbox" aria-label="Pilih bahasa" hidden>
+                        <button type="button" class="language-option" data-language-option="id" role="option" aria-label="Bahasa Indonesia" aria-selected="true"><span>ID</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="en" role="option" aria-label="English" aria-selected="false"><span>EN</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="ja" role="option" aria-label="日本語" aria-selected="false"><span>JP</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="zh" role="option" aria-label="中文" aria-selected="false"><span>CH</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+
+                <label id="theme-toggle" class="theme-switch-wrapper" aria-label="Ganti tema" data-i18n-attr="aria-label:pages.notFound.themeToggle">
+                    <input type="checkbox" id="theme-toggle-checkbox" />
+                    <span class="slider">
+                        <i id="icon-sun" class="fas fa-sun icon-inside icon-sun-on-slider" aria-hidden="true"></i>
+                        <i id="icon-moon" class="fas fa-moon icon-inside icon-moon-on-slider hidden" aria-hidden="true"></i>
+                    </span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex flex-grow items-center justify-center px-4 py-12 sm:px-6">
+        <section class="error-card w-full max-w-2xl rounded-3xl px-6 py-12 text-center sm:px-12 sm:py-16" aria-labelledby="not-found-heading">
+            <p data-i18n="pages.notFound.eyebrow" class="error-code mb-3 text-sm font-bold uppercase tracking-[0.24em]">Kesalahan 404</p>
+            <h1 id="not-found-heading" data-i18n="pages.notFound.heading" class="error-heading text-3xl font-bold sm:text-5xl">Halaman tidak ditemukan</h1>
+            <p data-i18n="pages.notFound.message" class="error-message mx-auto mt-5 max-w-xl text-base leading-7 sm:text-lg">Tautan mungkin sudah berubah, dipindahkan, atau tidak pernah tersedia.</p>
+            <a href="/" data-route="home" class="home-button mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold shadow-lg transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                <span data-i18n="pages.notFound.returnHome">Kembali ke Beranda</span>
+            </a>
+        </section>
+    </main>
+
+    <footer class="header-footer-bg py-6">
+        <p class="footer-text px-4 text-center text-sm">
+            <span data-i18n="shared.footer.copyrightSymbol">©</span>
+            <span id="current-year"></span>
+            <span data-i18n="shared.footer.owner">Sulu Edward Julianto</span>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
