@@ -11,6 +11,12 @@
 
     type LocaleKey = 'id' | 'en' | 'ja' | 'zh';
 
+    type PortfolioLocaleEvent = CustomEvent<{ locale: LocaleKey }>;
+
+    type PortfolioRuntimeWindow = typeof window & {
+        PortfolioUiReady?: Promise<void>;
+    };
+
     interface ProjectItem {
         title: string;
         description: string;
@@ -115,6 +121,43 @@
         if (locale === 'en') return 'en';
         return 'id';
     };
+
+    const usePortfolioLocale = (container: HTMLElement | null): LocaleKey => {
+        const [locale, setLocale] = React.useState<LocaleKey>(() => normalizeLocale(container?.dataset.locale));
+
+        React.useEffect(() => {
+            const handleLocaleChange = (event: Event) => {
+                const localeEvent = event as PortfolioLocaleEvent;
+                setLocale(normalizeLocale(localeEvent.detail?.locale));
+            };
+            document.addEventListener('portfolio:localechange', handleLocaleChange);
+            return () => document.removeEventListener('portfolio:localechange', handleLocaleChange);
+        }, []);
+
+        return locale;
+    };
+
+    const resolveAssetUrl = (value?: string): string => {
+        if (!value) return '';
+        if (/^(?:https?:|data:|blob:|#|\/)/i.test(value)) return value;
+        const rootRelative = value.replace(/^(?:\.\.\/)+/, '').replace(/^\.\//, '');
+        return new URL(rootRelative, document.baseURI).toString();
+    };
+
+    const isDisplayableItem = (item: { title?: string }) => {
+        return typeof item.title === 'string' && item.title.trim() !== '';
+    };
+
+    const normalizeProjectAssets = (item: ProjectItem): ProjectItem => ({
+        ...item,
+        imageUrl: resolveAssetUrl(item.imageUrl),
+    });
+
+    const normalizeCertificateAssets = (item: CertificateItem): CertificateItem => ({
+        ...item,
+        imageUrl: resolveAssetUrl(item.imageUrl),
+        fullImageUrl: resolveAssetUrl(item.fullImageUrl),
+    });
 
     const COMPONENT_LABELS: Record<LocaleKey, ComponentLabels> = {
         id: {
@@ -267,8 +310,8 @@
         );
     };
 
-    const readJson = async <T,>(url: string): Promise<T> => {
-        const response = await fetch(url);
+    const readJson = async <T,>(url: string, signal?: AbortSignal): Promise<T> => {
+        const response = await fetch(url, { signal });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json() as Promise<T>;
     };
@@ -503,9 +546,8 @@
         const container = document.getElementById('portfolio-react-root');
         if (!container) return null;
 
-        const locale = container.dataset.locale || 'id';
-        const localeKey = normalizeLocale(locale);
-        const basePath = container.dataset.basePath || '../';
+        const localeKey = usePortfolioLocale(container);
+        const basePath = container.dataset.basePath || './';
         const mode = (container.dataset.mode || 'featured').toLowerCase();
         const highlightCount = Number(container.dataset.highlightCount || '3');
         const fullUrl = container.dataset.fullUrl || '';
@@ -546,7 +588,8 @@
                     if (!Array.isArray(json)) {
                         throw new Error('Format data proyek tidak valid.');
                     }
-                    setData(sortByNewest(json, (item) => item.dateAdded));
+                    const displayable = json.filter(isDisplayableItem).map(normalizeProjectAssets);
+                    setData(sortByNewest(displayable, (item) => item.dateAdded));
                 })
                 .catch((err) => {
                     if (err.name !== 'AbortError') {
@@ -559,10 +602,11 @@
         }, [basePath, localeKey]);
 
         React.useEffect(() => {
+            const abortController = new AbortController();
             const path = `${basePath}assets/data/categories/projects/project-categories-${localeKey}.json`;
             const fallbackList = buildCategoryList(undefined, ALL_CATEGORY_LABEL[localeKey]);
             setCategoryDefinitions(fallbackList);
-            fetch(path)
+            fetch(path, { signal: abortController.signal })
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error('Cannot load categories');
@@ -570,7 +614,10 @@
                     return response.json();
                 })
                 .then((json: CategoryDefinition[]) => setCategoryDefinitions(buildCategoryList(json, ALL_CATEGORY_LABEL[localeKey])))
-                .catch(() => setCategoryDefinitions(fallbackList));
+                .catch((error) => {
+                    if (error.name !== 'AbortError') setCategoryDefinitions(fallbackList);
+                });
+            return () => abortController.abort();
         }, [basePath, localeKey]);
 
         const filteredData = React.useMemo(() => {
@@ -763,9 +810,8 @@
         const container = document.getElementById('certificates-react-root');
         if (!container) return null;
 
-        const locale = container.dataset.locale || 'id';
-        const localeKey = normalizeLocale(locale);
-        const basePath = container.dataset.basePath || '../';
+        const localeKey = usePortfolioLocale(container);
+        const basePath = container.dataset.basePath || './';
         const mode = (container.dataset.mode || 'featured').toLowerCase();
         const highlightCount = Number(container.dataset.highlightCount || '3');
         const fullUrl = container.dataset.fullUrl || '';
@@ -805,7 +851,8 @@
                     if (!Array.isArray(json)) {
                         throw new Error('Format data sertifikat tidak valid.');
                     }
-                    setData(sortByNewest(json, (item) => item.tanggalTerbit));
+                    const displayable = json.filter(isDisplayableItem).map(normalizeCertificateAssets);
+                    setData(sortByNewest(displayable, (item) => item.tanggalTerbit));
                 })
                 .catch((err) => {
                     if (err.name !== 'AbortError') {
@@ -818,10 +865,11 @@
         }, [basePath, localeKey]);
 
         React.useEffect(() => {
+            const abortController = new AbortController();
             const path = `${basePath}assets/data/categories/certificates/certificate-categories-${localeKey}.json`;
             const fallbackList = buildCategoryList(undefined, ALL_CATEGORY_LABEL[localeKey]);
             setCategoryDefinitions(fallbackList);
-            fetch(path)
+            fetch(path, { signal: abortController.signal })
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error('Cannot load categories');
@@ -829,7 +877,10 @@
                     return response.json();
                 })
                 .then((json: CategoryDefinition[]) => setCategoryDefinitions(buildCategoryList(json, ALL_CATEGORY_LABEL[localeKey])))
-                .catch(() => setCategoryDefinitions(fallbackList));
+                .catch((error) => {
+                    if (error.name !== 'AbortError') setCategoryDefinitions(fallbackList);
+                });
+            return () => abortController.abort();
         }, [basePath, localeKey]);
 
         const filteredData = React.useMemo(() => {
@@ -1042,26 +1093,25 @@
 
     const AboutGalleryApp: React.FC = () => {
         const container = document.getElementById('about-gallery-root');
-        const locale = normalizeLocale(container?.dataset.locale);
+        const locale = usePortfolioLocale(container);
         const basePath = container?.dataset.basePath || './';
         const labels = HISTORY_LABELS[locale];
         const [images, setImages] = React.useState<AboutImageItem[]>([]);
 
         React.useEffect(() => {
-            let active = true;
-            readJson<{ images?: AboutImageItem[] }>(`${basePath}assets/data/about/about-images.json`)
+            const abortController = new AbortController();
+            readJson<{ images?: AboutImageItem[] }>(`${basePath}assets/data/about/about-images.json`, abortController.signal)
                 .then((result) => {
-                    if (!active) return;
                     const validImages = Array.isArray(result.images)
                         ? result.images.filter((item) => item && typeof item.src === 'string' && item.src.trim())
                         : [];
                     setImages(validImages);
                 })
-                .catch((error) => console.error('Gagal memuat galeri Tentang Saya.', error));
+                .catch((error) => {
+                    if (error.name !== 'AbortError') console.error('Gagal memuat galeri Tentang Saya.', error);
+                });
 
-            return () => {
-                active = false;
-            };
+            return () => abortController.abort();
         }, [basePath]);
 
         if (images.length === 0) return null;
@@ -1087,7 +1137,7 @@
 
     const HistoryApp: React.FC = () => {
         const container = document.getElementById('history-react-root');
-        const locale = normalizeLocale(container?.dataset.locale);
+        const locale = usePortfolioLocale(container);
         const basePath = container?.dataset.basePath || './';
         const labels = HISTORY_LABELS[locale];
         const [activeTab, setActiveTab] = React.useState<'experience' | 'education'>('experience');
@@ -1096,11 +1146,10 @@
         const [hasError, setHasError] = React.useState(false);
 
         React.useEffect(() => {
-            let active = true;
+            const abortController = new AbortController();
             setIsLoading(true);
-            readJson<HistoryData>(`${basePath}assets/data/history/history-${locale}.json`)
+            readJson<HistoryData>(`${basePath}assets/data/history/history-${locale}.json`, abortController.signal)
                 .then((result) => {
-                    if (!active) return;
                     setData({
                         experience: normalizeTimelineItems(result.experience),
                         education: normalizeTimelineItems(result.education),
@@ -1108,17 +1157,15 @@
                     setHasError(false);
                 })
                 .catch((error) => {
-                    if (!active) return;
+                    if (error.name === 'AbortError') return;
                     console.error('Gagal memuat data riwayat.', error);
                     setHasError(true);
                 })
                 .finally(() => {
-                    if (active) setIsLoading(false);
+                    if (!abortController.signal.aborted) setIsLoading(false);
                 });
 
-            return () => {
-                active = false;
-            };
+            return () => abortController.abort();
         }, [basePath, locale]);
 
         const items = sortTimeline(activeTab === 'experience' ? data.experience || [] : data.education || []);
@@ -1222,9 +1269,18 @@
         }
     };
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeApp);
-    } else {
+    const startApp = () => {
+        const ready = (window as PortfolioRuntimeWindow).PortfolioUiReady;
+        if (ready) {
+            void ready.finally(initializeApp);
+            return;
+        }
         initializeApp();
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startApp);
+    } else {
+        startApp();
     }
 })();

@@ -1,24 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <title>Sulu Edward Julianto</title>
-    <meta name="description" content="Welcome to the portfolio of Sulu Edward Julianto. Explore my projects, skills, and journey in the world of technology." />
-    <meta name="keywords" content="Sulu Edward Julianto, sulujulianto, portfolio, web developer, programmer" />
-    <meta name="author" content="Sulu Edward Julianto" />
-
-    <meta name="google-site-verification" content="sAgxSMapgjUlUVXce2LuJaRyIxLkSiPLlyyfPFaIgUQ" />
+    <title>Sulu Edward Julianto - Software Engineer</title>
+    <meta name="description" content="Portofolio Sulu Edward Julianto" />
+    <link rel="canonical" href="https://sulujulianto.github.io/" />
+    <link rel="alternate" hreflang="id" href="https://sulujulianto.github.io/?lang=id" />
+    <link rel="alternate" hreflang="en" href="https://sulujulianto.github.io/?lang=en" />
+    <link rel="alternate" hreflang="ja" href="https://sulujulianto.github.io/?lang=ja" />
+    <link rel="alternate" hreflang="zh" href="https://sulujulianto.github.io/?lang=zh" />
+    <link rel="alternate" hreflang="x-default" href="https://sulujulianto.github.io/?lang=id" />
+    <meta property="og:title" content="Sulu Edward Julianto" />
+    <meta property="og:description" content="Portofolio Sulu Edward Julianto" />
+    <meta property="og:locale" content="id_ID" />
     <link rel="icon" href="assets/img/icon.png" type="image/png">
 
-    <link href="assets/css/output.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="assets/css/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/dist/language-resolver.js" defer></script>
+    <script src="assets/js/dist/locale-manager.js" defer></script>
 
     <style>
         body {
@@ -26,9 +33,35 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             transition: background-color 0.5s, color 0.5s, background-image 0.5s;
-            min-height: 100vh;
+        }
+
+        .hero-container {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        .hero-image {
+            order: 1;
+        }
+        .hero-text {
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-container {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .hero-image {
+                order: initial;
+                grid-column: 2;
+            }
+            .hero-text {
+                order: initial;
+                grid-column: 1;
+                grid-row: 1;
+            }
         }
 
         /* --- Tema Terang --- */
@@ -36,26 +69,165 @@
             background-image: linear-gradient(to bottom right, #a5f3fc, #60a5fa);
             color: #0f172a;
         }
-        .content-card {
+        h1, h2, h3, h4, h5, h6, p, li, span { color: #0f172a; }
+        a { color: #1e3a8a; }
+        a:hover { color: #1d4ed8; }
+
+        .contact-link-text { color: #0f172a; }
+        .contact-link-text:hover { color: #2563eb; }
+
+        .cv-download-btn span, .cv-download-btn i {
+            color: #ffffff !important;
+        }
+
+        .cv-download-btn,
+        .cv-download-btn span {
+            white-space: nowrap;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-buttons {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.2s;
+            width: 220px;
+            text-align: center;
+        }
+
+        .hero-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-btn-primary {
+            background-color: #2563eb;
+            border: 2px solid #2563eb;
+            color: #ffffff !important;
+        }
+
+        .hero-btn-primary:hover {
+            background-color: #1d4ed8;
+            border-color: #1d4ed8;
+        }
+
+        .hero-btn-primary span,
+        .hero-btn-primary i {
+            color: #ffffff !important;
+        }
+
+        .hero-btn-outline {
+            background-color: transparent;
+            border: 2px solid #1e3a8a;
+            color: #1e3a8a !important;
+        }
+
+        .hero-btn-outline:hover {
+            background-color: #1e3a8a;
+            color: #ffffff !important;
+        }
+
+        .hero-btn-outline span,
+        .hero-btn-outline i {
+            color: inherit !important;
+        }
+
+        html.dark .hero-btn-outline {
+            border-color: #60a5fa;
+            color: #60a5fa !important;
+        }
+
+        html.dark .hero-btn-outline:hover {
+            background-color: #60a5fa;
+            color: #0f172a !important;
+        }
+
+        .section-highlight { color: #1d4ed8; }
+        .card {
             background-color: rgba(255, 255, 255, 0.65);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
         }
+        .filter-btn-active {
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+            border: 1px solid #0f172a !important;
+        }
+        .filter-btn {
+            background-color: #f9fafb;
+            border: 1px solid #d1d5db;
+            color: #0f172a;
+        }
+        .filter-btn:hover {
+            background-color: #e5e7eb;
+        }
+
+        #contact input, #contact textarea {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border: 1px solid #d1d5db !important;
+        }
+        #contact .social-icon { color: #0f172a !important; }
 
         /* --- Tema Gelap --- */
         html.dark body {
+            background-color: #0c1322;
             background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
-            color: #eff6ff;
+            color: #94a3b8;
         }
-        html.dark .content-card {
+        html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6, html.dark a { color: #eff6ff; }
+        html.dark p, html.dark li, html.dark span { color: #94a3b8; }
+
+        html.dark .contact-link-text { color: #ffffff; }
+        html.dark .contact-link-text:hover { color: #60a5fa; }
+
+        html.dark .section-highlight { color: #60a5fa; }
+        html.dark .card {
             background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: none;
         }
+        html.dark .filter-btn-active {
+            background-color: #60a5fa !important;
+            color: #1e293b !important;
+            border: 1px solid #60a5fa !important;
+        }
+        html.dark .filter-btn {
+            background-color: #1e293b;
+            border: 1px solid #374151;
+            color: #94a3b8;
+        }
+        html.dark .filter-btn:hover {
+            background-color: #4b5563;
+        }
+        html.dark #contact input, html.dark #contact textarea {
+            background-color: #374151 !important;
+            color: #eff6ff !important;
+            border: 1px solid #4b5563 !important;
+        }
+        html.dark #contact .social-icon { color: #94a3b8 !important; }
 
-        /* Animasi */
+        /* --- Animasi --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -63,14 +235,26 @@
         .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
-        
-        .flag-icon {
-            width: 18px;
-            height: auto;
-            border-radius: 2px;
+
+        .card {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        html.dark .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.05), 0 4px 6px -2px rgba(255, 255, 255, 0.02);
         }
 
-        /* --- Gaya Header & Footer --- */
+        .skill-icon {
+            transition: transform 0.2s ease-out;
+        }
+        .skill-item:hover .skill-icon {
+            transform: scale(1.1);
+        }
+
+        /* --- Gaya Navbar dan Footer --- */
         .header-footer-bg {
             background-color: transparent;
             backdrop-filter: blur(10px);
@@ -78,64 +262,19 @@
             border-bottom: none;
             transition: background-color 0.5s, border-color 0.5s;
         }
-        .footer-no-border {
-            border-top: none;
-            border-bottom: none;
+
+        .navbar-light-theme a, .navbar-light-theme button {
+            color: #000000 !important;
         }
-        .header-footer-text, .header-footer-text:hover {
-            color: inherit;
+        .navbar-light-theme a:hover {
+            color: #3b82f6 !important;
         }
 
-        /* --- Responsive Footer Social Icons --- */
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1rem;
+        html.dark .navbar-light-theme a, html.dark .navbar-light-theme button {
+            color: #eff6ff !important;
         }
-        
-        .social-icons a {
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            transform: scale(1.1);
-        }
-
-        /* Mobile responsive adjustments */
-        @media (max-width: 640px) {
-            .social-icons {
-                gap: 0.75rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .social-icons a {
-                font-size: 1.25rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .social-icons {
-                gap: 0.5rem;
-                margin-bottom: 0.5rem;
-            }
-            
-            .social-icons a {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .social-icons {
-                gap: 0.4rem;
-            }
-            
-            .social-icons a {
-                font-size: 1rem;
-            }
+        html.dark .navbar-light-theme a:hover {
+            color: #60a5fa !important;
         }
 
         /* --- Gaya Tombol Tema --- */
@@ -195,33 +334,106 @@
             color: #6366f1;
             opacity: 0;
         }
-        input:checked + .slider .icon-sun-on-slider { opacity: 0; }
-        input:checked + .slider .icon-moon-on-slider { opacity: 1; }
-        
+        input:checked + .slider .icon-sun-on-slider {
+            opacity: 0;
+        }
+        input:checked + .slider .icon-moon-on-slider {
+            opacity: 1;
+        }
         html.dark .slider { background-color: #4b5563; }
         html.dark .slider:before { background-color: #a0aec0; }
         html.dark input:checked + .slider { background-color: #60a5fa; }
         html.dark input:checked + .slider:before { background-color: #eff6ff; }
+
+        /* Gaya Tombol Scroll ke Atas */
+        #to-top-btn {
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 9999px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #to-top-btn:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        html.dark #to-top-btn {
+            background-color: #2563eb;
+        }
+        html.dark #to-top-btn:hover {
+            background-color: #3b82f6;
+        }
+        .profile-photo-circle {
+            background-color: #000000;
+        }
+        html.dark .profile-photo-circle {
+            background-image: linear-gradient(to bottom right, #38bdf8, #3b82f6) !important;
+        }
+        footer p, footer a {
+            color: #000000 !important;
+        }
+        html.dark footer p, html.dark footer a {
+            color: #94a3b8 !important;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body data-page="home" class="dark:text-slate-300">
 
-    <header class="sticky top-0 z-50 w-full header-footer-bg">
-        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8 h-16">
-            <a href="index.html" class="text-2xl font-bold header-footer-text">Sulu Edward Julianto</a>
-            <nav class="hidden md:flex space-x-8 items-center">
-                <a href="./blog/" class="header-footer-text">Blog</a>
-                <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="header-footer-text">GitHub</a>
-                <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="header-footer-text">Linkedin</a>
+    <header class="sticky top-0 z-50 w-full header-footer-bg navbar-light-theme">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+            <a href="./" data-route="home" data-i18n="shared.brand" class="shrink-0 whitespace-nowrap text-base font-bold tracking-tight sm:text-xl">Sulu Edward Julianto</a>
+
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-sm xl:text-base">
+                <a href="./" data-route="home" data-i18n="shared.navigation.home">Home</a>
+                <a href="#tentang" data-route="about" data-i18n="shared.navigation.about">Tentang</a>
+                <a href="#riwayat" data-route="history" data-i18n="shared.navigation.history">Riwayat</a>
+                <a href="#skills" data-route="skills" data-i18n="shared.navigation.skills">Keahlian</a>
+                <a href="#proyek" data-route="featuredProjects" data-i18n="shared.navigation.projects">Proyek</a>
+                <a href="#sertifikat" data-route="featuredCertificates" data-i18n="shared.navigation.certificates">Sertifikat</a>
+                <a href="#contact" data-route="contact" data-i18n="shared.navigation.contact">Kontak</a>
+                <a href="blog/" data-i18n="shared.navigation.blog">Blog</a>
+                <div class="language-picker language-picker-desktop" data-language-picker>
+                    <button id="language-selector-desktop" type="button" data-language-selector class="language-trigger" aria-label="Pilih bahasa: Bahasa Indonesia" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu-desktop">
+                        <i class="fas fa-globe language-picker-icon" aria-hidden="true"></i>
+                        <span class="language-current" data-language-current>Bahasa Indonesia</span>
+                        <i class="fas fa-chevron-down language-picker-chevron" aria-hidden="true"></i>
+                    </button>
+                    <div id="language-menu-desktop" data-language-menu class="language-menu" role="listbox" aria-label="Pilih bahasa" hidden>
+                        <button type="button" class="language-option" data-language-option="id" role="option" aria-selected="true"><span>Bahasa Indonesia</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="en" role="option" aria-selected="false"><span>English</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="ja" role="option" aria-selected="false"><span>日本語</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="zh" role="option" aria-selected="false"><span>中文</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                    </div>
+                </div>
                 <label id="theme-toggle" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-checkbox">
                     <span class="slider">
                         <i id="icon-sun" class="fas fa-sun icon-inside icon-sun-on-slider"></i>
-                        <i id="icon-moon" class="fas fa-moon icon-inside icon-moon-on-slider"></i>
+                        <i id="icon-moon" class="fas fa-moon icon-inside icon-moon-on-slider hidden"></i>
                     </span>
                 </label>
             </nav>
-            <div class="md:hidden flex items-center space-x-4">
+
+            <div class="lg:hidden flex shrink-0 items-center gap-2">
+                <div class="language-picker language-picker-mobile" data-language-picker>
+                    <button id="language-selector-mobile" type="button" data-language-selector class="language-trigger" aria-label="Pilih bahasa: Bahasa Indonesia" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu-mobile">
+                        <i class="fas fa-globe language-picker-icon" aria-hidden="true"></i>
+                        <span class="language-current" data-language-current>ID</span>
+                        <i class="fas fa-chevron-down language-picker-chevron" aria-hidden="true"></i>
+                    </button>
+                    <div id="language-menu-mobile" data-language-menu class="language-menu" role="listbox" aria-label="Pilih bahasa" hidden>
+                        <button type="button" class="language-option" data-language-option="id" role="option" aria-label="Bahasa Indonesia" aria-selected="true"><span>ID</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="en" role="option" aria-label="English" aria-selected="false"><span>EN</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="ja" role="option" aria-label="日本語" aria-selected="false"><span>JP</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="zh" role="option" aria-label="中文" aria-selected="false"><span>CH</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                    </div>
+                </div>
                 <label id="theme-toggle-nav" class="theme-switch-wrapper">
                     <input type="checkbox" id="theme-toggle-nav-checkbox">
                     <span class="slider">
@@ -229,46 +441,325 @@
                         <i id="icon-moon-nav" class="fas fa-moon icon-inside icon-moon-on-slider hidden"></i>
                     </span>
                 </label>
-                <button id="navbar-toggle" type="button" class="header-footer-text focus:outline-none">
+                <button id="navbar-toggle" type="button" class="focus:outline-none">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4">
-            <a href="./blog/" class="header-footer-text">Blog</a>
-            <a href="https://github.com/sulujulianto" target="_blank" rel="noopener noreferrer" class="block py-2 header-footer-text">GitHub</a>
-            <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="block py-2 header-footer-text">Linkedin</a>
+
+        <div id="mobile-menu" class="lg:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
+            <a href="./" data-route="home" data-i18n="shared.navigation.home" class="block py-2">Home</a>
+            <a href="#tentang" data-route="about" data-i18n="shared.navigation.about" class="block py-2">Tentang</a>
+            <a href="#riwayat" data-route="history" data-i18n="shared.navigation.history" class="block py-2">Riwayat</a>
+            <a href="#skills" data-route="skills" data-i18n="shared.navigation.skills" class="block py-2">Keahlian</a>
+            <a href="#proyek" data-route="featuredProjects" data-i18n="shared.navigation.projects" class="block py-2">Proyek</a>
+            <a href="#sertifikat" data-route="featuredCertificates" data-i18n="shared.navigation.certificates" class="block py-2">Sertifikat</a>
+            <a href="#contact" data-route="contact" data-i18n="shared.navigation.contact" class="block py-2">Kontak</a>
+            <a href="blog/" data-i18n="shared.navigation.blog" class="block py-2">Blog</a>
         </div>
     </header>
 
-    <main class="flex-grow flex flex-col justify-center items-center p-4 fade-in">
-        <div class="w-full max-w-2xl p-8 md:p-10 rounded-2xl content-card text-center"> 
-            <h1 class="text-3xl md:text-5xl font-bold mb-4">
-                Sulu Edward Julianto
-            </h1>
-            <p class="text-base md:text-lg mb-8">
-                Welcome to my portfolio a space where I document my projects, skills, and continuous journey in the world of technology.<br><span class="font-semibold">Please select a language to enter.</span>
-            </p>
+    <main class="pt-16 sm:pt-20 fade-in">
 
-            <div class="grid grid-cols-2 gap-4"> 
-                <a href="./id/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="https://flagcdn.com/w40/id.png" alt="Indonesian Flag" class="flag-icon">
-                    <span>Bahasa Indonesia</span>
-                </a>
-                <a href="./en/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-gray-600 text-white hover:bg-gray-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="https://flagcdn.com/w40/us.png" alt="US Flag" class="flag-icon">
-                    <span>English</span>
-                </a>
-                <a href="./jp/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="https://flagcdn.com/w40/jp.png" alt="Japanese Flag" class="flag-icon">
-                    <span>日本語</span>
-                </a>
-                <a href="./cn/" class="group flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-green-600 text-white hover:bg-green-700 font-semibold shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="https://flagcdn.com/w40/cn.png" alt="Chinese Flag" class="flag-icon">
-                    <span>中文</span>
-                </a>
+        <header id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+            <div class="hero-container">
+                <div class="hero-text text-center md:text-left">
+                    <h1 data-i18n="pages.home.hero.name" class="text-4xl md:text-5xl font-bold leading-tight">Sulu Edward Julianto</h1>
+                    <p data-i18n="pages.home.hero.tagline" class="mt-4 text-lg">Junior Full-Stack Developer. Membangun aplikasi web modern yang fungsional dan skalabel.</p>
+                    <div class="hero-buttons">
+                        <a href="assets/data/CV/ID/CV_SuluEdwardJulianto.pdf" data-cv-link download class="hero-btn hero-btn-primary cv-download-btn">
+                            <i class="fas fa-download"></i>
+                            <span data-i18n="pages.home.hero.downloadCv">Unduh CV</span>
+                        </a>
+                        <a href="#contact" class="hero-btn hero-btn-outline hire-me-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span data-i18n="pages.home.hero.hireMe">Hire Me</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image flex justify-center">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl p-2 profile-photo-circle">
+                        <img src="assets/img/about-me/Sulu.webp" alt="Foto Profil Sulu Edward" data-i18n-attr="alt:pages.home.hero.profileImageAlt" class="w-full h-full object-cover rounded-full">
+                    </div>
+                </div>
             </div>
-        </div>
+        </header>
+
+        <section id="tentang" class="py-24">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12"><span data-i18n="pages.home.about.heading.lead">Tentang</span> <span data-i18n="pages.home.about.heading.highlight" class="section-highlight">Saya</span></h2>
+                <div class="card p-8 rounded-2xl shadow-xl text-center">
+                    <p data-i18n="pages.home.about.description" class="text-lg">
+                        Saya adalah seorang Junior Full-Stack Developer yang berfokus pada pengembangan aplikasi web modern. Memiliki latar belakang pendidikan Teknik Komputer & Jaringan (TKJ), portofolio ini adalah catatan perjalanan karir IT saya, tempat saya mendokumentasikan setiap proyek web, eksplorasi teknologi, serta proses pembelajaran saya dalam software development dengan fokus pada system design.
+                    </p>
+                    <div id="about-gallery-root" data-locale="id" data-base-path="./"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="riwayat" class="py-24 scroll-mt-16">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4"><span data-i18n="pages.home.history.heading.lead">Riwayat</span> <span data-i18n="pages.home.history.heading.highlight" class="section-highlight">Saya</span></h2>
+                <p data-i18n="pages.home.history.introduction" class="text-center text-lg mb-12 max-w-2xl mx-auto">Perjalanan pendidikan dan pengalaman kerja saya, disusun dari yang terbaru.</p>
+                <div id="history-react-root" data-locale="id" data-base-path="./"></div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 data-i18n="pages.home.skills.heading" class="text-3xl font-bold text-center mb-4">Keahlian Teknis</h2>
+                <p data-i18n="pages.home.skills.introduction" class="text-center text-lg mb-12 max-w-2xl mx-auto">Daftar teknologi, bahasa pemrograman, dan alat (tools) yang saya gunakan untuk membangun berbagai solusi perangkat lunak yang fungsional dan skalabel.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 data-i18n="pages.home.skills.groups.frontEnd.heading" class="text-xl font-bold mb-4">Front-End</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" data-i18n-attr="alt:pages.home.skills.groups.frontEnd.technologies.html5.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.frontEnd.technologies.html5.label">HTML5</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" data-i18n-attr="alt:pages.home.skills.groups.frontEnd.technologies.css3.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.frontEnd.technologies.css3.label">CSS3</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" data-i18n-attr="alt:pages.home.skills.groups.frontEnd.technologies.react.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.frontEnd.technologies.react.label">React</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" data-i18n-attr="alt:pages.home.skills.groups.frontEnd.technologies.vue.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.frontEnd.technologies.vue.label">Vue.js</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" data-i18n-attr="alt:pages.home.skills.groups.frontEnd.technologies.tailwind.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.frontEnd.technologies.tailwind.label">Tailwind CSS</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 data-i18n="pages.home.skills.groups.backEnd.heading" class="text-xl font-bold mb-4">Back-End</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" data-i18n-attr="alt:pages.home.skills.groups.backEnd.technologies.node.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.backEnd.technologies.node.label">Node.js</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" data-i18n-attr="alt:pages.home.skills.groups.backEnd.technologies.next.imageAlt" class="w-6 h-6 skill-icon dark:invert" />
+                                <span data-i18n="pages.home.skills.groups.backEnd.technologies.next.label">Next.js</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.worldvectorlogo.com/logos/laravel-2.svg" alt="Laravel" data-i18n-attr="alt:pages.home.skills.groups.backEnd.technologies.laravel.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.backEnd.technologies.laravel.label">Laravel</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" data-i18n-attr="alt:pages.home.skills.groups.backEnd.technologies.django.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.backEnd.technologies.django.label">Django (Python)</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://raw.githubusercontent.com/gin-gonic/logo/master/color.png" alt="Gin" data-i18n-attr="alt:pages.home.skills.groups.backEnd.technologies.gin.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.backEnd.technologies.gin.label">Gin (Go)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 data-i18n="pages.home.skills.groups.database.heading" class="text-xl font-bold mb-4">Database</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" data-i18n-attr="alt:pages.home.skills.groups.database.technologies.mysql.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.database.technologies.mysql.label">MySQL</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" data-i18n-attr="alt:pages.home.skills.groups.database.technologies.postgresql.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.database.technologies.postgresql.label">PostgreSQL</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" data-i18n-attr="alt:pages.home.skills.groups.database.technologies.mongodb.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.database.technologies.mongodb.label">MongoDB</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" data-i18n-attr="alt:pages.home.skills.groups.database.technologies.firebase.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.database.technologies.firebase.label">Firebase</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 data-i18n="pages.home.skills.groups.programmingLanguages.heading" class="text-xl font-bold mb-4">Bahasa Pemrograman</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" data-i18n-attr="alt:pages.home.skills.groups.programmingLanguages.technologies.javascript.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.programmingLanguages.technologies.javascript.label">JavaScript</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" data-i18n-attr="alt:pages.home.skills.groups.programmingLanguages.technologies.python.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.programmingLanguages.technologies.python.label">Python</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" data-i18n-attr="alt:pages.home.skills.groups.programmingLanguages.technologies.php.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.programmingLanguages.technologies.php.label">PHP</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Go" data-i18n-attr="alt:pages.home.skills.groups.programmingLanguages.technologies.go.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.programmingLanguages.technologies.go.label">Go</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 data-i18n="pages.home.skills.groups.operatingSystems.heading" class="text-xl font-bold mb-4">Sistem Operasi</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows" data-i18n-attr="alt:pages.home.skills.groups.operatingSystems.technologies.windows.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.operatingSystems.technologies.windows.label">Windows</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" data-i18n-attr="alt:pages.home.skills.groups.operatingSystems.technologies.linux.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.operatingSystems.technologies.linux.label">Linux</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 data-i18n="pages.home.skills.groups.tools.heading" class="text-xl font-bold mb-4">Alat & Teknologi</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" data-i18n-attr="alt:pages.home.skills.groups.tools.technologies.git.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.tools.technologies.git.label">Git</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" data-i18n-attr="alt:pages.home.skills.groups.tools.technologies.github.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.tools.technologies.github.label">GitHub</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" data-i18n-attr="alt:pages.home.skills.groups.tools.technologies.vsCode.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.tools.technologies.vsCode.label">VS Code</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 data-i18n="pages.home.skills.groups.cloud.heading" class="text-xl font-bold mb-4">Cloud Platforms</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS" data-i18n-attr="alt:pages.home.skills.groups.cloud.technologies.aws.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.cloud.technologies.aws.label">AWS</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" data-i18n-attr="alt:pages.home.skills.groups.cloud.technologies.gcp.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.cloud.technologies.gcp.label">GCP</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 data-i18n="pages.home.skills.groups.devOps.heading" class="text-xl font-bold mb-4">DevOps</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" data-i18n-attr="alt:pages.home.skills.groups.devOps.technologies.docker.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.devOps.technologies.docker.label">Docker</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins" data-i18n-attr="alt:pages.home.skills.groups.devOps.technologies.jenkins.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.devOps.technologies.jenkins.label">Jenkins</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card p-6 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 data-i18n="pages.home.skills.groups.networkInfrastructure.heading" class="text-xl font-bold mb-4">Infrastruktur Jaringan</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows Server" data-i18n-attr="alt:pages.home.skills.groups.networkInfrastructure.technologies.windowsServer.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.networkInfrastructure.technologies.windowsServer.label">Windows Server</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Cisco_logo.svg/200px-Cisco_logo.svg.png" alt="Cisco" data-i18n-attr="alt:pages.home.skills.groups.networkInfrastructure.technologies.cisco.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.networkInfrastructure.technologies.cisco.label">Cisco Networking</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux Server" data-i18n-attr="alt:pages.home.skills.groups.networkInfrastructure.technologies.linuxServer.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.networkInfrastructure.technologies.linuxServer.label">Linux Server</span>
+                            </li>
+                            <li class="flex items-center gap-3 skill-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/networkx/networkx-original.svg" alt="Network Protocols" data-i18n-attr="alt:pages.home.skills.groups.networkInfrastructure.technologies.tcpIp.imageAlt" class="w-6 h-6 skill-icon" />
+                                <span data-i18n="pages.home.skills.groups.networkInfrastructure.technologies.tcpIp.label">TCP/IP</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyek" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4"><span data-i18n="pages.home.featuredProjects.heading.lead">Portofolio</span> <span data-i18n="pages.home.featuredProjects.heading.highlight" class="section-highlight">Proyek</span></h2>
+                <p data-i18n="pages.home.featuredProjects.introduction" class="text-center text-lg mb-8">Beberapa proyek pilihan yang mewakili perjalanan dan eksplorasi belajar saya.</p>
+                <div id="portfolio-react-root" data-locale="id" data-base-path="./" data-mode="featured" data-highlight-count="3" data-full-url="projects.html" data-show-filters="false"></div>
+            </div>
+        </section>
+
+        <section id="sertifikat" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-4"><span data-i18n="pages.home.featuredCertificates.heading.highlight" class="section-highlight">Sertifikasi</span> <span data-i18n="pages.home.featuredCertificates.heading.tail">& Penghargaan</span></h2>
+                <p data-i18n="pages.home.featuredCertificates.introduction" class="text-center text-lg mb-8">Sertifikasi dan pencapaian profesional yang menandai setiap langkah penting dalam perjalanan karir IT saya.</p>
+                <div id="certificates-react-root" data-locale="id" data-base-path="./" data-mode="featured" data-highlight-count="3" data-full-url="certificates.html" data-show-filters="false"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12"><span data-i18n="pages.home.contact.heading.lead">Kontak</span> <span data-i18n="pages.home.contact.heading.highlight" class="section-highlight">Saya</span></h2>
+                <div class="card grid md:grid-cols-2 gap-10 p-8 rounded-2xl shadow-xl">
+                    <div>
+                        <h3 data-i18n="pages.home.contact.information.heading" class="text-2xl font-bold mb-4">Informasi Kontak</h3>
+                        <p data-i18n="pages.home.contact.information.introduction" class="mb-6">Saya selalu terbuka untuk mendiskusikan peluang profesional, kolaborasi proyek, atau sekadar bertukar pikiran mengenai teknologi. Silakan hubungi saya melalui salah satu saluran di bawah ini.</p>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-envelope section-highlight w-6 text-center text-xl"></i>
+                                <a href="mailto:sulucodes@gmail.com" class="contact-link-text transition-colors" title="Kirim Email" data-i18n="pages.home.contact.information.channels.email.label" data-i18n-attr="title:pages.home.contact.information.channels.email.title">sulucodes@gmail.com</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-linkedin section-highlight w-6 text-center text-xl"></i>
+                                <a href="https://www.linkedin.com/in/sulujulianto" target="_blank" rel="noopener noreferrer" class="contact-link-text transition-colors" title="Profil LinkedIn" data-i18n="pages.home.contact.information.channels.linkedin.label" data-i18n-attr="title:pages.home.contact.information.channels.linkedin.title">linkedin.com/in/sulujulianto</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-whatsapp section-highlight w-6 text-center text-xl"></i>
+                                <a href="https://wa.me/6282123724998" target="_blank" rel="noopener noreferrer" class="contact-link-text transition-colors" title="Hubungi via WhatsApp" data-i18n="pages.home.contact.information.channels.whatsapp.label" data-i18n-attr="title:pages.home.contact.information.channels.whatsapp.title">+62 821-2372-4998 (WA Business)</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-telegram section-highlight w-6 text-center text-xl"></i>
+                                <a href="https://t.me/sulucodes" target="_blank" rel="noopener noreferrer" class="contact-link-text transition-colors" title="Hubungi via Telegram" data-i18n="pages.home.contact.information.channels.telegram.label" data-i18n-attr="title:pages.home.contact.information.channels.telegram.title">@sulucodes</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 data-i18n="pages.home.contact.form.heading" class="text-2xl font-bold mb-4">Kirim Pesan</h3>
+                        <form action="https://formsubmit.co/sulucodes@gmail.com" method="POST" id="contactForm" class="space-y-4">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="text" name="name" aria-label="Nama Anda" placeholder="Nama Lengkap Anda" data-i18n-attr="aria-label:pages.home.contact.form.fields.name.ariaLabel,placeholder:pages.home.contact.form.fields.name.placeholder" autocomplete="name" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors text-gray-800 dark:text-white">
+                            <input type="email" name="email" aria-label="Alamat Email" placeholder="Alamat Email Anda" data-i18n-attr="aria-label:pages.home.contact.form.fields.email.ariaLabel,placeholder:pages.home.contact.form.fields.email.placeholder" autocomplete="email" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors text-gray-800 dark:text-white">
+                            <textarea name="message" rows="4" aria-label="Isi Pesan" placeholder="Tulis pesan Anda di sini..." data-i18n-attr="aria-label:pages.home.contact.form.fields.message.ariaLabel,placeholder:pages.home.contact.form.fields.message.placeholder" required class="w-full p-3 rounded-md bg-gray-100 dark:bg-slate-700 border-2 border-transparent focus:outline-none focus:border-blue-500 transition-colors text-gray-800 dark:text-white"></textarea>
+                            <button type="submit" id="submitBtn" class="w-full bg-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-800 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                                <span data-i18n="pages.home.contact.form.submit">Kirim Pesan</span>
+                            </button>
+                        </form>
+
+                        <div id="successMessage" class="hidden bg-green-100 dark:bg-green-800 border border-green-400 dark:border-green-600 text-green-700 dark:text-green-200 px-4 py-3 rounded relative mt-4" role="alert">
+                            <strong data-i18n="pages.home.contact.form.success.heading" class="font-bold">Berhasil!</strong>
+                            <span data-i18n="pages.home.contact.form.success.message" class="block sm:inline">Pesan Anda telah terkirim.</span>
+                        </div>
+                        <div id="errorMessage" class="hidden bg-red-100 dark:bg-red-800 border border-red-400 dark:border-red-600 text-red-700 dark:text-red-200 px-4 py-3 rounded relative mt-4" role="alert">
+                            <strong data-i18n="pages.home.contact.form.failure.heading" class="font-bold">Gagal!</strong>
+                            <span data-i18n="pages.home.contact.form.failure.message" class="block sm:inline">Terjadi kesalahan saat mengirim pesan.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="header-footer-bg footer-no-border py-6 mt-auto">
@@ -281,7 +772,7 @@
                 <a href="https://www.tiktok.com/@sulucodes" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><i class="fab fa-tiktok"></i></a>
                 <a href="https://www.youtube.com/@sulucodes" target="_blank" class="transition-transform hover:scale-110"><i class="fab fa-youtube"></i></a>
             </div>
-            <p class="header-footer-text">© <span id="current-year"></span> Sulu Edward Julianto</p>
+            <p class="header-footer-text"><span data-i18n="shared.footer.copyrightSymbol">©</span> <span id="current-year"></span> <span data-i18n="shared.footer.owner">Sulu Edward Julianto</span></p>
         </div>
     </footer>
 
@@ -294,5 +785,12 @@
         });
     </script>
 
+    <a href="#" id="to-top-btn" class="hidden fixed bottom-5 right-5 z-50 h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-opacity duration-300 hover:bg-blue-700">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin defer></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin defer></script>
+    <script src="assets/js/dist/app.js" defer></script>
 </body>
 </html>

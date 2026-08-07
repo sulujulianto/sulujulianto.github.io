@@ -22,5 +22,9 @@
   {
     "id": "ai-data",
     "label": "AI & Data"
+  },
+  {
+    "id": "game",
+    "label": "Game"
   }
 ]

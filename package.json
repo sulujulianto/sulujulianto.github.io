@@ -6,7 +6,7 @@
   "scripts": {
     "audit:portfolio": "node scripts/audit-portfolio-data.mjs",
     "test:language": "npm run ts:build && node --test tests/language-resolver.test.mjs",
-    "test:ui-locale": "node --test tests/ui-locale-id.test.mjs tests/ui-locale-en.test.mjs tests/ui-locale-ja.test.mjs tests/ui-locale-zh.test.mjs",
+    "test:ui-locale": "node --test tests/ui-locale-id.test.mjs tests/ui-locale-contract.test.mjs tests/unified-pages.test.mjs",
     "test:css": "node --test tests/css-build.test.mjs",
     "test": "npm run test:language && npm run test:ui-locale && npm run test:css",
     "verify": "npm run tailwind:build && npm run audit:portfolio && npm test",
