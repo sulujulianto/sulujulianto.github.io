@@ -1,0 +1,53 @@
+[
+  {
+    "id": "bbpvp-full-stack-training",
+    "start": "2025-10",
+    "end": "2025-12",
+    "title": "Pelatihan Full-Stack Web Development",
+    "organization": "BBPVP Bekasi — Kementerian Ketenagakerjaan RI",
+    "location": "Bekasi, Indonesia",
+    "description": "Mengikuti pelatihan berbasis proyek selama 363 jam yang mencakup pembelajaran daring, tatap muka, uji kompetensi, dan On-the-Job Training di lingkungan kerja.",
+    "highlights": [
+      "Membangun aplikasi full-stack menggunakan Node.js, React, REST API, MySQL, dan PostgreSQL.",
+      "Menerapkan Git workflow, pengujian, perbaikan bug, serta deployment dalam tugas berbasis proyek."
+    ],
+    "links": [
+      {
+        "label": "Repository pelatihan BBPVP",
+        "url": "https://github.com/sulujulianto/webdev-training-bbpvp-bekasi-2025"
+      }
+    ]
+  },
+  {
+    "id": "ppkpi-junior-web-training",
+    "start": "2025-05",
+    "end": "2025-08",
+    "title": "Pelatihan Junior Web Developer",
+    "organization": "PPKPI Jakarta",
+    "location": "Jakarta, Indonesia",
+    "description": "Mengikuti pelatihan pengembangan web berbasis PHP dan MySQL, mencakup pemrograman terstruktur, pengelolaan basis data, pengembangan antarmuka, dan proyek akhir untuk sertifikasi kompetensi BNSP.",
+    "highlights": [
+      "Membangun dasar pengembangan front-end dan back-end melalui latihan serta proyek terarah.",
+      "Menyelesaikan Jejak Petualang sebagai proyek akhir program."
+    ],
+    "links": [
+      {
+        "label": "Repository pelatihan PPKPI",
+        "url": "https://github.com/sulujulianto/junior-web-developer-bootcamp-ppkpi-2025"
+      }
+    ]
+  },
+  {
+    "id": "smk-tkj",
+    "start": "2018",
+    "end": "2021",
+    "title": "Teknik Komputer dan Jaringan",
+    "organization": "SMK Yadika 9 Bintara",
+    "location": "Bekasi, Indonesia",
+    "description": "Menempuh pendidikan kejuruan di bidang komputer dan jaringan sebagai dasar pemahaman perangkat keras, sistem operasi, jaringan komputer, dan pemecahan masalah teknis.",
+    "highlights": [
+      "Mempelajari perakitan komputer, instalasi sistem operasi, dasar jaringan, dan troubleshooting.",
+      "Mengembangkan fondasi teknis yang kemudian diterapkan dalam pembelajaran web development."
+    ]
+  }
+]

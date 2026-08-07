@@ -1,0 +1,53 @@
+[
+  {
+    "id": "bbpvp-full-stack-training",
+    "start": "2025-10",
+    "end": "2025-12",
+    "title": "Full-Stack Web Development Training",
+    "organization": "BBPVP Bekasi — Ministry of Manpower of Indonesia",
+    "location": "Bekasi, Indonesia",
+    "description": "Completed a 363-hour project-based program combining online and in-person instruction, competency assessment, and workplace-based On-the-Job Training.",
+    "highlights": [
+      "Built full-stack applications with Node.js, React, REST APIs, MySQL, and PostgreSQL.",
+      "Applied Git workflows, testing, bug fixing, and deployment in project-based assignments."
+    ],
+    "links": [
+      {
+        "label": "BBPVP training repository",
+        "url": "https://github.com/sulujulianto/webdev-training-bbpvp-bekasi-2025"
+      }
+    ]
+  },
+  {
+    "id": "ppkpi-junior-web-training",
+    "start": "2025-05",
+    "end": "2025-08",
+    "title": "Junior Web Developer Training",
+    "organization": "PPKPI Jakarta",
+    "location": "Jakarta, Indonesia",
+    "description": "Completed a PHP- and MySQL-based web development program covering structured programming, database management, interface development, and a final project for BNSP competency certification.",
+    "highlights": [
+      "Strengthened front-end and back-end fundamentals through guided exercises and projects.",
+      "Completed Jejak Petualang as the program's final project."
+    ],
+    "links": [
+      {
+        "label": "PPKPI training repository",
+        "url": "https://github.com/sulujulianto/junior-web-developer-bootcamp-ppkpi-2025"
+      }
+    ]
+  },
+  {
+    "id": "smk-tkj",
+    "start": "2018",
+    "end": "2021",
+    "title": "Computer and Network Engineering",
+    "organization": "SMK Yadika 9 Bintara",
+    "location": "Bekasi, Indonesia",
+    "description": "Completed vocational education in computer and network engineering, establishing a foundation in hardware, operating systems, computer networking, and technical troubleshooting.",
+    "highlights": [
+      "Studied computer assembly, operating system installation, networking fundamentals, and troubleshooting.",
+      "Built the technical foundation later applied to web development studies."
+    ]
+  }
+]

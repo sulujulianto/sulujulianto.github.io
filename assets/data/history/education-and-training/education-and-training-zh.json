@@ -1,0 +1,53 @@
+[
+  {
+    "id": "bbpvp-full-stack-training",
+    "start": "2025-10",
+    "end": "2025-12",
+    "title": "全栈 Web 开发培训",
+    "organization": "BBPVP Bekasi — 印度尼西亚人力资源部",
+    "location": "印度尼西亚勿加泗",
+    "description": "完成 363 小时的项目制培训，内容包括线上及线下课程、能力考核，以及在工作环境中的在岗培训。",
+    "highlights": [
+      "使用 Node.js、React、REST API、MySQL 和 PostgreSQL 构建全栈应用。",
+      "在项目任务中实践 Git 工作流、测试、缺陷修复与部署。"
+    ],
+    "links": [
+      {
+        "label": "BBPVP 培训代码仓库",
+        "url": "https://github.com/sulujulianto/webdev-training-bbpvp-bekasi-2025"
+      }
+    ]
+  },
+  {
+    "id": "ppkpi-junior-web-training",
+    "start": "2025-05",
+    "end": "2025-08",
+    "title": "初级 Web 开发培训",
+    "organization": "PPKPI Jakarta",
+    "location": "印度尼西亚雅加达",
+    "description": "完成以 PHP 和 MySQL 为核心的 Web 开发培训，涵盖结构化编程、数据库管理、界面开发，以及面向 BNSP 能力认证的结业项目。",
+    "highlights": [
+      "通过指导练习与项目巩固前端和后端开发基础。",
+      "以 Jejak Petualang 项目完成培训结业任务。"
+    ],
+    "links": [
+      {
+        "label": "PPKPI 培训代码仓库",
+        "url": "https://github.com/sulujulianto/junior-web-developer-bootcamp-ppkpi-2025"
+      }
+    ]
+  },
+  {
+    "id": "smk-tkj",
+    "start": "2018",
+    "end": "2021",
+    "title": "计算机与网络工程",
+    "organization": "SMK Yadika 9 Bintara",
+    "location": "印度尼西亚勿加泗",
+    "description": "完成计算机与网络工程职业教育，建立了硬件、操作系统、计算机网络与技术故障排查方面的基础。",
+    "highlights": [
+      "学习电脑组装、操作系统安装、网络基础和故障排查。",
+      "建立后来用于 Web 开发学习的技术基础。"
+    ]
+  }
+]
