@@ -49,24 +49,30 @@
     }
 
     interface TimelineItem {
+        id: string;
         start: string;
         end?: string | null;
         title: string;
-        organization?: string;
-        location?: string;
+        organization: string;
+        location: string;
         description?: string;
+        highlights?: string[];
+        links?: Array<{
+            label: string;
+            url: string;
+        }>;
     }
 
     interface HistoryData {
-        experience?: TimelineItem[];
-        education?: TimelineItem[];
+        experience: TimelineItem[];
+        educationAndTraining: TimelineItem[];
     }
 
     interface HistoryLabels {
         experience: string;
-        education: string;
+        educationAndTraining: string;
         emptyExperience: string;
-        emptyEducation: string;
+        emptyEducationAndTraining: string;
         unavailable: string;
         present: string;
         gallery: string;
@@ -213,36 +219,36 @@
     const HISTORY_LABELS: Record<LocaleKey, HistoryLabels> = {
         id: {
             experience: 'Pengalaman',
-            education: 'Pendidikan',
+            educationAndTraining: 'Pendidikan & Pelatihan',
             emptyExperience: 'Belum ada data pengalaman.',
-            emptyEducation: 'Belum ada data pendidikan.',
+            emptyEducationAndTraining: 'Belum ada data pendidikan dan pelatihan.',
             unavailable: 'Riwayat belum dapat ditampilkan.',
             present: 'Sekarang',
             gallery: 'Galeri Tentang Saya',
         },
         en: {
             experience: 'Experience',
-            education: 'Education',
+            educationAndTraining: 'Education & Training',
             emptyExperience: 'No experience data yet.',
-            emptyEducation: 'No education data yet.',
+            emptyEducationAndTraining: 'No education or training data yet.',
             unavailable: 'History is currently unavailable.',
             present: 'Present',
             gallery: 'About Me gallery',
         },
         ja: {
             experience: '職歴',
-            education: '学歴',
+            educationAndTraining: '学歴・職業訓練',
             emptyExperience: '職歴データはまだありません。',
-            emptyEducation: '学歴データはまだありません。',
+            emptyEducationAndTraining: '学歴・職業訓練のデータはまだありません。',
             unavailable: '経歴を現在表示できません。',
             present: '現在',
             gallery: 'プロフィールギャラリー',
         },
         zh: {
             experience: '工作经历',
-            education: '教育经历',
+            educationAndTraining: '教育与培训',
             emptyExperience: '暂无工作经历数据。',
-            emptyEducation: '暂无教育经历数据。',
+            emptyEducationAndTraining: '暂无教育或培训数据。',
             unavailable: '暂时无法显示个人经历。',
             present: '至今',
             gallery: '关于我图片集',
@@ -275,6 +281,8 @@
     };
 
     const formatMonthYear = (value: string, locale: LocaleKey) => {
+        if (/^\d{4}$/.test(value)) return value;
+
         const match = /^(\d{4})-(\d{2})$/.exec(value);
         if (!match) return value;
 
@@ -289,13 +297,12 @@
         }).format(new Date(Date.UTC(year, month - 1, 1)));
     };
 
-    const timelineTimestamp = (item: TimelineItem) => {
-        if (!item.end) return Number.MAX_SAFE_INTEGER;
-        return parseDate(`${item.end}-01`) || parseDate(`${item.start}-01`);
-    };
-
     const sortTimeline = (items: TimelineItem[]) => {
-        return [...items].sort((a, b) => timelineTimestamp(b) - timelineTimestamp(a));
+        const dateValue = (value: string) => parseDate(`${value.length === 4 ? `${value}-01` : value}-01`);
+        return [...items].sort((a, b) => {
+            const difference = dateValue(b.start) - dateValue(a.start);
+            return difference !== 0 ? difference : a.title.localeCompare(b.title);
+        });
     };
 
     const normalizeTimelineItems = (items: TimelineItem[] | undefined) => {
@@ -303,10 +310,16 @@
         return items.filter(
             (item) =>
                 item &&
+                typeof item.id === 'string' &&
+                item.id.trim() !== '' &&
                 typeof item.start === 'string' &&
-                item.start.trim() !== '' &&
+                /^\d{4}(?:-(?:0[1-9]|1[0-2]))?$/.test(item.start) &&
                 typeof item.title === 'string' &&
-                item.title.trim() !== '',
+                item.title.trim() !== '' &&
+                typeof item.organization === 'string' &&
+                item.organization.trim() !== '' &&
+                typeof item.location === 'string' &&
+                item.location.trim() !== '',
         );
     };
 
@@ -1140,19 +1153,31 @@
         const locale = usePortfolioLocale(container);
         const basePath = container?.dataset.basePath || './';
         const labels = HISTORY_LABELS[locale];
-        const [activeTab, setActiveTab] = React.useState<'experience' | 'education'>('experience');
-        const [data, setData] = React.useState<HistoryData>({ experience: [], education: [] });
+        const [activeTab, setActiveTab] = React.useState<'experience' | 'educationAndTraining'>('experience');
+        const [openItemId, setOpenItemId] = React.useState<string | null>(null);
+        const [data, setData] = React.useState<HistoryData>({ experience: [], educationAndTraining: [] });
         const [isLoading, setIsLoading] = React.useState(true);
         const [hasError, setHasError] = React.useState(false);
 
         React.useEffect(() => {
             const abortController = new AbortController();
             setIsLoading(true);
-            readJson<HistoryData>(`${basePath}assets/data/history/history-${locale}.json`, abortController.signal)
-                .then((result) => {
+            setOpenItemId(null);
+
+            Promise.all([
+                readJson<TimelineItem[]>(
+                    `${basePath}assets/data/history/experience/experience-${locale}.json`,
+                    abortController.signal,
+                ),
+                readJson<TimelineItem[]>(
+                    `${basePath}assets/data/history/education-and-training/education-and-training-${locale}.json`,
+                    abortController.signal,
+                ),
+            ])
+                .then(([experience, educationAndTraining]) => {
                     setData({
-                        experience: normalizeTimelineItems(result.experience),
-                        education: normalizeTimelineItems(result.education),
+                        experience: normalizeTimelineItems(experience),
+                        educationAndTraining: normalizeTimelineItems(educationAndTraining),
                     });
                     setHasError(false);
                 })
@@ -1168,13 +1193,25 @@
             return () => abortController.abort();
         }, [basePath, locale]);
 
-        const items = sortTimeline(activeTab === 'experience' ? data.experience || [] : data.education || []);
+        React.useEffect(() => {
+            setOpenItemId(null);
+        }, [activeTab]);
+
+        const items = React.useMemo(() => sortTimeline(data[activeTab]), [activeTab, data]);
+        const groupedItems = React.useMemo(() => {
+            const groups = new Map<string, TimelineItem[]>();
+            items.forEach((item) => {
+                const year = item.start.slice(0, 4);
+                groups.set(year, [...(groups.get(year) || []), item]);
+            });
+            return [...groups.entries()].map(([year, yearItems]) => ({ year, items: yearItems }));
+        }, [items]);
         const panelId = `history-${activeTab}-panel`;
 
         return (
             <div className="card w-full overflow-hidden rounded-2xl p-5 sm:p-8 shadow-xl">
                 <div className="grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1 dark:bg-slate-800" role="tablist" aria-label="History">
-                    {(['experience', 'education'] as const).map((tab) => {
+                    {(['experience', 'educationAndTraining'] as const).map((tab) => {
                         const isActive = activeTab === tab;
                         return (
                             <button
@@ -1211,30 +1248,84 @@
                     )}
                     {!isLoading && !hasError && items.length === 0 && (
                         <p className="rounded-xl bg-slate-100 px-4 py-8 text-center text-sm text-slate-500 dark:bg-slate-800 dark:text-slate-400">
-                            {activeTab === 'experience' ? labels.emptyExperience : labels.emptyEducation}
+                            {activeTab === 'experience' ? labels.emptyExperience : labels.emptyEducationAndTraining}
                         </p>
                     )}
                     {!isLoading && !hasError && items.length > 0 && (
-                        <div className="space-y-4">
-                            {items.map((item, index) => (
-                                <article
-                                    key={`${item.start}-${item.title}-${index}`}
-                                    className="grid grid-cols-1 gap-2 rounded-xl border border-slate-200 p-4 text-left sm:p-5 md:grid-cols-3 md:gap-6 dark:border-slate-700"
+                        <div className="history-timeline">
+                            {groupedItems.map((group) => (
+                                <section
+                                    key={group.year}
+                                    className="history-year-group"
+                                    aria-labelledby={`history-year-${activeTab}-${group.year}`}
                                 >
-                                    <p className="text-sm font-semibold text-blue-700 dark:text-blue-300">
-                                        {formatMonthYear(item.start, locale)} &ndash;{' '}
-                                        {item.end ? formatMonthYear(item.end, locale) : labels.present}
-                                    </p>
-                                    <div className="md:col-span-2">
-                                        <h3 className="text-base sm:text-lg font-bold">{item.title}</h3>
-                                        {(item.organization || item.location) && (
-                                            <p className="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300">
-                                                {[item.organization, item.location].filter(Boolean).join(' · ')}
-                                            </p>
-                                        )}
-                                        {item.description && <p className="mt-2 text-sm leading-relaxed">{item.description}</p>}
+                                    <h3 id={`history-year-${activeTab}-${group.year}`} className="history-year-heading">
+                                        {group.year}
+                                    </h3>
+                                    <div className="history-year-items">
+                                        {group.items.map((item) => {
+                                            const isOpen = openItemId === item.id;
+                                            const detailId = `history-detail-${activeTab}-${item.id}`;
+                                            const hasDetails = Boolean(
+                                                item.description || item.highlights?.length || item.links?.length,
+                                            );
+
+                                            return (
+                                                <article key={item.id} className="history-entry">
+                                                    <span className="history-entry-dot" aria-hidden="true"></span>
+                                                    <button
+                                                        type="button"
+                                                        className="history-entry-summary"
+                                                        aria-expanded={hasDetails ? isOpen : undefined}
+                                                        aria-controls={hasDetails ? detailId : undefined}
+                                                        disabled={!hasDetails}
+                                                        onClick={() => hasDetails && setOpenItemId(isOpen ? null : item.id)}
+                                                    >
+                                                        <span className="history-entry-date">
+                                                            {formatMonthYear(item.start, locale)} &ndash;{' '}
+                                                            {item.end ? formatMonthYear(item.end, locale) : labels.present}
+                                                        </span>
+                                                        <span className="history-entry-main">
+                                                            <span className="history-entry-copy">
+                                                                <span className="history-entry-title">{item.title}</span>
+                                                                <span className="history-entry-organization">{item.organization}</span>
+                                                                <span className="history-entry-location">{item.location}</span>
+                                                            </span>
+                                                            {hasDetails && (
+                                                                <i
+                                                                    className={`fas fa-chevron-down history-entry-chevron ${isOpen ? 'is-open' : ''}`}
+                                                                    aria-hidden="true"
+                                                                ></i>
+                                                            )}
+                                                        </span>
+                                                    </button>
+                                                    {hasDetails && (
+                                                        <div id={detailId} className="history-entry-details" hidden={!isOpen}>
+                                                            {item.description && <p>{item.description}</p>}
+                                                            {item.highlights && item.highlights.length > 0 && (
+                                                                <ul>
+                                                                    {item.highlights.map((highlight, index) => (
+                                                                        <li key={`${item.id}-highlight-${index}`}>{highlight}</li>
+                                                                    ))}
+                                                                </ul>
+                                                            )}
+                                                            {item.links && item.links.length > 0 && (
+                                                                <div className="history-entry-links">
+                                                                    {item.links.map((link) => (
+                                                                        <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">
+                                                                            <i className="fab fa-github" aria-hidden="true"></i>
+                                                                            <span>{link.label}</span>
+                                                                        </a>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                </article>
+                                            );
+                                        })}
                                     </div>
-                                </article>
+                                </section>
                             ))}
                         </div>
                     )}

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "bbpvp-full-stack-training",
+    "start": "2025-10",
+    "end": "2025-12",
+    "title": "フルスタックWeb開発職業訓練",
+    "organization": "BBPVP Bekasi — インドネシア労働省",
+    "location": "ブカシ、インドネシア",
+    "description": "オンライン授業、対面授業、技能評価、職場でのOJTを含む363時間のプロジェクト型訓練を修了しました。",
+    "highlights": [
+      "Node.js、React、REST API、MySQL、PostgreSQLを用いたフルスタックアプリケーションを開発。",
+      "プロジェクト課題を通じてGitワークフロー、テスト、不具合修正、デプロイを実践。"
+    ],
+    "links": [
+      {
+        "label": "BBPVP訓練リポジトリ",
+        "url": "https://github.com/sulujulianto/webdev-training-bbpvp-bekasi-2025"
+      }
+    ]
+  },
+  {
+    "id": "ppkpi-junior-web-training",
+    "start": "2025-05",
+    "end": "2025-08",
+    "title": "ジュニアWeb開発職業訓練",
+    "organization": "PPKPI Jakarta",
+    "location": "ジャカルタ、インドネシア",
+    "description": "PHPとMySQLを中心に、構造化プログラミング、データベース管理、UI開発、BNSP技能認定に向けた最終課題を学びました。",
+    "highlights": [
+      "演習とプロジェクトを通じてフロントエンドとバックエンドの基礎を強化。",
+      "プログラムの最終課題として「Jejak Petualang」を完成。"
+    ],
+    "links": [
+      {
+        "label": "PPKPI訓練リポジトリ",
+        "url": "https://github.com/sulujulianto/junior-web-developer-bootcamp-ppkpi-2025"
+      }
+    ]
+  },
+  {
+    "id": "smk-tkj",
+    "start": "2018",
+    "end": "2021",
+    "title": "コンピュータ・ネットワーク工学",
+    "organization": "SMK Yadika 9 Bintara",
+    "location": "ブカシ、インドネシア",
+    "description": "コンピュータとネットワーク分野の職業教育を修了し、ハードウェア、OS、コンピュータネットワーク、技術的な問題解決の基礎を身につけました。",
+    "highlights": [
+      "PC組み立て、OSのインストール、ネットワーク基礎、トラブルシューティングを学習。",
+      "その後のWeb開発学習につながる技術基盤を形成。"
+    ]
+  }
+]

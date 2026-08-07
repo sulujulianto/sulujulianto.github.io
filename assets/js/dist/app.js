@@ -128,36 +128,36 @@
     const HISTORY_LABELS = {
         id: {
             experience: 'Pengalaman',
-            education: 'Pendidikan',
+            educationAndTraining: 'Pendidikan & Pelatihan',
             emptyExperience: 'Belum ada data pengalaman.',
-            emptyEducation: 'Belum ada data pendidikan.',
+            emptyEducationAndTraining: 'Belum ada data pendidikan dan pelatihan.',
             unavailable: 'Riwayat belum dapat ditampilkan.',
             present: 'Sekarang',
             gallery: 'Galeri Tentang Saya',
         },
         en: {
             experience: 'Experience',
-            education: 'Education',
+            educationAndTraining: 'Education & Training',
             emptyExperience: 'No experience data yet.',
-            emptyEducation: 'No education data yet.',
+            emptyEducationAndTraining: 'No education or training data yet.',
             unavailable: 'History is currently unavailable.',
             present: 'Present',
             gallery: 'About Me gallery',
         },
         ja: {
             experience: '職歴',
-            education: '学歴',
+            educationAndTraining: '学歴・職業訓練',
             emptyExperience: '職歴データはまだありません。',
-            emptyEducation: '学歴データはまだありません。',
+            emptyEducationAndTraining: '学歴・職業訓練のデータはまだありません。',
             unavailable: '経歴を現在表示できません。',
             present: '現在',
             gallery: 'プロフィールギャラリー',
         },
         zh: {
             experience: '工作经历',
-            education: '教育经历',
+            educationAndTraining: '教育与培训',
             emptyExperience: '暂无工作经历数据。',
-            emptyEducation: '暂无教育经历数据。',
+            emptyEducationAndTraining: '暂无教育或培训数据。',
             unavailable: '暂时无法显示个人经历。',
             present: '至今',
             gallery: '关于我图片集',
@@ -189,6 +189,8 @@
         zh: 'zh-CN',
     };
     const formatMonthYear = (value, locale) => {
+        if (/^\d{4}$/.test(value))
+            return value;
         const match = /^(\d{4})-(\d{2})$/.exec(value);
         if (!match)
             return value;
@@ -202,22 +204,27 @@
             timeZone: 'UTC',
         }).format(new Date(Date.UTC(year, month - 1, 1)));
     };
-    const timelineTimestamp = (item) => {
-        if (!item.end)
-            return Number.MAX_SAFE_INTEGER;
-        return parseDate(`${item.end}-01`) || parseDate(`${item.start}-01`);
-    };
     const sortTimeline = (items) => {
-        return [...items].sort((a, b) => timelineTimestamp(b) - timelineTimestamp(a));
+        const dateValue = (value) => parseDate(`${value.length === 4 ? `${value}-01` : value}-01`);
+        return [...items].sort((a, b) => {
+            const difference = dateValue(b.start) - dateValue(a.start);
+            return difference !== 0 ? difference : a.title.localeCompare(b.title);
+        });
     };
     const normalizeTimelineItems = (items) => {
         if (!Array.isArray(items))
             return [];
         return items.filter((item) => item &&
+            typeof item.id === 'string' &&
+            item.id.trim() !== '' &&
             typeof item.start === 'string' &&
-            item.start.trim() !== '' &&
+            /^\d{4}(?:-(?:0[1-9]|1[0-2]))?$/.test(item.start) &&
             typeof item.title === 'string' &&
-            item.title.trim() !== '');
+            item.title.trim() !== '' &&
+            typeof item.organization === 'string' &&
+            item.organization.trim() !== '' &&
+            typeof item.location === 'string' &&
+            item.location.trim() !== '');
     };
     const readJson = async (url, signal) => {
         const response = await fetch(url, { signal });
@@ -743,17 +750,22 @@
         const basePath = (container === null || container === void 0 ? void 0 : container.dataset.basePath) || './';
         const labels = HISTORY_LABELS[locale];
         const [activeTab, setActiveTab] = React.useState('experience');
-        const [data, setData] = React.useState({ experience: [], education: [] });
+        const [openItemId, setOpenItemId] = React.useState(null);
+        const [data, setData] = React.useState({ experience: [], educationAndTraining: [] });
         const [isLoading, setIsLoading] = React.useState(true);
         const [hasError, setHasError] = React.useState(false);
         React.useEffect(() => {
             const abortController = new AbortController();
             setIsLoading(true);
-            readJson(`${basePath}assets/data/history/history-${locale}.json`, abortController.signal)
-                .then((result) => {
+            setOpenItemId(null);
+            Promise.all([
+                readJson(`${basePath}assets/data/history/experience/experience-${locale}.json`, abortController.signal),
+                readJson(`${basePath}assets/data/history/education-and-training/education-and-training-${locale}.json`, abortController.signal),
+            ])
+                .then(([experience, educationAndTraining]) => {
                 setData({
-                    experience: normalizeTimelineItems(result.experience),
-                    education: normalizeTimelineItems(result.education),
+                    experience: normalizeTimelineItems(experience),
+                    educationAndTraining: normalizeTimelineItems(educationAndTraining),
                 });
                 setHasError(false);
             })
@@ -769,10 +781,21 @@
             });
             return () => abortController.abort();
         }, [basePath, locale]);
-        const items = sortTimeline(activeTab === 'experience' ? data.experience || [] : data.education || []);
+        React.useEffect(() => {
+            setOpenItemId(null);
+        }, [activeTab]);
+        const items = React.useMemo(() => sortTimeline(data[activeTab]), [activeTab, data]);
+        const groupedItems = React.useMemo(() => {
+            const groups = new Map();
+            items.forEach((item) => {
+                const year = item.start.slice(0, 4);
+                groups.set(year, [...(groups.get(year) || []), item]);
+            });
+            return [...groups.entries()].map(([year, yearItems]) => ({ year, items: yearItems }));
+        }, [items]);
         const panelId = `history-${activeTab}-panel`;
         return (React.createElement("div", { className: "card w-full overflow-hidden rounded-2xl p-5 sm:p-8 shadow-xl" },
-            React.createElement("div", { className: "grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1 dark:bg-slate-800", role: "tablist", "aria-label": "History" }, ['experience', 'education'].map((tab) => {
+            React.createElement("div", { className: "grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1 dark:bg-slate-800", role: "tablist", "aria-label": "History" }, ['experience', 'educationAndTraining'].map((tab) => {
                 const isActive = activeTab === tab;
                 return (React.createElement("button", { key: tab, id: `history-${tab}-tab`, type: "button", role: "tab", "aria-selected": isActive, "aria-controls": `history-${tab}-panel`, onClick: () => setActiveTab(tab), className: `rounded-lg px-3 py-3 text-sm sm:text-base font-semibold transition-colors ${isActive
                         ? 'bg-blue-600 text-white shadow-md'
@@ -782,17 +805,35 @@
             React.createElement("div", { id: panelId, role: "tabpanel", "aria-labelledby": `history-${activeTab}-tab`, className: "mt-5 sm:mt-8" },
                 isLoading && React.createElement("p", { className: "py-8 text-center text-sm text-slate-500 dark:text-slate-400" }, "\u2026"),
                 !isLoading && hasError && (React.createElement("p", { className: "rounded-xl bg-slate-100 px-4 py-8 text-center text-sm text-slate-500 dark:bg-slate-800 dark:text-slate-400" }, labels.unavailable)),
-                !isLoading && !hasError && items.length === 0 && (React.createElement("p", { className: "rounded-xl bg-slate-100 px-4 py-8 text-center text-sm text-slate-500 dark:bg-slate-800 dark:text-slate-400" }, activeTab === 'experience' ? labels.emptyExperience : labels.emptyEducation)),
-                !isLoading && !hasError && items.length > 0 && (React.createElement("div", { className: "space-y-4" }, items.map((item, index) => (React.createElement("article", { key: `${item.start}-${item.title}-${index}`, className: "grid grid-cols-1 gap-2 rounded-xl border border-slate-200 p-4 text-left sm:p-5 md:grid-cols-3 md:gap-6 dark:border-slate-700" },
-                    React.createElement("p", { className: "text-sm font-semibold text-blue-700 dark:text-blue-300" },
-                        formatMonthYear(item.start, locale),
-                        " \u2013",
-                        ' ',
-                        item.end ? formatMonthYear(item.end, locale) : labels.present),
-                    React.createElement("div", { className: "md:col-span-2" },
-                        React.createElement("h3", { className: "text-base sm:text-lg font-bold" }, item.title),
-                        (item.organization || item.location) && (React.createElement("p", { className: "mt-1 text-sm font-medium text-slate-600 dark:text-slate-300" }, [item.organization, item.location].filter(Boolean).join(' · '))),
-                        item.description && React.createElement("p", { className: "mt-2 text-sm leading-relaxed" }, item.description))))))))));
+                !isLoading && !hasError && items.length === 0 && (React.createElement("p", { className: "rounded-xl bg-slate-100 px-4 py-8 text-center text-sm text-slate-500 dark:bg-slate-800 dark:text-slate-400" }, activeTab === 'experience' ? labels.emptyExperience : labels.emptyEducationAndTraining)),
+                !isLoading && !hasError && items.length > 0 && (React.createElement("div", { className: "history-timeline" }, groupedItems.map((group) => (React.createElement("section", { key: group.year, className: "history-year-group", "aria-labelledby": `history-year-${activeTab}-${group.year}` },
+                    React.createElement("h3", { id: `history-year-${activeTab}-${group.year}`, className: "history-year-heading" }, group.year),
+                    React.createElement("div", { className: "history-year-items" }, group.items.map((item) => {
+                        var _a, _b;
+                        const isOpen = openItemId === item.id;
+                        const detailId = `history-detail-${activeTab}-${item.id}`;
+                        const hasDetails = Boolean(item.description || ((_a = item.highlights) === null || _a === void 0 ? void 0 : _a.length) || ((_b = item.links) === null || _b === void 0 ? void 0 : _b.length));
+                        return (React.createElement("article", { key: item.id, className: "history-entry" },
+                            React.createElement("span", { className: "history-entry-dot", "aria-hidden": "true" }),
+                            React.createElement("button", { type: "button", className: "history-entry-summary", "aria-expanded": hasDetails ? isOpen : undefined, "aria-controls": hasDetails ? detailId : undefined, disabled: !hasDetails, onClick: () => hasDetails && setOpenItemId(isOpen ? null : item.id) },
+                                React.createElement("span", { className: "history-entry-date" },
+                                    formatMonthYear(item.start, locale),
+                                    " \u2013",
+                                    ' ',
+                                    item.end ? formatMonthYear(item.end, locale) : labels.present),
+                                React.createElement("span", { className: "history-entry-main" },
+                                    React.createElement("span", { className: "history-entry-copy" },
+                                        React.createElement("span", { className: "history-entry-title" }, item.title),
+                                        React.createElement("span", { className: "history-entry-organization" }, item.organization),
+                                        React.createElement("span", { className: "history-entry-location" }, item.location)),
+                                    hasDetails && (React.createElement("i", { className: `fas fa-chevron-down history-entry-chevron ${isOpen ? 'is-open' : ''}`, "aria-hidden": "true" })))),
+                            hasDetails && (React.createElement("div", { id: detailId, className: "history-entry-details", hidden: !isOpen },
+                                item.description && React.createElement("p", null, item.description),
+                                item.highlights && item.highlights.length > 0 && (React.createElement("ul", null, item.highlights.map((highlight, index) => (React.createElement("li", { key: `${item.id}-highlight-${index}` }, highlight))))),
+                                item.links && item.links.length > 0 && (React.createElement("div", { className: "history-entry-links" }, item.links.map((link) => (React.createElement("a", { key: link.url, href: link.url, target: "_blank", rel: "noopener noreferrer" },
+                                    React.createElement("i", { className: "fab fa-github", "aria-hidden": "true" }),
+                                    React.createElement("span", null, link.label))))))))));
+                    }))))))))));
     };
     const initializeApp = () => {
         const aboutGalleryContainer = document.getElementById('about-gallery-root');

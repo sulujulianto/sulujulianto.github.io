@@ -10,6 +10,8 @@ Repo ini berisi dua bagian utama:
 - `/certificates.html` : arsip sertifikat multibahasa
 - `/id`, `/en`, `/jp`, `/cn` : redirect kompatibilitas untuk URL lama
 - `/assets/data/locales` : katalog teks antarmuka per bahasa
+- `/assets/data/history/experience` : data pengalaman per bahasa
+- `/assets/data/history/education-and-training` : data pendidikan dan pelatihan per bahasa
 - `/blog` : output build blog (jangan edit manual)
 - `/blog-fuwari` : source blog (Astro + Fuwari)
 - `/docs` : dokumentasi dan panduan perawatan
@@ -73,6 +75,7 @@ npm run blog:doctor
 - Setup baru: `docs/SETUP-BARU.md`
 - Menulis post: `docs/WRITE-POSTS.md`
 - Update Fuwari: `docs/UPDATE-FUWARI.md`
+- Update galeri dan riwayat: `docs/UPDATE-ABOUT-HISTORY.md`
 - Troubleshooting: `docs/TROUBLESHOOTING.md`
 
 ## Link live
