@@ -10,6 +10,8 @@ Repo ini berisi dua bagian utama:
 - `/certificates.html` : arsip sertifikat multibahasa
 - `/id`, `/en`, `/jp`, `/cn` : redirect kompatibilitas untuk URL lama
 - `/assets/data/locales` : katalog teks antarmuka per bahasa
+- `/assets/data/skills/skills.json` : kelompok, urutan, status, dan referensi ikon Skills
+- `/assets/icons/skills.svg` : sprite SVG lokal untuk seluruh ikon Skills
 - `/assets/data/history/experience` : data pengalaman per bahasa
 - `/assets/data/history/education-and-training` : data pendidikan dan pelatihan per bahasa
 - `/blog` : output build blog (jangan edit manual)
@@ -46,8 +48,7 @@ Catatan: jalankan `tailwind:watch` saat editing dan ulangi `ts:build` jika ada p
 
 ### Build portfolio final (sebelum commit)
 ```bash
-npm run tailwind:build
-npm run ts:build
+npm run verify
 ```
 
 ### Develop blog (live reload)

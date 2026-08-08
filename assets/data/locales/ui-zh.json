@@ -43,7 +43,7 @@
       },
       "skills": {
         "heading": "专业技能",
-        "introduction": "我在构建功能完善且可扩展的软件解决方案时，所使用的技术、编程语言与开发工具。",
+        "introduction": "我用于构建功能完善、安全且易于维护的软件所采用的技术与工程实践。",
         "groups": {
           "frontEnd": {
             "heading": "前端开发",
@@ -213,6 +213,45 @@
                 "imageAlt": "Network Protocols"
               }
             }
+          }
+        },
+        "accordion": {
+          "groups": {
+            "frontEnd": "前端工程",
+            "backEnd": "后端与 API 工程",
+            "dataCloud": "数据与云平台",
+            "devSecOpsEngineering": "DevSecOps 与工程实践",
+            "systemsNetworking": "系统与网络",
+            "mobileCurrentDevelopment": "移动端与当前学习"
+          },
+          "controls": {
+            "expand": "展开分类",
+            "collapse": "收起分类",
+            "unavailable": "暂时无法显示技能。"
+          },
+          "statuses": {
+            "activeDevelopment": "正在学习与开发",
+            "planned": "计划中"
+          },
+          "items": {
+            "responsiveWebDesign": "响应式网页设计",
+            "restApi": "REST API",
+            "apiIntegration": "API 集成",
+            "authenticationAuthorization": "身份认证与授权",
+            "secureCoding": "安全编码",
+            "apiSecurity": "API 安全",
+            "inputValidation": "输入验证",
+            "csrfProtection": "CSRF 防护",
+            "preparedStatements": "预处理语句",
+            "rateLimiting": "速率限制",
+            "webhookVerification": "Webhook 签名验证",
+            "idempotency": "幂等性",
+            "cicd": "CI/CD",
+            "automatedTesting": "自动化测试",
+            "debugging": "调试",
+            "browserDevTools": "浏览器开发者工具",
+            "mobileDevelopment": "移动应用开发",
+            "systemDesign": "系统设计"
           }
         }
       },

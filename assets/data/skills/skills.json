@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "id": "frontend",
+      "headingKey": "frontEnd",
+      "skills": [
+        { "id": "html5", "label": "HTML5", "icon": "html5" },
+        { "id": "css3", "label": "CSS3", "icon": "css3" },
+        { "id": "javascript", "label": "JavaScript", "icon": "javascript" },
+        { "id": "typescript", "label": "TypeScript", "icon": "typescript" },
+        { "id": "react", "label": "React", "icon": "react" },
+        { "id": "vue", "label": "Vue.js", "icon": "vue" },
+        { "id": "nextjs", "label": "Next.js", "icon": "nextjs", "darkInvert": true },
+        { "id": "tailwind", "label": "Tailwind CSS", "icon": "tailwindcss" },
+        { "id": "vite", "label": "Vite", "icon": "vite" },
+        { "id": "responsiveWebDesign", "label": "Responsive Web Design", "labelKey": "responsiveWebDesign", "icon": "responsive" },
+        { "id": "pwa", "label": "PWA", "icon": "pwa" }
+      ]
+    },
+    {
+      "id": "backend",
+      "headingKey": "backEnd",
+      "skills": [
+        { "id": "php", "label": "PHP", "icon": "php" },
+        { "id": "laravel", "label": "Laravel", "icon": "laravel" },
+        { "id": "nodejs", "label": "Node.js", "icon": "nodejs" },
+        { "id": "fastify", "label": "Fastify", "icon": "fastify", "darkInvert": true },
+        { "id": "python", "label": "Python", "icon": "python" },
+        { "id": "fastapi", "label": "FastAPI", "icon": "fastapi" },
+        { "id": "django", "label": "Django", "icon": "django" },
+        { "id": "restApi", "label": "REST API", "labelKey": "restApi", "icon": "api" },
+        { "id": "apiIntegration", "label": "API Integration", "labelKey": "apiIntegration", "icon": "integration" },
+        { "id": "authenticationAuthorization", "label": "Authentication & Authorization", "labelKey": "authenticationAuthorization", "icon": "authentication" }
+      ]
+    },
+    {
+      "id": "data-cloud",
+      "headingKey": "dataCloud",
+      "skills": [
+        { "id": "mysql", "label": "MySQL", "icon": "mysql" },
+        { "id": "postgresql", "label": "PostgreSQL", "icon": "postgresql" },
+        { "id": "mongodb", "label": "MongoDB", "icon": "mongodb" },
+        { "id": "firebase", "label": "Firebase / Firestore", "icon": "firebase" },
+        { "id": "redis", "label": "Redis", "icon": "redis" },
+        { "id": "supabase", "label": "Supabase", "icon": "supabase" },
+        { "id": "aws", "label": "AWS", "icon": "amazonwebservices" },
+        { "id": "gcp", "label": "Google Cloud", "icon": "googlecloud" }
+      ]
+    },
+    {
+      "id": "devsecops-engineering",
+      "headingKey": "devSecOpsEngineering",
+      "skills": [
+        { "id": "secureCoding", "label": "Secure Coding", "labelKey": "secureCoding", "icon": "secure-coding" },
+        { "id": "owasp", "label": "OWASP Top 10", "icon": "owasp" },
+        { "id": "apiSecurity", "label": "API Security", "labelKey": "apiSecurity", "icon": "api-security" },
+        { "id": "inputValidation", "label": "Input Validation", "labelKey": "inputValidation", "icon": "input-validation" },
+        { "id": "csrfProtection", "label": "CSRF Protection", "labelKey": "csrfProtection", "icon": "csrf" },
+        { "id": "preparedStatements", "label": "Prepared Statements", "labelKey": "preparedStatements", "icon": "prepared-statements" },
+        { "id": "rateLimiting", "label": "Rate Limiting", "labelKey": "rateLimiting", "icon": "rate-limiting" },
+        { "id": "webhookVerification", "label": "Webhook Signature Verification", "labelKey": "webhookVerification", "icon": "webhook" },
+        { "id": "idempotency", "label": "Idempotency", "labelKey": "idempotency", "icon": "idempotency" },
+        { "id": "git", "label": "Git", "icon": "git" },
+        { "id": "github", "label": "GitHub", "icon": "github", "darkInvert": true },
+        { "id": "docker", "label": "Docker", "icon": "docker" },
+        { "id": "jenkins", "label": "Jenkins", "icon": "jenkins" },
+        { "id": "githubActions", "label": "GitHub Actions", "icon": "githubactions" },
+        { "id": "cicd", "label": "CI/CD", "labelKey": "cicd", "icon": "pipeline" },
+        { "id": "automatedTesting", "label": "Automated Testing", "labelKey": "automatedTesting", "icon": "testing" },
+        { "id": "pytest", "label": "Pytest", "icon": "pytest" },
+        { "id": "debugging", "label": "Debugging", "labelKey": "debugging", "icon": "debugging" },
+        { "id": "browserDevTools", "label": "Browser DevTools", "labelKey": "browserDevTools", "icon": "browser" },
+        { "id": "vsCode", "label": "VS Code", "icon": "vscode" }
+      ]
+    },
+    {
+      "id": "systems-networking",
+      "headingKey": "systemsNetworking",
+      "skills": [
+        { "id": "windows", "label": "Windows", "icon": "windows" },
+        { "id": "linux", "label": "Linux", "icon": "linux" },
+        { "id": "windowsServer", "label": "Windows Server", "icon": "windows" },
+        { "id": "linuxServer", "label": "Linux Server", "icon": "linux" },
+        { "id": "cisco", "label": "Cisco Networking", "icon": "cisco" },
+        { "id": "tcpIp", "label": "TCP/IP", "icon": "network" }
+      ]
+    },
+    {
+      "id": "mobile-current",
+      "headingKey": "mobileCurrentDevelopment",
+      "skills": [
+        { "id": "mobileDevelopment", "label": "Mobile Development", "labelKey": "mobileDevelopment", "icon": "mobile", "status": "planned" },
+        { "id": "systemDesign", "label": "System Design", "labelKey": "systemDesign", "icon": "system-design", "status": "activeDevelopment" },
+        { "id": "go", "label": "Go", "icon": "go", "status": "activeDevelopment" },
+        { "id": "gin", "label": "Gin", "icon": "gin", "status": "activeDevelopment" },
+        { "id": "java", "label": "Java", "icon": "java", "status": "activeDevelopment" }
+      ]
+    }
+  ]
+}
