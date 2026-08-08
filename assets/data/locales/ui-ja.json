@@ -43,7 +43,7 @@
       },
       "skills": {
         "heading": "技術スキル",
-        "introduction": "機能的でスケーラブルなソフトウェアソリューションを構築するために使用している技術、プログラミング言語、およびツールの紹介です。",
+        "introduction": "機能性、安全性、保守性を備えたソフトウェアを構築するために使用している技術とエンジニアリング手法です。",
         "groups": {
           "frontEnd": {
             "heading": "フロントエンド",
@@ -213,6 +213,45 @@
                 "imageAlt": "Network Protocols"
               }
             }
+          }
+        },
+        "accordion": {
+          "groups": {
+            "frontEnd": "フロントエンドエンジニアリング",
+            "backEnd": "バックエンド・APIエンジニアリング",
+            "dataCloud": "データ・クラウド",
+            "devSecOpsEngineering": "DevSecOps・エンジニアリング",
+            "systemsNetworking": "システム・ネットワーク",
+            "mobileCurrentDevelopment": "モバイル・現在の学習"
+          },
+          "controls": {
+            "expand": "カテゴリーを開く",
+            "collapse": "カテゴリーを閉じる",
+            "unavailable": "現在スキルを表示できません。"
+          },
+          "statuses": {
+            "activeDevelopment": "学習・開発中",
+            "planned": "計画中"
+          },
+          "items": {
+            "responsiveWebDesign": "レスポンシブWebデザイン",
+            "restApi": "REST API",
+            "apiIntegration": "API連携",
+            "authenticationAuthorization": "認証・認可",
+            "secureCoding": "セキュアコーディング",
+            "apiSecurity": "APIセキュリティ",
+            "inputValidation": "入力検証",
+            "csrfProtection": "CSRF対策",
+            "preparedStatements": "プリペアドステートメント",
+            "rateLimiting": "レート制限",
+            "webhookVerification": "Webhook署名検証",
+            "idempotency": "冪等性",
+            "cicd": "CI/CD",
+            "automatedTesting": "自動テスト",
+            "debugging": "デバッグ",
+            "browserDevTools": "ブラウザー開発者ツール",
+            "mobileDevelopment": "モバイル開発",
+            "systemDesign": "システム設計"
           }
         }
       },

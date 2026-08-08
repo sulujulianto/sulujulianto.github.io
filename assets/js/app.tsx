@@ -14,6 +14,9 @@
     type PortfolioLocaleEvent = CustomEvent<{ locale: LocaleKey }>;
 
     type PortfolioRuntimeWindow = typeof window & {
+        PortfolioUi?: Readonly<{
+            getCatalog(): unknown;
+        }>;
         PortfolioUiReady?: Promise<void>;
     };
 
@@ -76,6 +79,28 @@
         unavailable: string;
         present: string;
         gallery: string;
+    }
+
+    type SkillStatus = 'activeDevelopment' | 'planned';
+
+    interface SkillDefinition {
+        id: string;
+        label: string;
+        labelKey?: string;
+        icon: string;
+        status?: SkillStatus;
+        darkInvert?: boolean;
+    }
+
+    interface SkillGroupDefinition {
+        id: string;
+        headingKey: string;
+        skills: SkillDefinition[];
+    }
+
+    interface SkillsData {
+        version: number;
+        groups: SkillGroupDefinition[];
     }
 
     interface ComponentLabels {
@@ -1334,6 +1359,228 @@
         );
     };
 
+    const SkillsApp: React.FC = () => {
+        const container = document.getElementById('skills-react-root');
+        const locale = usePortfolioLocale(container);
+        const basePath = container?.dataset.basePath || './';
+        const [groups, setGroups] = React.useState<SkillGroupDefinition[]>([]);
+        const [hasError, setHasError] = React.useState(false);
+        const [isWide, setIsWide] = React.useState(() => window.matchMedia('(min-width: 768px)').matches);
+        const [openGroups, setOpenGroups] = React.useState<Set<string>>(new Set());
+        const [activeGroupId, setActiveGroupId] = React.useState<string | null>(null);
+
+        const catalogText = React.useCallback((path: string, fallback: string) => {
+            const catalog = (window as PortfolioRuntimeWindow).PortfolioUi?.getCatalog();
+            const value = path.split('.').reduce<unknown>((node, key) => {
+                if (!node || typeof node !== 'object') return undefined;
+                return (node as Record<string, unknown>)[key];
+            }, catalog);
+            return typeof value === 'string' && value.trim() ? value : fallback;
+        }, [locale]);
+
+        React.useEffect(() => {
+            const abortController = new AbortController();
+            readJson<SkillsData>(`${basePath}assets/data/skills/skills.json`, abortController.signal)
+                .then((data) => {
+                    const validGroups = Array.isArray(data?.groups)
+                        ? data.groups.filter(
+                              (group) =>
+                                  group &&
+                                  typeof group.id === 'string' &&
+                                  typeof group.headingKey === 'string' &&
+                                  Array.isArray(group.skills),
+                          )
+                        : [];
+                    setGroups(validGroups);
+                    setHasError(validGroups.length === 0);
+                })
+                .catch((error) => {
+                    if (error.name === 'AbortError') return;
+                    console.error('Gagal memuat data keahlian.', error);
+                    setHasError(true);
+                });
+
+            return () => abortController.abort();
+        }, [basePath]);
+
+        React.useEffect(() => {
+            const mediaQuery = window.matchMedia('(min-width: 768px)');
+            const handleChange = (event: MediaQueryListEvent) => setIsWide(event.matches);
+            setIsWide(mediaQuery.matches);
+            mediaQuery.addEventListener('change', handleChange);
+            return () => mediaQuery.removeEventListener('change', handleChange);
+        }, []);
+
+        React.useEffect(() => {
+            setActiveGroupId((current) =>
+                current && groups.some((group) => group.id === current) ? current : groups[0]?.id ?? null,
+            );
+            setOpenGroups(new Set());
+        }, [groups, isWide]);
+
+        const toggleMobileGroup = (groupId: string) => {
+            setOpenGroups((current) => {
+                const isOpen = current.has(groupId);
+                return isOpen ? new Set() : new Set([groupId]);
+            });
+        };
+
+        if (hasError) {
+            return (
+                <p className="skills-unavailable">
+                    {catalogText('pages.home.skills.accordion.controls.unavailable', 'Keahlian belum dapat ditampilkan.')}
+                </p>
+            );
+        }
+
+        if (groups.length === 0) {
+            return <div className="skills-loading" aria-busy="true" aria-live="polite"></div>;
+        }
+
+        const getGroupHeading = (group: SkillGroupDefinition) =>
+            catalogText(`pages.home.skills.accordion.groups.${group.headingKey}`, group.headingKey);
+
+        const renderSkillList = (group: SkillGroupDefinition) => (
+            <ul className="skill-list">
+                {group.skills.map((skill) => {
+                    const label = skill.labelKey
+                        ? catalogText(`pages.home.skills.accordion.items.${skill.labelKey}`, skill.label)
+                        : skill.label;
+                    const status = skill.status
+                        ? catalogText(`pages.home.skills.accordion.statuses.${skill.status}`, skill.status)
+                        : null;
+
+                    return (
+                        <li key={skill.id} className="skill-item">
+                            <svg
+                                className={`skill-icon ${skill.darkInvert ? 'skill-icon-dark-invert' : ''}`}
+                                aria-hidden="true"
+                                focusable="false"
+                            >
+                                <use href={`${basePath}assets/icons/skills.svg#${skill.icon}`}></use>
+                            </svg>
+                            <span className="skill-item-copy">
+                                <span className="skill-item-name">{label}</span>
+                                {status && <span className={`skill-status skill-status-${skill.status}`}>{status}</span>}
+                            </span>
+                        </li>
+                    );
+                })}
+            </ul>
+        );
+
+        const activeGroup = groups.find((group) => group.id === activeGroupId) ?? groups[0];
+        const activeHeading = getGroupHeading(activeGroup);
+        const sectionLabel = catalogText('pages.home.skills.heading', 'Keahlian Teknis');
+        const handleCategoryKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, currentIndex: number) => {
+            const lastIndex = groups.length - 1;
+            let nextIndex: number | null = null;
+
+            if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (currentIndex + 1) % groups.length;
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (currentIndex - 1 + groups.length) % groups.length;
+            if (event.key === 'Home') nextIndex = 0;
+            if (event.key === 'End') nextIndex = lastIndex;
+            if (nextIndex === null) return;
+
+            event.preventDefault();
+            const nextGroup = groups[nextIndex];
+            setActiveGroupId(nextGroup.id);
+            window.requestAnimationFrame(() => document.getElementById(`skills-tab-${nextGroup.id}`)?.focus());
+        };
+
+        return (
+            <>
+                <div className="skills-desktop-layout">
+                    <div className="skills-category-grid" role="tablist" aria-label={sectionLabel}>
+                        {groups.map((group, index) => {
+                            const isActive = group.id === activeGroup.id;
+                            const heading = getGroupHeading(group);
+                            const buttonId = `skills-tab-${group.id}`;
+                            const panelId = 'skills-desktop-panel';
+                            const representativeIcon = group.skills[0]?.icon;
+
+                            return (
+                                <button
+                                    key={group.id}
+                                    id={buttonId}
+                                    type="button"
+                                    role="tab"
+                                    className={`card skill-category-button ${isActive ? 'is-active' : ''}`}
+                                    aria-selected={isActive}
+                                    aria-controls={panelId}
+                                    tabIndex={isActive ? 0 : -1}
+                                    onClick={() => setActiveGroupId(group.id)}
+                                    onKeyDown={(event) => handleCategoryKeyDown(event, index)}
+                                >
+                                    {representativeIcon && (
+                                        <svg className="skill-category-icon" aria-hidden="true" focusable="false">
+                                            <use href={`${basePath}assets/icons/skills.svg#${representativeIcon}`}></use>
+                                        </svg>
+                                    )}
+                                    <span>{heading}</span>
+                                    <span className="skill-category-indicator" aria-hidden="true"></span>
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    <section
+                        key={activeGroup.id}
+                        id="skills-desktop-panel"
+                        className="card skills-desktop-panel"
+                        role="tabpanel"
+                        aria-labelledby={`skills-tab-${activeGroup.id}`}
+                        tabIndex={0}
+                    >
+                        <h3 className="skills-desktop-panel-heading">{activeHeading}</h3>
+                        {renderSkillList(activeGroup)}
+                    </section>
+                </div>
+
+                <div className="skills-mobile-accordion">
+                    {groups.map((group) => {
+                    const isOpen = openGroups.has(group.id);
+                    const heading = getGroupHeading(group);
+                    const panelId = `skills-panel-${group.id}`;
+                    const buttonId = `skills-button-${group.id}`;
+                    const controlText = catalogText(
+                        `pages.home.skills.accordion.controls.${isOpen ? 'collapse' : 'expand'}`,
+                        isOpen ? 'Tutup kategori' : 'Buka kategori',
+                    );
+
+                    return (
+                        <article key={group.id} className={`card skill-card ${isOpen ? 'is-open' : ''}`}>
+                            <h3 className="skill-card-heading">
+                                <button
+                                    id={buttonId}
+                                    type="button"
+                                    className="skill-card-toggle"
+                                    aria-expanded={isOpen}
+                                    aria-controls={panelId}
+                                    aria-label={`${controlText}: ${heading}`}
+                                    onClick={() => toggleMobileGroup(group.id)}
+                                >
+                                    <span>{heading}</span>
+                                    <i className="fas fa-chevron-down skill-card-chevron" aria-hidden="true"></i>
+                                </button>
+                            </h3>
+                            <div
+                                id={panelId}
+                                className="skill-card-panel"
+                                role="region"
+                                aria-labelledby={buttonId}
+                                hidden={!isOpen}
+                            >
+                                {renderSkillList(group)}
+                            </div>
+                        </article>
+                    );
+                    })}
+                </div>
+            </>
+        );
+    };
+
     const initializeApp = () => {
         const aboutGalleryContainer = document.getElementById('about-gallery-root');
         if (aboutGalleryContainer) {
@@ -1345,6 +1592,12 @@
         if (historyContainer) {
             const root = ReactDOMClient.createRoot(historyContainer);
             root.render(React.createElement(HistoryApp));
+        }
+
+        const skillsContainer = document.getElementById('skills-react-root');
+        if (skillsContainer) {
+            const root = ReactDOMClient.createRoot(skillsContainer);
+            root.render(React.createElement(SkillsApp));
         }
 
         const projectContainer = document.getElementById('portfolio-react-root');

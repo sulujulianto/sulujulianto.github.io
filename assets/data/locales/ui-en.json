@@ -43,7 +43,7 @@
       },
       "skills": {
         "heading": "Technical Skills",
-        "introduction": "A collection of technologies, programming languages, and tools I use to build scalable and functional software solutions.",
+        "introduction": "Technologies and engineering practices I use to build functional, secure, and maintainable software.",
         "groups": {
           "frontEnd": {
             "heading": "Front-End",
@@ -213,6 +213,45 @@
                 "imageAlt": "Network Protocols"
               }
             }
+          }
+        },
+        "accordion": {
+          "groups": {
+            "frontEnd": "Frontend Engineering",
+            "backEnd": "Backend & API Engineering",
+            "dataCloud": "Data & Cloud",
+            "devSecOpsEngineering": "DevSecOps & Engineering",
+            "systemsNetworking": "Systems & Networking",
+            "mobileCurrentDevelopment": "Mobile & Current Development"
+          },
+          "controls": {
+            "expand": "Expand category",
+            "collapse": "Collapse category",
+            "unavailable": "Skills are currently unavailable."
+          },
+          "statuses": {
+            "activeDevelopment": "Active development",
+            "planned": "Planned"
+          },
+          "items": {
+            "responsiveWebDesign": "Responsive Web Design",
+            "restApi": "REST API",
+            "apiIntegration": "API Integration",
+            "authenticationAuthorization": "Authentication & Authorization",
+            "secureCoding": "Secure Coding",
+            "apiSecurity": "API Security",
+            "inputValidation": "Input Validation",
+            "csrfProtection": "CSRF Protection",
+            "preparedStatements": "Prepared Statements",
+            "rateLimiting": "Rate Limiting",
+            "webhookVerification": "Webhook Signature Verification",
+            "idempotency": "Idempotency",
+            "cicd": "CI/CD",
+            "automatedTesting": "Automated Testing",
+            "debugging": "Debugging",
+            "browserDevTools": "Browser DevTools",
+            "mobileDevelopment": "Mobile Development",
+            "systemDesign": "System Design"
           }
         }
       },

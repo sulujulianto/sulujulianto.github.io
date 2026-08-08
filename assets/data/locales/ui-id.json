@@ -43,7 +43,7 @@
       },
       "skills": {
         "heading": "Keahlian Teknis",
-        "introduction": "Daftar teknologi, bahasa pemrograman, dan alat (tools) yang saya gunakan untuk membangun berbagai solusi perangkat lunak yang fungsional dan skalabel.",
+        "introduction": "Teknologi dan praktik rekayasa yang saya gunakan untuk membangun perangkat lunak yang fungsional, aman, dan dapat dikembangkan.",
         "groups": {
           "frontEnd": {
             "heading": "Front-End",
@@ -213,6 +213,45 @@
                 "imageAlt": "Network Protocols"
               }
             }
+          }
+        },
+        "accordion": {
+          "groups": {
+            "frontEnd": "Frontend Engineering",
+            "backEnd": "Backend & API Engineering",
+            "dataCloud": "Data & Cloud",
+            "devSecOpsEngineering": "DevSecOps & Engineering",
+            "systemsNetworking": "Systems & Networking",
+            "mobileCurrentDevelopment": "Mobile & Current Development"
+          },
+          "controls": {
+            "expand": "Buka kategori",
+            "collapse": "Tutup kategori",
+            "unavailable": "Keahlian belum dapat ditampilkan."
+          },
+          "statuses": {
+            "activeDevelopment": "Pengembangan aktif",
+            "planned": "Direncanakan"
+          },
+          "items": {
+            "responsiveWebDesign": "Desain Web Responsif",
+            "restApi": "REST API",
+            "apiIntegration": "Integrasi API",
+            "authenticationAuthorization": "Autentikasi & Otorisasi",
+            "secureCoding": "Secure Coding",
+            "apiSecurity": "Keamanan API",
+            "inputValidation": "Validasi Input",
+            "csrfProtection": "Perlindungan CSRF",
+            "preparedStatements": "Prepared Statements",
+            "rateLimiting": "Rate Limiting",
+            "webhookVerification": "Verifikasi Signature Webhook",
+            "idempotency": "Idempotensi",
+            "cicd": "CI/CD",
+            "automatedTesting": "Pengujian Otomatis",
+            "debugging": "Debugging",
+            "browserDevTools": "Browser DevTools",
+            "mobileDevelopment": "Pengembangan Mobile",
+            "systemDesign": "System Design"
           }
         }
       },
