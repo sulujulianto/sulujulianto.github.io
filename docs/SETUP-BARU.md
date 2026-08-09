@@ -1,140 +1,126 @@
-# Menjalankan Portfolio dan Blog di Komputer Baru
+# Menyiapkan Portfolio di Komputer Baru
 
-Panduan ini menjelaskan setup dari nol untuk **portfolio (root)** dan **blog (Astro/Fuwari)**.
+Panduan ini menyiapkan portfolio root dan blog Fuwari dari awal.
 
-## 1) Prasyarat
-- Git
-- Node.js LTS (disarankan Node 20 atau 22)
-- npm
+## 1. Prasyarat
+
+Gunakan:
+
+- Git;
+- Node.js 20 LTS;
+- npm yang disertakan bersama Node.js;
+- Corepack untuk pnpm blog.
 
 Cek versi:
+
 ```bash
-node -v
-npm -v
+git --version
+node --version
+npm --version
 ```
 
-## 2) Clone repo
+## 2. Clone repository
+
 ```bash
 git clone https://github.com/sulujulianto/sulujulianto.github.io.git
 cd sulujulianto.github.io
 ```
 
-## 3) Setup Portfolio (root)
-### Install dependency
+Pastikan branch dan status benar:
+
 ```bash
-npm install
+git status --short --branch
+git log -1 --oneline
 ```
 
-### Preview portfolio secara lokal
+## 3. Pasang dependency portfolio
+
 ```bash
-npx serve .
+npm ci
 ```
-Atau:
+
+`npm ci` membaca `package-lock.json` dan memasang versi yang sama dengan CI.
+
+## 4. Verifikasi portfolio
+
+```bash
+npm run verify
+```
+
+Hasil yang benar:
+
+- build Tailwind selesai;
+- audit selesai dengan 0 failure;
+- seluruh tes lulus;
+- hanya tiga warning gambar proyek yang sudah dikenal yang boleh muncul.
+
+## 5. Jalankan portfolio lokal
+
 ```bash
 python3 -m http.server 8080
 ```
-Buka URL yang muncul di terminal.
 
-### Editing CSS (Tailwind)
-- Saat editing:
-```bash
-npm run tailwind:watch
-```
-- Sebelum commit:
-```bash
-npm run tailwind:build
-```
-Output: `assets/css/output.css`
+Buka <http://localhost:8080/>. Hentikan server dengan `Ctrl+C`.
 
-### Build TypeScript (portfolio)
-```bash
-npm run ts:build
-```
-Output: `assets/js/dist/`
+Jangan membuka `index.html` melalui `file://`, karena browser dapat memblokir pengambilan data JSON.
 
-### Yang wajib di-commit setelah perubahan portfolio
-- `assets/css/output.css`
-- `assets/js/dist/*`
-- File HTML/JSON yang kamu edit
+## 6. Siapkan pnpm untuk blog
 
-Catatan: jika hanya mengubah HTML biasa (tanpa Tailwind/TypeScript), biasanya tidak perlu menjalankan `tailwind:build` dan `ts:build`.
+Repository blog dikunci pada pnpm 9.14.4.
 
-## 4) Setup Blog (Astro/Fuwari)
-### Install pnpm
-**Opsi A (rekomendasi, Corepack):**
 ```bash
 corepack enable
-corepack prepare pnpm@latest --activate
-```
-Jika permission error:
-```bash
-sudo corepack enable
+corepack prepare pnpm@9.14.4 --activate
 ```
 
-**Opsi B (alternatif, global):**
-```bash
-sudo npm i -g pnpm
-```
+Pasang dependency blog:
 
-### Install dependency blog
 ```bash
 cd blog-fuwari
-pnpm install
+pnpm install --frozen-lockfile
 cd ..
 ```
 
-### Jalankan blog (live reload)
-```bash
-npm run blog:dev
-```
-Buka URL dev server yang muncul di terminal (contoh: `http://localhost:4321/blog/`).
+Jalankan pemeriksaan:
 
-### Build blog ke `/blog`
-```bash
-npm run blog:build
-```
-Build ini **otomatis membersihkan** folder `/blog` agar tidak ada halaman lama yang tersisa.
-
-### Yang wajib di-commit setelah perubahan blog
-- Semua perubahan di `/blog-fuwari` (source).
-- Hasil build di `/blog` (output statis untuk GitHub Pages).
-
-### Cek kesehatan blog (doctor)
 ```bash
 npm run blog:doctor
 ```
 
-### Preview hasil `/blog` secara lokal
-Opsi A (serve output langsung):
+## 7. Menjalankan blog
+
+Mode pengembangan:
+
 ```bash
-npx serve blog
+npm run blog:dev
 ```
-Buka URL yang muncul di terminal (biasanya tanpa `/blog/`).
 
-Opsi B (jalankan server dari root repo):
+Build final ke folder `blog/`:
+
 ```bash
-python3 -m http.server 8080
+npm run blog:build
 ```
-Buka `http://localhost:8080/blog/`.
 
-Catatan: jika server dijalankan dari dalam folder `blog/`, maka aksesnya `http://localhost:PORT/` (tanpa `/blog/`).
+Folder `blog-fuwari/` adalah source. Folder `blog/` adalah hasil build dan tidak boleh diedit manual.
 
-## 5) Publish ke GitHub
+## 8. Sebelum mulai mengubah repository
+
+Buat branch baru:
+
 ```bash
-git status
-git add -A
-git commit -m "Update portfolio/blog"
-git push
+git switch main
+git pull --ff-only origin main
+git switch -c nama-branch-baru
 ```
-Catatan: jika kamu menjalankan `npm run blog:build`, perubahan output di `/blog` memang harus ikut di-commit.
 
-## Checklist sebelum push
-- [ ] `npm run tailwind:build` jika ada perubahan CSS/kelas Tailwind.
-- [ ] `npm run ts:build` jika ada perubahan TypeScript.
-- [ ] `npm run blog:build` jika ada perubahan blog.
-- [ ] Pastikan `/blog` sudah terupdate dan tidak ada error build.
-- [ ] `git status` bersih sebelum push.
+Lanjutkan dengan [ALUR-PENGEMBANGAN.md](ALUR-PENGEMBANGAN.md) atau pilih pekerjaan dari [README dokumentasi](README.md).
 
-## Catatan penting
-- Jangan edit `/blog` manual, karena itu output build.
-- Semua perubahan blog harus dilakukan di `/blog-fuwari`.
+## File hasil build yang harus ikut di-commit
+
+| Perubahan source | Hasil build |
+| --- | --- |
+| CSS atau class Tailwind | `assets/css/output.css` |
+| TypeScript portfolio | `assets/js/dist/*.js` |
+| Source blog | isi folder `blog/` |
+
+JSON dan HTML tidak memiliki hasil build sendiri, tetapi seluruh perubahan tetap harus melewati `npm run verify`.

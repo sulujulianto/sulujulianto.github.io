@@ -165,6 +165,8 @@ test('cards navigate to real slug URLs and modal code is fully removed', () => {
     assert.equal(existsSync(new URL('assets/css/modal.css', rootUrl)), false);
     assert.doesNotMatch(read('index.html'), /modal\.css/);
     assert.doesNotMatch(read('projects.html'), /modal\.css/);
+    assert.doesNotMatch(read('certificates.html'), /modal\.css/);
+    assert.equal(existsSync(new URL('dashboard.html', rootUrl)), false);
 });
 
 test('detail renderer supports article blocks and hides absent Live Demo links', () => {

@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "audit:portfolio": "node scripts/audit-portfolio-data.mjs",
+    "audit:baseline:update": "node scripts/audit-portfolio-data.mjs --update-baseline",
     "test:language": "npm run ts:build && node --test tests/language-resolver.test.mjs",
     "test:ui-locale": "node --test tests/ui-locale-id.test.mjs tests/ui-locale-contract.test.mjs tests/unified-pages.test.mjs",
     "test:history": "node --test tests/history-data.test.mjs",

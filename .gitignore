@@ -1,7 +1,7 @@
 # Dependency folders
 /node_modules
- /blog-fuwari/node_modules/
- /blog-fuwari/.astro/
+/blog-fuwari/node_modules/
+/blog-fuwari/.astro/
 /.pnp
 .pnp.js
 
