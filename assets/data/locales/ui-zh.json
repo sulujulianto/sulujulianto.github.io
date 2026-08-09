@@ -342,6 +342,18 @@
       },
       "introduction": "支撑我技术能力的专业资质、培训及行业认证的完整记录。"
     },
+    "projectDetail": {
+      "documentTitle": "项目详情 — Sulu Edward Julianto",
+      "description": "Sulu Edward Julianto 的项目案例。",
+      "breadcrumb": "项目",
+      "technologyHeading": "使用技术",
+      "github": "打开 GitHub",
+      "liveDemo": "查看在线演示",
+      "backToProjects": "返回全部项目",
+      "loading": "正在加载项目案例...",
+      "error": "无法加载项目案例。",
+      "unavailable": "项目内容暂不可用。"
+    },
     "notFound": {
       "documentTitle": "页面未找到 — Sulu Edward Julianto",
       "description": "未找到您要访问的页面。",

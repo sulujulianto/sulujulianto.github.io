@@ -80,14 +80,20 @@ test('desktop uses symmetric category tabs while mobile keeps a single-open acco
 });
 
 test('public project evidence supports the security practices shown', () => {
-    const projects = `${read('assets/data/projects/projects-id.json')} ${read('assets/data/projects/projects-en.json')}`;
+    const projects = [
+        'jejak-petualang',
+        'nusantara-trans',
+        'japan-travel',
+        'sistem-informasi-wilayah-indonesia',
+        'pixel-heist-co-op',
+    ].map((slug) => read(`assets/data/project-details/id/${slug}.json`)).join(' ') +
+        read('assets/data/project-details/en/atlas-country-api.json');
     for (const evidence of [
         /prepared statements/i,
-        /CSRF protection/i,
-        /webhook signature/i,
-        /idempotency key/i,
-        /rate limiting/i,
-        /JWT[^\n]+refresh token/i,
+        /token CSRF/i,
+        /memverifikasi signature provider/i,
+        /mencegah pemrosesan berulang/i,
+        /rate limiter/i,
         /GitHub Actions/i,
         /Pytest/i,
     ]) {

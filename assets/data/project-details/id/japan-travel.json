@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "slug": "japan-travel",
+  "contentLanguage": "id",
+  "title": "Japan Travel",
+  "summary": "Proyek Laravel 12 berorientasi produksi yang memadukan penemuan destinasi Jepang, ulasan terverifikasi, toko suvenir, dan fondasi integrasi pembayaran.",
+  "category": "fullstack-web",
+  "hero": {
+    "src": "/assets/img/projects/id/japanese-travel.webp",
+    "alt": "Tampilan utama aplikasi Japan Travel",
+    "caption": "Japan Travel menghubungkan konten destinasi dengan pengalaman belanja suvenir dalam antarmuka dwibahasa."
+  },
+  "techStack": ["PHP 8.3", "Laravel 12", "Blade", "Tailwind CSS", "Alpine.js", "MySQL", "Midtrans", "PayPal", "Chart.js", "Docker", "GitHub Actions"],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Japan Travel adalah proyek portfolio Laravel 12 yang saya kembangkan untuk mendekati pola kerja aplikasi nyata: ruang lingkupnya jelas, alur pengguna dan admin dipisahkan, integrasi eksternal dibungkus dalam layanan, serta keterbatasan deployment didokumentasikan secara terbuka."
+    },
+    {
+      "type": "callout",
+      "title": "Batas produk yang penting",
+      "text": "Aplikasi ini tidak menjual tiket atau memproses pemesanan perjalanan. Konten destinasi berfungsi untuk eksplorasi dan pertanyaan perjalanan melalui WhatsApp, sedangkan checkout serta pembayaran hanya berlaku untuk produk suvenir."
+    },
+    { "type": "heading", "level": 2, "text": "Satu platform, dua pengalaman utama" },
+    {
+      "type": "paragraph",
+      "text": "Bagian destinasi menyediakan katalog dwibahasa Indonesia–Inggris, halaman detail, penilaian, dan ulasan pengguna terverifikasi. Bagian toko menyediakan katalog suvenir, keranjang, checkout, retry pembayaran, serta riwayat pesanan. Seluruh tampilan mendukung mode terang, mode gelap, dan ukuran layar mobile."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/japan-travel/homepage.webp",
+      "alt": "Homepage Japan Travel",
+      "caption": "Homepage mempertemukan eksplorasi destinasi dengan jalur menuju toko suvenir."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/japan-travel/destinations.webp",
+      "alt": "Katalog destinasi Japan Travel",
+      "caption": "Katalog destinasi menyajikan konten perjalanan yang dapat dibaca dalam dua bahasa."
+    },
+    { "type": "heading", "level": 2, "text": "Arsitektur transaksi dan integrasi pembayaran" },
+    {
+      "type": "paragraph",
+      "text": "Midtrans dan PayPal diletakkan di balik antarmuka layanan pembayaran bersama. Saat checkout, aplikasi mengunci stok, menyimpan snapshot produk pada item pesanan, dan mengompensasi stok bila pembuatan transaksi gateway gagal. Handler webhook memverifikasi signature provider dan mencatat identitas event unik untuk mencegah pemrosesan berulang."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/japan-travel/checkout.webp",
+      "alt": "Checkout sandbox Japan Travel",
+      "caption": "Checkout memperlihatkan struktur integrasi pembayaran dalam lingkungan pengujian."
+    },
+    { "type": "heading", "level": 2, "text": "Admin, media, dan pengalaman operasional" },
+    {
+      "type": "paragraph",
+      "text": "Admin memiliki sesi dan guard terpisah untuk mengelola destinasi, suvenir, persediaan, pesanan, dan metrik dashboard. Proses unggah media membatasi ukuran serta dimensi gambar, mengonversinya ke WebP, dan membatasi penghapusan pada direktori unggahan yang diizinkan."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/japan-travel/admin-dashboard.webp",
+      "alt": "Dashboard admin Japan Travel",
+      "caption": "Dashboard menyatukan metrik pendapatan, pesanan, persediaan, dan konten."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/japan-travel/dark-mode.webp",
+      "alt": "Japan Travel dalam mode gelap",
+      "caption": "Mode gelap dan tata letak responsif menjadi bagian dari cakupan antarmuka."
+    },
+    { "type": "heading", "level": 2, "text": "Kualitas dan bukti pengujian" },
+    {
+      "type": "list",
+      "items": [
+        "Baseline repositori mendokumentasikan 129 pengujian dan 509 assertion.",
+        "GitHub Actions menjalankan instalasi dependensi, build aset, pemeriksaan format, analisis statis, pengujian, dan audit dependensi.",
+        "Skenario pengujian mencakup autentikasi, locale, katalog, keranjang, checkout, webhook pembayaran, admin, media, dan transisi status pesanan.",
+        "Repositori tidak mengklaim persentase coverage karena driver coverage tidak menjadi bagian dari setup ringan bawaan."
+      ]
+    },
+    {
+      "type": "callout",
+      "title": "Status publik",
+      "text": "Struktur deployment, Docker, dan checklist staging tersedia, tetapi demo publik serta validasi sandbox menggunakan akun provider masih dinyatakan belum selesai. Karena itu tombol Live Demo tidak ditampilkan."
+    }
+  ],
+  "links": {
+    "github": "https://github.com/sulujulianto/japanesetravel",
+    "liveDemo": null
+  }
+}

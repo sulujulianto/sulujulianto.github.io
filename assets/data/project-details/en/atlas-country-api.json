@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "slug": "atlas-country-api",
+  "contentLanguage": "en",
+  "title": "Atlas Country API",
+  "summary": "A production-oriented FastAPI backend for querying country and capital data through validated, layered, and testable application boundaries.",
+  "category": "backend-api",
+  "hero": {
+    "src": "/assets/img/projects/en/atlas-country-api.webp",
+    "alt": "Atlas Country API project cover",
+    "caption": "Atlas exposes country, capital, and aggregate statistics through a consistent REST API."
+  },
+  "techStack": ["Python 3.12", "FastAPI", "Pydantic", "Docker", "GitHub Actions", "Pytest", "Ruff", "Mypy", "Bandit"],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Atlas Country API is a FastAPI backend built to turn static country and capital datasets into a predictable service. Instead of placing data access, filtering, and HTTP responses in one module, the project separates those responsibilities so each layer can be reviewed and tested independently."
+    },
+    { "type": "heading", "level": 2, "text": "The problem it addresses" },
+    {
+      "type": "paragraph",
+      "text": "Country data looks simple until a client needs partial search, regional filters, language and currency queries, sorting, pagination, statistics, and consistent errors. Atlas centralizes those concerns behind documented endpoints and strict data models."
+    },
+    { "type": "heading", "level": 2, "text": "Layered request flow" },
+    {
+      "type": "list",
+      "items": [
+        "Routes parse HTTP input and keep controller logic thin.",
+        "Services coordinate search, filtering, sorting, pagination, and statistics.",
+        "Repositories load and validate JSON-backed country and capital records.",
+        "Pydantic models and schemas define strict domain and response boundaries.",
+        "Global handlers convert domain failures into a consistent error envelope."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "code": "{\n  \"name\": \"Indonesia\",\n  \"country_code\": \"ID\",\n  \"capital\": \"Jakarta\",\n  \"region\": \"Asia\",\n  \"languages\": [\"Indonesian\"],\n  \"currencies\": [\"IDR\"]\n}"
+    },
+    { "type": "heading", "level": 2, "text": "Capabilities for API consumers" },
+    {
+      "type": "paragraph",
+      "text": "Consumers can browse or search countries and capitals, filter countries by region, subregion, language, or currency, and request population or distribution statistics. Pagination metadata and unified response structures keep client integration consistent across endpoints."
+    },
+    { "type": "heading", "level": 2, "text": "Operational safeguards" },
+    {
+      "type": "paragraph",
+      "text": "The application includes configurable CORS, security headers, a basic in-memory rate limiter, request IDs, and request-duration logging. These are useful backend safeguards, but they are not presented as a substitute for distributed rate limiting, monitoring, or an external security assessment."
+    },
+    { "type": "heading", "level": 2, "text": "Automated quality gates" },
+    {
+      "type": "list",
+      "items": [
+        "Ruff checks Python lint rules.",
+        "Mypy checks application and schema types.",
+        "Bandit scans the application code for common Python security issues.",
+        "Pytest exercises routes, services, repositories, statistics, and error behavior.",
+        "GitHub Actions fails the coverage step below an 85% threshold and publishes test and coverage artifacts."
+      ]
+    },
+    {
+      "type": "callout",
+      "title": "Current delivery status",
+      "text": "Docker and CI assets are available, while the documented demo endpoints are local. No verified public deployment URL is currently provided, so the Live Demo action remains hidden."
+    }
+  ],
+  "links": {
+    "github": "https://github.com/sulujulianto/atlas-country-api",
+    "liveDemo": null
+  }
+}

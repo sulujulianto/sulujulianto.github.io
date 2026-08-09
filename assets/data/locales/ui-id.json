@@ -342,6 +342,18 @@
       },
       "introduction": "Catatan komprehensif mengenai kualifikasi, pelatihan, dan sertifikasi industri yang mendukung kompetensi teknis saya."
     },
+    "projectDetail": {
+      "documentTitle": "Detail Proyek — Sulu Edward Julianto",
+      "description": "Studi kasus proyek Sulu Edward Julianto.",
+      "breadcrumb": "Proyek",
+      "technologyHeading": "Teknologi yang Digunakan",
+      "github": "Buka GitHub",
+      "liveDemo": "Lihat Live Demo",
+      "backToProjects": "Kembali ke Semua Proyek",
+      "loading": "Memuat studi kasus...",
+      "error": "Studi kasus tidak dapat dimuat.",
+      "unavailable": "Konten proyek belum tersedia."
+    },
     "notFound": {
       "documentTitle": "Halaman Tidak Ditemukan — Sulu Edward Julianto",
       "description": "Halaman yang Anda cari tidak ditemukan.",

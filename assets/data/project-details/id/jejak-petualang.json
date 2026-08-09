@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "slug": "jejak-petualang",
+  "contentLanguage": "id",
+  "title": "Jejak Petualang",
+  "summary": "Membangun alur e-commerce end-to-end dengan PHP Native dan MySQL sebagai proyek akhir sertifikasi kompetensi BNSP Junior Web Developer.",
+  "category": "fullstack-web",
+  "hero": {
+    "src": "/assets/img/projects/id/jejakpetualang.webp",
+    "alt": "Tampilan utama aplikasi Jejak Petualang",
+    "caption": "Jejak Petualang menggabungkan katalog, transaksi pelanggan, dan pengelolaan toko dalam satu aplikasi web."
+  },
+  "techStack": ["PHP Native", "MySQL", "JavaScript", "HTML5", "CSS3"],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Jejak Petualang dikembangkan sebagai proyek akhir sertifikasi kompetensi nasional BNSP Junior Web Developer di PPKPI Jakarta pada Agustus 2025. Saya sengaja membangunnya tanpa framework agar setiap bagian penting—mulai dari alur permintaan, sesi pengguna, pengolahan formulir, sampai interaksi database—dikerjakan dari fondasi yang dapat saya jelaskan sendiri."
+    },
+    { "type": "heading", "level": 2, "text": "Latar belakang dan tujuan" },
+    {
+      "type": "paragraph",
+      "text": "Tujuan proyek ini bukan sekadar membuat etalase produk. Saya ingin menyusun alur belanja yang utuh untuk pelanggan sekaligus menyediakan ruang kerja bagi admin. Karena itu, kebutuhan aplikasi saya pecah menjadi dua pengalaman yang saling terhubung: pelanggan dapat menemukan dan membeli produk, sedangkan admin dapat menjaga data serta memproses pesanan dari panel terpisah."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/jejak-petualang/homepage.webp",
+      "alt": "Halaman beranda Jejak Petualang",
+      "caption": "Beranda menjadi titik masuk menuju produk unggulan, kategori, dan katalog."
+    },
+    { "type": "heading", "level": 2, "text": "Alur pelanggan dari katalog hingga pesanan" },
+    {
+      "type": "list",
+      "items": [
+        "Registrasi, login, logout, dan alur reset kata sandi.",
+        "Katalog dengan pencarian serta halaman detail produk yang menampilkan harga dan stok.",
+        "Keranjang belanja untuk menambah, mengubah jumlah, atau menghapus produk.",
+        "Checkout dengan informasi pengiriman, ringkasan belanja, dan dukungan kode promo.",
+        "Halaman akun yang memuat profil, riwayat pesanan, serta ulasan untuk produk yang telah dibeli."
+      ]
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/jejak-petualang/cart.webp",
+      "alt": "Keranjang belanja Jejak Petualang",
+      "caption": "Keranjang mempertahankan konteks produk sebelum pelanggan melanjutkan ke checkout."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/jejak-petualang/checkout.webp",
+      "alt": "Halaman checkout Jejak Petualang",
+      "caption": "Checkout merangkum data penerima, alamat pengiriman, dan rincian transaksi."
+    },
+    { "type": "heading", "level": 2, "text": "Panel admin dan pengelolaan operasional" },
+    {
+      "type": "paragraph",
+      "text": "Panel admin melengkapi sisi pelanggan dengan fitur pengelolaan produk, kategori, pesanan, pengguna, serta voucher. Pemisahan ini membantu saya memahami bahwa aplikasi e-commerce tidak berhenti pada tampilan katalog; perubahan stok, status pesanan, dan data promosi juga membutuhkan alur pengelolaan yang jelas."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/jejak-petualang/admin-dashboard.webp",
+      "alt": "Dashboard admin Jejak Petualang",
+      "caption": "Dashboard admin merangkum data penting sebelum pengelola masuk ke modul operasional."
+    },
+    { "type": "heading", "level": 2, "text": "Keputusan teknis dan pembelajaran" },
+    {
+      "type": "paragraph",
+      "text": "Kode proyek menggunakan hashing dan verifikasi kata sandi bawaan PHP serta escaping keluaran pada banyak tampilan. Karena proyek ini dibangun sebagai latihan fundamental, saya memosisikannya sebagai bukti kemampuan menyusun aplikasi CRUD dan transaksi secara end-to-end—bukan sebagai klaim bahwa sistem telah melalui audit keamanan atau siap menangani toko produksi."
+    },
+    {
+      "type": "callout",
+      "title": "Hasil utama",
+      "text": "Proyek ini menyatukan antarmuka, logika bisnis, database, autentikasi, dan administrasi ke dalam satu aplikasi yang dapat saya demonstrasikan dan pertanggungjawabkan pada asesmen BNSP."
+    }
+  ],
+  "links": {
+    "github": "https://github.com/sulujulianto/jejakpetualang",
+    "liveDemo": null
+  }
+}

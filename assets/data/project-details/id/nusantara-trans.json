@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "slug": "nusantara-trans",
+  "contentLanguage": "id",
+  "title": "Nusantara Trans",
+  "summary": "Platform pemesanan tiket bus yang menyatukan pencarian rute, pemilihan kursi, keranjang, checkout, tiket, dan operasional admin.",
+  "category": "fullstack-web",
+  "hero": {
+    "src": "/assets/img/projects/id/nusantaratrans.webp",
+    "alt": "Tampilan utama platform Nusantara Trans",
+    "caption": "Nusantara Trans dirancang untuk membawa pengguna dari pencarian rute hingga pengelolaan tiket dalam satu alur."
+  },
+  "techStack": ["PHP 8", "PDO", "MySQL", "Bootstrap 5", "JavaScript", "CSS3"],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Nusantara Trans berangkat dari kebutuhan yang mudah dipahami tetapi memiliki banyak keadaan di balik layar: satu kursi tidak boleh dipesan oleh dua orang, harga perlu tetap konsisten selama checkout, promo harus divalidasi, dan admin membutuhkan gambaran operasional yang berbeda dari pengguna. Saya membangun proyek ini untuk menerjemahkan rangkaian kebutuhan tersebut menjadi alur reservasi yang utuh."
+    },
+    { "type": "heading", "level": 2, "text": "Pengalaman pemesanan yang berurutan" },
+    {
+      "type": "paragraph",
+      "text": "Pengunjung dapat menelusuri rute aktif berdasarkan kota dan tanggal sebelum masuk ke halaman detail perjalanan. Setelah login, pengguna memilih satu atau beberapa kursi pada denah visual, memeriksa keranjang, menerapkan promo, menyelesaikan checkout, lalu mengakses tiket dan riwayat pemesanan dari dashboard."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/nusantara-trans/homepage.webp",
+      "alt": "Landing page Nusantara Trans",
+      "caption": "Landing page mengarahkan pengguna menuju pencarian rute dan informasi layanan."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/nusantara-trans/seat-selection.webp",
+      "alt": "Denah pemilihan kursi Nusantara Trans",
+      "caption": "Status kursi divisualisasikan agar pengguna dapat memahami ketersediaan sebelum memesan."
+    },
+    { "type": "heading", "level": 2, "text": "Menangani status kursi dan keamanan formulir" },
+    {
+      "type": "paragraph",
+      "text": "Pilihan kursi disimpan sementara melalui data cart_items dengan waktu kedaluwarsa. Pendekatan ini memberi batas waktu pada reservasi yang belum selesai sehingga kursi dapat tersedia kembali. Akses database menggunakan PDO dan prepared statements, formulir penting memakai token CSRF, dan sesi pengguna dipisahkan dari sesi admin."
+    },
+    {
+      "type": "callout",
+      "title": "Batas implementasi",
+      "text": "Repositori menyediakan simulasi pembayaran dan alur lokal. Saya tidak menyebutnya sebagai sistem tiket produksi karena belum ada integrasi pembayaran nyata, pengujian beban, maupun deployment publik yang dapat diverifikasi."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/nusantara-trans/checkout.webp",
+      "alt": "Checkout Nusantara Trans",
+      "caption": "Checkout menyatukan data perjalanan, kursi, penumpang, harga, dan promo sebelum booking dibuat."
+    },
+    { "type": "heading", "level": 2, "text": "Dashboard operasional" },
+    {
+      "type": "list",
+      "items": [
+        "Pengelolaan bus dan rute dengan validasi aturan bisnis.",
+        "Pemantauan booking beserta penumpang, kursi, dan promo yang digunakan.",
+        "Manajemen kode promosi dan proses persetujuan refund.",
+        "Ringkasan pendapatan, pengguna, booking harian, dan refund tertunda."
+      ]
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/nusantara-trans/admin-dashboard.webp",
+      "alt": "Dashboard admin Nusantara Trans",
+      "caption": "Dashboard admin memberi titik awal untuk memantau aktivitas reservasi."
+    },
+    { "type": "heading", "level": 2, "text": "Apa yang saya pelajari" },
+    {
+      "type": "paragraph",
+      "text": "Proyek ini memperkuat pemahaman saya tentang state yang saling bergantung. Ketersediaan kursi, isi keranjang, promo, booking, pembayaran, dan refund tidak dapat diperlakukan sebagai halaman terpisah; semuanya perlu menjaga konsistensi data ketika pengguna berpindah dari satu langkah ke langkah berikutnya."
+    }
+  ],
+  "links": {
+    "github": "https://github.com/sulujulianto/nusantaratrans",
+    "liveDemo": null
+  }
+}

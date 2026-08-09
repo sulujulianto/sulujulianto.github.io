@@ -1,6 +1,56 @@
 "use strict";
 /// <reference types="react" />
 /// <reference types="react-dom" />
+const projectCategoryApi = (() => {
+    const buildCategoryList = (list, fallbackLabel) => {
+        const fallback = { id: '*', label: fallbackLabel };
+        const seen = new Set();
+        const cleaned = [];
+        if (Array.isArray(list)) {
+            list.forEach((item) => {
+                if (!item || typeof item.id !== 'string' || typeof item.label !== 'string')
+                    return;
+                const id = item.id.trim();
+                const label = item.label.trim();
+                if (!id || !label || seen.has(id))
+                    return;
+                cleaned.push({ id, label });
+                seen.add(id);
+            });
+        }
+        return [fallback, ...cleaned.filter((category) => category.id !== fallback.id)];
+    };
+    const selectAvailableCategories = (definitions, usedCategoryIds, fallbackLabel) => {
+        const used = new Set(usedCategoryIds
+            .filter((id) => typeof id === 'string')
+            .map((id) => id.trim())
+            .filter(Boolean));
+        const result = [];
+        const seen = new Set();
+        definitions.forEach((category) => {
+            if (category.id === '*' || used.has(category.id)) {
+                result.push(category);
+                seen.add(category.id);
+            }
+        });
+        used.forEach((id) => {
+            if (seen.has(id))
+                return;
+            result.push({ id, label: id });
+            seen.add(id);
+        });
+        if (!seen.has('*'))
+            result.unshift({ id: '*', label: fallbackLabel });
+        return result;
+    };
+    return Object.freeze({ buildCategoryList, selectAvailableCategories });
+})();
+if (typeof globalThis !== 'undefined') {
+    Object.defineProperty(globalThis, 'PortfolioProjectCategories', {
+        value: projectCategoryApi,
+        configurable: true,
+    });
+}
 (function () {
     'use strict';
     if (typeof React === 'undefined' || typeof ReactDOM === 'undefined') {
@@ -14,24 +64,7 @@
         ja: 'すべて',
         zh: '全部',
     };
-    const buildCategoryList = (list, fallbackLabel) => {
-        const fallback = { id: '*', label: fallbackLabel };
-        const seen = new Set();
-        const cleaned = [];
-        if (Array.isArray(list)) {
-            list.forEach((item) => {
-                if (!item || typeof item.id !== 'string' || typeof item.label !== 'string')
-                    return;
-                const id = item.id.trim();
-                if (!id || seen.has(id))
-                    return;
-                cleaned.push({ id, label: item.label });
-                seen.add(id);
-            });
-        }
-        const withoutFallback = cleaned.filter((cat) => cat.id !== fallback.id);
-        return [fallback, ...withoutFallback];
-    };
+    const buildCategoryList = projectCategoryApi.buildCategoryList;
     const normalizeLocale = (value) => {
         const locale = (value || 'id').toLowerCase();
         if (locale === 'ja' || locale === 'jp')
@@ -84,9 +117,8 @@
             error: 'Terjadi kesalahan:',
             empty: 'Belum ada item yang dapat ditampilkan.',
             viewAll: 'Lihat Semua',
-            modalClose: 'Tutup',
-            modalGithub: 'Buka GitHub',
-            modalPreview: 'Lihat Langsung',
+            readProject: 'Baca Studi Kasus',
+            inDevelopment: 'Dalam pengembangan',
         },
         en: {
             issued: 'Issued on:',
@@ -96,9 +128,8 @@
             error: 'Something went wrong:',
             empty: 'Nothing to display yet.',
             viewAll: 'View All',
-            modalClose: 'Close',
-            modalGithub: 'Open GitHub',
-            modalPreview: 'View Live',
+            readProject: 'Read Case Study',
+            inDevelopment: 'In development',
         },
         ja: {
             issued: '発行日:',
@@ -108,9 +139,8 @@
             error: 'エラーが発生しました:',
             empty: '表示できる項目はまだありません。',
             viewAll: 'すべて表示',
-            modalClose: '閉じる',
-            modalGithub: 'GitHub を開く',
-            modalPreview: 'ライブを見る',
+            readProject: '事例を読む',
+            inDevelopment: '開発中',
         },
         zh: {
             issued: '颁发于:',
@@ -120,9 +150,8 @@
             error: '发生错误:',
             empty: '暂无可展示的内容。',
             viewAll: '查看全部',
-            modalClose: '关闭',
-            modalGithub: '打开 GitHub',
-            modalPreview: '访问网站',
+            readProject: '阅读项目案例',
+            inDevelopment: '开发中',
         },
     };
     const HISTORY_LABELS = {
@@ -259,68 +288,28 @@
         }
         return React.createElement(React.Fragment, null, data.map((item, index) => renderCard(item, index)));
     };
-    const ProjectCard = ({ item, labels, categoryLabels, onAction, animationIndex, asLink = null }) => {
-        const className = 'card h-full flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
-        const imageBlock = (React.createElement("div", { className: "w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center", style: { aspectRatio: '16 / 9', maxHeight: '210px' } },
-            React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-contain" })));
+    const ProjectCard = ({ item, labels, categoryLabels, href, animationIndex }) => {
+        const [imageFailed, setImageFailed] = React.useState(false);
+        const className = 'card project-card h-full flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
+        const imageBlock = (React.createElement("div", { className: "w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center", style: { aspectRatio: '16 / 9', maxHeight: '210px' } }, !imageFailed && item.imageUrl ? (React.createElement("img", { src: item.imageUrl, alt: item.title, loading: "lazy", className: "w-full h-full object-contain", onError: () => setImageFailed(true) })) : (React.createElement("div", { className: "project-card__image-placeholder", role: "img", "aria-label": item.title },
+            React.createElement("i", { className: "fas fa-code", "aria-hidden": "true" }),
+            React.createElement("span", null, item.title)))));
         const body = (React.createElement("div", { className: "p-5 flex flex-col flex-grow gap-2" },
             React.createElement("div", { className: "flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2" }, item.category && (categoryLabels[item.category] || item.category)),
+            item.status === 'in-development' && (React.createElement("span", { className: "project-card__status" },
+                React.createElement("i", { className: "fas fa-hammer", "aria-hidden": "true" }),
+                labels.inDevelopment)),
             React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white" }, item.title),
             React.createElement("p", { className: "text-sm text-gray-700 dark:text-gray-300 flex-grow" }, item.description),
             item.techStack && item.techStack.length > 0 && (React.createElement("div", { className: "mt-2" },
                 React.createElement("p", { className: "text-sm font-bold uppercase tracking-wide text-gray-900 dark:text-white mb-1" }, labels.techStack),
-                React.createElement("p", { className: "text-sm font-normal text-gray-700 dark:text-gray-300" }, item.techStack.join(', '))))));
-        if (asLink) {
-            return (React.createElement("a", { href: asLink, className: className, style: { '--card-index': animationIndex }, onClick: onAction },
-                imageBlock,
-                body));
-        }
-        return (React.createElement("button", { type: "button", onClick: onAction, className: className, style: { '--card-index': animationIndex } },
+                React.createElement("p", { className: "text-sm font-normal text-gray-700 dark:text-gray-300" }, item.techStack.join(', ')))),
+            React.createElement("span", { className: "project-card__link" },
+                labels.readProject,
+                React.createElement("i", { className: "fas fa-arrow-right", "aria-hidden": "true" }))));
+        return (React.createElement("a", { href: href, className: className, style: { '--card-index': animationIndex } },
             imageBlock,
             body));
-    };
-    const ProjectModal = ({ project, labels, categoryLabels, onClose }) => {
-        React.useEffect(() => {
-            const handleEsc = (event) => {
-                if (event.key === 'Escape') {
-                    onClose();
-                }
-            };
-            document.addEventListener('keydown', handleEsc);
-            return () => document.removeEventListener('keydown', handleEsc);
-        }, [onClose]);
-        const handleBackdrop = (event) => {
-            if (event.target === event.currentTarget) {
-                onClose();
-            }
-        };
-        const detailedDescription = project.modalDescription || project.description;
-        return (React.createElement("div", { className: "fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center px-4", onClick: handleBackdrop },
-            React.createElement("article", { className: "project-modal" },
-                React.createElement("header", { className: "project-modal__header" },
-                    React.createElement("div", null,
-                        project.category && (React.createElement("span", { className: "project-modal__badge" }, categoryLabels[project.category] || project.category)),
-                        React.createElement("h3", { className: "project-modal__title" }, project.title)),
-                    React.createElement("button", { type: "button", onClick: onClose, "aria-label": labels.modalClose, className: "project-modal__close" },
-                        React.createElement("i", { className: "fas fa-times" }))),
-                React.createElement("div", { className: "project-modal__content" },
-                    React.createElement("div", { className: "project-modal__image" },
-                        React.createElement("img", { src: project.imageUrl, alt: project.title })),
-                    React.createElement("div", { className: "project-modal__body" },
-                        React.createElement("p", { className: "project-modal__description" }, detailedDescription),
-                        project.techStack && project.techStack.length > 0 && (React.createElement("div", null,
-                            React.createElement("p", { className: "project-modal__label" }, labels.techStack),
-                            React.createElement("p", { className: "project-modal__tech" }, project.techStack.join(', ')))))),
-                React.createElement("div", { className: "project-modal__actions" },
-                    project.githubUrl && (React.createElement("a", { href: project.githubUrl, target: "_blank", rel: "noopener noreferrer", className: "project-modal__btn project-modal__btn--secondary", style: { textDecoration: 'none' } },
-                        React.createElement("i", { className: "fab fa-github" }),
-                        React.createElement("span", null, labels.modalGithub))),
-                    project.liveUrl && (React.createElement("a", { href: project.liveUrl, target: "_blank", rel: "noopener noreferrer", className: "project-modal__btn project-modal__btn--primary", style: { textDecoration: 'none' } },
-                        React.createElement("i", { className: "fas fa-external-link-alt" }),
-                        React.createElement("span", null, labels.modalPreview))),
-                    React.createElement("button", { type: "button", onClick: onClose, className: "project-modal__btn project-modal__btn--ghost" },
-                        React.createElement("i", { className: "fas fa-times" }),
-                        React.createElement("span", null, labels.modalClose))))));
     };
     const ProjectsApp = () => {
         const container = document.getElementById('portfolio-react-root');
@@ -342,7 +331,6 @@
         const [filter, setFilter] = React.useState('*');
         const [isLoading, setIsLoading] = React.useState(true);
         const [error, setError] = React.useState(null);
-        const [selectedProject, setSelectedProject] = React.useState(null);
         const [visibleCount, setVisibleCount] = React.useState(() => (mode === 'featured' ? highlightCount : batchSize));
         const sentinelRef = React.useRef(null);
         const [categoryDefinitions, setCategoryDefinitions] = React.useState(() => buildCategoryList(undefined, ALL_CATEGORY_LABEL[localeKey]));
@@ -440,27 +428,7 @@
             });
             return map;
         }, [categoryDefinitions]);
-        const availableCategories = React.useMemo(() => {
-            const unique = new Set(data.map((item) => item.category).filter(Boolean));
-            const result = [];
-            const seen = new Set();
-            categoryDefinitions.forEach((category) => {
-                if (category.id === '*' || unique.has(category.id)) {
-                    result.push(category);
-                    seen.add(category.id);
-                }
-            });
-            unique.forEach((id) => {
-                if (!id || seen.has(id))
-                    return;
-                result.push({ id, label: categoryLabels[id] || id });
-                seen.add(id);
-            });
-            if (!seen.has('*')) {
-                result.unshift({ id: '*', label: ALL_CATEGORY_LABEL[localeKey] });
-            }
-            return result;
-        }, [categoryDefinitions, categoryLabels, data, localeKey]);
+        const availableCategories = React.useMemo(() => projectCategoryApi.selectAvailableCategories(categoryDefinitions, data.map((item) => item.category), ALL_CATEGORY_LABEL[localeKey]), [categoryDefinitions, data, localeKey]);
         React.useEffect(() => {
             if (!availableCategories.some((category) => category.id === filter)) {
                 setFilter('*');
@@ -484,22 +452,15 @@
             showFiltersProjects && (React.createElement("div", { className: "flex flex-wrap justify-center gap-3 mb-10", role: "group", "aria-label": "Project categories" }, availableCategories.map((category) => (React.createElement(FilterButton, { key: category.id, isActive: filter === category.id, onClick: () => setFilter(category.id) }, category.label))))),
             React.createElement("div", { className: gridClass, role: "list" },
                 React.createElement(PortfolioGrid, { data: visibleData, isLoading: isLoading, error: error, labels: labels, renderCard: (item, index) => {
-                        const shouldNavigate = mode === 'featured' && !!fullUrl;
-                        const handleAction = () => {
-                            if (shouldNavigate && fullUrl) {
-                                window.location.href = fullUrl;
-                                return;
-                            }
-                            setSelectedProject(item);
-                        };
-                        return (React.createElement(ProjectCard, { key: `${item.title}-${index}`, item: item, labels: labels, categoryLabels: categoryLabels, onAction: handleAction, asLink: shouldNavigate && fullUrl ? fullUrl : null, animationIndex: index }));
+                        const detailUrl = new URL(`/projects/${encodeURIComponent(item.slug)}/`, window.location.origin);
+                        detailUrl.searchParams.set('lang', localeKey);
+                        return (React.createElement(ProjectCard, { key: `${item.title}-${index}`, item: item, labels: labels, categoryLabels: categoryLabels, href: `${detailUrl.pathname}${detailUrl.search}`, animationIndex: index }));
                     } })),
             hasMore && React.createElement("div", { ref: sentinelRef, className: "h-10 w-full", "aria-hidden": "true" }),
             mode === 'featured' && fullUrl && (React.createElement("div", { className: "text-center mt-10" },
                 React.createElement("a", { href: fullUrl, className: "inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700" },
                     labels.viewAll,
-                    React.createElement("i", { className: "fas fa-arrow-right" })))),
-            selectedProject && (React.createElement(ProjectModal, { project: selectedProject, labels: labels, categoryLabels: categoryLabels, onClose: () => setSelectedProject(null) }))));
+                    React.createElement("i", { className: "fas fa-arrow-right" }))))));
     };
     const CertificatesApp = () => {
         const container = document.getElementById('certificates-react-root');

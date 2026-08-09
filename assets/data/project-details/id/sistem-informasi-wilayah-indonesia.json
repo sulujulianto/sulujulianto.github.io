@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "slug": "sistem-informasi-wilayah-indonesia",
+  "contentLanguage": "id",
+  "title": "Sistem Informasi Wilayah Indonesia",
+  "summary": "API FastAPI dan CLI untuk menelusuri snapshot data administratif Indonesia dengan pencarian, paginasi, metadata cakupan, dan caching HTTP.",
+  "category": "backend-api",
+  "hero": {
+    "src": "/assets/img/projects/id/sistem-wilayah-indonesia.webp",
+    "alt": "Ilustrasi Sistem Informasi Wilayah Indonesia",
+    "caption": "Proyek ini memusatkan data provinsi, kabupaten, dan kota ke dalam antarmuka API serta CLI."
+  },
+  "techStack": ["Python 3.12", "FastAPI", "JSON", "Docker", "GitHub Actions", "Pytest", "Shell Script"],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Sistem Informasi Wilayah Indonesia adalah proyek backend open-source yang menyajikan snapshot data administratif Indonesia melalui API dan CLI. Dataset versi 2024-12 mencakup 38 provinsi, 416 kabupaten, dan 98 kota. Angka tersebut menunjukkan cakupan berkas di repositori, bukan jaminan bahwa data selalu sama dengan status administratif terbaru."
+    },
+    { "type": "heading", "level": 2, "text": "Masalah yang ingin diselesaikan" },
+    {
+      "type": "paragraph",
+      "text": "Data wilayah sering dibutuhkan untuk formulir alamat, validasi, pencarian, dan analisis sederhana. Proyek ini mengemas data tersebut ke dalam endpoint berversi sehingga klien tidak perlu membaca struktur JSON mentah atau menulis logika pencarian sendiri."
+    },
+    { "type": "heading", "level": 2, "text": "Kemampuan API" },
+    {
+      "type": "list",
+      "items": [
+        "Endpoint /v1 untuk health, statistik, metadata, daftar provinsi, detail provinsi, dan pencarian lintas wilayah.",
+        "Paginasi pada daftar provinsi serta pencarian nama yang tidak peka huruf besar-kecil dan mendukung alias.",
+        "Filter tipe wilayah untuk membatasi hasil pada kabupaten, kota, atau seluruh data.",
+        "Cache-Control dan ETag dengan respons 304 untuk mengurangi pengiriman data yang tidak berubah.",
+        "Konfigurasi CORS melalui environment variable dan dokumentasi interaktif FastAPI saat dijalankan lokal."
+      ]
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "curl http://127.0.0.1:8000/v1/meta\ncurl 'http://127.0.0.1:8000/v1/provinces?limit=5&offset=0'\ncurl 'http://127.0.0.1:8000/v1/search?q=bima&type=all'"
+    },
+    { "type": "heading", "level": 2, "text": "Dua cara menggunakan data" },
+    {
+      "type": "paragraph",
+      "text": "FastAPI menjadi jalur utama untuk integrasi berbasis HTTP, sedangkan CLI lama tetap dipertahankan melalui tag rilis tersendiri. Pemisahan ini menjaga riwayat proyek sekaligus menunjukkan evolusi dari alat terminal menjadi layanan yang lebih mudah dikonsumsi aplikasi lain."
+    },
+    { "type": "heading", "level": 2, "text": "Kualitas dan dokumentasi open-source" },
+    {
+      "type": "paragraph",
+      "text": "Repositori menyediakan test suite Pytest, smoke test, workflow CI, Dockerfile, Makefile, changelog, panduan kontribusi, dokumentasi deployment, sumber data, dan file api.http. Quality gate menjalankan linting, type checking, pengujian, serta pemeriksaan smoke agar perilaku utama dapat diverifikasi kembali setelah perubahan."
+    },
+    {
+      "type": "callout",
+      "title": "Catatan akurasi data",
+      "text": "Metadata last_updated mengikuti berkas di repositori. Untuk kebutuhan legal atau administratif, pengguna tetap harus memeriksa sumber resmi terbaru; DATA_SOURCES.md menjelaskan asal dan metodologi data."
+    }
+  ],
+  "links": {
+    "github": "https://github.com/sulujulianto/sistem-wilayah-indonesia",
+    "liveDemo": null
+  }
+}

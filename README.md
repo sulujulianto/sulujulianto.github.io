@@ -7,10 +7,14 @@ Repo ini berisi dua bagian utama:
 ## Struktur folder
 - `/index.html` : halaman utama portfolio multibahasa
 - `/projects.html` : arsip proyek multibahasa
+- `/projects/<slug>/index.html` : shell halaman studi kasus untuk proyek yang sudah dipublikasikan
 - `/certificates.html` : arsip sertifikat multibahasa
 - `/id`, `/en`, `/jp`, `/cn` : redirect kompatibilitas untuk URL lama
 - `/assets/data/locales` : katalog teks antarmuka per bahasa
 - `/assets/data/skills/skills.json` : kelompok, urutan, status, dan referensi ikon Skills
+- `/assets/data/categories/projects` : katalog kategori proyek dengan ID yang sama untuk semua bahasa
+- `/assets/data/project-details/<lang>/<slug>.json` : isi studi kasus proyek berbentuk blok artikel
+- `/assets/img/project-details/<slug>` : gambar sisipan untuk studi kasus proyek
 - `/assets/icons/skills.svg` : sprite SVG lokal untuk seluruh ikon Skills
 - `/assets/data/history/experience` : data pengalaman per bahasa
 - `/assets/data/history/education-and-training` : data pendidikan dan pelatihan per bahasa
@@ -20,6 +24,55 @@ Repo ini berisi dua bagian utama:
 
 ## Aturan penting
 - **Jangan edit `/blog` manual.** Semua perubahan blog dilakukan di `/blog-fuwari` lalu dibuild.
+- Kartu proyek selalu membuka `/projects/<slug>/`. Slug tanpa `index.html` akan menggunakan halaman 404 GitHub Pages.
+- Isi studi kasus ditulis sebagai blok JSON yang aman: `paragraph`, `heading`, `list`, `image`, `code`, atau `callout`.
+- Tombol GitHub dan Live Demo dirender hanya jika URL terkait berisi nilai. Gunakan `null` untuk tautan yang belum tersedia.
+
+## Menulis studi kasus proyek
+
+Setiap proyek yang selesai membutuhkan tiga bagian yang saling cocok:
+
+1. `slug` dan `status: "published"` pada katalog `assets/data/projects/projects-<lang>.json`.
+2. Shell nyata di `projects/<slug>/index.html`.
+3. Artikel di `assets/data/project-details/<lang>/<slug>.json`.
+
+Proyek yang masih dikerjakan tetap memiliki `slug`, tetapi memakai
+`status: "in-development"` dan tidak memiliki shell maupun artikel. Kartu akan
+menampilkan label status dan URL-nya sengaja berakhir pada halaman 404.
+
+Contoh blok gambar di tengah artikel:
+
+```json
+{
+  "type": "image",
+  "src": "/assets/img/project-details/contoh/screenshot.webp",
+  "alt": "Deskripsi visual yang jelas",
+  "caption": "Keterangan gambar untuk pembaca."
+}
+```
+
+## Memakai kategori proyek
+
+Kategori proyek didefinisikan di empat katalog
+`assets/data/categories/projects/project-categories-<lang>.json`. Semua katalog
+harus memakai ID dan urutan yang sama; hanya `label` yang diterjemahkan.
+
+Kategori yang belum dipakai tidak ditampilkan sebagai tombol filter. Kategori
+akan muncul otomatis pada bahasa terkait setelah ID-nya dipasang pada properti
+`category` sebuah proyek yang memiliki judul. Contoh:
+
+```json
+{
+  "title": "Contoh Proyek",
+  "category": "frontend-web"
+}
+```
+
+ID siap pakai: `frontend-web`, `fullstack-web`, `backend-api`, `mobile-app`,
+`desktop-app`, `ai-machine-learning`, `data-database`, `cloud-infrastructure`,
+`devops-automation`, `cybersecurity`, `systems-networking`,
+`cli-developer-tools`, dan `game-interactive`. ID `*` dicadangkan untuk tombol
+"Semua" dan tidak boleh dipakai pada data proyek.
 
 ## Quick start (copy-paste)
 

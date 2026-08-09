@@ -342,6 +342,18 @@
       },
       "introduction": "私の技術力を裏付ける、技術資格、研修、および業界認定の包括的な記録です。"
     },
+    "projectDetail": {
+      "documentTitle": "プロジェクト詳細 — Sulu Edward Julianto",
+      "description": "Sulu Edward Julianto のプロジェクト事例です。",
+      "breadcrumb": "プロジェクト",
+      "technologyHeading": "使用技術",
+      "github": "GitHub を開く",
+      "liveDemo": "ライブデモを見る",
+      "backToProjects": "すべてのプロジェクトに戻る",
+      "loading": "事例を読み込み中...",
+      "error": "事例を読み込めませんでした。",
+      "unavailable": "プロジェクトの内容はまだ利用できません。"
+    },
     "notFound": {
       "documentTitle": "ページが見つかりません — Sulu Edward Julianto",
       "description": "お探しのページは見つかりませんでした。",

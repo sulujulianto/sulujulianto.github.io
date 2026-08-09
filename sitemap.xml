@@ -34,6 +34,48 @@
   </url>
 
   <url>
+    <loc>https://sulujulianto.github.io/projects/jejak-petualang/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://sulujulianto.github.io/projects/jejak-petualang/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sulujulianto.github.io/projects/jejak-petualang/" />
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sulujulianto.github.io/projects/nusantara-trans/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://sulujulianto.github.io/projects/nusantara-trans/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sulujulianto.github.io/projects/nusantara-trans/" />
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sulujulianto.github.io/projects/japan-travel/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://sulujulianto.github.io/projects/japan-travel/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sulujulianto.github.io/projects/japan-travel/" />
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sulujulianto.github.io/projects/sistem-informasi-wilayah-indonesia/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://sulujulianto.github.io/projects/sistem-informasi-wilayah-indonesia/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sulujulianto.github.io/projects/sistem-informasi-wilayah-indonesia/" />
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sulujulianto.github.io/projects/pixel-heist-co-op/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://sulujulianto.github.io/projects/pixel-heist-co-op/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sulujulianto.github.io/projects/pixel-heist-co-op/" />
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sulujulianto.github.io/projects/atlas-country-api/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sulujulianto.github.io/projects/atlas-country-api/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sulujulianto.github.io/projects/atlas-country-api/" />
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://sulujulianto.github.io/blog/</loc>
     <priority>0.8</priority>
   </url>

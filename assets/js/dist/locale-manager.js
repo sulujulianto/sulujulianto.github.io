@@ -8,6 +8,7 @@
         home: '/',
         projects: '/projects.html',
         certificates: '/certificates.html',
+        projectDetail: window.location.pathname,
         notFound: '/404.html',
     };
     const HTML_LOCALES = {
@@ -49,7 +50,7 @@
     const pageKey = () => {
         var _a;
         const value = (_a = document.body) === null || _a === void 0 ? void 0 : _a.dataset.page;
-        return value === 'projects' || value === 'certificates' || value === 'notFound'
+        return value === 'projects' || value === 'certificates' || value === 'projectDetail' || value === 'notFound'
             ? value
             : 'home';
     };
@@ -132,7 +133,9 @@
             ? 'pages.home.about.description'
             : page === 'notFound'
                 ? 'pages.notFound.description'
-                : `pages.${page}.introduction`;
+                : page === 'projectDetail'
+                    ? 'pages.projectDetail.description'
+                    : `pages.${page}.introduction`;
         const description = readPath(catalog, descriptionPath);
         const canonicalUrl = new URL(PAGE_PATHS[page], window.location.origin).toString();
         document.title = title;

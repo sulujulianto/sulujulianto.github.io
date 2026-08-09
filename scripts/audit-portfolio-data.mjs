@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
+import { validateProjectCategoryCatalogs } from './project-category-contract.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const REPOSITORY_ROOT = path.resolve(SCRIPT_DIR, '..');
@@ -217,7 +218,7 @@ const auditDataset = (baseline, type, locale) => {
 
     if (!expected) {
         failures.push(`${label}: dataset is missing from baseline`);
-        return { passed: false, counts: null, effectiveFeatured: [] };
+        return { passed: false, counts: null, effectiveFeatured: [], records: [] };
     }
 
     if (!parsed) {
@@ -225,6 +226,7 @@ const auditDataset = (baseline, type, locale) => {
             passed: false,
             counts: expected.counts ?? null,
             effectiveFeatured: expected.effectiveFeatured ?? [],
+            records: [],
         };
     }
 
@@ -234,6 +236,7 @@ const auditDataset = (baseline, type, locale) => {
             passed: false,
             counts: expected.counts ?? null,
             effectiveFeatured: expected.effectiveFeatured ?? [],
+            records: [],
         };
     }
 
@@ -244,7 +247,7 @@ const auditDataset = (baseline, type, locale) => {
         passed = compareValue(label, field, actual[field], expected[field]) && passed;
     }
 
-    return { passed, counts: actual.counts, effectiveFeatured: actual.effectiveFeatured };
+    return { passed, counts: actual.counts, effectiveFeatured: actual.effectiveFeatured, records: parsed.value };
 };
 
 const auditCategories = (baseline, type, locale) => {
@@ -254,16 +257,20 @@ const auditCategories = (baseline, type, locale) => {
     const expected = baseline.categories?.[type]?.[locale];
     let passed = true;
 
-    if (!expected) {
+    if (type !== 'projects' && !expected) {
         failures.push(`${label}: dataset is missing from baseline`);
-        return { passed: false, count: null };
+        return { passed: false, count: null, records: [] };
     }
 
-    if (!parsed) return { passed: false, count: expected.count ?? null };
+    if (!parsed) return { passed: false, count: expected?.count ?? null, records: [] };
 
     if (!Array.isArray(parsed.value)) {
         failures.push(`${label}: top-level JSON value must be an array`);
-        return { passed: false, count: expected.count ?? null };
+        return { passed: false, count: expected?.count ?? null, records: [] };
+    }
+
+    if (type === 'projects') {
+        return { passed: true, count: parsed.value.length, records: parsed.value };
     }
 
     const actual = buildCategorySnapshot(type, locale, parsed.raw, parsed.value);
@@ -271,7 +278,7 @@ const auditCategories = (baseline, type, locale) => {
         passed = compareValue(label, field, actual[field], expected[field]) && passed;
     }
 
-    return { passed, count: actual.count };
+    return { passed, count: actual.count, records: parsed.value };
 };
 
 const auditAssetPolicy = (baseline) => {
@@ -347,6 +354,22 @@ if (baseline) {
             projectCategories: auditCategories(baseline, 'projects', locale),
             certificateCategories: auditCategories(baseline, 'certificates', locale),
         };
+    }
+
+    const projectCategoryErrors = validateProjectCategoryCatalogs({
+        locales: LOCALES,
+        catalogs: Object.fromEntries(
+            LOCALES.map((locale) => [locale, results[locale].projectCategories.records]),
+        ),
+        projectsByLocale: Object.fromEntries(
+            LOCALES.map((locale) => [locale, results[locale].projects.records]),
+        ),
+    });
+    if (projectCategoryErrors.length > 0) {
+        projectCategoryErrors.forEach((error) => failures.push(`project categories: ${error}`));
+        LOCALES.forEach((locale) => {
+            results[locale].projectCategories.passed = false;
+        });
     }
 
     for (const locale of LOCALES) {

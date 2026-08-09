@@ -1,30 +1,16 @@
 [
-  {
-    "id": "*",
-    "label": "Semua"
-  },
-  {
-    "id": "frontend",
-    "label": "Front-End"
-  },
-  {
-    "id": "backend",
-    "label": "Back-End"
-  },
-  {
-    "id": "fullstack",
-    "label": "Full-Stack"
-  },
-  {
-    "id": "mobile",
-    "label": "Mobile"
-  },
-  {
-    "id": "ai-data",
-    "label": "AI & Data"
-  },
-  {
-    "id": "game",
-    "label": "Game"
-  }
+  { "id": "*", "label": "Semua" },
+  { "id": "frontend-web", "label": "Front-End Web" },
+  { "id": "fullstack-web", "label": "Aplikasi Full-Stack" },
+  { "id": "backend-api", "label": "Back-End & API" },
+  { "id": "mobile-app", "label": "Aplikasi Mobile" },
+  { "id": "desktop-app", "label": "Aplikasi Desktop" },
+  { "id": "ai-machine-learning", "label": "AI & Machine Learning" },
+  { "id": "data-database", "label": "Data & Database" },
+  { "id": "cloud-infrastructure", "label": "Cloud & Infrastruktur" },
+  { "id": "devops-automation", "label": "DevOps & Otomasi" },
+  { "id": "cybersecurity", "label": "Keamanan Siber" },
+  { "id": "systems-networking", "label": "Sistem & Jaringan" },
+  { "id": "cli-developer-tools", "label": "CLI & Alat Pengembang" },
+  { "id": "game-interactive", "label": "Game & Interaktif" }
 ]
