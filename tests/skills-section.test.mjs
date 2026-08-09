@@ -28,6 +28,17 @@ test('skills use six balanced groups with DevSecOps visible in the category titl
     }
 });
 
+test('localized skills heading keeps visible fallback text and a highlighted segment', () => {
+    assert.match(home, /data-i18n="pages\.home\.skills\.heading\.lead">Keahlian<\/span>/);
+    assert.match(home, /data-i18n="pages\.home\.skills\.heading\.highlight" class="section-highlight">Teknis<\/span>/);
+    for (const catalog of locales) {
+        const heading = catalog.pages.home.skills.heading;
+        assert.equal(typeof heading.lead, 'string');
+        assert.equal(typeof heading.highlight, 'string');
+        assert.ok(`${heading.lead}${heading.highlight}`.trim());
+    }
+});
+
 test('all original technologies remain and the supported additions are present', () => {
     const ids = new Set(allSkills.map((skill) => skill.id));
     const expected = [

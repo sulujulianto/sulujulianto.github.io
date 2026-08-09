@@ -109,6 +109,16 @@ test('each detail shell is nested-path safe and exposes accurate metadata', () =
         assert.match(html, new RegExp(`data-project-slug="${slug}"`));
         assert.match(html, new RegExp(`data-content-locale="${locale}"`));
         assert.match(html, new RegExp(`rel="canonical" href="https://sulujulianto.github.io/projects/${slug}/"`));
+        assert.match(html, new RegExp(`property="og:url" content="https://sulujulianto.github.io/projects/${slug}/"`));
+        assert.match(html, /property="og:image:secure_url"/);
+        assert.match(html, /property="og:image:type" content="image\/webp"/);
+        assert.match(html, /property="og:image:width" content="\d+"/);
+        assert.match(html, /property="og:image:height" content="\d+"/);
+        assert.match(html, /property="og:image:alt"/);
+        assert.match(html, /name="twitter:card" content="summary_large_image"/);
+        assert.match(html, /name="twitter:title"/);
+        assert.match(html, /name="twitter:description"/);
+        assert.match(html, /name="twitter:image"/);
         assert.match(html, /src="\/assets\/js\/dist\/language-resolver\.js"/);
         assert.match(html, /src="\/assets\/js\/dist\/locale-manager\.js"/);
         assert.match(html, /src="\/assets\/js\/dist\/project-detail\.js"/);

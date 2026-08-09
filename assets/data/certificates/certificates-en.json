@@ -1,7 +1,7 @@
 [
   {
     "title": "Angular + NestJS",
-    "description": "Engineered scalable full-stack applications by unifying Angular’s component based frontend with robust NestJS backend services.",
+    "description": "Covered full-stack application structure with Angular components on the frontend and NestJS modules, controllers, and services on the backend.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/angular-nestjs.webp",
     "link": "https://www.sololearn.com/certificates/CT-LFLS9TIS",
@@ -11,7 +11,7 @@
   },
   {
     "title": "React + Redux",
-    "description": "Built high-performance user interfaces and implemented predictable global state management for complex web applications.",
+    "description": "Covered component-driven interfaces in React and predictable application state management with Redux.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/react-redux.webp",
     "link": "https://www.sololearn.com/certificates/CT-LUBUY7HU",
@@ -21,7 +21,7 @@
   },
   {
     "title": "Data Science",
-    "description": "Executed end-to-end data analysis workflows, from cleaning raw datasets to training predictive machine learning models.",
+    "description": "Covered the data workflow from cleaning and exploration to visualization and introductory predictive modeling.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/en/data-science.webp",
     "link": "https://www.sololearn.com/certificates/CT-5YICQTFP",
@@ -31,7 +31,7 @@
   },
   {
     "title": "Web Development",
-    "description": "Mastered the core triad of modern web technologies HTML, CSS, and JavaScript to build responsive and interactive web solutions.",
+    "description": "Covered responsive and interactive web development with HTML, CSS, and JavaScript.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/web-development.webp",
     "link": "https://www.sololearn.com/certificates/CC-T7PGB62R",
@@ -41,7 +41,7 @@
   },
   {
     "title": "Web Development Fundamentals",
-    "description": "Gained a solid grasp of internet protocols (HTTP/HTTPS), browser rendering, and the core technologies powering the web.",
+    "description": "Covered HTTP/HTTPS, browser rendering, and the core technologies behind modern websites.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/web-development-fundamentals.webp",
     "link": "https://www.sololearn.com/certificates/CT-JIVDWB9L",
@@ -51,7 +51,7 @@
   },
   {
     "title": "JavaScript Intermediate",
-    "description": "Deepened scripting expertise by mastering ES6+ features, asynchronous programming, and clean code architectural patterns.",
+    "description": "Covered ES6+ syntax, asynchronous workflows, modules, and patterns for structuring maintainable JavaScript.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/javascript-intermediate.webp",
     "link": "https://www.sololearn.com/certificates/CC-T7XYBHU3",
@@ -61,7 +61,7 @@
   },
   {
     "title": "JavaScript",
-    "description": "Developed dynamic, interactive web functionalities and mastered the core logic required for modern client-side development.",
+    "description": "Covered JavaScript fundamentals for building dynamic browser interactions, including control flow, functions, objects, and events.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/javascript.webp",
     "link": "https://www.sololearn.com/certificates/CT-XKQPRIVE",
@@ -71,7 +71,7 @@
   },
   {
     "title": "Game Development with JS",
-    "description": "Programmed interactive browser-based games, utilizing HTML5 Canvas and object-oriented logic for rendering graphics.",
+    "description": "Covered browser game development with HTML5 Canvas, animation loops, input handling, and object-oriented logic.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/game-development-with-js.webp",
     "link": "https://www.sololearn.com/certificates/CT-2L6LYFNX",
@@ -81,7 +81,7 @@
   },
   {
     "title": "Responsive Web Design",
-    "description": "Crafted adaptive user interfaces that ensure seamless viewing experiences across mobile, tablet, and desktop devices.",
+    "description": "Covered responsive layouts and adaptable interfaces across mobile, tablet, and desktop screen sizes.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/responsive-web-design.webp",
     "link": "https://www.sololearn.com/certificates/CT-CMGHXTCC",
@@ -91,7 +91,7 @@
   },
   {
     "title": "CSS",
-    "description": "Designed visually engaging web layouts using advanced selectors, Flexbox grid systems, and smooth animations.",
+    "description": "Covered CSS selectors, layout systems such as Flexbox and Grid, responsive styling, and animations.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/css.webp",
     "link": "https://www.sololearn.com/certificates/CT-706VG1KZ",
@@ -101,7 +101,7 @@
   },
   {
     "title": "HTML",
-    "description": "Constructed the structural backbone of web pages using semantic HTML5 to optimize accessibility and SEO.",
+    "description": "Covered semantic HTML5 structure with attention to accessibility, document hierarchy, and search-friendly markup.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/html.webp",
     "link": "https://www.sololearn.com/certificates/CT-SIZQG4ME",
@@ -111,7 +111,7 @@
   },
   {
     "title": "PHP",
-    "description": "Implemented server-side logic to process user data and manage dynamic content generation efficiently.",
+    "description": "Covered PHP fundamentals for server-side logic, form processing, and dynamic content.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/php.webp",
     "link": "https://www.sololearn.com/certificates/CT-XRBIWL3P",
@@ -121,7 +121,7 @@
   },
   {
     "title": "jQuery",
-    "description": "Streamlined DOM manipulation and event handling tasks to accelerate frontend development workflows.",
+    "description": "Covered DOM manipulation, event handling, and interface effects using jQuery.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/jquery.webp",
     "link": "https://www.sololearn.com/certificates/CT-BMWB8LF7",
@@ -131,7 +131,7 @@
   },
   {
     "title": "Coding for Marketers",
-    "description": "Bridged the gap between tech and marketing by using code to automate analytics and optimize digital campaigns.",
+    "description": "Covered practical coding concepts for marketing workflows, web analytics, and digital campaign implementation.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/en/coding-for-marketers.webp",
     "link": "https://www.sololearn.com/certificates/CT-LHJALO5Q",
@@ -141,7 +141,7 @@
   },
   {
     "title": "Machine Learning",
-    "description": "Built and fine-tuned classification and regression models to solve real-world problems using standard ML libraries.",
+    "description": "Covered classification and regression workflows, model evaluation, and introductory tuning with common machine learning tools.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/en/machine-learning.webp",
     "link": "https://www.sololearn.com/certificates/CT-YA3LUDFQ",
@@ -151,7 +151,7 @@
   },
   {
     "title": "Python for Data Science",
-    "description": "Leveraged powerful libraries like Pandas and NumPy to manipulate, visualize, and extract insights from large datasets.",
+    "description": "Covered data manipulation and analysis with Python, Pandas, and NumPy, including basic visualization.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/en/python-for-data-science.webp",
     "link": "https://www.sololearn.com/certificates/CT-DK6EW7XR",
@@ -161,7 +161,7 @@
   },
   {
     "title": "Python Data Structures",
-    "description": "Optimized code performance and memory usage by choosing the right data structures for specific algorithms.",
+    "description": "Covered Python lists, tuples, sets, dictionaries, and choosing structures suited to different data-handling tasks.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/en/python-data-structures.webp",
     "link": "https://www.sololearn.com/certificates/CT-Z0ANGDS6",
@@ -171,7 +171,7 @@
   },
   {
     "title": "Python for Finance",
-    "description": "Applied Python to financial engineering tasks, including risk assessment, algorithmic trading strategies, and data visualization.",
+    "description": "Covered Python-based financial data analysis, return and risk calculations, and visualization concepts.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/en/python-for-finance.webp",
     "link": "https://www.sololearn.com/certificates/CT-6JBJ3PBJ",
@@ -181,7 +181,7 @@
   },
   {
     "title": "R",
-    "description": "Conducted statistical analysis and created compelling data visualizations using the R programming environment.",
+    "description": "Covered statistical analysis, data manipulation, and visualization in the R programming environment.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/en/r.webp",
     "link": "https://www.sololearn.com/certificates/CT-LX7IMNDC",
@@ -191,7 +191,7 @@
   },
   {
     "title": "SQL Intermediate",
-    "description": "Designed complex database queries using Joins, Unions, and Subqueries to handle sophisticated data retrieval needs.",
+    "description": "Covered joins, unions, subqueries, and aggregate operations for more advanced relational data retrieval.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/en/sql-intermediate.webp",
     "link": "https://www.sololearn.com/certificates/CC-GVJSIPGC",
@@ -201,7 +201,7 @@
   },
   {
     "title": "SQL",
-    "description": "Managed relational database systems and performed essential data operations (CRUD) with precision.",
+    "description": "Covered relational database concepts and core SQL operations for creating, reading, updating, and deleting data.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/en/sql.webp",
     "link": "https://www.sololearn.com/certificates/CT-FG2B4AY7",
@@ -211,7 +211,7 @@
   },
   {
     "title": "Tech for Everyone",
-    "description": "Acquired a broad perspective on the digital landscape, focusing on internet safety, privacy, and emerging tech trends.",
+    "description": "Covered digital literacy, online safety, privacy, and an overview of emerging technology.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/en/tech-for-everyone.webp",
     "link": "https://www.sololearn.com/certificates/CC-MVAF6ZMD",
@@ -221,7 +221,7 @@
   },
   {
     "title": "Go",
-    "description": "Mastered Google's Go language fundamentals, focusing on concurrency, efficient memory handling, and modern backend development.",
+    "description": "Covered Go fundamentals, types, functions, interfaces, error handling, and introductory concurrency.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/go.webp",
     "link": "https://www.sololearn.com/certificates/CT-XNTYJ9AR",
@@ -231,7 +231,7 @@
   },
   {
     "title": "Introduction to Java",
-    "description": "Acquired foundational knowledge in Java syntax, object-oriented concepts, and core programming logic.",
+    "description": "Covered Java syntax, object-oriented concepts, and core programming logic.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/introduction-to-java.webp",
     "link": "https://www.sololearn.com/certificates/CC-XAKTDG45",
@@ -241,7 +241,7 @@
   },
   {
     "title": "Java Intermediate",
-    "description": "Mastered Object-Oriented Programming principles, exception handling, and file operations to build robust Java applications.",
+    "description": "Covered object-oriented design, exception handling, collections, and file operations in Java.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/java-intermediate.webp",
     "link": "https://www.sololearn.com/certificates/CC-HLFCB8YQ",
@@ -251,7 +251,7 @@
   },
   {
     "title": "Java",
-    "description": "Developed backend logic and reliable applications using the fundamental syntax and structure of Java.",
+    "description": "Covered Java fundamentals for structuring classes, control flow, and basic application logic.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/java.webp",
     "link": "https://www.sololearn.com/certificates/CT-FGHBRKP8",
@@ -261,7 +261,7 @@
   },
   {
     "title": "Kotlin",
-    "description": "Built concise and safe Android-ready applications leveraging Kotlin's modern features and interoperability.",
+    "description": "Covered Kotlin syntax, null safety, functions, classes, and interoperability concepts relevant to Android development.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/kotlin.webp",
     "link": "https://www.sololearn.com/certificates/CT-IV1DFLIF",
@@ -271,7 +271,7 @@
   },
   {
     "title": "C++ Intermediate",
-    "description": "Implemented high-efficiency code using advanced C++ concepts like pointers, memory management, and templates.",
+    "description": "Covered pointers, memory management, templates, and other intermediate C++ concepts.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/cpp-intermediate.webp",
     "link": "https://www.sololearn.com/certificates/CC-G55JUPEL",
@@ -281,7 +281,7 @@
   },
   {
     "title": "C++",
-    "description": "Developed performance-critical applications by utilizing the speed and low-level control of the C++ language.",
+    "description": "Covered C++ syntax, object-oriented fundamentals, and lower-level control over memory and program execution.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/cpp.webp",
     "link": "https://www.sololearn.com/certificates/CT-AQNUSQLG",
@@ -291,7 +291,7 @@
   },
   {
     "title": "C# Intermediate",
-    "description": "Enhanced application capabilities using C# advanced features such as Generics, LINQ, and Delegates.",
+    "description": "Covered generics, LINQ, delegates, and other intermediate C# features.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/c-sharp-intermediate.webp",
     "link": "https://www.sololearn.com/certificates/CC-DQBMJBBX",
@@ -301,7 +301,7 @@
   },
   {
     "title": "C#",
-    "description": "Created scalable logic for .NET applications using C# fundamentals and Object-Oriented principles.",
+    "description": "Covered C# fundamentals, object-oriented programming, collections, and basic .NET application structure.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/c-sharp.webp",
     "link": "https://www.sololearn.com/certificates/CT-FTCWACTK",
@@ -311,7 +311,7 @@
   },
   {
     "title": "C Intermediate",
-    "description": "Mastered system-level programming with deep dives into memory allocation, pointers, and struct management.",
+    "description": "Covered memory allocation, pointers, structures, and intermediate system-level programming concepts in C.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/c-intermediate.webp",
     "link": "https://www.sololearn.com/certificates/CC-TVPQQYR7",
@@ -321,7 +321,7 @@
   },
   {
     "title": "C",
-    "description": "Wrote efficient, close-to-metal code, gaining a strong understanding of compilation and computer architecture.",
+    "description": "Covered C syntax, compilation, memory fundamentals, and low-level program structure.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/c.webp",
     "link": "https://www.sololearn.com/certificates/CT-PGTWA7CH",
@@ -331,7 +331,7 @@
   },
   {
     "title": "Intermediate Python",
-    "description": "Wrote cleaner, more efficient Python scripts using functional programming tools like Lambda and Decorators.",
+    "description": "Covered cleaner Python scripting with functional tools, lambdas, decorators, and more structured code organization.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/intermediate-python.webp",
     "link": "https://www.sololearn.com/certificates/CT-BC2UHFSY",
@@ -341,7 +341,7 @@
   },
   {
     "title": "Python Core",
-    "description": "Solidified programming logic and mastered the Python standard library for versatile application development.",
+    "description": "Covered Python fundamentals alongside standard-library modules for common application tasks.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/python-core.webp",
     "link": "https://www.sololearn.com/certificates/CT-LWXUVJGX",
@@ -351,7 +351,7 @@
   },
   {
     "title": "Python for Beginners",
-    "description": "Kickstarted the software development journey by mastering foundational Python syntax and algorithmic thinking.",
+    "description": "Covered foundational Python syntax, control flow, functions, and algorithmic problem solving.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/python-for-beginners.webp",
     "link": "https://www.sololearn.com/certificates/CT-DEBVHPZL",
@@ -361,7 +361,7 @@
   },
   {
     "title": "Ruby",
-    "description": "Developed elegant, maintainable code using Ruby's expressive syntax and developer-centric philosophy.",
+    "description": "Covered Ruby syntax, object-oriented programming, collections, and idiomatic code organization.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/ruby.webp",
     "link": "https://www.sololearn.com/certificates/CT-GI8FRNB9",
@@ -371,7 +371,7 @@
   },
   {
     "title": "Swift 4",
-    "description": "Built type-safe, performant iOS-ready code using modern Swift programming paradigms.",
+    "description": "Covered Swift types, optionals, functions, classes, and core concepts for iOS-oriented development.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/en/swift-4.webp",
     "link": "https://www.sololearn.com/certificates/CT-BIAYDXAK",

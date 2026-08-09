@@ -199,6 +199,13 @@
         });
         canonical.setAttribute('href', canonicalUrl);
 
+        const ogUrl = ensureMeta('meta[property="og:url"]', () => {
+            const meta = document.createElement('meta');
+            meta.setAttribute('property', 'og:url');
+            return meta;
+        });
+        ogUrl.setAttribute('content', canonicalUrl);
+
         const ogTitle = ensureMeta('meta[property="og:title"]', () => {
             const meta = document.createElement('meta');
             meta.setAttribute('property', 'og:title');
@@ -219,6 +226,20 @@
             return meta;
         });
         ogLocale.setAttribute('content', OG_LOCALES[locale]);
+
+        const twitterTitle = ensureMeta('meta[name="twitter:title"]', () => {
+            const meta = document.createElement('meta');
+            meta.setAttribute('name', 'twitter:title');
+            return meta;
+        });
+        twitterTitle.setAttribute('content', title);
+
+        const twitterDescription = ensureMeta('meta[name="twitter:description"]', () => {
+            const meta = document.createElement('meta');
+            meta.setAttribute('name', 'twitter:description');
+            return meta;
+        });
+        twitterDescription.setAttribute('content', description);
 
         document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((node) => node.remove());
         SUPPORTED_LOCALES.forEach((alternateLocale) => {

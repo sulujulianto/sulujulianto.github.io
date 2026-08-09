@@ -1,7 +1,7 @@
 [
   {
     "title": "Jejak Petualang",
-    "description": "Aplikasi e-commerce peralatan outdoor yang dibangun dari nol menggunakan PHP Native, sebagai proyek akhir ujian kompetensi nasional BNSP.",
+    "description": "Aplikasi e-commerce peralatan outdoor berbasis PHP Native yang mencakup katalog, keranjang, checkout, riwayat pesanan, dan panel admin; dikembangkan untuk asesmen kompetensi BNSP.",
     "category": "fullstack-web",
     "imageUrl": "../assets/img/projects/id/jejakpetualang.webp",
     "githubUrl": "https://github.com/sulujulianto/jejakpetualang",
@@ -20,7 +20,7 @@
   },
   {
     "title": "Nusantara Trans",
-    "description": "Platform pemesanan tiket bus dengan denah kursi visual real-time, sistem penguncian kursi, dan dashboard operasional admin yang lengkap.",
+    "description": "Platform pemesanan tiket bus dengan pencarian rute, denah kursi visual, reservasi sementara, checkout, tiket pengguna, dan dashboard operasional admin.",
     "category": "fullstack-web",
     "imageUrl": "../assets/img/projects/id/nusantaratrans.webp",
     "githubUrl": "https://github.com/sulujulianto/nusantaratrans",
@@ -40,7 +40,7 @@
   },
   {
     "title": "Japan Travel",
-    "description": "Platform wisata dan toko suvenir Jepang berbasis Laravel 12 dengan integrasi payment gateway Midtrans dan PayPal, mendukung dua bahasa dan tema gelap.",
+    "description": "Platform konten wisata dan toko suvenir Jepang berbasis Laravel 12, dilengkapi pengalaman dwibahasa, tema gelap, dashboard admin, serta integrasi pembayaran Midtrans dan PayPal.",
     "category": "fullstack-web",
     "imageUrl": "../assets/img/projects/id/japanese-travel.webp",
     "githubUrl": "https://github.com/sulujulianto/japanesetravel",
@@ -61,7 +61,7 @@
   },
   {
     "title": "Sistem Informasi Wilayah Indonesia",
-    "description": "RESTful API dan CLI tool untuk data administratif Indonesia mencakup 38 provinsi, 416 kabupaten, dan 98 kota, dengan caching ETag dan pencarian fleksibel.",
+    "description": "REST API dan CLI untuk snapshot data administratif Indonesia yang mencakup 38 provinsi, 416 kabupaten, dan 98 kota, dengan pencarian, paginasi, metadata, dan caching ETag.",
     "category": "backend-api",
     "imageUrl": "../assets/img/projects/id/sistem-wilayah-indonesia.webp",
     "githubUrl": "https://github.com/sulujulianto/sistem-wilayah-indonesia",
@@ -81,7 +81,7 @@
   },
   {
     "title": "KosPintar",
-    "description": "Sistem manajemen kos digital yang membantu pemilik kos mengelola kamar, penghuni, dan pembayaran bulanan lengkap dengan notifikasi otomatis via WhatsApp.",
+    "description": "Sistem manajemen kos yang sedang dikembangkan untuk mengelola kamar, penghuni, tagihan bulanan, pembayaran, dan notifikasi operasional melalui WhatsApp.",
     "category": "fullstack-web",
     "imageUrl": "../assets/img/projects/id/kospintar.webp",
     "githubUrl": "",
@@ -101,7 +101,7 @@
   },
   {
     "title": "LokerKita",
-    "description": "Agregator lowongan kerja informal Indonesia yang mengumpulkan berbagai peluang kerja dari berbagai sumber dalam satu platform dengan pencarian dan filter yang mudah.",
+    "description": "Agregator lowongan kerja informal Indonesia yang sedang dikembangkan untuk menyatukan informasi dari berbagai sumber dalam pencarian dan filter yang konsisten.",
     "category": "fullstack-web",
     "imageUrl": "../assets/img/projects/id/lokerkita.webp",
     "githubUrl": "",
@@ -122,7 +122,7 @@
   },
   {
     "title": "AntrianKu",
-    "description": "Sistem antrian digital untuk UMKM yang memungkinkan pelanggan mengambil nomor antrian via scan QR dan memantau giliran secara real-time langsung dari browser.",
+    "description": "Sistem antrean digital untuk UMKM yang sedang dikembangkan agar pelanggan dapat mengambil nomor melalui QR dan memantau giliran secara real-time dari browser.",
     "category": "fullstack-web",
     "imageUrl": "../assets/img/projects/id/antriankku.webp",
     "githubUrl": "",
@@ -142,7 +142,7 @@
   },
   {
     "title": "Pixel Heist Co-op",
-    "description": "Game stealth multiplayer lokal yang memenangkan Firebase Studio Challenge di DevFest Depok 2025, dibangun menggunakan Firebase Studio dan Google Gemini.",
+    "description": "Game stealth co-op untuk dua pemain pada satu perangkat, dibangun dengan Next.js dan Firebase serta terpilih sebagai pemenang Firebase Studio Challenge di DevFest Depok 2025.",
     "category": "game-interactive",
     "imageUrl": "../assets/img/projects/id/pixel-heist.webp",
     "githubUrl": "https://github.com/sulujulianto/pixel-heist-coop",

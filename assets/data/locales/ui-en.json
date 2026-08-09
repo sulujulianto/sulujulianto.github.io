@@ -19,10 +19,10 @@
   },
   "pages": {
     "home": {
-      "documentTitle": "Sulu Edward Julianto - Software Engineer",
+      "documentTitle": "Sulu Edward Julianto — Full-Stack Developer",
       "hero": {
         "name": "Sulu Edward Julianto",
-        "tagline": "Junior Full-Stack Developer. Building scalable, functional, and modern web applications.",
+        "tagline": "Full-Stack Developer building end-to-end web applications with a focus on usability, code quality, and maintainable architecture.",
         "downloadCv": "Download CV",
         "hireMe": "Hire Me",
         "profileImageAlt": "Sulu Edward Profile Photo"
@@ -32,17 +32,20 @@
           "lead": "About",
           "highlight": "Me"
         },
-        "description": "I am a Junior Full-Stack Developer focused on modern web development. With a background in Computer and Network Engineering, this portfolio serves as an archive of my IT journey, documenting my web projects, technological explorations, and my continuous learning process in software development, with a focus on improving my understanding of my system design."
+        "description": "I am a Full-Stack Developer with a background in Computer and Network Engineering. I build web applications across frontend interfaces, backend services, data management, and deployment. My work emphasizes clear user flows, maintainable code, practical testing, and security measures that match the product’s needs. This portfolio shows how I turn requirements into working software while deepening my practice in software engineering and system design."
       },
       "history": {
         "heading": {
           "lead": "My",
           "highlight": "History"
         },
-        "introduction": "My work experience, education, and training, grouped by the year each journey began."
+        "introduction": "Work experience, education, and training that have shaped how I solve problems and build software."
       },
       "skills": {
-        "heading": "Technical Skills",
+        "heading": {
+          "lead": "Technical",
+          "highlight": "Skills"
+        },
         "introduction": "Technologies and engineering practices I use to build functional, secure, and maintainable software.",
         "groups": {
           "frontEnd": {
@@ -260,14 +263,14 @@
           "lead": "Project",
           "highlight": "Portfolio"
         },
-        "introduction": "A selection of featured projects representing my learning journey and explorations."
+        "introduction": "Selected work showing how I design user flows, make technical decisions, and deliver solutions across the frontend and backend."
       },
       "featuredCertificates": {
         "heading": {
           "highlight": "Certifications",
           "tail": "& Awards"
         },
-        "introduction": "Selected certifications and professional milestones that mark significant steps in my IT career journey."
+        "introduction": "Selected certifications and training that strengthen my capabilities across web development, programming, data, and software engineering practices."
       },
       "contact": {
         "heading": {
@@ -332,7 +335,7 @@
         "lead": "Project",
         "highlight": "Portfolio"
       },
-      "introduction": "A complete archive of my projects, documenting my learning process and adaptability across various technologies."
+      "introduction": "A collection of projects demonstrating full-stack development, backend APIs, data management, testing, and practical security across different product needs."
     },
     "certificates": {
       "documentTitle": "Certifications & Awards — Sulu Edward Julianto",
@@ -340,7 +343,7 @@
         "highlight": "Certifications",
         "tail": "& Awards"
       },
-      "introduction": "A comprehensive record of the technical qualifications, training, and industry certifications that support my technical competencies."
+      "introduction": "A verified collection of certifications and training across web development, programming, data, and supporting technologies."
     },
     "projectDetail": {
       "documentTitle": "Project Detail — Sulu Edward Julianto",

@@ -19,10 +19,10 @@
   },
   "pages": {
     "home": {
-      "documentTitle": "Sulu Edward Julianto - Software Engineer",
+      "documentTitle": "Sulu Edward Julianto — Full-Stack Developer",
       "hero": {
         "name": "Sulu Edward Julianto",
-        "tagline": "Junior Full-Stack Developer. Membangun aplikasi web modern yang fungsional dan skalabel.",
+        "tagline": "Full-Stack Developer yang membangun aplikasi web end-to-end dengan fokus pada kualitas, keamanan, dan kemudahan pengembangan.",
         "downloadCv": "Unduh CV",
         "hireMe": "Hire Me",
         "profileImageAlt": "Foto Profil Sulu Edward"
@@ -32,17 +32,20 @@
           "lead": "Tentang",
           "highlight": "Saya"
         },
-        "description": "Saya adalah seorang Junior Full-Stack Developer yang berfokus pada pengembangan aplikasi web modern. Memiliki latar belakang pendidikan Teknik Komputer & Jaringan (TKJ), portofolio ini adalah catatan perjalanan karir IT saya, tempat saya mendokumentasikan setiap proyek web, eksplorasi teknologi, serta proses pembelajaran saya dalam software development dengan fokus pada system design."
+        "description": "Saya adalah Full-Stack Developer berlatar belakang Teknik Komputer dan Jaringan yang mengembangkan aplikasi web dari antarmuka dan API hingga pengelolaan data serta deployment. Saya mengutamakan pemahaman kebutuhan pengguna, struktur kode yang terpelihara, pengujian, dan praktik keamanan yang proporsional. Portofolio ini menunjukkan cara saya menerjemahkan masalah menjadi solusi teknis yang terukur sekaligus memperdalam software engineering dan system design."
       },
       "history": {
         "heading": {
           "lead": "Riwayat",
           "highlight": "Saya"
         },
-        "introduction": "Perjalanan pengalaman kerja, pendidikan, dan pelatihan saya, dikelompokkan berdasarkan tahun dimulai."
+        "introduction": "Pengalaman kerja, pendidikan, dan pelatihan yang membentuk cara saya menyelesaikan masalah dan membangun perangkat lunak."
       },
       "skills": {
-        "heading": "Keahlian Teknis",
+        "heading": {
+          "lead": "Keahlian",
+          "highlight": "Teknis"
+        },
         "introduction": "Teknologi dan praktik rekayasa yang saya gunakan untuk membangun perangkat lunak yang fungsional, aman, dan dapat dikembangkan.",
         "groups": {
           "frontEnd": {
@@ -260,14 +263,14 @@
           "lead": "Portofolio",
           "highlight": "Proyek"
         },
-        "introduction": "Beberapa proyek pilihan yang mewakili perjalanan dan eksplorasi belajar saya."
+        "introduction": "Proyek pilihan yang menunjukkan cara saya merancang alur, mengambil keputusan teknis, dan membangun solusi dari antarmuka hingga backend."
       },
       "featuredCertificates": {
         "heading": {
           "highlight": "Sertifikasi",
           "tail": "& Penghargaan"
         },
-        "introduction": "Sertifikasi dan pencapaian profesional yang menandai setiap langkah penting dalam perjalanan karir IT saya."
+        "introduction": "Sertifikasi dan pelatihan terpilih yang memperkuat kompetensi saya dalam pengembangan web, pemrograman, data, dan praktik rekayasa perangkat lunak."
       },
       "contact": {
         "heading": {
@@ -332,7 +335,7 @@
         "lead": "Portofolio",
         "highlight": "Proyek"
       },
-      "introduction": "Arsip lengkap dari proyek-proyek yang pernah saya kerjakan, mendokumentasikan proses belajar dan adaptasi saya terhadap berbagai teknologi."
+      "introduction": "Kumpulan proyek yang menunjukkan penerapan full-stack development, backend API, pengelolaan data, pengujian, dan praktik keamanan pada kebutuhan yang beragam."
     },
     "certificates": {
       "documentTitle": "Sertifikasi & Penghargaan — Sulu Edward Julianto",
@@ -340,7 +343,7 @@
         "highlight": "Sertifikasi",
         "tail": "& Penghargaan"
       },
-      "introduction": "Catatan komprehensif mengenai kualifikasi, pelatihan, dan sertifikasi industri yang mendukung kompetensi teknis saya."
+      "introduction": "Kumpulan sertifikasi dan pelatihan terverifikasi yang memperkuat kompetensi saya dalam pengembangan web, pemrograman, data, dan teknologi pendukung."
     },
     "projectDetail": {
       "documentTitle": "Detail Proyek — Sulu Edward Julianto",

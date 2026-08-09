@@ -103,6 +103,22 @@ test('CV button text is constrained to one line with enough shared button width'
     assert.match(rootPages.home, /\.hero-btn \{[\s\S]*?width: 220px;/);
 });
 
+test('portfolio brand uses two compact lines on mobile and one line from tablet widths', () => {
+    const stylesheet = read('assets/css/main.css');
+    for (const [page, html] of Object.entries(rootPages)) {
+        assert.match(
+            html,
+            /class="portfolio-brand" aria-label="Sulu Edward Julianto"><span>Sulu Edward<\/span><span>Julianto<\/span>/,
+            page,
+        );
+    }
+    assert.match(stylesheet, /\.portfolio-brand \{[\s\S]*?flex-direction: column;[\s\S]*?font-size: 0\.72rem;/);
+    assert.match(
+        stylesheet,
+        /@media \(min-width: 768px\) \{[\s\S]*?\.portfolio-brand \{[\s\S]*?flex-direction: row;[\s\S]*?font-size: 1\.25rem;/,
+    );
+});
+
 test('each root page publishes canonical and hreflang metadata before JavaScript runs', () => {
     for (const [page, html] of Object.entries(rootPages)) {
         assert.match(html, /<link rel="canonical" href="https:\/\/sulujulianto\.github\.io\//, page);
@@ -113,6 +129,26 @@ test('each root page publishes canonical and hreflang metadata before JavaScript
         assert.match(html, /<meta property="og:description"/);
         assert.match(html, /<meta property="og:locale"/);
     }
+});
+
+test('root pages publish complete large-image social metadata and a 1200 by 630 preview', () => {
+    for (const [page, html] of Object.entries(rootPages)) {
+        assert.match(html, /<meta property="og:type" content="website"/, page);
+        assert.match(html, /<meta property="og:url" content="https:\/\/sulujulianto\.github\.io\//, page);
+        assert.match(html, /<meta property="og:image" content="https:\/\/sulujulianto\.github\.io\/assets\/img\/social\/portfolio-preview\.png"/, page);
+        assert.match(html, /<meta property="og:image:width" content="1200"/, page);
+        assert.match(html, /<meta property="og:image:height" content="630"/, page);
+        assert.match(html, /<meta property="og:image:alt"/, page);
+        assert.match(html, /<meta name="twitter:card" content="summary_large_image"/, page);
+        assert.match(html, /<meta name="twitter:title"/, page);
+        assert.match(html, /<meta name="twitter:description"/, page);
+        assert.match(html, /<meta name="twitter:image"/, page);
+    }
+
+    const preview = readFileSync(new URL('../assets/img/social/portfolio-preview.png', import.meta.url));
+    assert.equal(preview.subarray(1, 4).toString('ascii'), 'PNG');
+    assert.equal(preview.readUInt32BE(16), 1200);
+    assert.equal(preview.readUInt32BE(20), 630);
 });
 
 test('every declarative UI binding resolves in every catalog', () => {
@@ -128,6 +164,20 @@ test('every declarative UI binding resolves in every catalog', () => {
         const missing = [...bindings].filter((path) => typeof readCatalogPath(catalogs[locale], path) !== 'string');
         assert.deepEqual(missing, [], locale);
     }
+});
+
+test('primary positioning is professional in every locale without changing official credential names', () => {
+    assert.doesNotMatch(catalogs.id.pages.home.hero.tagline, /Junior/i);
+    assert.doesNotMatch(catalogs.en.pages.home.hero.tagline, /Junior/i);
+    assert.doesNotMatch(catalogs.ja.pages.home.hero.tagline, /ジュニア/);
+    assert.doesNotMatch(catalogs.zh.pages.home.hero.tagline, /初级/);
+    assert.match(catalogs.id.pages.home.hero.tagline, /Full-Stack Developer/);
+    assert.match(catalogs.en.pages.home.about.description, /software engineering and system design/i);
+    assert.match(catalogs.ja.pages.home.about.description, /ソフトウェアエンジニアリング/);
+    assert.match(catalogs.zh.pages.home.about.description, /软件工程与系统设计/);
+
+    const IndonesianCertificates = JSON.parse(read('assets/data/certificates/certificates-id.json'));
+    assert.ok(IndonesianCertificates.some((certificate) => certificate.title === 'Junior Web Developer (BNSP)'));
 });
 
 test('root pages use root-relative assets and React data bases', () => {
