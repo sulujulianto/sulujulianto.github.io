@@ -65,10 +65,10 @@
       "alt": "Dashboard admin Nusantara Trans",
       "caption": "Dashboard admin memberi titik awal untuk memantau aktivitas reservasi."
     },
-    { "type": "heading", "level": 2, "text": "Apa yang saya pelajari" },
+    { "type": "heading", "level": 2, "text": "Dampak terhadap rancangan" },
     {
       "type": "paragraph",
-      "text": "Proyek ini memperkuat pemahaman saya tentang state yang saling bergantung. Ketersediaan kursi, isi keranjang, promo, booking, pembayaran, dan refund tidak dapat diperlakukan sebagai halaman terpisah; semuanya perlu menjaga konsistensi data ketika pengguna berpindah dari satu langkah ke langkah berikutnya."
+      "text": "Rancangan proyek menempatkan konsistensi state sebagai perhatian utama. Ketersediaan kursi, isi keranjang, promo, booking, pembayaran, dan refund tidak dapat diperlakukan sebagai halaman terpisah; semuanya perlu mempertahankan data yang selaras ketika pengguna berpindah dari satu langkah ke langkah berikutnya."
     }
   ],
   "links": {

@@ -19,10 +19,10 @@
   },
   "pages": {
     "home": {
-      "documentTitle": "Sulu Edward Julianto - ソフトウェアエンジニア",
+      "documentTitle": "Sulu Edward Julianto — フルスタック開発者",
       "hero": {
         "name": "Sulu Edward Julianto",
-        "tagline": "ジュニア・フルスタック開発者。スケーラブルで機能的なWebアプリケーションを構築します。",
+        "tagline": "フルスタック開発者として、使いやすさ・コード品質・保守性を重視したWebアプリケーションを設計・開発しています。",
         "downloadCv": "履歴書をダウンロード",
         "hireMe": "お問い合わせ",
         "profileImageAlt": "プロフィール写真"
@@ -32,17 +32,20 @@
           "lead": "",
           "highlight": "プロフィール"
         },
-        "description": "私はモダンなWeb開発に注力しているジュニア・フルスタック開発者です。コンピュータネットワーク工学の背景を持ち、このポートフォリオは私のITキャリアの記録（アーカイブ）です。ここではWebプロジェクトや技術的な探求、そしてシステム設計への理解を深めることに重点を置いた、ソフトウェア開発における継続的な学習プロセスをまとめています。"
+        "description": "コンピュータ・ネットワーク工学の基礎を背景に、フロントエンド、バックエンド、データ管理、デプロイまで一貫してWebアプリケーションを開発しています。要件と利用者の動線を整理し、保守しやすいコード、適切なテスト、必要性に応じたセキュリティ対策を大切にしています。本ポートフォリオでは、課題を実装可能なソフトウェアへ落とし込むプロセスと、ソフトウェアエンジニアリングおよびシステム設計への取り組みを紹介します。"
       },
       "history": {
         "heading": {
           "lead": "",
           "highlight": "経歴"
         },
-        "introduction": "職歴、学歴、職業訓練を、それぞれの開始年ごとにまとめています。"
+        "introduction": "問題解決とソフトウェア開発への姿勢を形づくった、職務経験・教育・研修を紹介します。"
       },
       "skills": {
-        "heading": "技術スキル",
+        "heading": {
+          "lead": "",
+          "highlight": "技術スキル"
+        },
         "introduction": "機能性、安全性、保守性を備えたソフトウェアを構築するために使用している技術とエンジニアリング手法です。",
         "groups": {
           "frontEnd": {
@@ -222,7 +225,7 @@
             "dataCloud": "データ・クラウド",
             "devSecOpsEngineering": "DevSecOps・エンジニアリング",
             "systemsNetworking": "システム・ネットワーク",
-            "mobileCurrentDevelopment": "モバイル・現在の学習"
+            "mobileCurrentDevelopment": "モバイル・発展領域"
           },
           "controls": {
             "expand": "カテゴリーを開く",
@@ -230,7 +233,7 @@
             "unavailable": "現在スキルを表示できません。"
           },
           "statuses": {
-            "activeDevelopment": "学習・開発中",
+            "activeDevelopment": "継続開発中",
             "planned": "計画中"
           },
           "items": {
@@ -260,14 +263,14 @@
           "lead": "実績",
           "highlight": "プロジェクト"
         },
-        "introduction": "私の学習プロセスと探求を代表する、注目のプロジェクトです。"
+        "introduction": "ユーザー動線の設計、技術選定、フロントエンドからバックエンドまでの実装力を示すプロジェクトを紹介します。"
       },
       "featuredCertificates": {
         "heading": {
           "highlight": "資格",
           "tail": "・受賞歴"
         },
-        "introduction": "私のITキャリアにおける重要なマイルストーンとなる、主要な認定資格とプロフェッショナルな実績です。"
+        "introduction": "Web開発、プログラミング、データ、ソフトウェアエンジニアリングの実践を支える主な資格と研修です。"
       },
       "contact": {
         "heading": {
@@ -280,19 +283,19 @@
           "channels": {
             "email": {
               "label": "sulucodes@gmail.com",
-              "title": "Kirim Email"
+              "title": "メールを送る"
             },
             "linkedin": {
               "label": "linkedin.com/in/sulujulianto",
-              "title": "Profil LinkedIn"
+              "title": "LinkedInプロフィール"
             },
             "whatsapp": {
               "label": "+62 821-2372-4998 (WA Business)",
-              "title": "Hubungi via WhatsApp"
+              "title": "WhatsAppで連絡"
             },
             "telegram": {
               "label": "@sulucodes",
-              "title": "Hubungi via Telegram"
+              "title": "Telegramで連絡"
             }
           }
         },
@@ -332,7 +335,7 @@
         "lead": "実績",
         "highlight": "プロジェクト"
       },
-      "introduction": "様々な技術への適応と学習プロセスを記録した、これまでに手掛けた全プロジェクトのアーカイブです。"
+      "introduction": "フルスタック開発、バックエンドAPI、データ管理、テスト、実践的なセキュリティ対応を、さまざまな要件に適用したプロジェクト集です。"
     },
     "certificates": {
       "documentTitle": "資格・受賞歴 — Sulu Edward Julianto",
@@ -340,7 +343,7 @@
         "highlight": "資格",
         "tail": "・受賞歴"
       },
-      "introduction": "私の技術力を裏付ける、技術資格、研修、および業界認定の包括的な記録です。"
+      "introduction": "Web開発、プログラミング、データ、周辺技術に関する資格と研修をまとめています。"
     },
     "projectDetail": {
       "documentTitle": "プロジェクト詳細 — Sulu Edward Julianto",

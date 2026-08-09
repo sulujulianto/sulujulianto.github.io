@@ -59,6 +59,7 @@ test('catalog strings are non-empty except approved Japanese heading leads', () 
     const approvedEmptyPaths = new Set([
         'pages.home.about.heading.lead',
         'pages.home.history.heading.lead',
+        'pages.home.skills.heading.lead',
     ]);
 
     for (const locale of locales) {
@@ -101,5 +102,14 @@ test('history navigation and section text exist in every locale', () => {
         assert.equal(typeof catalog.pages.home.history.heading.lead, 'string');
         assert.equal(typeof catalog.pages.home.history.heading.highlight, 'string');
         assert.ok(catalog.pages.home.history.introduction.trim());
+    }
+});
+
+test('skills heading uses locale-safe lead and highlighted text', () => {
+    for (const locale of locales) {
+        const heading = catalogs[locale].pages.home.skills.heading;
+        assert.equal(typeof heading.lead, 'string');
+        assert.equal(typeof heading.highlight, 'string');
+        assert.ok(`${heading.lead}${heading.highlight}`.trim(), locale);
     }
 });

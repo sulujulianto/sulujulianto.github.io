@@ -1,7 +1,7 @@
 [
   {
     "title": "Atlas Country API",
-    "description": "Production ready FastAPI backend for querying country and capital data with strict validation.",
+    "description": "A production-oriented FastAPI backend for country and capital data, built with layered boundaries, strict validation, automated tests, and CI quality gates.",
     "category": "backend-api",
     "imageUrl": "../assets/img/projects/en/atlas-country-api.webp",
     "githubUrl": "https://github.com/sulujulianto/atlas-country-api",

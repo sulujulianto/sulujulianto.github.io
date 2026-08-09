@@ -877,7 +877,10 @@ if (typeof globalThis !== 'undefined') {
         })));
         const activeGroup = (_a = groups.find((group) => group.id === activeGroupId)) !== null && _a !== void 0 ? _a : groups[0];
         const activeHeading = getGroupHeading(activeGroup);
-        const sectionLabel = catalogText('pages.home.skills.heading', 'Keahlian Teknis');
+        const sectionLabel = [
+            catalogText('pages.home.skills.heading.lead', ''),
+            catalogText('pages.home.skills.heading.highlight', ''),
+        ].filter(Boolean).join(' ') || 'Keahlian Teknis';
         const handleCategoryKeyDown = (event, currentIndex) => {
             const lastIndex = groups.length - 1;
             let nextIndex = null;

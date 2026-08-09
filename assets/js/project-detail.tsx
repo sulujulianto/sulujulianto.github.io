@@ -114,6 +114,8 @@
         ensureMeta('meta[name="description"]', 'name=description', article.summary);
         ensureMeta('meta[property="og:title"]', 'property=og:title', title);
         ensureMeta('meta[property="og:description"]', 'property=og:description', article.summary);
+        ensureMeta('meta[name="twitter:title"]', 'name=twitter:title', title);
+        ensureMeta('meta[name="twitter:description"]', 'name=twitter:description', article.summary);
         ensureMeta('meta[property="og:type"]', 'property=og:type', 'article');
         ensureMeta('meta[property="og:image"]', 'property=og:image', heroUrl);
         ensureMeta(

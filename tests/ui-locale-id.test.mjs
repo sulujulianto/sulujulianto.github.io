@@ -39,7 +39,8 @@ test('required shared and page fields are present', () => {
     assert.equal(typeof catalog.pages.home.documentTitle, 'string');
     assert.equal(typeof catalog.pages.home.hero.tagline, 'string');
     assert.equal(typeof catalog.pages.home.about.description, 'string');
-    assert.equal(typeof catalog.pages.home.skills.heading, 'string');
+    assert.equal(typeof catalog.pages.home.skills.heading.lead, 'string');
+    assert.equal(typeof catalog.pages.home.skills.heading.highlight, 'string');
     assert.equal(typeof catalog.pages.home.featuredProjects.introduction, 'string');
     assert.equal(typeof catalog.pages.home.featuredCertificates.introduction, 'string');
     assert.equal(typeof catalog.pages.home.contact.form.fields.name.ariaLabel, 'string');
@@ -58,7 +59,7 @@ test('required shared and page fields are present', () => {
 test('selected values remain exact copies of Indonesian source text', () => {
     const catalog = parseCatalog();
 
-    assert.equal(catalog.pages.home.documentTitle, 'Sulu Edward Julianto - Software Engineer');
+    assert.equal(catalog.pages.home.documentTitle, 'Sulu Edward Julianto — Full-Stack Developer');
     assert.equal(catalog.pages.home.hero.downloadCv, 'Unduh CV');
     assert.equal(catalog.pages.home.hero.hireMe, 'Hire Me');
     assert.equal(catalog.pages.home.contact.form.submitting, 'Mengirim...');

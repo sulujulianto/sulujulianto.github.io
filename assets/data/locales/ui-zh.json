@@ -19,10 +19,10 @@
   },
   "pages": {
     "home": {
-      "documentTitle": "Sulu Edward Julianto - 软件工程师",
+      "documentTitle": "Sulu Edward Julianto — 全栈开发者",
       "hero": {
         "name": "Sulu Edward Julianto",
-        "tagline": "初级全栈开发者。致力于构建可扩展且功能完善的 Web 应用程序。",
+        "tagline": "全栈开发者，专注于打造兼顾易用性、代码质量与可维护架构的端到端 Web 应用。",
         "downloadCv": "下载简历",
         "hireMe": "联系我",
         "profileImageAlt": "Sulu Edward 个人照片"
@@ -32,17 +32,20 @@
           "lead": "关于",
           "highlight": "我"
         },
-        "description": "我是一名专注于现代 Web 开发的初级全栈开发者。拥有计算机网络工程背景，这份作品集是我 IT 职业生涯的记录存档，汇集了我的 Web 项目、技术探索，以及我在软件开发领域的持续学习过程，并侧重于深化对系统设计的理解。"
+        "description": "我是一名拥有计算机与网络工程背景的全栈开发者，能够覆盖前端界面、后端服务、数据管理与部署等环节。我重视清晰的用户流程、可维护的代码、务实的测试，以及与产品需求相匹配的安全措施。本作品集呈现了我如何将需求转化为可运行的软件，并持续深化软件工程与系统设计实践。"
       },
       "history": {
         "heading": {
           "lead": "个人",
           "highlight": "经历"
         },
-        "introduction": "我的工作经历、教育与培训，按照各段经历的开始年份分组展示。"
+        "introduction": "这些工作经历、教育与培训共同塑造了我解决问题和构建软件的方式。"
       },
       "skills": {
-        "heading": "专业技能",
+        "heading": {
+          "lead": "专业",
+          "highlight": "技能"
+        },
         "introduction": "我用于构建功能完善、安全且易于维护的软件所采用的技术与工程实践。",
         "groups": {
           "frontEnd": {
@@ -222,7 +225,7 @@
             "dataCloud": "数据与云平台",
             "devSecOpsEngineering": "DevSecOps 与工程实践",
             "systemsNetworking": "系统与网络",
-            "mobileCurrentDevelopment": "移动端与当前学习"
+            "mobileCurrentDevelopment": "移动端与进阶方向"
           },
           "controls": {
             "expand": "展开分类",
@@ -230,7 +233,7 @@
             "unavailable": "暂时无法显示技能。"
           },
           "statuses": {
-            "activeDevelopment": "正在学习与开发",
+            "activeDevelopment": "持续开发中",
             "planned": "计划中"
           },
           "items": {
@@ -260,14 +263,14 @@
           "lead": "项目",
           "highlight": "精选"
         },
-        "introduction": "精选的部分项目，代表了我的学习历程与探索。"
+        "introduction": "精选项目展示了我如何设计用户流程、作出技术决策，并完成从前端到后端的实现。"
       },
       "featuredCertificates": {
         "heading": {
           "highlight": "资质",
           "tail": "与荣誉"
         },
-        "introduction": "标志着我 IT 职业生涯中重要里程碑的精选认证与专业荣誉。"
+        "introduction": "精选认证与培训，覆盖 Web 开发、编程、数据及软件工程实践。"
       },
       "contact": {
         "heading": {
@@ -280,19 +283,19 @@
           "channels": {
             "email": {
               "label": "sulucodes@gmail.com",
-              "title": "Kirim Email"
+              "title": "发送邮件"
             },
             "linkedin": {
               "label": "linkedin.com/in/sulujulianto",
-              "title": "Profil LinkedIn"
+              "title": "LinkedIn 个人主页"
             },
             "whatsapp": {
               "label": "+62 821-2372-4998 (WA Business)",
-              "title": "Hubungi via WhatsApp"
+              "title": "通过 WhatsApp 联系"
             },
             "telegram": {
               "label": "@sulucodes",
-              "title": "Hubungi via Telegram"
+              "title": "通过 Telegram 联系"
             }
           }
         },
@@ -332,7 +335,7 @@
         "lead": "项目",
         "highlight": "精选"
       },
-      "introduction": "我完成的所有项目存档，记录了我的学习过程以及对各种技术的适应能力。"
+      "introduction": "项目集合展示了我如何在不同需求中运用全栈开发、后端 API、数据管理、测试与务实的安全实践。"
     },
     "certificates": {
       "documentTitle": "资质与荣誉 — Sulu Edward Julianto",
@@ -340,7 +343,7 @@
         "highlight": "资质",
         "tail": "与荣誉"
       },
-      "introduction": "支撑我技术能力的专业资质、培训及行业认证的完整记录。"
+      "introduction": "经验证的认证与培训记录，覆盖 Web 开发、编程、数据及相关技术。"
     },
     "projectDetail": {
       "documentTitle": "项目详情 — Sulu Edward Julianto",

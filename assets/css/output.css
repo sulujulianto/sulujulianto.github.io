@@ -1399,6 +1399,29 @@ video {
   --card-index: 0;
 }
 
+.portfolio-brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+@media (min-width: 768px) {
+  .portfolio-brand {
+    flex-direction: row;
+    gap: 0.32em;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    letter-spacing: -0.025em;
+    white-space: nowrap;
+  }
+}
+
 @keyframes card-fade-up {
   from {
     opacity: 0;

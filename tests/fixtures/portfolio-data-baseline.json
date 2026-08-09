@@ -13,7 +13,7 @@
     "projects": {
       "id": {
         "file": "assets/data/projects/projects-id.json",
-        "sha256": "56f831c2ce00f2e7aba53cec3caeed332d3ab4a6fc05e2e1e0cafa80e3bd79ae",
+        "sha256": "4aa35cd6068d95bb9c1930dd71ccd07b09891e787ade6c5b0b25e5c25d6244ef",
         "counts": {
           "total": 8,
           "displayable": 8,
@@ -177,7 +177,7 @@
       },
       "en": {
         "file": "assets/data/projects/projects-en.json",
-        "sha256": "58324125f535501a4397d0e77a989ccffa00970f6397635589b1c339f70e4842",
+        "sha256": "7ee19fd3408a91dca37353f8c28a7e9f790f09415d33efc7b23562b589d6d70e",
         "counts": {
           "total": 3,
           "displayable": 1,
@@ -318,7 +318,7 @@
     "certificates": {
       "id": {
         "file": "assets/data/certificates/certificates-id.json",
-        "sha256": "7c56a7943dc81bccf1ced0c85e556532598611635fa51b65f5b9f0ddc77b6ad5",
+        "sha256": "cefd35be526fad1dd1ccb28326d5aa645d447d3c90533e33062c1c9252812e8c",
         "counts": {
           "total": 12,
           "displayable": 12,
@@ -476,7 +476,7 @@
       },
       "en": {
         "file": "assets/data/certificates/certificates-en.json",
-        "sha256": "187f069b62c2bf0c19b95db4ef08609aec49f54e844afcb7cc91d854274f92bd",
+        "sha256": "747b671f372047c19bc1ec23c19869a8cb5bfc27806982fd92f4bafe6bc90d9a",
         "counts": {
           "total": 38,
           "displayable": 38,

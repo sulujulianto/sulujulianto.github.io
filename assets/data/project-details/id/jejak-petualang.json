@@ -61,10 +61,10 @@
       "alt": "Dashboard admin Jejak Petualang",
       "caption": "Dashboard admin merangkum data penting sebelum pengelola masuk ke modul operasional."
     },
-    { "type": "heading", "level": 2, "text": "Keputusan teknis dan pembelajaran" },
+    { "type": "heading", "level": 2, "text": "Keputusan teknis dan batas implementasi" },
     {
       "type": "paragraph",
-      "text": "Kode proyek menggunakan hashing dan verifikasi kata sandi bawaan PHP serta escaping keluaran pada banyak tampilan. Karena proyek ini dibangun sebagai latihan fundamental, saya memosisikannya sebagai bukti kemampuan menyusun aplikasi CRUD dan transaksi secara end-to-end—bukan sebagai klaim bahwa sistem telah melalui audit keamanan atau siap menangani toko produksi."
+      "text": "Kode proyek menggunakan hashing dan verifikasi kata sandi bawaan PHP serta escaping keluaran pada banyak tampilan. Sebagai implementasi fundamental tanpa framework, proyek ini menunjukkan kemampuan menyusun aplikasi CRUD dan transaksi secara end-to-end—bukan klaim bahwa sistem telah melalui audit keamanan atau siap menangani toko produksi."
     },
     {
       "type": "callout",

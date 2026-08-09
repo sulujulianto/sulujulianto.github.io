@@ -1408,7 +1408,10 @@ if (typeof globalThis !== 'undefined') {
 
         const activeGroup = groups.find((group) => group.id === activeGroupId) ?? groups[0];
         const activeHeading = getGroupHeading(activeGroup);
-        const sectionLabel = catalogText('pages.home.skills.heading', 'Keahlian Teknis');
+        const sectionLabel = [
+            catalogText('pages.home.skills.heading.lead', ''),
+            catalogText('pages.home.skills.heading.highlight', ''),
+        ].filter(Boolean).join(' ') || 'Keahlian Teknis';
         const handleCategoryKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, currentIndex: number) => {
             const lastIndex = groups.length - 1;
             let nextIndex: number | null = null;

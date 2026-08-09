@@ -45,10 +45,10 @@
       "title": "Batas bukti saat ini",
       "text": "Repositori belum menyediakan URL demo publik, screenshot dokumentasi tambahan, workflow CI, atau test suite otomatis. Halaman ini hanya menyatakan fitur dan pencapaian yang didukung oleh kode serta dokumentasi repositori."
     },
-    { "type": "heading", "level": 2, "text": "Hasil dan pembelajaran" },
+    { "type": "heading", "level": 2, "text": "Hasil pengembangan" },
     {
       "type": "paragraph",
-      "text": "Proyek ini memberi saya pengalaman membangun sesuatu yang berbeda dari aplikasi CRUD biasa. Saya perlu memikirkan input simultan, pembaruan state berulang, aturan menang-kalah, sinkronisasi data Firebase, dan cara mempresentasikan ide permainan dalam waktu challenge yang terbatas."
+      "text": "Proyek ini memperluas pengalaman saya di luar pola aplikasi CRUD. Implementasinya menuntut penanganan input simultan, pembaruan state berulang, aturan menang-kalah, sinkronisasi data Firebase, serta penyampaian ide permainan dalam waktu challenge yang terbatas."
     }
   ],
   "links": {
