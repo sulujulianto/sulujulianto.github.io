@@ -433,25 +433,53 @@ if (typeof globalThis !== 'undefined') {
         </button>
     );
 
+    const LoadingCardSkeleton: React.FC<{ aspectRatio: string }> = ({ aspectRatio }) => (
+        <div
+            className="card min-h-[420px] h-full overflow-hidden rounded-2xl shadow-lg bg-white/70 dark:bg-slate-800 animate-pulse motion-reduce:animate-none"
+            aria-hidden="true"
+        >
+            <div
+                className="w-full bg-slate-200 dark:bg-slate-700"
+                style={{ aspectRatio }}
+            ></div>
+            <div className="p-5 space-y-4">
+                <div className="h-3 w-1/3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                <div className="h-5 w-4/5 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                <div className="space-y-2">
+                    <div className="h-3 w-full rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                    <div className="h-3 w-11/12 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                    <div className="h-3 w-3/4 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                </div>
+            </div>
+        </div>
+    );
+
     const PortfolioGrid = <T,>({
         data,
         isLoading,
         error,
         labels,
         renderCard,
+        loadingItemCount = 3,
+        loadingAspectRatio = '16 / 9',
     }: {
         data: T[];
         isLoading: boolean;
         error: string | null;
         labels: ComponentLabels;
         renderCard: (item: T, index: number) => React.ReactNode;
+        loadingItemCount?: number;
+        loadingAspectRatio?: string;
     }) => {
         if (isLoading) {
+            const skeletonCount = Math.max(1, Math.floor(loadingItemCount));
             return (
-                <div className="text-center col-span-full py-12">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                    <p className="text-gray-600 dark:text-gray-400">{labels.loading}</p>
-                </div>
+                <>
+                    <span className="sr-only" role="status">{labels.loading}</span>
+                    {Array.from({ length: skeletonCount }, (_, index) => (
+                        <LoadingCardSkeleton key={`loading-card-${index}`} aspectRatio={loadingAspectRatio} />
+                    ))}
+                </>
             );
         }
 
@@ -698,36 +726,6 @@ if (typeof globalThis !== 'undefined') {
             }
         }, [availableCategories, filter]);
 
-        const CertificateImage: React.FC<{ item: CertificateItem }> = ({ item }) => {
-            const [isPortrait, setIsPortrait] = React.useState(false);
-
-            const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
-                const img = event.currentTarget;
-                if (img.naturalHeight > img.naturalWidth) {
-                    setIsPortrait(true);
-                }
-            };
-
-            const containerStyle = isPortrait
-                ? { height: '240px', padding: '12px' }
-                : { aspectRatio: '5 / 3' };
-
-            return (
-                <div
-                    className="w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center"
-                    style={containerStyle}
-                >
-                    <img
-                        src={item.imageUrl}
-                        alt={item.title}
-                        loading="lazy"
-                        className="w-full h-full object-contain"
-                        onLoad={handleLoad}
-                    />
-                </div>
-            );
-        };
-
         return (
             <div>
                 {showFiltersProjects && (
@@ -746,6 +744,8 @@ if (typeof globalThis !== 'undefined') {
                         isLoading={isLoading}
                         error={error}
                         labels={labels}
+                        loadingItemCount={mode === 'featured' ? highlightLimit : batchSize}
+                        loadingAspectRatio="16 / 9"
                         renderCard={(item, index) => {
                             const detailUrl = new URL(`/projects/${encodeURIComponent(item.slug)}/`, window.location.origin);
                             detailUrl.searchParams.set('lang', localeKey);
@@ -938,7 +938,7 @@ if (typeof globalThis !== 'undefined') {
             }
         }, [availableCategories, filter]);
 
-        const CertificateImage: React.FC<{ item: CertificateItem }> = ({ item }) => {
+        const CertificateImage: React.FC<{ item: CertificateItem; priority?: boolean }> = ({ item, priority = false }) => {
             const [isPortrait, setIsPortrait] = React.useState(false);
 
             const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
@@ -990,7 +990,17 @@ if (typeof globalThis !== 'undefined') {
             return (
                 <div className="w-full flex items-center justify-center bg-slate-100 dark:bg-slate-800" style={containerStyle}>
                     {isPortrait && <div style={portraitBgStyle} aria-hidden="true"></div>}
-                    <img src={item.imageUrl} alt={item.title} loading="lazy" style={imgStyle} onLoad={handleLoad} />
+                    <img
+                        src={item.imageUrl}
+                        alt={item.title}
+                        loading={priority ? 'eager' : 'lazy'}
+                        fetchPriority={priority ? 'high' : 'auto'}
+                        decoding="async"
+                        width={1414}
+                        height={1000}
+                        style={imgStyle}
+                        onLoad={handleLoad}
+                    />
                 </div>
             );
         };
@@ -1013,6 +1023,8 @@ if (typeof globalThis !== 'undefined') {
                         isLoading={isLoading}
                         error={error}
                         labels={labels}
+                        loadingItemCount={mode === 'featured' ? highlightLimit : batchSize}
+                        loadingAspectRatio="1414 / 1000"
                         renderCard={(item, index) => {
                             const detailUrl = (item.link && item.link !== '#') ? item.link : item.fullImageUrl || item.imageUrl;
                             const Wrapper: React.ElementType = detailUrl ? 'a' : 'div';
@@ -1027,7 +1039,7 @@ if (typeof globalThis !== 'undefined') {
                                     style={{ '--card-index': index } as React.CSSProperties}
                                     {...wrapperProps}
                                 >
-                                    <CertificateImage item={item} />
+                                    <CertificateImage item={item} priority={mode === 'full' && index === 0} />
                                     <div className="p-5 flex flex-col flex-grow gap-2">
                                         <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
                                         <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
