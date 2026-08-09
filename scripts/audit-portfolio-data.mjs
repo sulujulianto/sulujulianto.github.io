@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
@@ -163,6 +163,98 @@ const buildCategorySnapshot = (type, locale, raw, records) => ({
     })),
 });
 
+const updateBaselineFromCurrentData = () => {
+    const nextBaseline = {
+        schemaVersion: 1,
+        knownMissingAssets: [...EXPECTED_KNOWN_MISSING_ASSETS],
+        requiredAssets: [...EXPECTED_REQUIRED_ASSETS],
+        datasets: {
+            projects: {},
+            certificates: {},
+        },
+        categories: {
+            projects: {},
+            certificates: {},
+        },
+    };
+    const projectsByLocale = {};
+    const projectCategoriesByLocale = {};
+
+    for (const type of Object.keys(DATASETS)) {
+        for (const locale of LOCALES) {
+            const relativePath = DATASETS[type].file(locale);
+            const parsed = readJson(relativePath, `${type} ${locale.toUpperCase()}`);
+            if (!parsed) continue;
+            if (!Array.isArray(parsed.value)) {
+                failures.push(`${type} ${locale.toUpperCase()}: top-level JSON value must be an array`);
+                continue;
+            }
+
+            nextBaseline.datasets[type][locale] = buildDatasetSnapshot(
+                type,
+                locale,
+                parsed.raw,
+                parsed.value,
+            );
+            collectAssetReferences(type, locale, relativePath, parsed.value);
+            if (type === 'projects') projectsByLocale[locale] = parsed.value;
+        }
+    }
+
+    for (const type of Object.keys(CATEGORY_DATASETS)) {
+        for (const locale of LOCALES) {
+            const relativePath = CATEGORY_DATASETS[type].file(locale);
+            const parsed = readJson(relativePath, `${type} categories ${locale.toUpperCase()}`);
+            if (!parsed) continue;
+            if (!Array.isArray(parsed.value)) {
+                failures.push(`${type} categories ${locale.toUpperCase()}: top-level JSON value must be an array`);
+                continue;
+            }
+
+            nextBaseline.categories[type][locale] = buildCategorySnapshot(
+                type,
+                locale,
+                parsed.raw,
+                parsed.value,
+            );
+            if (type === 'projects') projectCategoriesByLocale[locale] = parsed.value;
+        }
+    }
+
+    if (LOCALES.every((locale) => projectsByLocale[locale] && projectCategoriesByLocale[locale])) {
+        validateProjectCategoryCatalogs({
+            locales: LOCALES,
+            catalogs: projectCategoriesByLocale,
+            projectsByLocale,
+        }).forEach((error) => failures.push(`project categories: ${error}`));
+    }
+
+    for (const requiredPath of EXPECTED_REQUIRED_ASSETS) {
+        if (!existsSync(path.join(REPOSITORY_ROOT, requiredPath))) {
+            failures.push(`required asset is missing: ${requiredPath}`);
+        }
+    }
+
+    for (const [assetPath, sources] of assetReferences) {
+        if (existsSync(path.join(REPOSITORY_ROOT, assetPath))) continue;
+        if (EXPECTED_KNOWN_MISSING_ASSETS.includes(assetPath)) continue;
+        failures.push(`unexpected missing local asset: ${assetPath} (referenced by ${sources.join(', ')})`);
+    }
+
+    for (const knownPath of EXPECTED_KNOWN_MISSING_ASSETS) {
+        if (!assetReferences.has(knownPath)) {
+            failures.push(`known-missing allowlist entry is no longer referenced; review policy: ${knownPath}`);
+        } else if (existsSync(path.join(REPOSITORY_ROOT, knownPath))) {
+            failures.push(`known-missing asset now exists; remove it from the allowlist: ${knownPath}`);
+        }
+    }
+
+    if (failures.length > 0) return false;
+
+    writeFileSync(BASELINE_PATH, `${JSON.stringify(nextBaseline, null, 2)}\n`, 'utf8');
+    return true;
+};
+
 const addAssetReference = (locale, datasetFile, recordIndex, field, value) => {
     if (typeof value !== 'string' || value.trim() === '') return;
 
@@ -257,7 +349,7 @@ const auditCategories = (baseline, type, locale) => {
     const expected = baseline.categories?.[type]?.[locale];
     let passed = true;
 
-    if (type !== 'projects' && !expected) {
+    if (!expected) {
         failures.push(`${label}: dataset is missing from baseline`);
         return { passed: false, count: null, records: [] };
     }
@@ -267,10 +359,6 @@ const auditCategories = (baseline, type, locale) => {
     if (!Array.isArray(parsed.value)) {
         failures.push(`${label}: top-level JSON value must be an array`);
         return { passed: false, count: expected?.count ?? null, records: [] };
-    }
-
-    if (type === 'projects') {
-        return { passed: true, count: parsed.value.length, records: parsed.value };
     }
 
     const actual = buildCategorySnapshot(type, locale, parsed.raw, parsed.value);
@@ -339,6 +427,23 @@ const loadBaseline = () => {
     }
     return parsed.value;
 };
+
+if (process.argv.includes('--update-baseline')) {
+    console.log('Portfolio data baseline update');
+    console.log('==============================');
+
+    if (!updateBaselineFromCurrentData()) {
+        console.log('\nBaseline was not changed because validation failed:');
+        for (const failure of failures) console.log(`  FAIL ${failure}`);
+        process.exit(1);
+    }
+
+    console.log(`Updated ${toRepositoryPath(BASELINE_PATH)} from the current intentional data.`);
+    failures.length = 0;
+    warnings.length = 0;
+    assetReferences.clear();
+    console.log('Running the regular audit against the new baseline...\n');
+}
 
 console.log('Portfolio data audit');
 console.log('====================');

@@ -979,6 +979,260 @@
     }
   },
   "categories": {
+    "projects": {
+      "id": {
+        "file": "assets/data/categories/projects/project-categories-id.json",
+        "sha256": "d6210b95fded6ad20dd3f386ecc3a86bbf1ddfad3dc822599e5c81a1bdf9c7e0",
+        "count": 14,
+        "records": [
+          {
+            "id": "*",
+            "label": "Semua"
+          },
+          {
+            "id": "frontend-web",
+            "label": "Front-End Web"
+          },
+          {
+            "id": "fullstack-web",
+            "label": "Aplikasi Full-Stack"
+          },
+          {
+            "id": "backend-api",
+            "label": "Back-End & API"
+          },
+          {
+            "id": "mobile-app",
+            "label": "Aplikasi Mobile"
+          },
+          {
+            "id": "desktop-app",
+            "label": "Aplikasi Desktop"
+          },
+          {
+            "id": "ai-machine-learning",
+            "label": "AI & Machine Learning"
+          },
+          {
+            "id": "data-database",
+            "label": "Data & Database"
+          },
+          {
+            "id": "cloud-infrastructure",
+            "label": "Cloud & Infrastruktur"
+          },
+          {
+            "id": "devops-automation",
+            "label": "DevOps & Otomasi"
+          },
+          {
+            "id": "cybersecurity",
+            "label": "Keamanan Siber"
+          },
+          {
+            "id": "systems-networking",
+            "label": "Sistem & Jaringan"
+          },
+          {
+            "id": "cli-developer-tools",
+            "label": "CLI & Alat Pengembang"
+          },
+          {
+            "id": "game-interactive",
+            "label": "Game & Interaktif"
+          }
+        ]
+      },
+      "en": {
+        "file": "assets/data/categories/projects/project-categories-en.json",
+        "sha256": "6e355015c40694f0707460114de4aa371b62204bf48e6c1ff50c07b3581d7cb2",
+        "count": 14,
+        "records": [
+          {
+            "id": "*",
+            "label": "All"
+          },
+          {
+            "id": "frontend-web",
+            "label": "Front-End Web"
+          },
+          {
+            "id": "fullstack-web",
+            "label": "Full-Stack Applications"
+          },
+          {
+            "id": "backend-api",
+            "label": "Back-End & API"
+          },
+          {
+            "id": "mobile-app",
+            "label": "Mobile Applications"
+          },
+          {
+            "id": "desktop-app",
+            "label": "Desktop Applications"
+          },
+          {
+            "id": "ai-machine-learning",
+            "label": "AI & Machine Learning"
+          },
+          {
+            "id": "data-database",
+            "label": "Data & Databases"
+          },
+          {
+            "id": "cloud-infrastructure",
+            "label": "Cloud & Infrastructure"
+          },
+          {
+            "id": "devops-automation",
+            "label": "DevOps & Automation"
+          },
+          {
+            "id": "cybersecurity",
+            "label": "Cybersecurity"
+          },
+          {
+            "id": "systems-networking",
+            "label": "Systems & Networking"
+          },
+          {
+            "id": "cli-developer-tools",
+            "label": "CLI & Developer Tools"
+          },
+          {
+            "id": "game-interactive",
+            "label": "Games & Interactive"
+          }
+        ]
+      },
+      "ja": {
+        "file": "assets/data/categories/projects/project-categories-ja.json",
+        "sha256": "f5fe523630262365cef3dddb502aff98c77005f65728a92568c1ba8c97f57b09",
+        "count": 14,
+        "records": [
+          {
+            "id": "*",
+            "label": "すべて"
+          },
+          {
+            "id": "frontend-web",
+            "label": "フロントエンドWeb"
+          },
+          {
+            "id": "fullstack-web",
+            "label": "フルスタックアプリ"
+          },
+          {
+            "id": "backend-api",
+            "label": "バックエンド・API"
+          },
+          {
+            "id": "mobile-app",
+            "label": "モバイルアプリ"
+          },
+          {
+            "id": "desktop-app",
+            "label": "デスクトップアプリ"
+          },
+          {
+            "id": "ai-machine-learning",
+            "label": "AI・機械学習"
+          },
+          {
+            "id": "data-database",
+            "label": "データ・データベース"
+          },
+          {
+            "id": "cloud-infrastructure",
+            "label": "クラウド・インフラ"
+          },
+          {
+            "id": "devops-automation",
+            "label": "DevOps・自動化"
+          },
+          {
+            "id": "cybersecurity",
+            "label": "サイバーセキュリティ"
+          },
+          {
+            "id": "systems-networking",
+            "label": "システム・ネットワーク"
+          },
+          {
+            "id": "cli-developer-tools",
+            "label": "CLI・開発者ツール"
+          },
+          {
+            "id": "game-interactive",
+            "label": "ゲーム・インタラクティブ"
+          }
+        ]
+      },
+      "zh": {
+        "file": "assets/data/categories/projects/project-categories-zh.json",
+        "sha256": "5246ed50fa3fe92f49dcda7acc1af4c4e5df988308c4a9d36c776fb0eb9ed5b6",
+        "count": 14,
+        "records": [
+          {
+            "id": "*",
+            "label": "全部"
+          },
+          {
+            "id": "frontend-web",
+            "label": "前端网页"
+          },
+          {
+            "id": "fullstack-web",
+            "label": "全栈应用"
+          },
+          {
+            "id": "backend-api",
+            "label": "后端与 API"
+          },
+          {
+            "id": "mobile-app",
+            "label": "移动应用"
+          },
+          {
+            "id": "desktop-app",
+            "label": "桌面应用"
+          },
+          {
+            "id": "ai-machine-learning",
+            "label": "人工智能与机器学习"
+          },
+          {
+            "id": "data-database",
+            "label": "数据与数据库"
+          },
+          {
+            "id": "cloud-infrastructure",
+            "label": "云与基础设施"
+          },
+          {
+            "id": "devops-automation",
+            "label": "DevOps 与自动化"
+          },
+          {
+            "id": "cybersecurity",
+            "label": "网络安全"
+          },
+          {
+            "id": "systems-networking",
+            "label": "系统与网络"
+          },
+          {
+            "id": "cli-developer-tools",
+            "label": "CLI 与开发者工具"
+          },
+          {
+            "id": "game-interactive",
+            "label": "游戏与互动"
+          }
+        ]
+      }
+    },
     "certificates": {
       "id": {
         "file": "assets/data/categories/certificates/certificate-categories-id.json",
