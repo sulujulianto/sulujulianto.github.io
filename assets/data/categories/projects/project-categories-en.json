@@ -1,30 +1,16 @@
 [
-  {
-    "id": "*",
-    "label": "All"
-  },
-  {
-    "id": "frontend",
-    "label": "Front-End"
-  },
-  {
-    "id": "backend",
-    "label": "Back-End"
-  },
-  {
-    "id": "fullstack",
-    "label": "Full-Stack"
-  },
-  {
-    "id": "mobile",
-    "label": "Mobile"
-  },
-  {
-    "id": "ai-data",
-    "label": "AI & Data"
-  },
-  {
-    "id": "game",
-    "label": "Game"
-  }
+  { "id": "*", "label": "All" },
+  { "id": "frontend-web", "label": "Front-End Web" },
+  { "id": "fullstack-web", "label": "Full-Stack Applications" },
+  { "id": "backend-api", "label": "Back-End & API" },
+  { "id": "mobile-app", "label": "Mobile Applications" },
+  { "id": "desktop-app", "label": "Desktop Applications" },
+  { "id": "ai-machine-learning", "label": "AI & Machine Learning" },
+  { "id": "data-database", "label": "Data & Databases" },
+  { "id": "cloud-infrastructure", "label": "Cloud & Infrastructure" },
+  { "id": "devops-automation", "label": "DevOps & Automation" },
+  { "id": "cybersecurity", "label": "Cybersecurity" },
+  { "id": "systems-networking", "label": "Systems & Networking" },
+  { "id": "cli-developer-tools", "label": "CLI & Developer Tools" },
+  { "id": "game-interactive", "label": "Games & Interactive" }
 ]

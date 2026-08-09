@@ -1,6 +1,84 @@
 /// <reference types="react" />
 /// <reference types="react-dom" />
 
+interface ProjectCategoryDefinition {
+    id: string;
+    label: string;
+}
+
+interface ProjectCategoryApi {
+    buildCategoryList(list: ProjectCategoryDefinition[] | undefined, fallbackLabel: string): ProjectCategoryDefinition[];
+    selectAvailableCategories(
+        definitions: ProjectCategoryDefinition[],
+        usedCategoryIds: Array<string | undefined>,
+        fallbackLabel: string,
+    ): ProjectCategoryDefinition[];
+}
+
+const projectCategoryApi: ProjectCategoryApi = (() => {
+    const buildCategoryList = (
+        list: ProjectCategoryDefinition[] | undefined,
+        fallbackLabel: string,
+    ): ProjectCategoryDefinition[] => {
+        const fallback: ProjectCategoryDefinition = { id: '*', label: fallbackLabel };
+        const seen = new Set<string>();
+        const cleaned: ProjectCategoryDefinition[] = [];
+
+        if (Array.isArray(list)) {
+            list.forEach((item) => {
+                if (!item || typeof item.id !== 'string' || typeof item.label !== 'string') return;
+                const id = item.id.trim();
+                const label = item.label.trim();
+                if (!id || !label || seen.has(id)) return;
+                cleaned.push({ id, label });
+                seen.add(id);
+            });
+        }
+
+        return [fallback, ...cleaned.filter((category) => category.id !== fallback.id)];
+    };
+
+    const selectAvailableCategories = (
+        definitions: ProjectCategoryDefinition[],
+        usedCategoryIds: Array<string | undefined>,
+        fallbackLabel: string,
+    ): ProjectCategoryDefinition[] => {
+        const used = new Set(
+            usedCategoryIds
+                .filter((id): id is string => typeof id === 'string')
+                .map((id) => id.trim())
+                .filter(Boolean),
+        );
+        const result: ProjectCategoryDefinition[] = [];
+        const seen = new Set<string>();
+
+        definitions.forEach((category) => {
+            if (category.id === '*' || used.has(category.id)) {
+                result.push(category);
+                seen.add(category.id);
+            }
+        });
+
+        used.forEach((id) => {
+            if (seen.has(id)) return;
+            result.push({ id, label: id });
+            seen.add(id);
+        });
+
+        if (!seen.has('*')) result.unshift({ id: '*', label: fallbackLabel });
+        return result;
+    };
+
+    return Object.freeze({ buildCategoryList, selectAvailableCategories });
+})();
+
+if (typeof globalThis !== 'undefined') {
+    Object.defineProperty(globalThis, 'PortfolioProjectCategories', {
+        value: projectCategoryApi,
+        configurable: true,
+    });
+}
+
 (function () {
     'use strict';
     if (typeof React === 'undefined' || typeof ReactDOM === 'undefined') {
@@ -23,13 +101,14 @@
     interface ProjectItem {
         title: string;
         description: string;
+        slug: string;
+        status: 'published' | 'in-development';
         category?: string;
         imageUrl: string;
         githubUrl?: string;
         liveUrl?: string;
         techStack?: string[];
         dateAdded?: string;
-        modalDescription?: string;
         isFeatured?: boolean;
     }
 
@@ -111,15 +190,11 @@
         error: string;
         empty: string;
         viewAll: string;
-        modalClose: string;
-        modalGithub: string;
-        modalPreview: string;
+        readProject: string;
+        inDevelopment: string;
     }
 
-    interface CategoryDefinition {
-        id: string;
-        label: string;
-    }
+    type CategoryDefinition = ProjectCategoryDefinition;
 
     const ALL_CATEGORY_LABEL: Record<LocaleKey, string> = {
         id: 'Semua',
@@ -128,22 +203,7 @@
         zh: '全部',
     };
 
-    const buildCategoryList = (list: CategoryDefinition[] | undefined, fallbackLabel: string): CategoryDefinition[] => {
-        const fallback: CategoryDefinition = { id: '*', label: fallbackLabel };
-        const seen = new Set<string>();
-        const cleaned: CategoryDefinition[] = [];
-        if (Array.isArray(list)) {
-            list.forEach((item) => {
-                if (!item || typeof item.id !== 'string' || typeof item.label !== 'string') return;
-                const id = item.id.trim();
-                if (!id || seen.has(id)) return;
-                cleaned.push({ id, label: item.label });
-                seen.add(id);
-            });
-        }
-        const withoutFallback = cleaned.filter((cat) => cat.id !== fallback.id);
-        return [fallback, ...withoutFallback];
-    };
+    const buildCategoryList = projectCategoryApi.buildCategoryList;
 
     const normalizeLocale = (value?: string): LocaleKey => {
         const locale = (value || 'id').toLowerCase();
@@ -199,9 +259,8 @@
             error: 'Terjadi kesalahan:',
             empty: 'Belum ada item yang dapat ditampilkan.',
             viewAll: 'Lihat Semua',
-            modalClose: 'Tutup',
-            modalGithub: 'Buka GitHub',
-            modalPreview: 'Lihat Langsung',
+            readProject: 'Baca Studi Kasus',
+            inDevelopment: 'Dalam pengembangan',
         },
         en: {
             issued: 'Issued on:',
@@ -211,9 +270,8 @@
             error: 'Something went wrong:',
             empty: 'Nothing to display yet.',
             viewAll: 'View All',
-            modalClose: 'Close',
-            modalGithub: 'Open GitHub',
-            modalPreview: 'View Live',
+            readProject: 'Read Case Study',
+            inDevelopment: 'In development',
         },
         ja: {
             issued: '発行日:',
@@ -223,9 +281,8 @@
             error: 'エラーが発生しました:',
             empty: '表示できる項目はまだありません。',
             viewAll: 'すべて表示',
-            modalClose: '閉じる',
-            modalGithub: 'GitHub を開く',
-            modalPreview: 'ライブを見る',
+            readProject: '事例を読む',
+            inDevelopment: '開発中',
         },
         zh: {
             issued: '颁发于:',
@@ -235,9 +292,8 @@
             error: '发生错误:',
             empty: '暂无可展示的内容。',
             viewAll: '查看全部',
-            modalClose: '关闭',
-            modalGithub: '打开 GitHub',
-            modalPreview: '访问网站',
+            readProject: '阅读项目案例',
+            inDevelopment: '开发中',
         },
     };
 
@@ -425,19 +481,32 @@
         item: ProjectItem;
         labels: ComponentLabels;
         categoryLabels: Record<string, string>;
-        onAction: () => void;
+        href: string;
         animationIndex: number;
-        asLink?: string | null;
-    }> = ({ item, labels, categoryLabels, onAction, animationIndex, asLink = null }) => {
+    }> = ({ item, labels, categoryLabels, href, animationIndex }) => {
+        const [imageFailed, setImageFailed] = React.useState(false);
         const className =
-            'card h-full flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
+            'card project-card h-full flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left bg-white/70 dark:bg-slate-800 card-appear';
 
         const imageBlock = (
             <div
                 className="w-full overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center"
                 style={{ aspectRatio: '16 / 9', maxHeight: '210px' }}
             >
-                <img src={item.imageUrl} alt={item.title} loading="lazy" className="w-full h-full object-contain" />
+                {!imageFailed && item.imageUrl ? (
+                    <img
+                        src={item.imageUrl}
+                        alt={item.title}
+                        loading="lazy"
+                        className="w-full h-full object-contain"
+                        onError={() => setImageFailed(true)}
+                    />
+                ) : (
+                    <div className="project-card__image-placeholder" role="img" aria-label={item.title}>
+                        <i className="fas fa-code" aria-hidden="true"></i>
+                        <span>{item.title}</span>
+                    </div>
+                )}
             </div>
         );
 
@@ -446,6 +515,12 @@
                 <div className="flex items-center text-xs uppercase tracking-wide text-blue-600 dark:text-blue-300 font-semibold mb-2">
                     {item.category && (categoryLabels[item.category] || item.category)}
                 </div>
+                {item.status === 'in-development' && (
+                    <span className="project-card__status">
+                        <i className="fas fa-hammer" aria-hidden="true"></i>
+                        {labels.inDevelopment}
+                    </span>
+                )}
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">{item.title}</h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300 flex-grow">{item.description}</p>
                 {item.techStack && item.techStack.length > 0 && (
@@ -454,129 +529,22 @@
                         <p className="text-sm font-normal text-gray-700 dark:text-gray-300">{item.techStack.join(', ')}</p>
                     </div>
                 )}
+                <span className="project-card__link">
+                    {labels.readProject}
+                    <i className="fas fa-arrow-right" aria-hidden="true"></i>
+                </span>
             </div>
         );
 
-        if (asLink) {
-            return (
-                <a
-                    href={asLink}
-                    className={className}
-                    style={{ '--card-index': animationIndex } as React.CSSProperties}
-                    onClick={onAction}
-                >
-                    {imageBlock}
-                    {body}
-                </a>
-            );
-        }
-
         return (
-            <button
-                type="button"
-                onClick={onAction}
+            <a
+                href={href}
                 className={className}
                 style={{ '--card-index': animationIndex } as React.CSSProperties}
             >
                 {imageBlock}
                 {body}
-            </button>
-        );
-    };
-
-    const ProjectModal: React.FC<{
-        project: ProjectItem;
-        labels: ComponentLabels;
-        categoryLabels: Record<string, string>;
-        onClose: () => void;
-    }> = ({ project, labels, categoryLabels, onClose }) => {
-        React.useEffect(() => {
-            const handleEsc = (event: KeyboardEvent) => {
-                if (event.key === 'Escape') {
-                    onClose();
-                }
-            };
-            document.addEventListener('keydown', handleEsc);
-            return () => document.removeEventListener('keydown', handleEsc);
-        }, [onClose]);
-
-        const handleBackdrop = (event: React.MouseEvent<HTMLDivElement>) => {
-            if (event.target === event.currentTarget) {
-                onClose();
-            }
-        };
-
-        const detailedDescription = project.modalDescription || project.description;
-
-        return (
-            <div
-                className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center px-4"
-                onClick={handleBackdrop}
-            >
-                <article className="project-modal">
-                    <header className="project-modal__header">
-                        <div>
-                            {project.category && (
-                                <span className="project-modal__badge">
-                                    {categoryLabels[project.category] || project.category}
-                                </span>
-                            )}
-                            <h3 className="project-modal__title">{project.title}</h3>
-                        </div>
-                        <button type="button" onClick={onClose} aria-label={labels.modalClose} className="project-modal__close">
-                            <i className="fas fa-times"></i>
-                        </button>
-                    </header>
-
-                    <div className="project-modal__content">
-                        <div className="project-modal__image">
-                            <img src={project.imageUrl} alt={project.title} />
-                        </div>
-
-                        <div className="project-modal__body">
-                            <p className="project-modal__description">{detailedDescription}</p>
-
-                            {project.techStack && project.techStack.length > 0 && (
-                                <div>
-                                    <p className="project-modal__label">{labels.techStack}</p>
-                                    <p className="project-modal__tech">{project.techStack.join(', ')}</p>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="project-modal__actions">
-                        {project.githubUrl && (
-                            <a
-                                href={project.githubUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="project-modal__btn project-modal__btn--secondary"
-                                style={{ textDecoration: 'none' }}
-                            >
-                                <i className="fab fa-github"></i>
-                                <span>{labels.modalGithub}</span>
-                            </a>
-                        )}
-                        {project.liveUrl && (
-                            <a
-                                href={project.liveUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="project-modal__btn project-modal__btn--primary"
-                                style={{ textDecoration: 'none' }}
-                            >
-                                <i className="fas fa-external-link-alt"></i>
-                                <span>{labels.modalPreview}</span>
-                            </a>
-                        )}
-                        <button type="button" onClick={onClose} className="project-modal__btn project-modal__btn--ghost">
-                            <i className="fas fa-times"></i>
-                            <span>{labels.modalClose}</span>
-                        </button>
-                    </div>
-                </article>
-            </div>
+            </a>
         );
     };
 
@@ -603,7 +571,6 @@
         const [filter, setFilter] = React.useState('*');
         const [isLoading, setIsLoading] = React.useState(true);
         const [error, setError] = React.useState<string | null>(null);
-        const [selectedProject, setSelectedProject] = React.useState<ProjectItem | null>(null);
         const [visibleCount, setVisibleCount] = React.useState(() => (mode === 'featured' ? highlightCount : batchSize));
         const sentinelRef = React.useRef<HTMLDivElement | null>(null);
         const [categoryDefinitions, setCategoryDefinitions] = React.useState<CategoryDefinition[]>(() =>
@@ -715,30 +682,15 @@
             return map;
         }, [categoryDefinitions]);
 
-        const availableCategories = React.useMemo(() => {
-            const unique = new Set(data.map((item) => item.category).filter(Boolean) as string[]);
-            const result: CategoryDefinition[] = [];
-            const seen = new Set<string>();
-
-            categoryDefinitions.forEach((category) => {
-                if (category.id === '*' || unique.has(category.id)) {
-                    result.push(category);
-                    seen.add(category.id);
-                }
-            });
-
-            unique.forEach((id) => {
-                if (!id || seen.has(id)) return;
-                result.push({ id, label: categoryLabels[id] || id });
-                seen.add(id);
-            });
-
-            if (!seen.has('*')) {
-                result.unshift({ id: '*', label: ALL_CATEGORY_LABEL[localeKey] });
-            }
-
-            return result;
-        }, [categoryDefinitions, categoryLabels, data, localeKey]);
+        const availableCategories = React.useMemo(
+            () =>
+                projectCategoryApi.selectAvailableCategories(
+                    categoryDefinitions,
+                    data.map((item) => item.category),
+                    ALL_CATEGORY_LABEL[localeKey],
+                ),
+            [categoryDefinitions, data, localeKey],
+        );
 
         React.useEffect(() => {
             if (!availableCategories.some((category) => category.id === filter)) {
@@ -795,14 +747,8 @@
                         error={error}
                         labels={labels}
                         renderCard={(item, index) => {
-                            const shouldNavigate = mode === 'featured' && !!fullUrl;
-                            const handleAction = () => {
-                                if (shouldNavigate && fullUrl) {
-                                    window.location.href = fullUrl;
-                                    return;
-                                }
-                                setSelectedProject(item);
-                            };
+                            const detailUrl = new URL(`/projects/${encodeURIComponent(item.slug)}/`, window.location.origin);
+                            detailUrl.searchParams.set('lang', localeKey);
 
                             return (
                                 <ProjectCard
@@ -810,8 +756,7 @@
                                     item={item}
                                     labels={labels}
                                     categoryLabels={categoryLabels}
-                                    onAction={handleAction}
-                                    asLink={shouldNavigate && fullUrl ? fullUrl : null}
+                                    href={`${detailUrl.pathname}${detailUrl.search}`}
                                     animationIndex={index}
                                 />
                             );
@@ -832,14 +777,6 @@
                     </div>
                 )}
 
-                {selectedProject && (
-                    <ProjectModal
-                        project={selectedProject}
-                        labels={labels}
-                        categoryLabels={categoryLabels}
-                        onClose={() => setSelectedProject(null)}
-                    />
-                )}
             </div>
         );
     };

@@ -2,7 +2,7 @@
     'use strict';
 
     type Locale = 'id' | 'en' | 'ja' | 'zh';
-    type PageKey = 'home' | 'projects' | 'certificates' | 'notFound';
+    type PageKey = 'home' | 'projects' | 'certificates' | 'projectDetail' | 'notFound';
 
     interface LanguageApi {
         resolveCurrentLocale(): Locale;
@@ -37,6 +37,7 @@
         home: '/',
         projects: '/projects.html',
         certificates: '/certificates.html',
+        projectDetail: window.location.pathname,
         notFound: '/404.html',
     };
     const HTML_LOCALES: Record<Locale, string> = {
@@ -80,7 +81,7 @@
 
     const pageKey = (): PageKey => {
         const value = document.body?.dataset.page;
-        return value === 'projects' || value === 'certificates' || value === 'notFound'
+        return value === 'projects' || value === 'certificates' || value === 'projectDetail' || value === 'notFound'
             ? value
             : 'home';
     };
@@ -170,6 +171,8 @@
             ? 'pages.home.about.description'
             : page === 'notFound'
                 ? 'pages.notFound.description'
+                : page === 'projectDetail'
+                    ? 'pages.projectDetail.description'
                 : `pages.${page}.introduction`;
         const description = readPath(catalog, descriptionPath);
         const canonicalUrl = new URL(PAGE_PATHS[page], window.location.origin).toString();

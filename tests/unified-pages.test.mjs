@@ -40,7 +40,7 @@ test('custom 404 page is multilingual, theme-aware, and safe for nested missing 
     assert.match(notFoundPage, /data-i18n="pages\.notFound\.returnHome"/);
 
     const localeRuntime = read('assets/js/locale-manager.ts');
-    assert.match(localeRuntime, /type PageKey = 'home' \| 'projects' \| 'certificates' \| 'notFound'/);
+    assert.match(localeRuntime, /type PageKey = 'home' \| 'projects' \| 'certificates' \| 'projectDetail' \| 'notFound'/);
     assert.match(localeRuntime, /fetch\(`\/assets\/data\/locales\/ui-\$\{locale\}\.json`/);
 });
 
@@ -173,18 +173,43 @@ test('all twelve legacy pages redirect to the matching root page and canonical l
     }
 });
 
-test('project category catalogs provide a localized game label', () => {
-    const expected = { id: 'Game', en: 'Game', ja: 'ゲーム', zh: '游戏' };
+test('project category catalogs keep the same extensible ids in every locale', () => {
+    const requiredIds = [
+        '*',
+        'frontend-web',
+        'fullstack-web',
+        'backend-api',
+        'mobile-app',
+        'ai-machine-learning',
+        'cybersecurity',
+        'systems-networking',
+        'game-interactive',
+    ];
+    const referenceIds = JSON.parse(read('assets/data/categories/projects/project-categories-id.json')).map(
+        (category) => category.id,
+    );
     for (const locale of locales) {
         const categories = JSON.parse(read(`assets/data/categories/projects/project-categories-${locale}.json`));
-        assert.equal(categories.find((category) => category.id === 'game')?.label, expected[locale]);
+        assert.deepEqual(categories.map((category) => category.id), referenceIds, locale);
+        assert.ok(requiredIds.every((id) => referenceIds.includes(id)), locale);
+        assert.ok(categories.every((category) => category.label.trim()), locale);
     }
 });
 
-test('sitemap publishes only the three portfolio root pages plus the blog', () => {
+test('sitemap publishes root pages, the blog, and all completed project details', () => {
     const sitemap = read('sitemap.xml');
     for (const page of ['/', '/projects.html', '/certificates.html', '/blog/']) {
         assert.ok(sitemap.includes(`https://sulujulianto.github.io${page}`));
+    }
+    for (const slug of [
+        'jejak-petualang',
+        'nusantara-trans',
+        'japan-travel',
+        'sistem-informasi-wilayah-indonesia',
+        'pixel-heist-co-op',
+        'atlas-country-api',
+    ]) {
+        assert.ok(sitemap.includes(`https://sulujulianto.github.io/projects/${slug}/`), slug);
     }
     assert.doesNotMatch(sitemap, /<loc>https:\/\/sulujulianto\.github\.io\/(?:id|en|jp|cn)\//);
     assert.doesNotMatch(sitemap, /<loc>https:\/\/sulujulianto\.github\.io\/404\.html/);

@@ -342,6 +342,18 @@
       },
       "introduction": "A comprehensive record of the technical qualifications, training, and industry certifications that support my technical competencies."
     },
+    "projectDetail": {
+      "documentTitle": "Project Detail — Sulu Edward Julianto",
+      "description": "A project case study by Sulu Edward Julianto.",
+      "breadcrumb": "Projects",
+      "technologyHeading": "Technologies Used",
+      "github": "Open GitHub",
+      "liveDemo": "View Live Demo",
+      "backToProjects": "Back to All Projects",
+      "loading": "Loading case study...",
+      "error": "The case study could not be loaded.",
+      "unavailable": "Project content is not available yet."
+    },
     "notFound": {
       "documentTitle": "Page Not Found — Sulu Edward Julianto",
       "description": "The page you are looking for could not be found.",

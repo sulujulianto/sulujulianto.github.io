@@ -2,14 +2,22 @@
   {
     "title": "Atlas Country API",
     "description": "Production ready FastAPI backend for querying country and capital data with strict validation.",
-    "category": "backend",
+    "category": "backend-api",
     "imageUrl": "../assets/img/projects/en/atlas-country-api.webp",
     "githubUrl": "https://github.com/sulujulianto/atlas-country-api",
     "liveUrl": "",
-    "techStack": ["Python 3.12", "FastAPI", "Pydantic", "Docker", "GitHub Actions", "Pytest"],
+    "techStack": [
+      "Python 3.12",
+      "FastAPI",
+      "Pydantic",
+      "Docker",
+      "GitHub Actions",
+      "Pytest"
+    ],
     "dateAdded": "2025-11-26",
-    "modalDescription": "A robust RESTful API built with a layered architecture (Routes, Services, Repositories). Features include advanced search and filtering, statistical aggregation, structured JSON logging, rate limiting, and comprehensive CI/CD pipelines with over 90% test coverage.",
-    "isFeatured": true
+    "isFeatured": true,
+    "slug": "atlas-country-api",
+    "status": "published"
   },
   {
     "title": "",
@@ -20,7 +28,6 @@
     "liveUrl": "",
     "techStack": [],
     "dateAdded": "",
-    "modalDescription": "",
     "isFeatured": false
   },
   {
@@ -32,7 +39,6 @@
     "liveUrl": "",
     "techStack": [],
     "dateAdded": "",
-    "modalDescription": "",
     "isFeatured": false
   }
 ]

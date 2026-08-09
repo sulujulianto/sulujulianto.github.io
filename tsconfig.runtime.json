@@ -11,6 +11,7 @@
   },
   "include": [
     "assets/js/app.tsx",
+    "assets/js/project-detail.tsx",
     "assets/js/language-resolver.ts",
     "assets/js/locale-manager.ts"
   ]

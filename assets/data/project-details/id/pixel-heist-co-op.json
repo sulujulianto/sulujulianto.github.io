@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "slug": "pixel-heist-co-op",
+  "contentLanguage": "id",
+  "title": "Pixel Heist Co-op",
+  "summary": "Game stealth co-op berbasis browser untuk dua pemain pada satu perangkat, dikembangkan dengan Next.js, Firebase, dan bantuan Google Gemini.",
+  "category": "game-interactive",
+  "hero": {
+    "src": "/assets/img/projects/id/pixel-heist.webp",
+    "alt": "Tampilan game Pixel Heist Co-op",
+    "caption": "Dua pemain bekerja sama mengumpulkan loot dan mencapai zona ekstraksi tanpa tertangkap penjaga."
+  },
+  "techStack": ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "Cloud Firestore", "Firebase App Hosting", "Firebase Studio", "Google Gemini"],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Pixel Heist Co-op adalah game stealth multiplayer lokal berbasis browser yang dibuat untuk Firebase Studio Challenge pada DevFest Depok 2025. Proyek ini terpilih sebagai pemenang challenge dan menjadi bahan presentasi singkat di acara tersebut."
+    },
+    { "type": "heading", "level": 2, "text": "Kerja sama di satu layar" },
+    {
+      "type": "paragraph",
+      "text": "Permainan dirancang sebagai couch co-op: dua orang menggunakan satu keyboard dan satu perangkat. Player 1 bergerak dengan WASD, sedangkan Player 2 menggunakan tombol panah. Keduanya perlu membagi perhatian antara posisi karakter, pergerakan penjaga, loot, waktu, dan jalur menuju zona ekstraksi."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Tujuan bersama: mengumpulkan loot lalu keluar dengan aman.",
+        "Penjaga memiliki keadaan patrol, chase, dan search.",
+        "Vision cone dan collision detection membentuk area pengawasan musuh.",
+        "Timer, skor, serta kondisi menang dan kalah menjaga sesi permainan tetap terukur."
+      ]
+    },
+    { "type": "heading", "level": 2, "text": "Firebase sebagai bagian dari pengalaman game" },
+    {
+      "type": "paragraph",
+      "text": "Cloud Firestore digunakan untuk menyimpan leaderboard dan mengambil konfigurasi tingkat kesulitan seperti kecepatan musuh serta jumlah loot yang diperlukan. Dengan konfigurasi eksternal, beberapa parameter permainan dapat diubah tanpa harus menulis ulang logika antarmuka."
+    },
+    { "type": "heading", "level": 2, "text": "Memakai GenAI sebagai akselerator, bukan pengganti pemahaman" },
+    {
+      "type": "paragraph",
+      "text": "Google Gemini di Firebase Studio membantu mempercepat penyusunan logika state machine, collision detection, dan game loop. Nilai proyek ini tetap terletak pada kemampuan mengarahkan proses, mengintegrasikan hasil ke aplikasi Next.js, dan menjelaskan bagaimana setiap mekanik bekerja bersama."
+    },
+    {
+      "type": "callout",
+      "title": "Batas bukti saat ini",
+      "text": "Repositori belum menyediakan URL demo publik, screenshot dokumentasi tambahan, workflow CI, atau test suite otomatis. Halaman ini hanya menyatakan fitur dan pencapaian yang didukung oleh kode serta dokumentasi repositori."
+    },
+    { "type": "heading", "level": 2, "text": "Hasil dan pembelajaran" },
+    {
+      "type": "paragraph",
+      "text": "Proyek ini memberi saya pengalaman membangun sesuatu yang berbeda dari aplikasi CRUD biasa. Saya perlu memikirkan input simultan, pembaruan state berulang, aturan menang-kalah, sinkronisasi data Firebase, dan cara mempresentasikan ide permainan dalam waktu challenge yang terbatas."
+    }
+  ],
+  "links": {
+    "github": "https://github.com/sulujulianto/pixel-heist-coop",
+    "liveDemo": null
+  }
+}

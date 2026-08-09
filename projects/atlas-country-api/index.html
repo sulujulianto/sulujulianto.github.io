@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atlas Country API — Sulu Edward Julianto</title>
+    <meta name="description" content="Case study for a layered FastAPI country and capital data backend." />
+    <link rel="canonical" href="https://sulujulianto.github.io/projects/atlas-country-api/" />
+    <meta property="og:title" content="Atlas Country API — Sulu Edward Julianto" />
+    <meta property="og:description" content="Case study for a layered FastAPI country and capital data backend." />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://sulujulianto.github.io/assets/img/projects/en/atlas-country-api.webp" />
+    <link rel="icon" href="/assets/img/icon.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/output.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dist/language-resolver.js" defer></script>
+    <script src="/assets/js/dist/locale-manager.js" defer></script>
+</head>
+<body data-page="projectDetail" class="project-detail-page min-h-screen flex flex-col">
+    <header class="project-detail-header sticky top-0 z-50 w-full">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a href="/" data-route="home" data-i18n="shared.brand" class="project-detail-brand shrink-0 whitespace-nowrap text-base font-bold tracking-tight sm:text-xl">Sulu Edward Julianto</a>
+
+            <nav class="hidden items-center gap-6 md:flex" aria-label="Primary navigation">
+                <a href="/" data-route="home" data-i18n="shared.navigation.home">Home</a>
+                <a href="/#tentang" data-route="about" data-i18n="shared.navigation.about">Tentang</a>
+                <a href="/#riwayat" data-route="history" data-i18n="shared.navigation.history">Riwayat</a>
+                <a href="/#skills" data-route="skills" data-i18n="shared.navigation.skills">Keahlian</a>
+                <a href="/projects.html" data-route="projects" data-i18n="shared.navigation.projects">Proyek</a>
+                <a href="/certificates.html" data-route="certificates" data-i18n="shared.navigation.certificates">Sertifikat</a>
+                <a href="/blog/" data-i18n="shared.navigation.blog">Blog</a>
+
+                <div class="language-picker language-picker-desktop" data-language-picker>
+                    <button id="language-selector-desktop" type="button" data-language-selector class="language-trigger" aria-label="Pilih bahasa: Bahasa Indonesia" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu-desktop">
+                        <i class="fas fa-globe language-picker-icon" aria-hidden="true"></i>
+                        <span class="language-current" data-language-current>Bahasa Indonesia</span>
+                        <i class="fas fa-chevron-down language-picker-chevron" aria-hidden="true"></i>
+                    </button>
+                    <div id="language-menu-desktop" data-language-menu class="language-menu" role="listbox" aria-label="Pilih bahasa" hidden>
+                        <button type="button" class="language-option" data-language-option="id" role="option" aria-selected="true"><span>Bahasa Indonesia</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="en" role="option" aria-selected="false"><span>English</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="ja" role="option" aria-selected="false"><span>日本語</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="zh" role="option" aria-selected="false"><span>中文</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+
+                <label id="theme-toggle" class="theme-switch-wrapper" data-i18n-attr="aria-label:pages.notFound.themeToggle">
+                    <input id="theme-toggle-checkbox" type="checkbox" />
+                    <span class="slider" aria-hidden="true">
+                        <i id="icon-sun" class="fas fa-sun icon-inside icon-sun-on-slider"></i>
+                        <i id="icon-moon" class="fas fa-moon icon-inside icon-moon-on-slider hidden"></i>
+                    </span>
+                </label>
+            </nav>
+
+            <div class="flex shrink-0 items-center gap-2 md:hidden">
+                <div class="language-picker language-picker-mobile" data-language-picker>
+                    <button id="language-selector-mobile" type="button" data-language-selector class="language-trigger" aria-label="Pilih bahasa: Bahasa Indonesia" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu-mobile">
+                        <i class="fas fa-globe language-picker-icon" aria-hidden="true"></i>
+                        <span class="language-current" data-language-current>ID</span>
+                        <i class="fas fa-chevron-down language-picker-chevron" aria-hidden="true"></i>
+                    </button>
+                    <div id="language-menu-mobile" data-language-menu class="language-menu" role="listbox" aria-label="Pilih bahasa" hidden>
+                        <button type="button" class="language-option" data-language-option="id" role="option" aria-label="Bahasa Indonesia" aria-selected="true"><span>ID</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="en" role="option" aria-label="English" aria-selected="false"><span>EN</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="ja" role="option" aria-label="日本語" aria-selected="false"><span>JP</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                        <button type="button" class="language-option" data-language-option="zh" role="option" aria-label="中文" aria-selected="false"><span>CH</span><i class="fas fa-check language-option-check" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+
+                <label id="theme-toggle-nav" class="theme-switch-wrapper" data-i18n-attr="aria-label:pages.notFound.themeToggle">
+                    <input id="theme-toggle-nav-checkbox" type="checkbox" />
+                    <span class="slider" aria-hidden="true">
+                        <i id="icon-sun-nav" class="fas fa-sun icon-inside icon-sun-on-slider"></i>
+                        <i id="icon-moon-nav" class="fas fa-moon icon-inside icon-moon-on-slider hidden"></i>
+                    </span>
+                </label>
+                <button id="navbar-toggle" type="button" class="project-mobile-toggle" aria-label="Open navigation"><i class="fas fa-bars" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="project-mobile-menu hidden px-4 pb-4 pt-2 md:hidden">
+            <nav class="grid gap-2" aria-label="Mobile navigation">
+                <a href="/" data-route="home" data-i18n="shared.navigation.home">Home</a>
+                <a href="/#tentang" data-route="about" data-i18n="shared.navigation.about">Tentang</a>
+                <a href="/#riwayat" data-route="history" data-i18n="shared.navigation.history">Riwayat</a>
+                <a href="/#skills" data-route="skills" data-i18n="shared.navigation.skills">Keahlian</a>
+                <a href="/projects.html" data-route="projects" data-i18n="shared.navigation.projects">Proyek</a>
+                <a href="/certificates.html" data-route="certificates" data-i18n="shared.navigation.certificates">Sertifikat</a>
+                <a href="/blog/" data-i18n="shared.navigation.blog">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+        <div id="project-detail-root" data-project-slug="atlas-country-api" data-content-locale="en" data-locale="en" class="mx-auto max-w-5xl"></div>
+    </main>
+
+    <footer class="project-detail-footer py-8">
+        <p class="px-4 text-center text-sm">
+            <span data-i18n="shared.footer.copyrightSymbol">©</span>
+            <span id="current-year"></span>
+            <span data-i18n="shared.footer.owner">Sulu Edward Julianto</span>
+        </p>
+    </footer>
+
+    <button id="to-top-btn" type="button" class="project-to-top fixed bottom-6 right-6 hidden" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/dist/project-detail.js"></script>
+    <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -13,7 +13,7 @@
     "projects": {
       "id": {
         "file": "assets/data/projects/projects-id.json",
-        "sha256": "53cd1b72ec2b4938f258f4ce3e5d97cf58ce4b274731152f7983e28b96cc2bf9",
+        "sha256": "56f831c2ce00f2e7aba53cec3caeed332d3ab4a6fc05e2e1e0cafa80e3bd79ae",
         "counts": {
           "total": 8,
           "displayable": 8,
@@ -37,7 +37,7 @@
         "records": [
           {
             "title": "Jejak Petualang",
-            "category": "fullstack",
+            "category": "fullstack-web",
             "dateAdded": "2025-08-20",
             "isFeatured": false,
             "imageUrl": "../assets/img/projects/id/jejakpetualang.webp",
@@ -53,7 +53,7 @@
           },
           {
             "title": "Nusantara Trans",
-            "category": "fullstack",
+            "category": "fullstack-web",
             "dateAdded": "2025-11-19",
             "isFeatured": false,
             "imageUrl": "../assets/img/projects/id/nusantaratrans.webp",
@@ -70,7 +70,7 @@
           },
           {
             "title": "Japan Travel",
-            "category": "fullstack",
+            "category": "fullstack-web",
             "dateAdded": "2025-11-20",
             "isFeatured": true,
             "imageUrl": "../assets/img/projects/id/japanese-travel.webp",
@@ -88,7 +88,7 @@
           },
           {
             "title": "Sistem Informasi Wilayah Indonesia",
-            "category": "backend",
+            "category": "backend-api",
             "dateAdded": "2025-12-04",
             "isFeatured": true,
             "imageUrl": "../assets/img/projects/id/sistem-wilayah-indonesia.webp",
@@ -105,7 +105,7 @@
           },
           {
             "title": "KosPintar",
-            "category": "fullstack",
+            "category": "fullstack-web",
             "dateAdded": "2026-01-01",
             "isFeatured": false,
             "imageUrl": "../assets/img/projects/id/kospintar.webp",
@@ -122,7 +122,7 @@
           },
           {
             "title": "LokerKita",
-            "category": "fullstack",
+            "category": "fullstack-web",
             "dateAdded": "2026-01-01",
             "isFeatured": true,
             "imageUrl": "../assets/img/projects/id/lokerkita.webp",
@@ -140,7 +140,7 @@
           },
           {
             "title": "AntrianKu",
-            "category": "fullstack",
+            "category": "fullstack-web",
             "dateAdded": "2026-01-01",
             "isFeatured": false,
             "imageUrl": "../assets/img/projects/id/antriankku.webp",
@@ -157,7 +157,7 @@
           },
           {
             "title": "Pixel Heist Co-op",
-            "category": "game",
+            "category": "game-interactive",
             "dateAdded": "2025-12-13",
             "isFeatured": false,
             "imageUrl": "../assets/img/projects/id/pixel-heist.webp",
@@ -177,7 +177,7 @@
       },
       "en": {
         "file": "assets/data/projects/projects-en.json",
-        "sha256": "f9df5cb41e89ccd91dcd4baced577845b7810a2fb0044c61dfd4e6f775008dd4",
+        "sha256": "58324125f535501a4397d0e77a989ccffa00970f6397635589b1c339f70e4842",
         "counts": {
           "total": 3,
           "displayable": 1,
@@ -193,7 +193,7 @@
         "records": [
           {
             "title": "Atlas Country API",
-            "category": "backend",
+            "category": "backend-api",
             "dateAdded": "2025-11-26",
             "isFeatured": true,
             "imageUrl": "../assets/img/projects/en/atlas-country-api.webp",
@@ -979,148 +979,6 @@
     }
   },
   "categories": {
-    "projects": {
-      "id": {
-        "file": "assets/data/categories/projects/project-categories-id.json",
-        "sha256": "2f04a03704e8baee5b953c47443b2d7a4908bd16b5fea79994f491574450a988",
-        "count": 7,
-        "records": [
-          {
-            "id": "*",
-            "label": "Semua"
-          },
-          {
-            "id": "frontend",
-            "label": "Front-End"
-          },
-          {
-            "id": "backend",
-            "label": "Back-End"
-          },
-          {
-            "id": "fullstack",
-            "label": "Full-Stack"
-          },
-          {
-            "id": "mobile",
-            "label": "Mobile"
-          },
-          {
-            "id": "ai-data",
-            "label": "AI & Data"
-          },
-          {
-            "id": "game",
-            "label": "Game"
-          }
-        ]
-      },
-      "en": {
-        "file": "assets/data/categories/projects/project-categories-en.json",
-        "sha256": "5c9e4a1597c02664bad35e670c8327f0b1a8210e48026957014346b510c65937",
-        "count": 7,
-        "records": [
-          {
-            "id": "*",
-            "label": "All"
-          },
-          {
-            "id": "frontend",
-            "label": "Front-End"
-          },
-          {
-            "id": "backend",
-            "label": "Back-End"
-          },
-          {
-            "id": "fullstack",
-            "label": "Full-Stack"
-          },
-          {
-            "id": "mobile",
-            "label": "Mobile"
-          },
-          {
-            "id": "ai-data",
-            "label": "AI & Data"
-          },
-          {
-            "id": "game",
-            "label": "Game"
-          }
-        ]
-      },
-      "ja": {
-        "file": "assets/data/categories/projects/project-categories-ja.json",
-        "sha256": "04e6f5b20441e5e64e9b489a85110ee4400b4ba5bf52b8ff1da3a9fc977aebed",
-        "count": 7,
-        "records": [
-          {
-            "id": "*",
-            "label": "すべて"
-          },
-          {
-            "id": "frontend",
-            "label": "フロントエンド"
-          },
-          {
-            "id": "backend",
-            "label": "バックエンド"
-          },
-          {
-            "id": "fullstack",
-            "label": "フルスタック"
-          },
-          {
-            "id": "mobile",
-            "label": "モバイル"
-          },
-          {
-            "id": "ai-data",
-            "label": "AI・データ"
-          },
-          {
-            "id": "game",
-            "label": "ゲーム"
-          }
-        ]
-      },
-      "zh": {
-        "file": "assets/data/categories/projects/project-categories-zh.json",
-        "sha256": "6a8893ac0ca8f56b9db8afda8473806e9af9c5c6eec66ce48112b539ee4f4d3c",
-        "count": 7,
-        "records": [
-          {
-            "id": "*",
-            "label": "全部"
-          },
-          {
-            "id": "frontend",
-            "label": "前端"
-          },
-          {
-            "id": "backend",
-            "label": "后端"
-          },
-          {
-            "id": "fullstack",
-            "label": "全栈"
-          },
-          {
-            "id": "mobile",
-            "label": "移动"
-          },
-          {
-            "id": "ai-data",
-            "label": "AI·数据"
-          },
-          {
-            "id": "game",
-            "label": "游戏"
-          }
-        ]
-      }
-    },
     "certificates": {
       "id": {
         "file": "assets/data/categories/certificates/certificate-categories-id.json",
