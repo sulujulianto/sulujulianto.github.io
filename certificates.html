@@ -314,7 +314,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
             <a href="./" data-route="home" class="portfolio-brand" aria-label="Sulu Edward Julianto"><span>Sulu Edward</span><span>Julianto</span></a>
 
-            <nav class="hidden md:flex space-x-8 items-center">
+            <nav class="hidden xl:flex space-x-8 items-center">
                 <a href="index.html" data-route="home" data-i18n="shared.navigation.home">Home</a>
                 <a href="index.html#tentang" data-route="about" data-i18n="shared.navigation.about">Tentang</a>
                 <a href="index.html#skills" data-route="skills" data-i18n="shared.navigation.skills">Keahlian</a>
@@ -344,7 +344,7 @@
                 </label>
             </nav>
 
-            <div class="md:hidden flex shrink-0 items-center gap-2">
+            <div class="xl:hidden flex shrink-0 items-center gap-2">
                 <div class="language-picker language-picker-mobile" data-language-picker>
                     <button id="language-selector-mobile" type="button" data-language-selector class="language-trigger" aria-label="Pilih bahasa: Bahasa Indonesia" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu-mobile">
                         <i class="fas fa-globe language-picker-icon" aria-hidden="true"></i>
@@ -371,7 +371,7 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="md:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
+        <div id="mobile-menu" class="xl:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
             <a href="index.html" data-route="home" data-i18n="shared.navigation.home" class="block py-2">Home</a>
             <a href="index.html#tentang" data-route="about" data-i18n="shared.navigation.about" class="block py-2">Tentang</a>
             <a href="index.html#skills" data-route="skills" data-i18n="shared.navigation.skills" class="block py-2">Keahlian</a>
@@ -388,7 +388,29 @@
                 <h1 class="text-3xl font-bold text-center mb-4"><span data-i18n="pages.certificates.heading.highlight" class="section-highlight">Sertifikasi</span> <span data-i18n="pages.certificates.heading.tail">& Penghargaan</span></h1>
                 <p data-i18n="pages.certificates.introduction" class="text-center text-lg mb-8">Kumpulan sertifikasi dan pelatihan terverifikasi yang memperkuat kompetensi saya dalam pengembangan web, pemrograman, data, dan teknologi pendukung.</p>
             </div>
-            <div id="certificates-react-root" data-locale="id" data-base-path="./" data-mode="full" data-batch-size="8" data-grid-columns="4"></div>
+            <div id="certificates-react-root" data-locale="id" data-base-path="./" data-mode="full" data-batch-size="8" data-grid-columns="4" aria-busy="true">
+                <span class="sr-only" role="status">Memuat sertifikat&hellip;</span>
+                <div data-certificate-static-placeholder aria-hidden="true">
+                    <div class="certificate-filter-bar flex flex-wrap justify-center content-start gap-2 sm:gap-3 mb-10">
+                        <span class="h-10 w-20 rounded-full bg-slate-200/80 dark:bg-slate-700/80 animate-pulse motion-reduce:animate-none"></span>
+                        <span class="h-10 w-32 rounded-full bg-slate-200/80 dark:bg-slate-700/80 animate-pulse motion-reduce:animate-none"></span>
+                        <span class="h-10 w-40 rounded-full bg-slate-200/80 dark:bg-slate-700/80 animate-pulse motion-reduce:animate-none"></span>
+                        <span class="h-10 w-36 rounded-full bg-slate-200/80 dark:bg-slate-700/80 animate-pulse motion-reduce:animate-none"></span>
+                        <span class="h-10 w-24 rounded-full bg-slate-200/80 dark:bg-slate-700/80 animate-pulse motion-reduce:animate-none"></span>
+                    </div>
+                    <div class="certificate-grid certificate-grid--full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                        <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                        <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                        <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                        <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                        <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                        <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                        <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                    </div>
+                    <div class="h-10 w-full" aria-hidden="true"></div>
+                </div>
+            </div>
         </section>
     </main>
 

@@ -27,6 +27,9 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
+      - name: Install Chromium for render-stability tests
+        run: npx playwright install --with-deps chromium
+
       - name: Build and test portfolio
         run: npm run verify
 

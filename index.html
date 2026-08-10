@@ -403,7 +403,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
             <a href="./" data-route="home" class="portfolio-brand" aria-label="Sulu Edward Julianto"><span>Sulu Edward</span><span>Julianto</span></a>
 
-            <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-sm xl:text-base">
+            <nav class="hidden xl:flex items-center gap-4 xl:gap-6 text-sm xl:text-base">
                 <a href="./" data-route="home" data-i18n="shared.navigation.home">Home</a>
                 <a href="#tentang" data-route="about" data-i18n="shared.navigation.about">Tentang</a>
                 <a href="#riwayat" data-route="history" data-i18n="shared.navigation.history">Riwayat</a>
@@ -434,7 +434,7 @@
                 </label>
             </nav>
 
-            <div class="lg:hidden flex shrink-0 items-center gap-2">
+            <div class="xl:hidden flex shrink-0 items-center gap-2">
                 <div class="language-picker language-picker-mobile" data-language-picker>
                     <button id="language-selector-mobile" type="button" data-language-selector class="language-trigger" aria-label="Pilih bahasa: Bahasa Indonesia" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu-mobile">
                         <i class="fas fa-globe language-picker-icon" aria-hidden="true"></i>
@@ -461,7 +461,7 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="lg:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
+        <div id="mobile-menu" class="xl:hidden hidden header-footer-bg py-2 px-4 border-t border-gray-200 dark:border-gray-700">
             <a href="./" data-route="home" data-i18n="shared.navigation.home" class="block py-2">Home</a>
             <a href="#tentang" data-route="about" data-i18n="shared.navigation.about" class="block py-2">Tentang</a>
             <a href="#riwayat" data-route="history" data-i18n="shared.navigation.history" class="block py-2">Riwayat</a>
@@ -539,7 +539,16 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-center mb-4"><span data-i18n="pages.home.featuredCertificates.heading.highlight" class="section-highlight">Sertifikasi</span> <span data-i18n="pages.home.featuredCertificates.heading.tail">& Penghargaan</span></h2>
                 <p data-i18n="pages.home.featuredCertificates.introduction" class="text-center text-lg mb-8">Sertifikasi dan pelatihan terpilih yang memperkuat kompetensi saya dalam pengembangan web, pemrograman, data, dan praktik rekayasa perangkat lunak.</p>
-                <div id="certificates-react-root" data-locale="id" data-base-path="./" data-mode="featured" data-highlight-count="3" data-full-url="certificates.html" data-show-filters="false"></div>
+                <div id="certificates-react-root" data-locale="id" data-base-path="./" data-mode="featured" data-highlight-count="3" data-full-url="certificates.html" data-show-filters="false" aria-busy="true">
+                    <span class="sr-only" role="status">Memuat sertifikat&hellip;</span>
+                    <div data-certificate-static-placeholder aria-hidden="true">
+                        <div class="certificate-grid certificate-grid--featured grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                            <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                            <div class="card certificate-card-shell certificate-loading-card overflow-hidden rounded-2xl shadow-lg animate-pulse motion-reduce:animate-none"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 

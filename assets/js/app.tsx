@@ -422,7 +422,7 @@ if (typeof globalThis !== 'undefined') {
         <button
             type="button"
             onClick={onClick}
-            className={`filter-btn px-4 py-2 text-sm font-semibold rounded-full shadow-sm transition-all duration-300 border-2 ${
+            className={`filter-btn px-3 sm:px-4 py-2 text-sm font-semibold rounded-full shadow-sm transition-all duration-300 border-2 ${
                 isActive
                     ? 'filter-btn-active bg-blue-600 text-white border-blue-600 shadow-md'
                     : 'bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:text-blue-600 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600'
@@ -433,9 +433,12 @@ if (typeof globalThis !== 'undefined') {
         </button>
     );
 
-    const LoadingCardSkeleton: React.FC<{ aspectRatio: string }> = ({ aspectRatio }) => (
+    const LoadingCardSkeleton: React.FC<{ aspectRatio: string; shellClassName?: string }> = ({
+        aspectRatio,
+        shellClassName = '',
+    }) => (
         <div
-            className="card min-h-[420px] h-full overflow-hidden rounded-2xl shadow-lg bg-white/70 dark:bg-slate-800 animate-pulse motion-reduce:animate-none"
+            className={`card min-h-[420px] h-full overflow-hidden rounded-2xl shadow-lg bg-white/70 dark:bg-slate-800 animate-pulse motion-reduce:animate-none ${shellClassName}`}
             aria-hidden="true"
         >
             <div
@@ -462,6 +465,7 @@ if (typeof globalThis !== 'undefined') {
         renderCard,
         loadingItemCount = 3,
         loadingAspectRatio = '16 / 9',
+        loadingCardClassName = '',
     }: {
         data: T[];
         isLoading: boolean;
@@ -470,6 +474,7 @@ if (typeof globalThis !== 'undefined') {
         renderCard: (item: T, index: number) => React.ReactNode;
         loadingItemCount?: number;
         loadingAspectRatio?: string;
+        loadingCardClassName?: string;
     }) => {
         if (isLoading) {
             const skeletonCount = Math.max(1, Math.floor(loadingItemCount));
@@ -477,7 +482,11 @@ if (typeof globalThis !== 'undefined') {
                 <>
                     <span className="sr-only" role="status">{labels.loading}</span>
                     {Array.from({ length: skeletonCount }, (_, index) => (
-                        <LoadingCardSkeleton key={`loading-card-${index}`} aspectRatio={loadingAspectRatio} />
+                        <LoadingCardSkeleton
+                            key={`loading-card-${index}`}
+                            aspectRatio={loadingAspectRatio}
+                            shellClassName={loadingCardClassName}
+                        />
                     ))}
                 </>
             );
@@ -938,6 +947,11 @@ if (typeof globalThis !== 'undefined') {
             }
         }, [availableCategories, filter]);
 
+        React.useEffect(() => {
+            container.setAttribute('aria-busy', String(isLoading));
+            return () => container.setAttribute('aria-busy', 'false');
+        }, [container, isLoading]);
+
         const CertificateImage: React.FC<{ item: CertificateItem; priority?: boolean }> = ({ item, priority = false }) => {
             const [isPortrait, setIsPortrait] = React.useState(false);
 
@@ -1008,7 +1022,7 @@ if (typeof globalThis !== 'undefined') {
         return (
             <div>
                 {showFiltersCertificates && (
-                    <div className="flex flex-wrap justify-center gap-3 mb-10" role="group" aria-label="Certificate categories">
+                    <div className="certificate-filter-bar flex flex-wrap justify-center content-start gap-2 sm:gap-3 mb-10" role="group" aria-label="Certificate categories">
                         {availableCategories.map((category) => (
                             <FilterButton key={category.id} isActive={filter === category.id} onClick={() => setFilter(category.id)}>
                                 {category.label}
@@ -1017,7 +1031,7 @@ if (typeof globalThis !== 'undefined') {
                     </div>
                 )}
 
-                <div className={gridClass} role="list">
+                <div className={`certificate-grid certificate-grid--${mode === 'full' ? 'full' : 'featured'} ${gridClass}`} role="list">
                     <PortfolioGrid
                         data={visibleData}
                         isLoading={isLoading}
@@ -1025,6 +1039,7 @@ if (typeof globalThis !== 'undefined') {
                         labels={labels}
                         loadingItemCount={mode === 'featured' ? highlightLimit : batchSize}
                         loadingAspectRatio="1414 / 1000"
+                        loadingCardClassName="certificate-card-shell certificate-loading-card"
                         renderCard={(item, index) => {
                             const detailUrl = (item.link && item.link !== '#') ? item.link : item.fullImageUrl || item.imageUrl;
                             const Wrapper: React.ElementType = detailUrl ? 'a' : 'div';
@@ -1035,7 +1050,7 @@ if (typeof globalThis !== 'undefined') {
                             return (
                                 <Wrapper
                                     key={`${item.title}-${index}`}
-                                    className="card flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white/70 dark:bg-slate-800 card-appear"
+                                    className="card certificate-card-shell flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white/70 dark:bg-slate-800 card-appear"
                                     style={{ '--card-index': index } as React.CSSProperties}
                                     {...wrapperProps}
                                 >
@@ -1061,7 +1076,9 @@ if (typeof globalThis !== 'undefined') {
                         }}
                     />
                 </div>
-                {hasMore && <div ref={sentinelRef} className="h-10 w-full" aria-hidden="true"></div>}
+                {((isLoading && mode === 'full') || hasMore) && (
+                    <div ref={sentinelRef} className="h-10 w-full" aria-hidden="true"></div>
+                )}
 
                 {mode === 'featured' && fullUrl && (
                     <div className="text-center mt-10">
