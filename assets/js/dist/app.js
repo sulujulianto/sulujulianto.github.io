@@ -268,10 +268,10 @@ if (typeof globalThis !== 'undefined') {
         }
         return parsed;
     };
-    const FilterButton = ({ isActive, onClick, children }) => (React.createElement("button", { type: "button", onClick: onClick, className: `filter-btn px-4 py-2 text-sm font-semibold rounded-full shadow-sm transition-all duration-300 border-2 ${isActive
+    const FilterButton = ({ isActive, onClick, children }) => (React.createElement("button", { type: "button", onClick: onClick, className: `filter-btn px-3 sm:px-4 py-2 text-sm font-semibold rounded-full shadow-sm transition-all duration-300 border-2 ${isActive
             ? 'filter-btn-active bg-blue-600 text-white border-blue-600 shadow-md'
             : 'bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:text-blue-600 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600'}`, "aria-pressed": isActive }, children));
-    const LoadingCardSkeleton = ({ aspectRatio }) => (React.createElement("div", { className: "card min-h-[420px] h-full overflow-hidden rounded-2xl shadow-lg bg-white/70 dark:bg-slate-800 animate-pulse motion-reduce:animate-none", "aria-hidden": "true" },
+    const LoadingCardSkeleton = ({ aspectRatio, shellClassName = '', }) => (React.createElement("div", { className: `card min-h-[420px] h-full overflow-hidden rounded-2xl shadow-lg bg-white/70 dark:bg-slate-800 animate-pulse motion-reduce:animate-none ${shellClassName}`, "aria-hidden": "true" },
         React.createElement("div", { className: "w-full bg-slate-200 dark:bg-slate-700", style: { aspectRatio } }),
         React.createElement("div", { className: "p-5 space-y-4" },
             React.createElement("div", { className: "h-3 w-1/3 rounded-full bg-slate-200 dark:bg-slate-700" }),
@@ -280,12 +280,12 @@ if (typeof globalThis !== 'undefined') {
                 React.createElement("div", { className: "h-3 w-full rounded-full bg-slate-200 dark:bg-slate-700" }),
                 React.createElement("div", { className: "h-3 w-11/12 rounded-full bg-slate-200 dark:bg-slate-700" }),
                 React.createElement("div", { className: "h-3 w-3/4 rounded-full bg-slate-200 dark:bg-slate-700" })))));
-    const PortfolioGrid = ({ data, isLoading, error, labels, renderCard, loadingItemCount = 3, loadingAspectRatio = '16 / 9', }) => {
+    const PortfolioGrid = ({ data, isLoading, error, labels, renderCard, loadingItemCount = 3, loadingAspectRatio = '16 / 9', loadingCardClassName = '', }) => {
         if (isLoading) {
             const skeletonCount = Math.max(1, Math.floor(loadingItemCount));
             return (React.createElement(React.Fragment, null,
                 React.createElement("span", { className: "sr-only", role: "status" }, labels.loading),
-                Array.from({ length: skeletonCount }, (_, index) => (React.createElement(LoadingCardSkeleton, { key: `loading-card-${index}`, aspectRatio: loadingAspectRatio })))));
+                Array.from({ length: skeletonCount }, (_, index) => (React.createElement(LoadingCardSkeleton, { key: `loading-card-${index}`, aspectRatio: loadingAspectRatio, shellClassName: loadingCardClassName })))));
         }
         if (error) {
             return (React.createElement("div", { className: "col-span-full" },
@@ -595,6 +595,10 @@ if (typeof globalThis !== 'undefined') {
                 setFilter('*');
             }
         }, [availableCategories, filter]);
+        React.useEffect(() => {
+            container.setAttribute('aria-busy', String(isLoading));
+            return () => container.setAttribute('aria-busy', 'false');
+        }, [container, isLoading]);
         const CertificateImage = ({ item, priority = false }) => {
             const [isPortrait, setIsPortrait] = React.useState(false);
             const handleLoad = (event) => {
@@ -644,15 +648,15 @@ if (typeof globalThis !== 'undefined') {
                 React.createElement("img", { src: item.imageUrl, alt: item.title, loading: priority ? 'eager' : 'lazy', fetchPriority: priority ? 'high' : 'auto', decoding: "async", width: 1414, height: 1000, style: imgStyle, onLoad: handleLoad })));
         };
         return (React.createElement("div", null,
-            showFiltersCertificates && (React.createElement("div", { className: "flex flex-wrap justify-center gap-3 mb-10", role: "group", "aria-label": "Certificate categories" }, availableCategories.map((category) => (React.createElement(FilterButton, { key: category.id, isActive: filter === category.id, onClick: () => setFilter(category.id) }, category.label))))),
-            React.createElement("div", { className: gridClass, role: "list" },
-                React.createElement(PortfolioGrid, { data: visibleData, isLoading: isLoading, error: error, labels: labels, loadingItemCount: mode === 'featured' ? highlightLimit : batchSize, loadingAspectRatio: "1414 / 1000", renderCard: (item, index) => {
+            showFiltersCertificates && (React.createElement("div", { className: "certificate-filter-bar flex flex-wrap justify-center content-start gap-2 sm:gap-3 mb-10", role: "group", "aria-label": "Certificate categories" }, availableCategories.map((category) => (React.createElement(FilterButton, { key: category.id, isActive: filter === category.id, onClick: () => setFilter(category.id) }, category.label))))),
+            React.createElement("div", { className: `certificate-grid certificate-grid--${mode === 'full' ? 'full' : 'featured'} ${gridClass}`, role: "list" },
+                React.createElement(PortfolioGrid, { data: visibleData, isLoading: isLoading, error: error, labels: labels, loadingItemCount: mode === 'featured' ? highlightLimit : batchSize, loadingAspectRatio: "1414 / 1000", loadingCardClassName: "certificate-card-shell certificate-loading-card", renderCard: (item, index) => {
                         const detailUrl = (item.link && item.link !== '#') ? item.link : item.fullImageUrl || item.imageUrl;
                         const Wrapper = detailUrl ? 'a' : 'div';
                         const wrapperProps = detailUrl
                             ? { href: detailUrl, target: '_blank', rel: 'noopener noreferrer' }
                             : { role: 'article' };
-                        return (React.createElement(Wrapper, { key: `${item.title}-${index}`, className: "card flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white/70 dark:bg-slate-800 card-appear", style: { '--card-index': index }, ...wrapperProps },
+                        return (React.createElement(Wrapper, { key: `${item.title}-${index}`, className: "card certificate-card-shell flex flex-col overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white/70 dark:bg-slate-800 card-appear", style: { '--card-index': index }, ...wrapperProps },
                             React.createElement(CertificateImage, { item: item, priority: mode === 'full' && index === 0 }),
                             React.createElement("div", { className: "p-5 flex flex-col flex-grow gap-2" },
                                 React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white mb-2" }, item.title),
@@ -667,7 +671,7 @@ if (typeof globalThis !== 'undefined') {
                                         " ",
                                         item.tanggalKadaluarsa))))));
                     } })),
-            hasMore && React.createElement("div", { ref: sentinelRef, className: "h-10 w-full", "aria-hidden": "true" }),
+            ((isLoading && mode === 'full') || hasMore) && (React.createElement("div", { ref: sentinelRef, className: "h-10 w-full", "aria-hidden": "true" })),
             mode === 'featured' && fullUrl && (React.createElement("div", { className: "text-center mt-10" },
                 React.createElement("a", { href: fullUrl, className: "inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700" },
                     labels.viewAll,

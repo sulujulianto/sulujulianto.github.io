@@ -47,6 +47,46 @@
   animation-delay: calc(var(--card-index, 0) * 0.08s);
 }
 
+/* Keep the certificate catalog's first paint and React render geometrically equal. */
+.certificate-card-shell {
+  min-height: 34.625rem;
+}
+
+.certificate-filter-bar {
+  min-height: 9.5rem;
+}
+
+.certificate-loading-card {
+  background-image: linear-gradient(
+    110deg,
+    rgb(226 232 240 / 0.78) 8%,
+    rgb(241 245 249 / 0.9) 18%,
+    rgb(226 232 240 / 0.78) 33%
+  );
+  background-size: 200% 100%;
+}
+
+html.dark .certificate-loading-card {
+  background-image: linear-gradient(
+    110deg,
+    rgb(51 65 85 / 0.9) 8%,
+    rgb(71 85 105 / 0.9) 18%,
+    rgb(51 65 85 / 0.9) 33%
+  );
+}
+
+@media (min-width: 640px) {
+  .certificate-filter-bar {
+    min-height: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .certificate-filter-bar {
+    min-height: 2.625rem;
+  }
+}
+
 .language-picker {
   position: relative;
   flex: 0 0 auto;
