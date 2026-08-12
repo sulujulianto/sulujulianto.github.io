@@ -76,6 +76,14 @@
   </url>
 
   <url>
+    <loc>https://sulujulianto.github.io/projects/lokerlens-ai/</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://sulujulianto.github.io/projects/lokerlens-ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sulujulianto.github.io/projects/lokerlens-ai/" >
+    <priority>0.7</priority>
+  </url> 
+
+
+  <url>
     <loc>https://sulujulianto.github.io/blog/</loc>
     <priority>0.8</priority>
   </url>

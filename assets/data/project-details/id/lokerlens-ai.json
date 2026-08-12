@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "slug": "lokerlens-ai",
+  "contentLanguage": "id",
+  "title": "LokerLens AI",
+  "summary": "Aplikasi web berbasis AI yang membantu pencari kerja entry-level menilai keselarasan profil dengan lowongan dan menentukan langkah pengembangan berikutnya.",
+  "category": "fullstack-web",
+  "hero": {
+    "src": "/assets/img/projects/id/loker-lens-ai.png",
+    "alt": "Tampilan utama aplikasi LokerLens AI",
+    "caption": "LokerLens AI membantu pengguna membandingkan latar belakang, keterampilan, dan bukti kompetensi dengan kebutuhan lowongan."
+  },
+  "techStack": [
+    "TypeScript",
+    "React 19",
+    "Vite",
+    "Tailwind CSS",
+    "Node.js",
+    "Express",
+    "Zod",
+    "Gemini API",
+    "OpenAI Responses API",
+    "Vitest"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "LokerLens AI adalah aplikasi web berbasis kecerdasan buatan yang membantu pencari kerja menilai kesiapan mereka untuk melamar pada berbagai bidang pekerjaan. Berdasarkan pendidikan, pengalaman, keterampilan, bukti kerja, serta bidang dan peran yang dituju, aplikasi memberikan skor kesiapan, mengidentifikasi kelebihan serta kesenjangan kompetensi, dan menyusun rekomendasi langkah pengembangan yang realistis. Proyek ini bertujuan membantu pencari kerja memahami posisi mereka dan menentukan langkah karier secara lebih terarah."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Pendekatan manual-first"
+    },
+    {
+      "type": "paragraph",
+      "text": "LokerLens AI dirancang untuk pencari kerja entry-level yang belum tentu memiliki CV terstruktur. Pengguna dapat menjelaskan pendidikan, pelatihan, pengalaman kerja formal maupun informal, kegiatan organisasi, tanggung jawab, keterampilan, dan bukti proyek secara manual. Pendekatan ini membantu mengubah pengalaman nyata yang sering tidak tercatat di CV menjadi informasi yang dapat dibandingkan dengan kebutuhan lowongan."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/lokerlens-ai/target-pekerjaan.png",
+      "alt": "Formulir target pekerjaan LokerLens AI",
+      "caption": "Pengguna memilih rumpun pekerjaan, peran target, dan bahasa keluaran analisis."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/lokerlens-ai/latar-belakang.png",
+      "alt": "Formulir latar belakang LokerLens AI",
+      "caption": "Pendidikan, sumber pelatihan, dan pengalaman formal maupun informal digunakan sebagai konteks profil."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mengumpulkan keahlian dan bukti praktis"
+    },
+    {
+      "type": "paragraph",
+      "text": "Profil pengguna dilengkapi dengan keahlian utama, alat atau perlengkapan yang pernah digunakan, tanggung jawab, pencapaian, kekuatan pribadi, serta bukti kompetensi atau proyek. Nama lembaga dan program pelatihan dapat dicatat sebagai konteks, tetapi tidak dianggap sebagai bukti kelulusan atau sertifikasi jika pengguna tidak menyatakannya secara jelas."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/lokerlens-ai/keahlian.png",
+      "alt": "Formulir keahlian dan bukti praktis LokerLens AI",
+      "caption": "Formulir membantu pengguna menjelaskan kemampuan yang benar-benar pernah digunakan atau dibuktikan."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Membandingkan profil dengan lowongan"
+    },
+    {
+      "type": "paragraph",
+      "text": "Setelah profil diisi, pengguna menempelkan teks lowongan yang ingin dianalisis. Sistem membandingkan informasi tersebut dengan persyaratan dan tanggung jawab yang tertulis pada lowongan, lalu menyusun hasil yang berfokus pada bukti yang tersedia."
+    },
+    {
+      "type": "image",
+      "src": "/assets/img/project-details/lokerlens-ai/konteks-lamaran.png",
+      "alt": "Formulir konteks lamaran LokerLens AI",
+      "caption": "Teks lowongan dan tantangan melamar menjadi dasar untuk menyusun analisis yang lebih relevan."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Hasil analisis yang dapat ditindaklanjuti"
+    },
+    {
+      "type": "paragraph",
+      "text": "Hasil analisis tidak hanya berupa satu skor. Skor 0–100 dibentuk dari lima dimensi: keselarasan persyaratan wajib, keselarasan keterampilan, pengalaman dan bukti kompetensi, pendidikan atau pelatihan, serta kesiapan praktis."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Kesimpulan apakah pengguna siap melamar sekarang, perlu melamar sambil melakukan perbaikan, atau perlu memperkuat fondasi terlebih dahulu.",
+        "Pencocokan persyaratan lowongan dengan status Terpenuhi, Sebagian, atau Belum terbukti.",
+        "Kekuatan yang dapat ditelusuri ke informasi pada profil pengguna.",
+        "Kesenjangan dan risiko yang berasal dari persyaratan atau tanggung jawab lowongan.",
+        "Prioritas pengembangan dan roadmap tindakan selama 30 hari.",
+        "Saran bukti kompetensi yang sesuai dengan bidang pekerjaan.",
+        "Prompt untuk memperbaiki CV tanpa mengarang pengalaman, pencapaian, atau angka.",
+        "Contoh pesan lamaran dan empat pertanyaan untuk latihan wawancara."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Kontrak data dan validasi output AI"
+    },
+    {
+      "type": "paragraph",
+      "text": "Frontend dan backend menggunakan schema Zod bersama untuk memvalidasi request dan response. Respons provider harus memiliki struktur lengkap, skor setiap komponen harus membentuk skor akhir, verdict harus sesuai dengan rentang skor, setiap minggu roadmap harus memiliki beberapa tindakan, dan persiapan wawancara harus berisi tepat empat pertanyaan."
+    },
+    {
+      "type": "paragraph",
+      "text": "Selain validasi struktur, service analisis memiliki gerbang kualitas untuk memeriksa grounding terhadap profil dan lowongan. Sistem menolak klaim pengalaman, kompetensi, kelulusan, atau sertifikasi yang tidak didukung oleh data pengguna."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arsitektur full-stack dan provider AI"
+    },
+    {
+      "type": "paragraph",
+      "text": "Frontend React berkomunikasi dengan endpoint aplikasi melalui /api/analyze dan /api/health. Backend Express memisahkan konfigurasi, route, service, prompt builder, parser, error handler, serta adapter provider. Gemini dan OpenAI Responses API berada di balik interface provider yang sama sehingga provider dapat dipilih melalui konfigurasi server tanpa mengubah kontrak frontend."
+    },
+    {
+      "type": "list",
+      "items": [
+        "API key dan pemilihan model hanya diproses di server.",
+        "Provider mengembalikan output terstruktur yang divalidasi sebelum dikirim ke frontend.",
+        "Request mendukung timeout dan pembatalan ketika pengguna membatalkan analisis.",
+        "Endpoint analisis memiliki rate limit untuk membatasi penyalahgunaan dan biaya provider.",
+        "Server menggunakan security headers, CSP produksi, request ID, batas ukuran body, dan error publik yang dinormalisasi."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Demo offline dan pengujian"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aplikasi menyediakan empat demo deterministik untuk Junior Frontend Developer, Junior Administrative Staff, Entry-Level Customer Service, dan Warehouse Staff. Demo tersebut mengisi formulir serta menampilkan dashboard hasil tanpa memanggil provider AI."
+    },
+    {
+      "type": "paragraph",
+      "text": "Repository juga mencakup pengujian schema, prompt builder, parser, provider, service, route, API client, formulir, komponen hasil, aksesibilitas, dan interaksi DOM. Pipeline GitHub Actions menjalankan typecheck, test, production build, serta audit dependency."
+    },
+    {
+      "type": "callout",
+      "title": "Batas implementasi",
+      "text": "V2 saat ini berada pada branch main sebagai kandidat penyerahan repository dan demo lokal, tetapi belum menjadi rilis produksi dan belum memiliki deployment publik. Evaluasi Gemini live telah dilakukan pada beberapa skenario, sedangkan integrasi OpenAI live, bidang tambahan, QA lintas perangkat, dan deployment publik masih perlu diverifikasi."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Privasi dan batas produk"
+    },
+    {
+      "type": "paragraph",
+      "text": "LokerLens AI tidak memiliki akun, database kandidat, atau riwayat analisis permanen. Namun, analisis live mengirim profil dan teks lowongan ke provider AI yang dikonfigurasi. Pengguna sebaiknya tidak memasukkan nomor identitas, alamat lengkap, data kesehatan, API key, atau informasi sensitif lain yang tidak diperlukan."
+    },
+    {
+      "type": "paragraph",
+      "text": "LokerLens AI bukan ATS, pemindai CV, portal lowongan, kalkulator peluang diterima kerja, pengganti keputusan rekruter, atau pemberi jaminan wawancara dan pekerjaan."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Dampak terhadap rancangan"
+    },
+    {
+      "type": "paragraph",
+      "text": "Rancangan proyek menempatkan konsistensi dan kejujuran bukti sebagai perhatian utama. Skor, status persyaratan, rekomendasi, roadmap, pesan lamaran, dan persiapan wawancara harus tetap selaras dengan profil pengguna serta isi lowongan. Dengan pendekatan ini, LokerLens AI berfungsi sebagai alat bantu refleksi dan perencanaan karier yang lebih terarah, bukan mesin yang menjanjikan hasil rekrutmen."
+    }
+  ],
+  "links": {
+    "github": "https://github.com/sulujulianto/lokerlens-ai",
+    "liveDemo": null
+  }
+}
