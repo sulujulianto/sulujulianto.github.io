@@ -3,10 +3,10 @@
   "slug": "lokerlens-ai",
   "contentLanguage": "id",
   "title": "LokerLens AI",
-  "summary": "Aplikasi web berbasis AI yang membantu pencari kerja entry-level menilai keselarasan profil dengan lowongan dan menentukan langkah pengembangan berikutnya.",
+  "summary": "Asisten kesiapan kerja berbasis bukti untuk pelamar entry-level dan vokasi Indonesia yang membandingkan profil dengan lowongan serta menyusun langkah pengembangan berikutnya.",
   "category": "fullstack-web",
   "hero": {
-    "src": "/assets/img/projects/id/loker-lens-ai.png",
+    "src": "/assets/img/projects/id/loker-lens-ai.webp",
     "alt": "Tampilan utama aplikasi LokerLens AI",
     "caption": "LokerLens AI membantu pengguna membandingkan latar belakang, keterampilan, dan bukti kompetensi dengan kebutuhan lowongan."
   },
@@ -14,7 +14,7 @@
     "TypeScript",
     "React 19",
     "Vite",
-    "Tailwind CSS",
+    "Tailwind CSS 4",
     "Node.js",
     "Express",
     "Zod",
@@ -25,7 +25,16 @@
   "content": [
     {
       "type": "paragraph",
-      "text": "LokerLens AI adalah aplikasi web berbasis kecerdasan buatan yang membantu pencari kerja menilai kesiapan mereka untuk melamar pada berbagai bidang pekerjaan. Berdasarkan pendidikan, pengalaman, keterampilan, bukti kerja, serta bidang dan peran yang dituju, aplikasi memberikan skor kesiapan, mengidentifikasi kelebihan serta kesenjangan kompetensi, dan menyusun rekomendasi langkah pengembangan yang realistis. Proyek ini bertujuan membantu pencari kerja memahami posisi mereka dan menentukan langkah karier secara lebih terarah."
+      "text": "LokerLens AI adalah asisten kesiapan kerja berbasis bukti untuk pelamar entry-level dan vokasi Indonesia. Berdasarkan pendidikan, pengalaman formal maupun informal, keterampilan, bukti kerja, serta bidang dan peran yang dituju, aplikasi memperkirakan keselarasan profil terhadap satu lowongan, mengidentifikasi kekuatan serta kesenjangan kompetensi, dan menyusun langkah pengembangan yang realistis. Skor tersebut merupakan alat bantu pengambilan keputusan, bukan prediksi peluang diterima kerja."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Dari prototipe tantangan ke kandidat V2"
+    },
+    {
+      "type": "paragraph",
+      "text": "Proyek ini bermula sebagai karya Juara Vibe Coding yang dibangun dengan Google AI Studio dan Gemini untuk pencari kerja yang baru memasuki bidang TI. Edisi tersebut tetap tersedia melalui tag v1.0.0. Kandidat V2 pada cabang utama mempertahankan pendekatan berbasis bukti, memperluas cakupan menjadi 29 rumpun karier, dan menyediakan adaptor Gemini maupun OpenAI di balik kontrak server yang sama."
     },
     {
       "type": "heading",
@@ -34,7 +43,7 @@
     },
     {
       "type": "paragraph",
-      "text": "LokerLens AI dirancang untuk pencari kerja entry-level yang belum tentu memiliki CV terstruktur. Pengguna dapat menjelaskan pendidikan, pelatihan, pengalaman kerja formal maupun informal, kegiatan organisasi, tanggung jawab, keterampilan, dan bukti proyek secara manual. Pendekatan ini membantu mengubah pengalaman nyata yang sering tidak tercatat di CV menjadi informasi yang dapat dibandingkan dengan kebutuhan lowongan."
+      "text": "LokerLens AI mengutamakan formulir manual terpandu karena CV singkat pelamar pemula sering tidak memuat pekerjaan informal, proyek sekolah, konteks pelatihan, tanggung jawab, atau bukti kompetensi. Pengguna dapat melengkapi konteks tersebut sebelum analisis sehingga sistem tidak memperlakukan hasil penguraian dokumen sebagai fakta yang telah diverifikasi. Pilihan ini merupakan kompromi desain: pengguna perlu memberikan usaha lebih besar dan belum dapat mengimpor CV secara otomatis."
     },
     {
       "type": "image",
@@ -120,7 +129,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Frontend React berkomunikasi dengan endpoint aplikasi melalui /api/analyze dan /api/health. Backend Express memisahkan konfigurasi, route, service, prompt builder, parser, error handler, serta adapter provider. Gemini dan OpenAI Responses API berada di balik interface provider yang sama sehingga provider dapat dipilih melalui konfigurasi server tanpa mengubah kontrak frontend."
+      "text": "Frontend React 19 dan TypeScript yang dibangun dengan Vite serta Tailwind CSS 4 berkomunikasi dengan endpoint /api/analyze dan /api/health. Backend Node.js dan Express memisahkan konfigurasi, route, service, prompt builder, parser, error handler, serta adaptor penyedia. Gemini dan OpenAI Responses API berada di balik antarmuka penyedia yang sama sehingga penyedia dapat dipilih melalui konfigurasi server tanpa mengubah kontrak frontend."
     },
     {
       "type": "list",
@@ -143,12 +152,12 @@
     },
     {
       "type": "paragraph",
-      "text": "Repository juga mencakup pengujian schema, prompt builder, parser, provider, service, route, API client, formulir, komponen hasil, aksesibilitas, dan interaksi DOM. Pipeline GitHub Actions menjalankan typecheck, test, production build, serta audit dependency."
+      "text": "Repositori memuat 28 berkas Vitest dengan 324 pengujian deterministik dan ambang cakupan global 75%. Sembilan skenario Playwright dijalankan pada Chromium dan Firefox—18 eksekusi proyek—untuk memeriksa paket produksi, empat alur demo luring, fokus papan ketik, reset formulir, tata letak 360–768 px, serta aturan aksesibilitas WCAG A/AA melalui axe-core. Pipeline GitHub Actions menjalankan typecheck, lint, coverage, build produksi, pengujian lintas peramban, dan audit dependency produksi."
     },
     {
       "type": "callout",
       "title": "Batas implementasi",
-      "text": "V2 saat ini berada pada branch main sebagai kandidat penyerahan repository dan demo lokal, tetapi belum menjadi rilis produksi dan belum memiliki deployment publik. Evaluasi Gemini live telah dilakukan pada beberapa skenario, sedangkan integrasi OpenAI live, bidang tambahan, QA lintas perangkat, dan deployment publik masih perlu diverifikasi."
+      "text": "V2 saat ini berada pada cabang utama sebagai kandidat prarilis yang terverifikasi secara lokal, tetapi belum menjadi rilis produksi dan belum memiliki penerapan publik. Evaluasi Gemini langsung yang diperluas menyelesaikan 8 dari 8 permintaan pada enam rumpun pekerjaan tanpa peringatan otomatis, dengan durasi sekitar 24–37 detik per permintaan; hasil terbatas ini tidak membuktikan kualitas atau bebas bias secara luas. QA manual Chrome dan Firefox telah mencakup desktop, lebar 360–768 px, papan ketik, pengurangan gerakan, pembesaran 200%, dan luapan. Integrasi OpenAI langsung, karakteristik platform untuk permintaan berdurasi panjang, privasi dan pencatatan log produksi, observabilitas, kontrol biaya, pembatasan laju lintas instans, pemulihan, serta penerapan publik masih perlu diverifikasi."
     },
     {
       "type": "heading",

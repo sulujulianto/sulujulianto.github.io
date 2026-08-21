@@ -162,25 +162,26 @@
     "status": "published"
   },
   {
-  "title": "LokerLens AI",
-  "description": "LokerLens AI adalah aplikasi web full-stack berbasis kecerdasan buatan yang membantu pencari kerja entry-level membandingkan pendidikan, pengalaman, keterampilan, dan bukti kerja dengan persyaratan lowongan. Aplikasi memberikan skor keselarasan, memetakan kekuatan serta kesenjangan kompetensi, dan menyusun rekomendasi pengembangan serta persiapan melamar secara terstruktur.",
-  "category": "fullstack-web",
-  "imageUrl": "../assets/img/projects/id/loker-lens-ai.png",
-  "githubUrl": "https://github.com/sulujulianto/lokerlens-ai",
-  "liveUrl": "",
-  "techStack": [
-    "TypeScript",
-    "React",
-    "Node.js",
-    "Express",
-    "Tailwind CSS",
-    "Zod",
-    "Gemini API",
-    "OpenAI API"
-  ],
-  "dateAdded": "2026-08-11",
-  "isFeatured": true,
-  "slug": "lokerlens-ai",
-  "status": "published"
+    "title": "LokerLens AI",
+    "description": "Asisten kesiapan kerja berbasis bukti untuk pelamar entry-level dan vokasi Indonesia. Kandidat V2 membandingkan profil dengan lowongan pada 29 rumpun karier, memperkirakan keselarasan, memetakan kesenjangan, dan menyusun langkah pengembangan tanpa memprediksi hasil rekrutmen.",
+    "category": "fullstack-web",
+    "imageUrl": "../assets/img/projects/id/loker-lens-ai.webp",
+    "githubUrl": "https://github.com/sulujulianto/lokerlens-ai",
+    "liveUrl": "",
+    "techStack": [
+      "TypeScript",
+      "React 19",
+      "Vite",
+      "Node.js",
+      "Express",
+      "Tailwind CSS 4",
+      "Zod",
+      "Gemini API",
+      "OpenAI Responses API"
+    ],
+    "dateAdded": "2026-08-11",
+    "isFeatured": true,
+    "slug": "lokerlens-ai",
+    "status": "published"
   }
 ]
