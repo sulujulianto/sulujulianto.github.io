@@ -83,7 +83,9 @@ Daftar tersebut bukan alasan untuk selalu mempertahankan kode lama. Jika upstrea
   transitif belum merilis perbaikan pada rentang dependency yang dipakai,
   override hanya boleh ditambahkan dengan versi aman yang sudah diuji dan
   harus tetap dikunci oleh lockfile.
-- `git diff --exit-code -- blog` lulus setelah build.
+- `pnpm verify:committed-output` lulus setelah build. Pemeriksaan ini
+  menormalisasi UID internal Astro, tetapi tetap membandingkan HTML lainnya,
+  aset stabil, daftar file, dan kelengkapan indeks Pagefind.
 - Tidak ada file portfolio yang ikut berubah.
 - Halaman utama, artikel, arsip, pencarian, RSS, dan sitemap diperiksa.
 - Perubahan mayor mempunyai penjelasan migrasi dan cara rollback.

@@ -23,6 +23,7 @@
     "test:output": "node --test tests/blog-output.test.mjs",
     "test": "pnpm run test:source && pnpm run test:output",
     "verify": "pnpm run doctor && pnpm run check && pnpm run test:source && pnpm run build && pnpm run test:output",
+    "verify:committed-output": "node scripts/verify-committed-blog.mjs",
     "preinstall": "node scripts/enforce-pnpm.mjs"
   },
   "dependencies": {

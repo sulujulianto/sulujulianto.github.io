@@ -5,6 +5,10 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import {
+	isVolatilePagefindPath,
+	normalizeGeneratedHtml,
+} from "../scripts/verify-committed-blog.mjs";
 
 const projectRoot = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 const repoRoot = path.resolve(projectRoot, "..");
@@ -127,10 +131,15 @@ test("CI dan Dependabot blog berada di root repository", () => {
 
 	assert.match(workflow, /working-directory: blog-fuwari/);
 	assert.match(workflow, /pnpm install --frozen-lockfile/);
-	assert.match(workflow, /git diff --exit-code -- blog/);
+	assert.match(workflow, /pnpm verify:committed-output/);
 	assert.match(dependabot, /directory: \/blog-fuwari/);
 	assert.equal(packageJson.packageManager, "pnpm@11.21.0");
+	assert.equal(
+		packageJson.scripts["verify:committed-output"],
+		"node scripts/verify-committed-blog.mjs",
+	);
 	assert.doesNotMatch(packageJson.scripts.lint, /--write/);
+	assert.doesNotMatch(workflow, /git diff --exit-code -- blog/);
 	assert.equal(
 		fs.existsSync(path.join(projectRoot, ".github", "workflows", "build.yml")),
 		false,
@@ -143,6 +152,26 @@ test("CI dan Dependabot blog berada di root repository", () => {
 		fs.existsSync(path.join(projectRoot, ".github", "dependabot.yml")),
 		false,
 	);
+});
+
+test("verifikasi output hanya menormalisasi UID Astro dan indeks Pagefind turunannya", () => {
+	const before = [
+		'<astro-island uid="lokal" component-url="/blog/_astro/Search.js">',
+		'<main data-value="tetap">Konten</main>',
+	].join("");
+	const after = before.replace('uid="lokal"', 'uid="ci"');
+
+	assert.equal(normalizeGeneratedHtml(before), normalizeGeneratedHtml(after));
+	assert.notEqual(
+		normalizeGeneratedHtml(before),
+		normalizeGeneratedHtml(before.replace("Konten", "Berubah")),
+	);
+	assert.equal(
+		isVolatilePagefindPath("blog/_pagefind/index/id_test.pf_index"),
+		true,
+	);
+	assert.equal(isVolatilePagefindPath("blog/_pagefind/pagefind.js"), false);
+	assert.equal(isVolatilePagefindPath("blog/index.html"), false);
 });
 
 test("toolchain blog menggunakan versi aman dan migrasi konten Astro terbaru", () => {

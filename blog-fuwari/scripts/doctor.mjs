@@ -73,7 +73,7 @@ const rootBlogCiText = fs.existsSync(rootBlogCiPath)
 addCheck(
 	"root Blog CI",
 	rootBlogCiText.includes("pnpm install --frozen-lockfile") &&
-		rootBlogCiText.includes("git diff --exit-code -- blog"),
+		rootBlogCiText.includes("pnpm verify:committed-output"),
 	".github/workflows/blog-ci.yml missing or incomplete",
 );
 

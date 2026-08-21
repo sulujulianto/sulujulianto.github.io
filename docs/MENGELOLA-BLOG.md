@@ -51,6 +51,7 @@ Jalankan dari `blog-fuwari/`:
 | `pnpm build` | Membangun ulang `../blog/` dan indeks Pagefind. |
 | `pnpm test:output` | Memeriksa hasil build, SEO, RSS, sitemap, dan aset. |
 | `pnpm verify` | Menjalankan doctor, Astro check, pengujian, dan build. |
+| `pnpm verify:committed-output` | Membandingkan hasil build stabil dengan commit dan memvalidasi indeks Pagefind. |
 | `pnpm audit --prod` | Memeriksa seluruh tingkat kerentanan dependency produksi. |
 
 Dari root repository, perintah yang setara adalah `npm run blog:verify`.
@@ -91,7 +92,7 @@ Jangan melakukan staging seluruh repository sekaligus. Stage file source, dokume
 
 ## Otomatisasi GitHub
 
-`.github/workflows/blog-ci.yml` menjalankan instalasi terkunci, verifikasi source, build, audit produksi, dan pemeriksaan bahwa hasil `blog/` sudah dikomit. `.github/dependabot.yml` memantau patch dan minor dependency blog setiap minggu; upgrade mayor tetap harus direncanakan terpisah.
+`.github/workflows/blog-ci.yml` menjalankan instalasi terkunci, verifikasi source, build, audit produksi, dan perbandingan semantik hasil `blog/` dengan commit. UID internal Astro dinormalisasi karena dapat berbeda antarlingkungan, sedangkan HTML lainnya, aset stabil, daftar file, dan kelengkapan Pagefind tetap diperiksa. `.github/dependabot.yml` memantau patch dan minor dependency blog setiap minggu; upgrade mayor tetap harus direncanakan terpisah.
 
 Konfigurasi `.github` yang diletakkan di dalam `blog-fuwari/` tidak dijalankan GitHub karena direktori tersebut bukan root repository.
 
