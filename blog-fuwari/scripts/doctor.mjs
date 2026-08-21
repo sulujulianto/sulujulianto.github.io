@@ -1,102 +1,167 @@
+import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { execSync } from "node:child_process";
 
 const rootDir = path.resolve(process.cwd(), "..");
 const outDir = path.join(rootDir, "blog");
 const configPath = path.join(process.cwd(), "astro.config.mjs");
 const pkgPath = path.join(process.cwd(), "package.json");
+const rootBlogCiPath = path.join(
+	rootDir,
+	".github",
+	"workflows",
+	"blog-ci.yml",
+);
+const rootDependabotPath = path.join(rootDir, ".github", "dependabot.yml");
 
 const checks = [];
 
 const addCheck = (label, ok, detail) => {
-  checks.push({ label, ok, detail });
+	checks.push({ label, ok, detail });
 };
 
-const configText = fs.existsSync(configPath) ? fs.readFileSync(configPath, "utf-8") : "";
+const configText = fs.existsSync(configPath)
+	? fs.readFileSync(configPath, "utf-8")
+	: "";
 addCheck(
-  "astro.config: site URL",
-  configText.includes('site: "https://sulujulianto.github.io/"'),
-  "site should be https://sulujulianto.github.io/"
+	"astro.config: site URL",
+	configText.includes('site: "https://sulujulianto.github.io/"'),
+	"site should be https://sulujulianto.github.io/",
 );
 addCheck(
-  "astro.config: base path",
-  configText.includes('base: "/blog/"'),
-  "base should be /blog/"
+	"astro.config: base path",
+	configText.includes('base: "/blog/"'),
+	"base should be /blog/",
 );
 addCheck(
-  "astro.config: outDir",
-  configText.includes('outDir: "../blog"'),
-  "outDir should be ../blog"
+	"astro.config: outDir",
+	configText.includes('outDir: "../blog"'),
+	"outDir should be ../blog",
 );
 
-const pkgJson = fs.existsSync(pkgPath) ? JSON.parse(fs.readFileSync(pkgPath, "utf-8")) : {};
+const pkgJson = fs.existsSync(pkgPath)
+	? JSON.parse(fs.readFileSync(pkgPath, "utf-8"))
+	: {};
 const buildScript = pkgJson.scripts?.build || "";
 const prebuildScript = pkgJson.scripts?.prebuild || "";
 addCheck(
-  "package.json: build script",
-  buildScript.includes("pagefind --site ../blog") && buildScript.includes("_pagefind"),
-  "build should run pagefind to ../blog/_pagefind"
+	"package.json: build script",
+	buildScript.includes("pagefind --site ../blog") &&
+		buildScript.includes("_pagefind"),
+	"build should run pagefind to ../blog/_pagefind",
 );
 addCheck(
-  "package.json: prebuild script",
-  prebuildScript.includes("clean-blog-outdir.mjs"),
-  "prebuild should run scripts/clean-blog-outdir.mjs"
+	"package.json: prebuild script",
+	prebuildScript.includes("clean-blog-outdir.mjs"),
+	"prebuild should run scripts/clean-blog-outdir.mjs",
+);
+addCheck(
+	"package.json: pnpm version",
+	pkgJson.packageManager === "pnpm@11.21.0",
+	"packageManager should be pnpm@11.21.0",
+);
+addCheck(
+	"package.json: non-mutating lint",
+	typeof pkgJson.scripts?.lint === "string" &&
+		!pkgJson.scripts.lint.includes("--write"),
+	"pnpm lint should not rewrite source files",
 );
 
-const cleanScriptPath = path.join(process.cwd(), "scripts", "clean-blog-outdir.mjs");
+const rootBlogCiText = fs.existsSync(rootBlogCiPath)
+	? fs.readFileSync(rootBlogCiPath, "utf-8")
+	: "";
+addCheck(
+	"root Blog CI",
+	rootBlogCiText.includes("pnpm install --frozen-lockfile") &&
+		rootBlogCiText.includes("git diff --exit-code -- blog"),
+	".github/workflows/blog-ci.yml missing or incomplete",
+);
+
+const rootDependabotText = fs.existsSync(rootDependabotPath)
+	? fs.readFileSync(rootDependabotPath, "utf-8")
+	: "";
+addCheck(
+	"root Dependabot blog",
+	rootDependabotText.includes("directory: /blog-fuwari"),
+	".github/dependabot.yml should monitor /blog-fuwari",
+);
+
+const cleanScriptPath = path.join(
+	process.cwd(),
+	"scripts",
+	"clean-blog-outdir.mjs",
+);
 const cleanScriptText = fs.existsSync(cleanScriptPath)
-  ? fs.readFileSync(cleanScriptPath, "utf-8")
-  : "";
+	? fs.readFileSync(cleanScriptPath, "utf-8")
+	: "";
 addCheck(
-  "clean-blog-outdir safety",
-  cleanScriptText.includes("endsWith") && cleanScriptText.includes("path.relative"),
-  "clean script should validate outDir safety"
+	"clean-blog-outdir safety",
+	cleanScriptText.includes("endsWith") &&
+		cleanScriptText.includes("path.relative"),
+	"clean script should validate outDir safety",
 );
 
-const bannerPath = path.join(process.cwd(), "public", "assets", "images", "banner.webp");
-addCheck("banner file", fs.existsSync(bannerPath), "public/assets/images/banner.webp missing");
+const bannerPath = path.join(
+	process.cwd(),
+	"public",
+	"assets",
+	"images",
+	"banner.webp",
+);
+addCheck(
+	"banner file",
+	fs.existsSync(bannerPath),
+	"public/assets/images/banner.webp missing",
+);
 
 const faviconPath = path.join(process.cwd(), "public", "favicon", "icon.png");
-addCheck("favicon file", fs.existsSync(faviconPath), "public/favicon/icon.png missing");
+addCheck(
+	"favicon file",
+	fs.existsSync(faviconPath),
+	"public/favicon/icon.png missing",
+);
 
 const rootNoJekyll = path.join(rootDir, ".nojekyll");
-addCheck("root .nojekyll", fs.existsSync(rootNoJekyll), ".nojekyll missing at repo root");
+addCheck(
+	"root .nojekyll",
+	fs.existsSync(rootNoJekyll),
+	".nojekyll missing at repo root",
+);
 
 const outNoJekyll = path.join(outDir, ".nojekyll");
 addCheck(
-  "output .nojekyll",
-  fs.existsSync(outNoJekyll),
-  "run pnpm build to create /blog/.nojekyll"
+	"output .nojekyll",
+	fs.existsSync(outNoJekyll),
+	"run pnpm build to create /blog/.nojekyll",
 );
 
 if (fs.existsSync(path.join(rootDir, "node_modules"))) {
-  console.log("WARN - root node_modules exists (OK if not tracked in git)");
+	console.log("WARN - root node_modules exists (OK if not tracked in git)");
 }
 
 try {
-  const tracked = execSync("git ls-files node_modules", {
-    cwd: rootDir,
-    stdio: ["ignore", "pipe", "ignore"],
-  })
-    .toString()
-    .trim();
-  addCheck(
-    "node_modules not tracked",
-    tracked.length === 0,
-    "node_modules still tracked in git"
-  );
+	const tracked = execSync("git ls-files node_modules", {
+		cwd: rootDir,
+		stdio: ["ignore", "pipe", "ignore"],
+	})
+		.toString()
+		.trim();
+	addCheck(
+		"node_modules not tracked",
+		tracked.length === 0,
+		"node_modules still tracked in git",
+	);
 } catch {
-  console.log("WARN - git not available, skip tracked node_modules check");
+	console.log("WARN - git not available, skip tracked node_modules check");
 }
 
 let failed = 0;
 for (const c of checks) {
-  const status = c.ok ? "PASS" : "FAIL";
-  console.log(`${status} - ${c.label}${c.ok ? "" : ` (${c.detail})`}`);
-  if (!c.ok) failed++;
+	const status = c.ok ? "PASS" : "FAIL";
+	console.log(`${status} - ${c.label}${c.ok ? "" : ` (${c.detail})`}`);
+	if (!c.ok) failed++;
 }
 
 if (failed > 0) {
-  process.exit(1);
+	process.exit(1);
 }

@@ -1,59 +1,67 @@
-/* This is a script to create a new post markdown file with front-matter */
-
-import fs from "fs"
-import path from "path"
+import fs from "node:fs";
+import path from "node:path";
 
 function getDate() {
-  const today = new Date()
-  const year = today.getFullYear()
-  const month = String(today.getMonth() + 1).padStart(2, "0")
-  const day = String(today.getDate()).padStart(2, "0")
+	const today = new Date();
+	const year = today.getFullYear();
+	const month = String(today.getMonth() + 1).padStart(2, "0");
+	const day = String(today.getDate()).padStart(2, "0");
 
-  return `${year}-${month}-${day}`
+	return `${year}-${month}-${day}`;
 }
 
-const args = process.argv.slice(2)
+const args = process.argv.slice(2);
 
-if (args.length === 0) {
-  console.error(`Error: No filename argument provided
-Usage: npm run new-post -- <filename>`)
-  process.exit(1) // Terminate the script and return error code 1
+if (args.length !== 1) {
+	console.error(
+		"Penggunaan: pnpm new-post <slug>\nContoh: pnpm new-post catatan-belajar-astro",
+	);
+	process.exit(1);
 }
 
-let fileName = args[0]
+const slug = args[0].trim();
+const safeSlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-// Add .md extension if not present
-const fileExtensionRegex = /\.(md|mdx)$/i
-if (!fileExtensionRegex.test(fileName)) {
-  fileName += ".md"
+if (!safeSlug.test(slug)) {
+	console.error(
+		"Slug tidak valid. Gunakan huruf kecil, angka, dan tanda minus tanpa path atau ekstensi.",
+	);
+	process.exit(1);
 }
 
-const targetDir = "./src/content/posts/"
-const fullPath = path.join(targetDir, fileName)
+const postsRoot = path.resolve(process.cwd(), "src", "content", "posts");
+const postDirectory = path.join(postsRoot, slug);
+const fullPath = path.join(postDirectory, "index.md");
 
-if (fs.existsSync(fullPath)) {
-  console.error(`Error: File ${fullPath} already exists `)
-  process.exit(1)
+if (path.relative(postsRoot, postDirectory).startsWith("..")) {
+	throw new Error(`Menolak path postingan di luar ${postsRoot}`);
 }
 
-// recursive mode creates multi-level directories
-const dirPath = path.dirname(fullPath)
-if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true })
+if (fs.existsSync(postDirectory)) {
+	console.error(`Postingan sudah tersedia: ${postDirectory}`);
+	process.exit(1);
 }
+
+const title = slug
+	.split("-")
+	.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+	.join(" ");
 
 const content = `---
-title: ${args[0]}
+title: ${JSON.stringify(title)}
 published: ${getDate()}
-description: ''
-image: ''
-tags: []
-category: ''
-draft: false 
-lang: ''
+description: ""
+image: ""
+tags: ["lang:id"]
+category: "General"
+draft: true
+lang: "id"
 ---
-`
 
-fs.writeFileSync(path.join(targetDir, fileName), content)
+Tulis pembuka yang menjelaskan konteks dan tujuan artikel.
+`;
 
-console.log(`Post ${fullPath} created`)
+fs.mkdirSync(postDirectory, { recursive: false });
+fs.writeFileSync(fullPath, content, { encoding: "utf8", flag: "wx" });
+
+console.log(`Postingan dibuat: ${fullPath}`);

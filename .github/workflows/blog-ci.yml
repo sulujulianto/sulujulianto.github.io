@@ -1,0 +1,63 @@
+name: Blog CI
+
+on:
+  pull_request:
+    paths:
+      - ".github/dependabot.yml"
+      - ".github/workflows/blog-ci.yml"
+      - ".nvmrc"
+      - "blog-fuwari/**"
+      - "blog/**"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/dependabot.yml"
+      - ".github/workflows/blog-ci.yml"
+      - ".nvmrc"
+      - "blog-fuwari/**"
+      - "blog/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blog-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.21.0
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+          cache-dependency-path: blog-fuwari/pnpm-lock.yaml
+
+      - name: Install locked blog dependencies
+        working-directory: blog-fuwari
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify source and build blog
+        working-directory: blog-fuwari
+        run: pnpm verify
+
+      - name: Audit production dependencies
+        working-directory: blog-fuwari
+        run: pnpm audit --prod --audit-level high
+
+      - name: Confirm generated blog is committed
+        run: git diff --exit-code -- blog

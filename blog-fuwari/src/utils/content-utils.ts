@@ -1,9 +1,8 @@
-import path from "node:path";
-import fs from "node:fs";
 import { type CollectionEntry, getCollection } from "astro:content";
+import fs from "node:fs";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
-import { getCategoryUrl } from "@utils/url-utils.ts";
+import { getCategoryUrl, getPostSlug } from "@utils/url-utils.ts";
 
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
@@ -11,9 +10,8 @@ async function getRawSortedPosts() {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
-	const contentRoot = path.resolve(process.cwd(), "src", "content", "posts");
-	const existingPosts = allBlogPosts.filter((post) =>
-		fs.existsSync(path.join(contentRoot, post.id)),
+	const existingPosts = allBlogPosts.filter(
+		(post) => post.filePath && fs.existsSync(post.filePath),
 	);
 
 	const sorted = existingPosts.sort((a, b) => {
@@ -28,11 +26,11 @@ export async function getSortedPosts() {
 	const sorted = await getRawSortedPosts();
 
 	for (let i = 1; i < sorted.length; i++) {
-		sorted[i].data.nextSlug = sorted[i - 1].slug;
+		sorted[i].data.nextSlug = getPostSlug(sorted[i - 1].id);
 		sorted[i].data.nextTitle = sorted[i - 1].data.title;
 	}
 	for (let i = 0; i < sorted.length - 1; i++) {
-		sorted[i].data.prevSlug = sorted[i + 1].slug;
+		sorted[i].data.prevSlug = getPostSlug(sorted[i + 1].id);
 		sorted[i].data.prevTitle = sorted[i + 1].data.title;
 	}
 
@@ -47,7 +45,7 @@ export async function getSortedPostsList(): Promise<PostForList[]> {
 
 	// delete post.body
 	const sortedPostsList = sortedFullPosts.map((post) => ({
-		slug: post.slug,
+		slug: getPostSlug(post.id),
 		data: post.data,
 	}));
 
