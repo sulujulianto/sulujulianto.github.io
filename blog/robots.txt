@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: /_astro/
 
-Sitemap: https://sulujulianto.github.io/blog/sitemap-index.xml
+Sitemap: https://sulujulianto.github.io/sitemap-index.xml

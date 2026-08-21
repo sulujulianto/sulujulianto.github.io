@@ -1,7 +1,6 @@
 # Portfolio Sulu Edward Julianto
 
 [![Portfolio CI](https://github.com/sulujulianto/sulujulianto.github.io/actions/workflows/portfolio-ci.yml/badge.svg)](https://github.com/sulujulianto/sulujulianto.github.io/actions/workflows/portfolio-ci.yml)
-[![Blog CI](https://github.com/sulujulianto/sulujulianto.github.io/actions/workflows/blog-ci.yml/badge.svg)](https://github.com/sulujulianto/sulujulianto.github.io/actions/workflows/blog-ci.yml)
 
 Repository ini memuat portfolio multibahasa Sulu Edward Julianto yang dipublikasikan melalui GitHub Pages. Konten utama mencakup profil, riwayat, keahlian, proyek, studi kasus, dan sertifikat. Blog berada dalam repository yang sama, tetapi mempunyai source dan alur pemeliharaan tersendiri.
 
@@ -65,21 +64,6 @@ Buka <http://localhost:8080/>. Jangan membuka `index.html` melalui `file://` kar
 
 Perintah blog tetap tersedia, tetapi penggunaannya dijelaskan terpisah dalam [panduan menulis postingan](docs/WRITE-POSTS.md) dan [panduan memperbarui Fuwari](docs/UPDATE-FUWARI.md).
 
-## Teknologi dan perintah blog
-
-Source blog menggunakan Astro 7, Svelte 5, Tailwind CSS 3, TypeScript, Pagefind, dan Biome. Blog memakai pnpm 11.21.0 melalui Corepack; penggunaan npm hanya berlaku untuk toolchain portfolio di root.
-
-| Perintah | Kegunaan |
-| --- | --- |
-| `npm run blog:dev` | Menjalankan blog dalam mode pengembangan. |
-| `npm run blog:doctor` | Memeriksa konfigurasi source dan output blog. |
-| `npm run blog:check` | Menjalankan pemeriksaan Astro. |
-| `npm run blog:test` | Menguji source dan hasil build blog. |
-| `npm run blog:build` | Membangun ulang `blog/` dari `blog-fuwari/`. |
-| `npm run blog:verify` | Menjalankan seluruh pemeriksaan dan build blog. |
-
-Baca [panduan pengelolaan blog](docs/MENGELOLA-BLOG.md) sebelum mengubah source atau hasil build.
-
 ## Struktur repository
 
 ```text
@@ -118,9 +102,6 @@ Mulai dari [pusat dokumentasi](docs/README.md). Panduan utama dipisahkan berdasa
 - [Melakukan pemeriksaan rutin bulanan](docs/PEMERIKSAAN-BULANAN.md)
 - [Menjalankan checklist sebelum publikasi](docs/CHECKLIST-PUBLIKASI.md)
 - [Mengatasi masalah umum](docs/TROUBLESHOOTING.md)
-- [Mengelola source, build, dan CI blog](docs/MENGELOLA-BLOG.md)
-- [Menulis dan menerbitkan postingan blog](docs/WRITE-POSTS.md)
-- [Memperbarui Fuwari dan dependency blog](docs/UPDATE-FUWARI.md)
 
 ## Aturan kerja
 

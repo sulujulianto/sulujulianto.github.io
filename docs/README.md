@@ -16,9 +16,6 @@ Halaman ini adalah daftar isi pemeliharaan portfolio. Pilih panduan berdasarkan 
 | Melakukan pemeriksaan rutin | [PEMERIKSAAN-BULANAN.md](PEMERIKSAAN-BULANAN.md) |
 | Memastikan perubahan siap di-commit dan dipublikasikan | [CHECKLIST-PUBLIKASI.md](CHECKLIST-PUBLIKASI.md) |
 | Menangani build, data, gambar, bahasa, atau deployment yang bermasalah | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
-| Mengelola source, hasil build, toolchain, dan CI blog | [MENGELOLA-BLOG.md](MENGELOLA-BLOG.md) |
-| Menulis dan menerbitkan postingan blog | [WRITE-POSTS.md](WRITE-POSTS.md) |
-| Memperbarui Fuwari atau dependency blog | [UPDATE-FUWARI.md](UPDATE-FUWARI.md) |
 
 ## Urutan umum setiap perubahan
 
@@ -54,9 +51,8 @@ Jangan memperbaiki source dengan mengedit file hasil build secara langsung.
 
 Blog mempunyai alur terpisah dari portfolio root:
 
-- [MENGELOLA-BLOG.md](MENGELOLA-BLOG.md) untuk arsitektur, toolchain, build, pengujian, dan CI;
 - [WRITE-POSTS.md](WRITE-POSTS.md) untuk menulis postingan;
-- [UPDATE-FUWARI.md](UPDATE-FUWARI.md) untuk memperbarui template dan dependency blog.
+- [UPDATE-FUWARI.md](UPDATE-FUWARI.md) untuk memperbarui template blog.
 
 Jangan mengubah blog bersamaan dengan migrasi besar portfolio kecuali memang direncanakan sebagai pekerjaan terpisah.
 

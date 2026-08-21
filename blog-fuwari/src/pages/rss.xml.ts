@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss";
 import { getSortedPosts } from "@utils/content-utils";
-import { getPostSlug, url } from "@utils/url-utils";
+import { url } from "@utils/url-utils";
 import type { APIContext } from "astro";
 import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
@@ -18,13 +18,11 @@ function stripInvalidXmlChars(str: string): string {
 
 export async function GET(context: APIContext) {
 	const blog = await getSortedPosts();
-	const siteRoot = context.site ?? new URL("https://sulujulianto.github.io/");
-	const blogRoot = new URL(url("/"), siteRoot);
 
 	return rss({
 		title: siteConfig.title,
 		description: siteConfig.subtitle || "No description",
-		site: blogRoot,
+		site: context.site ?? "https://fuwari.vercel.app",
 		items: blog.map((post) => {
 			const content =
 				typeof post.body === "string" ? post.body : String(post.body || "");
@@ -33,10 +31,10 @@ export async function GET(context: APIContext) {
 				title: post.data.title,
 				pubDate: post.data.published,
 				description: post.data.description || "",
-				link: url(`/posts/${getPostSlug(post.id)}/`),
-				// Gambar relatif milik Astro tidak mempunyai URL stabil di feed.
-				// Hapus tag gambar agar pembaca RSS tidak menerima tautan rusak.
-				content: sanitizeHtml(parser.render(cleanedContent)),
+				link: url(`/posts/${post.slug}/`),
+				content: sanitizeHtml(parser.render(cleanedContent), {
+					allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+				}),
 			};
 		}),
 		customData: `<language>${siteConfig.lang}</language>`,

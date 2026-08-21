@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Sulu Edward Julianto</title><description>Blog</description><link>https://sulujulianto.github.io/blog/</link><language>id</language><item><title>Recap 2025: Mengubah Niat Jadi Bukti</title><link>https://sulujulianto.github.io/blog/posts/recap-2025/</link><guid isPermaLink="true">https://sulujulianto.github.io/blog/posts/recap-2025/</guid><description>Rangkuman pertumbuhan saya di bidang IT sepanjang 2025: JuaraGCP, Indonesia Digital Forum, PPKPI, Dicoding Machine Learning, BBPVP Bekasi, hingga DevFest Depok (Firebase Challenge).</description><pubDate>Wed, 31 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Kalau saya harus merangkum 2025 dalam satu kalimat: &lt;strong&gt;tahun ini saya berhenti “ingin”, lalu mulai membuktikan&lt;/strong&gt;.&lt;br /&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Sulu Edward Julianto</title><description>Blog</description><link>https://sulujulianto.github.io/</link><language>en</language><item><title>Recap 2025: Mengubah Niat Jadi Bukti</title><link>https://sulujulianto.github.io/blog/posts/recap-2025/</link><guid isPermaLink="true">https://sulujulianto.github.io/blog/posts/recap-2025/</guid><description>Rangkuman pertumbuhan saya di bidang IT sepanjang 2025: JuaraGCP, Indonesia Digital Forum, PPKPI, Dicoding Machine Learning, BBPVP Bekasi, hingga DevFest Depok (Firebase Challenge).</description><pubDate>Wed, 31 Dec 2025 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Kalau saya harus merangkum 2025 dalam satu kalimat: &lt;strong&gt;tahun ini saya berhenti “ingin”, lalu mulai membuktikan&lt;/strong&gt;.&lt;br /&gt;
 2025 saya jadikan sebagai tahun untuk lebih serius membangun arah di bidang IT. Bukan sekadar “ikut ini-itu”, tapi menyusun perjalanan belajar yang rapi, menyelesaikan program sampai tuntas, dan menjaga dokumentasi agar progresnya nyata.&lt;/p&gt;
 &lt;p&gt;Saya tidak menulis ini untuk terlihat sempurna. Saya menulis ini untuk mendokumentasikan pertumbuhan: apa yang saya ikuti, apa yang saya kerjakan, dan pelajaran apa yang saya dapatkan. Karena pada akhirnya, proses yang rapi itu bukan hanya enak dibaca, tapi juga membantu saya tetap waras saat menghadapi hal baru.&lt;/p&gt;
 &lt;p&gt;Postingan ini saya tulis sebagai rangkuman perjalanan tersebut, lengkap dengan dokumentasi dan tautan pendukung di setiap bagian.&lt;/p&gt;
@@ -30,8 +30,8 @@
 &lt;li&gt;Ritme belajar jadi lebih stabil karena targetnya jelas.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Dokumentasi&lt;/h3&gt;
-&lt;p&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./images/juaragcp-01.webp&quot; alt=&quot;JuaraGCP Season 11 - Dokumentasi 1&quot; /&gt;
+&lt;img src=&quot;./images/juaragcp-02.webp&quot; alt=&quot;JuaraGCP Season 11 - Dokumentasi 2&quot; /&gt;&lt;/p&gt;
 &lt;h3&gt;Referensi&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/posts/sulujulianto_juaragcp11-juaragcp-juaragcp-activity-7294508491090599937-fSfC?utm_source=share&amp;amp;utm_medium=member_desktop&amp;amp;rcm=ACoAAC3QJPoBpHixAx4NgbbCIh10mMBCc3btDlM&quot;&gt;Post/rekap JuaraGCP&lt;/a&gt;&lt;/li&gt;
@@ -50,8 +50,8 @@ Forum ini digagas melalui kolaborasi pemangku kepentingan ekosistem digital (ter
 &lt;li&gt;Membangun relasi dan memperluas jejaring dalam ekosistem digital.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Dokumentasi&lt;/h3&gt;
-&lt;p&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./images/idf-01.webp&quot; alt=&quot;Indonesia Digital Forum 2025 - Dokumentasi 1&quot; /&gt;
+&lt;img src=&quot;./images/idf-02.webp&quot; alt=&quot;Indonesia Digital Forum 2025 - Dokumentasi 2&quot; /&gt;&lt;/p&gt;
 &lt;h3&gt;Referensi&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://indonesiadigitalforum.id/&quot;&gt;Website/Info resmi IDF&lt;/a&gt;&lt;/li&gt;
@@ -67,7 +67,7 @@ Forum ini digagas melalui kolaborasi pemangku kepentingan ekosistem digital (ter
 &lt;li&gt;Dokumentasi dan kerapian proyek jadi bagian dari standar kerja, bukan tambahan.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Dokumentasi&lt;/h3&gt;
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./images/ppkpi-01.webp&quot; alt=&quot;PPKPI Jakarta - Dokumentasi 1&quot; /&gt;&lt;/p&gt;
 &lt;h3&gt;Referensi&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/sulujulianto/junior-web-developer-bootcamp-ppkpi-2025&quot;&gt;Repo pembelajaran PPKPI&lt;/a&gt;&lt;/li&gt;
@@ -85,7 +85,7 @@ Forum ini digagas melalui kolaborasi pemangku kepentingan ekosistem digital (ter
 &lt;li&gt;Perspektif ML membantu saya lebih rapi saat menganalisis masalah teknis.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Dokumentasi&lt;/h3&gt;
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./images/dicoding-ml-01.webp&quot; alt=&quot;Dicoding ML - Dokumentasi 1&quot; /&gt;&lt;/p&gt;
 &lt;h3&gt;Referensi&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/sulujulianto/Dicoding-Machine-Learning&quot;&gt;Repo Dicoding Machine Learning&lt;/a&gt;&lt;/li&gt;
@@ -103,7 +103,7 @@ Forum ini digagas melalui kolaborasi pemangku kepentingan ekosistem digital (ter
 &lt;li&gt;Kebiasaan kerja rapi (versioning, kolaborasi, dan proses).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Dokumentasi&lt;/h3&gt;
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./images/bbpvp-01.webp&quot; alt=&quot;BBPVP Bekasi - Dokumentasi 1&quot; /&gt;&lt;/p&gt;
 &lt;h3&gt;Referensi&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/sulujulianto/webdev-training-bbpvp-bekasi-2025&quot;&gt;Repo pembelajaran BBPVP Bekasi&lt;/a&gt;&lt;/li&gt;
@@ -120,8 +120,8 @@ Forum ini digagas melalui kolaborasi pemangku kepentingan ekosistem digital (ter
 &lt;li&gt;Koneksi dan apresiasi dari komunitas yang memperkuat langkah berikutnya.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Dokumentasi&lt;/h3&gt;
-&lt;p&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./images/devfest-01.webp&quot; alt=&quot;DevFest Depok - Dokumentasi 1&quot; /&gt;
+&lt;img src=&quot;./images/devfest-02.webp&quot; alt=&quot;DevFest Depok - Dokumentasi 2&quot; /&gt;&lt;/p&gt;
 &lt;h3&gt;Referensi&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/sulujulianto/pixel-heist-coop&quot;&gt;Repo Pixel Heist Co-op&lt;/a&gt;&lt;/li&gt;
@@ -141,6 +141,5 @@ Forum ini digagas melalui kolaborasi pemangku kepentingan ekosistem digital (ter
   &quot;BBPVP Bekasi (Node.js, React, REST API, Git workflow)&quot;,
   &quot;DevFest Depok (Firebase Challenge winner + speaker)&quot;,
 ];
-console.log(highlights2025);
-&lt;/code&gt;&lt;/pre&gt;
+console.log(highlights2025);&lt;/code&gt;&lt;/pre&gt;
 </content:encoded></item></channel></rss>

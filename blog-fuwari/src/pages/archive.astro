@@ -11,7 +11,7 @@ const hasPosts = sortedPostsList.length > 0;
 
 <MainGridLayout title={i18n(I18nKey.archive)}>
     {hasPosts ? (
-        <ArchivePanel sortedPosts={sortedPostsList} client:load></ArchivePanel>
+        <ArchivePanel sortedPosts={sortedPostsList} client:only="svelte"></ArchivePanel>
     ) : (
         <div class="card-base px-8 py-6 text-center text-75">
             Belum ada postingan. Silakan buat post baru di blog-fuwari/src/content/posts/.

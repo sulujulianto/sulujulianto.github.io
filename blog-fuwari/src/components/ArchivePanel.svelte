@@ -5,18 +5,21 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { getPostUrlBySlug } from "../utils/url-utils";
 
-export let tags: string[] = [];
-export let categories: string[] = [];
+export let tags: string[];
+export let categories: string[];
 export let sortedPosts: Post[] = [];
 
-let uncategorized = false;
+const params = new URLSearchParams(window.location.search);
+tags = params.has("tag") ? params.getAll("tag") : [];
+categories = params.has("category") ? params.getAll("category") : [];
+const uncategorized = params.get("uncategorized");
 
 interface Post {
 	slug: string;
 	data: {
 		title: string;
 		tags: string[];
-		category?: string | null;
+		category?: string;
 		published: Date;
 	};
 }
@@ -25,6 +28,8 @@ interface Group {
 	year: number;
 	posts: Post[];
 }
+
+let groups: Group[] = [];
 
 function formatDate(date: Date) {
 	const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -36,30 +41,24 @@ function formatTag(tagList: string[]) {
 	return tagList.map((t) => `#${t}`).join(" ");
 }
 
-function groupPosts(
-	posts: Post[],
-	selectedTags: string[],
-	selectedCategories: string[],
-	showUncategorized: boolean,
-): Group[] {
-	let filteredPosts = posts;
+onMount(async () => {
+	let filteredPosts: Post[] = sortedPosts;
 
-	if (selectedTags.length > 0) {
+	if (tags.length > 0) {
 		filteredPosts = filteredPosts.filter(
 			(post) =>
 				Array.isArray(post.data.tags) &&
-				post.data.tags.some((tag) => selectedTags.includes(tag)),
+				post.data.tags.some((tag) => tags.includes(tag)),
 		);
 	}
 
-	if (selectedCategories.length > 0) {
+	if (categories.length > 0) {
 		filteredPosts = filteredPosts.filter(
-			(post) =>
-				post.data.category && selectedCategories.includes(post.data.category),
+			(post) => post.data.category && categories.includes(post.data.category),
 		);
 	}
 
-	if (showUncategorized) {
+	if (uncategorized) {
 		filteredPosts = filteredPosts.filter((post) => !post.data.category);
 	}
 
@@ -82,24 +81,11 @@ function groupPosts(
 
 	groupedPostsArray.sort((a, b) => b.year - a.year);
 
-	return groupedPostsArray;
-}
-
-let groups: Group[] = groupPosts(sortedPosts, tags, categories, uncategorized);
-
-onMount(() => {
-	const params = new URLSearchParams(window.location.search);
-	tags = params.getAll("tag");
-	categories = params.getAll("category");
-	uncategorized = params.get("uncategorized") === "true";
-	groups = groupPosts(sortedPosts, tags, categories, uncategorized);
+	groups = groupedPostsArray;
 });
 </script>
 
 <div class="card-base px-8 py-6">
-    {#if groups.length === 0}
-        <p class="py-4 text-center text-50">Tidak ada postingan yang sesuai dengan filter.</p>
-    {/if}
     {#each groups as group}
         <div>
             <div class="flex flex-row w-full items-center h-[3.75rem]">
