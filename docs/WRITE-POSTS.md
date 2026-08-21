@@ -1,85 +1,126 @@
-# Cara Membuat Postingan (Rapi, Ada Cover, Multi Bahasa)
+# Menulis dan Menerbitkan Postingan Blog
 
-## Lokasi post
-Semua postingan berada di:
-```
-blog-fuwari/src/content/posts/
-```
+Gunakan panduan ini untuk membuat artikel yang mudah dibaca, dapat diperiksa, dan aman dibangun oleh Astro.
 
-## Rekomendasi struktur (1 folder per post)
-Contoh struktur yang rapi:
-```
-blog-fuwari/src/content/posts/my-first-post/
-  index.md
-  cover.webp
-  images/
-    diagram.webp
-    screenshot.webp
+## Membuat post baru
+
+Dari `blog-fuwari/`, jalankan:
+
+```bash
+pnpm new-post catatan-belajar-astro
 ```
 
-## Template frontmatter lengkap (copy-paste)
-```md
+Slug hanya boleh memakai huruf kecil, angka, dan tanda minus. Script menolak path, ekstensi, spasi, dan pola seperti `../`.
+
+Perintah tersebut membuat:
+
+```text
+src/content/posts/catatan-belajar-astro/
+└── index.md
+```
+
+Post baru selalu memakai `draft: true` agar tidak terbit sebelum selesai ditinjau.
+
+## Struktur yang disarankan
+
+```text
+src/content/posts/catatan-belajar-astro/
+├── index.md
+├── cover.webp
+└── images/
+    ├── diagram.webp
+    └── hasil.webp
+```
+
+Nama file menggunakan huruf kecil dan tanda minus. Simpan gambar milik artikel di folder artikel, bukan di `blog/`.
+
+## Frontmatter
+
+```yaml
 ---
-title: "Judul Postingan"
-published: 2025-01-01
-updated: 2025-01-02
-description: "Ringkasan singkat isi postingan."
+title: "Catatan Belajar Astro"
+published: 2026-08-21
+updated: 2026-08-22
+description: "Ringkasan spesifik mengenai masalah, pendekatan, dan hasil yang dibahas."
 image: "./cover.webp"
-tags: ["Blog", "Tutorial", "lang:id"]
-category: "General"
-draft: false
+tags: ["Astro", "Web Development", "lang:id"]
+category: "Engineering"
+draft: true
 lang: "id"
 ---
 ```
-Catatan:
-- `updated` opsional, boleh dihapus jika tidak dipakai.
-- `image` opsional, tetapi disarankan untuk cover.
-- `draft: true` menyembunyikan postingan dari build.
 
-## Tentang `lang`
-- `lang` menandai bahasa konten: `id`, `en`, `ja`, `zh`.
-- Konsisten gunakan `lang` agar metadata rapi.
-- Jika ingin bahasa juga muncul sebagai tag, gunakan pola `lang:id`.
+Aturannya:
 
-## Aturan cover image
-- Simpan cover di folder post, lalu referensikan:
-  - `image: "./cover.webp"`
-- Alternatif (public): simpan di `blog-fuwari/public/assets/covers/` lalu referensikan:
-  - `image: "/assets/covers/nama-file.webp"`
+- `title` jelas dan sesuai isi;
+- `published` adalah tanggal publikasi pertama;
+- `updated` hanya ditambahkan ketika isi mengalami perubahan bermakna;
+- `description` menjelaskan isi, bukan slogan promosi;
+- `image` menggunakan path relatif menuju cover;
+- `tags` spesifik dan tidak berlebihan;
+- `category` menggunakan kelompok yang konsisten;
+- `draft` tetap `true` selama penulisan;
+- `lang` menggunakan `id`, `en`, `ja`, atau `zh` sesuai bahasa artikel.
 
-## Gambar di isi post
-Gunakan path relatif dari folder post:
+## Struktur tulisan
+
+Struktur tidak harus seragam untuk semua artikel, tetapi pembaca sebaiknya menemukan:
+
+1. konteks atau masalah;
+2. tujuan tulisan;
+3. pendekatan atau proses;
+4. hasil dan bukti;
+5. keterbatasan atau hal yang belum selesai;
+6. pelajaran dan langkah berikutnya.
+
+Gunakan judul bagian yang menjelaskan isi. Hindari klaim seperti “sempurna”, “enterprise-grade”, atau “scalable” jika tidak ada bukti pengujian maupun penggunaan nyata.
+
+## Gambar dan tautan
+
+Gunakan teks alternatif yang menjelaskan isi gambar:
+
 ```md
-![Contoh gambar](./images/diagram.webp)
+![Hasil audit aksesibilitas halaman artikel](./images/hasil-audit.webp)
 ```
 
-## Contoh code block
-```js
-const title = "Halo Blog";
-console.log(title);
-```
+Hindari teks seperti `gambar`, `screenshot`, atau alt kosong. Kompres gambar sebelum dimasukkan dan pilih WebP untuk foto atau tangkapan layar apabila hasilnya tetap terbaca.
 
+Periksa setiap tautan eksternal dan gunakan sumber primer jika menyatakan fakta teknis, jadwal, hasil kompetisi, atau informasi organisasi.
+
+## Code fence
+
+Setiap pembuka code fence wajib mempunyai penutup:
+
+````md
 ```ts
-type Post = { title: string; published: string };
-const post: Post = { title: "Contoh", published: "2025-01-01" };
+const status = "siap ditinjau";
 ```
+````
 
-```bash
-npm run blog:build
-```
+Pengujian source akan gagal apabila jumlah code fence tidak berpasangan.
 
-## Draft workflow
-- Gunakan `draft: true` agar tidak muncul di listing.
-- File yang diawali underscore tidak ikut build (misal `_TEMPLATE.md`).
+## Menerbitkan
 
-## Setelah menulis
-```bash
-npm run blog:build
-```
+1. Baca artikel sebagai pembaca yang tidak mengetahui konteksnya.
+2. Periksa fakta, ejaan, gambar, dan tautan.
+3. Ubah `draft: true` menjadi `draft: false`.
+4. Jalankan:
 
-## Kesalahan umum + solusi cepat
-- **Path gambar salah**: pastikan path relatif `./` sesuai folder post.
-- **Lupa build**: jalankan `npm run blog:build` setelah menambah post.
-- **Draft masih true**: ubah ke `false` sebelum publish.
-- **Slug tidak aman**: gunakan huruf kecil, angka, dan tanda minus.
-- **Gambar terlalu besar**: kompres ke WebP (lebih ringan di web).
+   ```bash
+   pnpm format:check
+   pnpm lint
+   pnpm verify
+   pnpm audit --prod
+   ```
+
+5. Tinjau source dan perubahan hasil build dalam `../blog/`.
+6. Jalankan server dari root repository untuk pemeriksaan browser:
+
+   ```bash
+   cd ..
+   python3 -m http.server 8080
+   ```
+
+7. Buka `http://localhost:8080/blog/`, halaman artikel, arsip, RSS, dan sitemap.
+
+Jangan mengedit HTML dalam `blog/` untuk memperbaiki artikel. Perbaiki source lalu bangun ulang.

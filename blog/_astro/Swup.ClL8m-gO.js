@@ -1,0 +1,1 @@
+import{t as e}from"./Swup.modern.KnpWp8q2.js";export{e as default};
