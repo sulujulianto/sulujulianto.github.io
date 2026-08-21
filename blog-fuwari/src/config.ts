@@ -10,7 +10,7 @@ import { LinkPreset } from "./types/config";
 export const siteConfig: SiteConfig = {
 	title: "Sulu Edward Julianto",
 	subtitle: "Blog",
-	lang: "id", // Bahasa utama antarmuka dan feed blog.
+	lang: "en", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
 		hue: 250, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
 		fixed: false, // Hide the theme color picker for visitors
@@ -54,7 +54,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "/assets/images/avatar.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "Sulu Edward Julianto",
-	bio: "Full-Stack Developer yang mendokumentasikan proses belajar, keputusan teknis, dan proyek yang saya bangun.",
+	bio: "Full-Stack Software Engineer. Dedicated to crafting scalable, modern, and highly maintainable web applications.",
 	// Sosial media yang tampil di profil (ikon dari https://icones.js.org/).
 	links: [
 		{

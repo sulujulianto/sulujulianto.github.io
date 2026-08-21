@@ -186,4 +186,3 @@ const highlights2025 = [
   "DevFest Depok (Firebase Challenge winner + speaker)",
 ];
 console.log(highlights2025);
-```
