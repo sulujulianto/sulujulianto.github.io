@@ -1,22 +1,23 @@
 # Menyiapkan Portfolio di Komputer Baru
 
-Panduan ini menyiapkan portfolio root dan blog Fuwari dari awal.
+Panduan ini hanya menyiapkan portfolio root. Blog memiliki dependency dan alur build tersendiri.
 
 ## 1. Prasyarat
 
-Gunakan:
+Pasang:
 
 - Git;
-- Node.js 24 LTS;
+- NVM;
+- Node.js major 24;
 - npm yang disertakan bersama Node.js;
-- Corepack untuk pnpm blog.
+- Python 3 untuk server lokal.
 
-Cek versi:
+Periksa ketersediaannya:
 
 ```bash
 git --version
-node --version
-npm --version
+command -v nvm
+python3 --version
 ```
 
 ## 2. Clone repository
@@ -26,101 +27,79 @@ git clone https://github.com/sulujulianto/sulujulianto.github.io.git
 cd sulujulianto.github.io
 ```
 
-Pastikan branch dan status benar:
+Pastikan repository berada pada `main` dan tidak memiliki perubahan lokal:
 
 ```bash
 git status --short --branch
-git log -1 --oneline
+git log -1 --oneline --decorate
 ```
 
-## 3. Pasang dependency portfolio
+## 3. Aktifkan Node.js yang sesuai
+
+File `.nvmrc` adalah sumber versi Node untuk pengembangan lokal dan CI.
+
+```bash
+nvm install
+nvm use
+node --version
+npm --version
+```
+
+Versi Node harus berada pada major 24. Jangan mengubah alias default NVM hanya untuk repository ini karena perubahan tersebut dapat memengaruhi proyek lain.
+
+## 4. Pasang dependency
 
 ```bash
 npm ci
 ```
 
-`npm ci` membaca `package-lock.json` dan memasang versi yang sama dengan CI.
+Gunakan `npm ci`, bukan `npm install`, ketika hanya ingin memasang dependency dari `package-lock.json`. Perintah ini menjaga instalasi lokal tetap sama dengan CI.
 
-## 4. Verifikasi portfolio
+## 5. Verifikasi kondisi awal
 
 ```bash
+npm audit
 npm run verify
+git status --short --branch
 ```
 
-Hasil yang benar:
+Hasil yang diharapkan:
 
-- build Tailwind selesai;
-- audit selesai dengan 0 failure;
-- seluruh tes lulus;
-- hanya tiga warning gambar proyek yang sudah dikenal yang boleh muncul.
+- audit dependency tidak menemukan kerentanan;
+- build Tailwind dan TypeScript selesai;
+- audit data selesai tanpa failure;
+- seluruh pengujian lulus;
+- working tree tetap bersih.
 
-## 5. Jalankan portfolio lokal
+Tiga warning gambar proyek yang sudah dikenal boleh muncul. Warning baru tidak boleh diabaikan.
+
+## 6. Jalankan server lokal
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Buka <http://localhost:8080/>. Hentikan server dengan `Ctrl+C`.
+Buka <http://localhost:8080/> dan hentikan server dengan `Ctrl+C` setelah selesai.
 
-Jangan membuka `index.html` melalui `file://`, karena browser dapat memblokir pengambilan data JSON.
+Jangan membuka `index.html` melalui `file://`. Portfolio mengambil JSON menggunakan `fetch`, dan browser dapat memblokir permintaan tersebut ketika halaman dibuka langsung dari filesystem.
 
-## 6. Siapkan pnpm untuk blog
-
-Repository blog dikunci pada pnpm 9.14.4.
-
-```bash
-corepack enable
-corepack prepare pnpm@9.14.4 --activate
-```
-
-Pasang dependency blog:
-
-```bash
-cd blog-fuwari
-pnpm install --frozen-lockfile
-cd ..
-```
-
-Jalankan pemeriksaan:
-
-```bash
-npm run blog:doctor
-```
-
-## 7. Menjalankan blog
-
-Mode pengembangan:
-
-```bash
-npm run blog:dev
-```
-
-Build final ke folder `blog/`:
-
-```bash
-npm run blog:build
-```
-
-Folder `blog-fuwari/` adalah source. Folder `blog/` adalah hasil build dan tidak boleh diedit manual.
-
-## 8. Sebelum mulai mengubah repository
-
-Buat branch baru:
+## 7. Siapkan branch pekerjaan
 
 ```bash
 git switch main
 git pull --ff-only origin main
-git switch -c nama-branch-baru
+git switch -c jenis/ringkasan-pekerjaan
 ```
 
-Lanjutkan dengan [ALUR-PENGEMBANGAN.md](ALUR-PENGEMBANGAN.md) atau pilih pekerjaan dari [README dokumentasi](README.md).
+Contoh:
 
-## File hasil build yang harus ikut di-commit
+- `feat/add-project-name`;
+- `fix/certificate-copy`;
+- `docs/update-maintenance-guide`;
+- `chore/update-dependencies`.
 
-| Perubahan source | Hasil build |
-| --- | --- |
-| CSS atau class Tailwind | `assets/css/output.css` |
-| TypeScript portfolio | `assets/js/dist/*.js` |
-| Source blog | isi folder `blog/` |
+Selanjutnya pilih panduan yang sesuai dari [pusat dokumentasi](README.md).
 
-JSON dan HTML tidak memiliki hasil build sendiri, tetapi seluruh perubahan tetap harus melewati `npm run verify`.
+## Jika juga akan mengubah blog
+
+Jangan mencampurnya secara otomatis dengan pekerjaan portfolio. Baca [panduan menulis postingan](WRITE-POSTS.md) atau [panduan memperbarui Fuwari](UPDATE-FUWARI.md), lalu gunakan branch khusus blog.

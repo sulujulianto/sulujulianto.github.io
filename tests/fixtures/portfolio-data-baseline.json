@@ -338,7 +338,7 @@
     "certificates": {
       "id": {
         "file": "assets/data/certificates/certificates-id.json",
-        "sha256": "cefd35be526fad1dd1ccb28326d5aa645d447d3c90533e33062c1c9252812e8c",
+        "sha256": "1272281d91d8baa7b502629dfe8d8272b9145563038b7dea7d215c4713a680b7",
         "counts": {
           "total": 12,
           "displayable": 12,
@@ -496,7 +496,7 @@
       },
       "en": {
         "file": "assets/data/certificates/certificates-en.json",
-        "sha256": "747b671f372047c19bc1ec23c19869a8cb5bfc27806982fd92f4bafe6bc90d9a",
+        "sha256": "0ec157944de18595273806a17c7634dc39f23c629d85b93393fbe656bb9079a4",
         "counts": {
           "total": 38,
           "displayable": 38,

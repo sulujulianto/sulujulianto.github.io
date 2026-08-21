@@ -1,30 +1,26 @@
-# Alur Mengubah Tampilan dan Kode Portfolio
+# Mengubah Tampilan dan Kode Portfolio
 
-Panduan ini dipakai saat mengubah CSS, layout HTML, atau logika TypeScript.
+Panduan ini digunakan saat mengubah HTML, CSS, TypeScript, JavaScript, atau perilaku antarmuka portfolio.
 
-## 1. Mulai dari `main` yang terbaru
+## 1. Mulai dari `main` terbaru
 
 ```bash
 git switch main
 git pull --ff-only origin main
-git switch -c nama-branch-baru
+git status --short --branch
+git switch -c jenis/ringkasan-pekerjaan
 ```
 
-Contoh nama branch:
+Jangan memulai perubahan langsung pada `main`. Jika working tree tidak bersih, periksa perubahan tersebut sebelum berpindah branch.
 
-- `docs/update-maintenance-guide`
-- `feat/add-new-project`
-- `fix/mobile-navigation`
-
-Jangan melakukan perubahan langsung di `main`.
-
-## 2. Pasang dependency
+## 2. Aktifkan toolchain
 
 ```bash
+nvm use
 npm ci
 ```
 
-Gunakan `npm ci` ketika `package-lock.json` sudah tersedia. Perintah ini memasang versi dependency yang terkunci dan lebih mudah direproduksi daripada `npm install`.
+`nvm use` membaca `.nvmrc`. `npm ci` memasang versi yang terkunci dalam `package-lock.json`.
 
 ## 3. Jalankan server lokal
 
@@ -32,126 +28,132 @@ Gunakan `npm ci` ketika `package-lock.json` sudah tersedia. Perintah ini memasan
 python3 -m http.server 8080
 ```
 
-Buka <http://localhost:8080/>. Server diperlukan karena portfolio mengambil file JSON dengan `fetch`.
+Buka <http://localhost:8080/>. Gunakan terminal lain untuk proses build atau test.
 
-## Mengedit CSS
+## Mengubah CSS
 
-Source CSS utama berada di:
+Source utama:
 
 ```text
 assets/css/main.css
 ```
 
-Hasil build berada di:
+Hasil build:
 
 ```text
 assets/css/output.css
 ```
 
-Jangan mengedit `output.css` manual karena isinya akan ditimpa saat build.
-
-Saat bekerja, buka terminal kedua:
+Selama mengedit:
 
 ```bash
 npm run tailwind:watch
 ```
 
-Kemudian edit `assets/css/main.css` atau class Tailwind di file HTML/TSX. Jika hanya ingin membangun sekali:
+Untuk build satu kali:
 
 ```bash
 npm run tailwind:build
 ```
 
-Setelah selesai, pastikan `assets/css/output.css` ikut berubah dan ikut di-commit.
+Jangan mengedit `output.css` secara manual. Jika class Tailwind ditambahkan pada HTML atau TSX, build CSS tetap harus dijalankan.
 
-## Mengedit HTML
+## Mengubah HTML
 
-Halaman utama yang aktif:
+Halaman aktif:
 
-- `index.html`
-- `projects.html`
-- `certificates.html`
-- `404.html`
-- `projects/<slug>/index.html` untuk detail proyek yang sudah dipublikasikan
+- `index.html`;
+- `projects.html`;
+- `certificates.html`;
+- `404.html`;
+- `projects/<slug>/index.html`.
 
-Folder `id/`, `en/`, `jp/`, dan `cn/` hanya redirect. Jangan menyalin konten baru ke sana.
+Folder `id/`, `en/`, `jp/`, dan `cn/` hanya redirect. Jangan menyalin halaman utama ke folder tersebut.
 
-Jika menambah class Tailwind baru di HTML, jalankan build Tailwind. Jika hanya mengubah teks biasa yang sudah tidak dikelola katalog bahasa, build CSS tidak diperlukan, tetapi `npm run verify` tetap wajib.
+Saat mengubah struktur HTML, periksa:
 
-## Mengedit TypeScript atau JavaScript
+- ID elemen tidak duplikat;
+- heading tetap berurutan;
+- kontrol dapat digunakan dengan keyboard;
+- teks fallback tetap tersedia;
+- canonical, hreflang, dan metadata tidak hilang;
+- class baru terdeteksi oleh Tailwind.
+
+## Mengubah TypeScript
 
 Source runtime:
 
-- `assets/js/app.tsx`: kartu proyek/sertifikat, riwayat, galeri, dan keahlian.
-- `assets/js/project-detail.tsx`: artikel detail proyek.
-- `assets/js/language-resolver.ts`: urutan pemilihan bahasa.
-- `assets/js/locale-manager.ts`: penerapan teks, URL, metadata, CV, dan pemilih bahasa.
-- `assets/js/theme.js`: tema, menu mobile, smooth scroll, dan tombol kembali ke atas.
+- `assets/js/app.tsx`: kartu, galeri, riwayat, sertifikat, dan keahlian;
+- `assets/js/project-detail.tsx`: renderer studi kasus;
+- `assets/js/language-resolver.ts`: pemilihan bahasa;
+- `assets/js/locale-manager.ts`: penerapan katalog, URL, metadata, CV, dan pemilih bahasa.
 
-File di `assets/js/dist/` adalah hasil kompilasi. Jangan edit manual.
+Hasil kompilasi berada di `assets/js/dist/`. Jangan mengedit file tersebut secara manual.
 
-Setelah mengubah `.ts` atau `.tsx`:
+Setelah mengubah source:
 
 ```bash
 npm run ts:build
+git diff -- assets/js assets/js/dist
 ```
 
-Commit source dan hasil build-nya bersama-sama.
+Pastikan output hanya berubah sesuai source yang diedit.
 
-## Mengedit JSON
+## Mengubah JavaScript biasa
 
-JSON tidak memerlukan build. Pastikan:
+`assets/js/theme.js` mengatur tema, menu mobile, smooth scrolling, dan tombol kembali ke atas. File ini tidak melalui TypeScript, tetapi tetap harus melewati seluruh pengujian.
 
-- tanda kutip memakai `"`;
-- tidak ada koma setelah item terakhir;
-- tipe nilai tetap sama;
-- semua path gambar benar;
-- semua tanggal mengikuti format yang didokumentasikan.
+Hindari menambahkan logika halaman baru ke `theme.js` jika tanggung jawabnya lebih tepat berada pada runtime TypeScript.
 
-Untuk data proyek, sertifikat, dan kategori, baca bagian baseline audit di [UPDATE-KONTEN-PORTFOLIO.md](UPDATE-KONTEN-PORTFOLIO.md#baseline-audit-data).
+## Mengubah JSON
 
-## Urutan pemeriksaan sebelum commit
+JSON tidak memerlukan build tersendiri. Pastikan:
+
+- menggunakan tanda kutip ganda;
+- tidak memiliki koma setelah item terakhir;
+- tipe setiap field tidak berubah tanpa migrasi;
+- tanggal mengikuti format yang didokumentasikan;
+- path aset benar dan case-sensitive.
+
+Gunakan panduan khusus untuk [proyek](MENULIS-PROYEK.md), [sertifikat](MENGELOLA-SERTIFIKAT.md), [riwayat dan keahlian](MENGELOLA-RIWAYAT-DAN-KEAHLIAN.md), atau [bahasa dan metadata](MENGELOLA-BAHASA-DAN-METADATA.md).
+
+## Pemeriksaan selama bekerja
+
+Jalankan test terfokus terlebih dahulu agar feedback lebih cepat:
+
+```bash
+npm run test:ui-locale
+npm run test:projects
+npm run test:skills
+npm run test:content
+```
+
+Pilih hanya test yang berkaitan. Sebelum commit, `npm run verify` tetap wajib.
+
+## Pemeriksaan sebelum commit
 
 ```bash
 npm run verify
 git diff --check
 git status --short --branch
+git diff --name-status
 git diff
 ```
 
-`npm run verify` melakukan empat hal penting:
+Tiga warning gambar proyek yang sudah dikenal boleh muncul. Kegagalan atau warning baru harus dijelaskan sebelum perubahan diteruskan.
 
-1. membangun CSS;
-2. mengaudit data dan aset;
-3. membangun TypeScript;
-4. menjalankan seluruh tes.
+## Stage dan commit
 
-Tiga warning gambar proyek yang sudah dikenal boleh muncul. Kegagalan atau warning baru harus diperiksa.
-
-## Commit dan Pull Request
+Stage hanya file yang menjadi bagian pekerjaan:
 
 ```bash
-git add -A
+git add -- path/file-pertama path/file-kedua
 git diff --cached --check
 git diff --cached --stat
+git diff --cached
 git commit -m "jenis: ringkasan perubahan"
-git push -u origin nama-branch-baru
 ```
 
-Contoh jenis commit:
+Jangan menggunakan staging seluruh repository sebelum memeriksa setiap file.
 
-- `docs:` dokumentasi;
-- `feat:` fitur atau konten baru;
-- `fix:` perbaikan bug;
-- `chore:` pemeliharaan tanpa perubahan fitur.
-
-Buat Pull Request menuju `main`, tunggu GitHub Actions lulus, tinjau file yang berubah, baru lakukan merge.
-
-## Setelah merge
-
-```bash
-git switch main
-git pull --ff-only origin main
-```
-
-Periksa situs publik. Branch fitur boleh dihapus setelah deployment terverifikasi.
+Lanjutkan dengan [checklist publikasi](CHECKLIST-PUBLIKASI.md) untuk push, Pull Request, CI, dan pemeriksaan deployment.

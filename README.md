@@ -1,116 +1,136 @@
 # Portfolio Sulu Edward Julianto
 
-Repository ini berisi portfolio multibahasa dan blog pribadi Sulu Edward Julianto yang ditayangkan melalui GitHub Pages.
+[![Portfolio CI](https://github.com/sulujulianto/sulujulianto.github.io/actions/workflows/portfolio-ci.yml/badge.svg)](https://github.com/sulujulianto/sulujulianto.github.io/actions/workflows/portfolio-ci.yml)
+
+Repository ini memuat portfolio multibahasa Sulu Edward Julianto yang dipublikasikan melalui GitHub Pages. Konten utama mencakup profil, riwayat, keahlian, proyek, studi kasus, dan sertifikat. Blog berada dalam repository yang sama, tetapi mempunyai source dan alur pemeliharaan tersendiri.
 
 - Portfolio: <https://sulujulianto.github.io/>
-- Proyek: <https://sulujulianto.github.io/projects.html>
-- Sertifikat: <https://sulujulianto.github.io/certificates.html>
+- Daftar proyek: <https://sulujulianto.github.io/projects.html>
+- Daftar sertifikat: <https://sulujulianto.github.io/certificates.html>
 - Blog: <https://sulujulianto.github.io/blog/>
 
-## Gambaran saat ini
+## Arsitektur singkat
 
-Portfolio bukan lagi empat situs terpisah. Sekarang hanya ada tiga halaman utama yang dipakai bersama oleh semua bahasa:
+Portfolio menggunakan tiga halaman utama untuk semua bahasa:
 
-- `index.html` untuk beranda.
-- `projects.html` untuk seluruh proyek.
-- `certificates.html` untuk seluruh sertifikat.
+- `index.html` untuk beranda;
+- `projects.html` untuk daftar proyek;
+- `certificates.html` untuk daftar sertifikat.
 
-Bahasa dipilih dengan parameter `?lang=id|en|ja|zh`. Pilihan disimpan di browser. Jika belum ada pilihan, situs membaca bahasa browser dan memakai Bahasa Indonesia sebagai fallback.
+Bahasa dipilih melalui parameter `?lang=id|en|ja|zh` dan disimpan di browser. Folder `id/`, `en/`, `jp/`, dan `cn/` hanya berisi redirect agar URL lama tetap berfungsi. Konten baru tidak boleh ditambahkan ke folder redirect tersebut.
 
-Folder `id/`, `en/`, `jp/`, dan `cn/` hanya berisi redirect untuk menjaga tautan lama tetap bekerja. Jangan menambahkan konten baru ke folder tersebut.
+Data proyek dan sertifikat disimpan terpisah untuk setiap bahasa. Setiap karya atau credential hanya ditempatkan pada satu katalog dan tidak boleh diduplikasi sebagai terjemahan pada katalog bahasa lain. Katalog Jepang dan Mandarin boleh tetap berisi placeholder sampai tersedia konten khusus untuk bahasa tersebut.
 
-## Teknologi
+## Teknologi portfolio
 
-- HTML statis untuk struktur halaman.
-- React 18 via CDN untuk kartu proyek, sertifikat, riwayat, galeri, dan keahlian.
-- TypeScript sebagai source runtime portfolio.
-- Tailwind CSS 3.4.19 dan CSS khusus di `assets/css/main.css`.
-- JSON terpisah per bahasa untuk isi portfolio.
-- Astro/Fuwari untuk source blog di `blog-fuwari/`.
-- Node.js 24 LTS untuk build dan verifikasi portfolio.
-- GitHub Pages untuk hosting dan GitHub Actions untuk verifikasi.
+| Teknologi | Versi/peran |
+| --- | --- |
+| HTML | Struktur halaman statis dan metadata awal. |
+| React | Versi 18.3.1 melalui CDN untuk komponen dinamis. |
+| TypeScript | Versi 5.9.3 untuk source runtime portfolio. |
+| Tailwind CSS | Versi 3.4.19 untuk utility CSS dan build stylesheet. |
+| PostCSS dan Autoprefixer | Pemrosesan CSS pada tahap build. |
+| Node.js | Major 24 LTS untuk instalasi, build, audit, dan pengujian. |
+| Playwright | Pengujian kestabilan layout dan tampilan responsif. |
+| GitHub Actions | Verifikasi otomatis pada Pull Request dan branch `main`. |
+| GitHub Pages | Hosting situs statis. |
 
-## Mulai dari dokumentasi
+React 19, Tailwind CSS 4, dan TypeScript 7 belum digunakan karena masing-masing memerlukan migrasi mayor. Alasan dan cara menilai pembaruannya dijelaskan dalam [panduan pembaruan teknologi](docs/MEMPERBARUI-TEKNOLOGI.md).
 
-Buka [`docs/README.md`](docs/README.md). Halaman tersebut menunjukkan panduan yang harus dibaca untuk setiap jenis perubahan.
+## Menjalankan secara lokal
 
-Panduan utama:
-
-- [`docs/SETUP-BARU.md`](docs/SETUP-BARU.md): menyiapkan komputer baru.
-- [`docs/ALUR-PENGEMBANGAN.md`](docs/ALUR-PENGEMBANGAN.md): mengedit CSS, HTML, TypeScript, menjalankan build, dan membuat branch.
-- [`docs/UPDATE-KONTEN-PORTFOLIO.md`](docs/UPDATE-KONTEN-PORTFOLIO.md): memperbarui proyek, detail proyek, sertifikat, riwayat, teknologi, CV, dan bahasa.
-- [`docs/PEMERIKSAAN-BULANAN.md`](docs/PEMERIKSAAN-BULANAN.md): pemeriksaan rutin sebulan sekali.
-- [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md): solusi masalah umum.
-
-## Menjalankan portfolio
-
-Gunakan Node.js 24 LTS, lalu:
+Prasyarat: Git, Node.js melalui NVM, dan Python 3 untuk server lokal.
 
 ```bash
+nvm use
 npm ci
 npm run verify
 python3 -m http.server 8080
 ```
 
-Buka <http://localhost:8080/>. Jangan membuka `index.html` langsung melalui `file://` karena browser dapat memblokir pembacaan JSON.
+Buka <http://localhost:8080/>. Jangan membuka `index.html` melalui `file://` karena browser dapat memblokir pembacaan data JSON.
 
-## Perintah penting
+## Perintah utama
 
 | Perintah | Kegunaan |
 | --- | --- |
-| `npm run tailwind:watch` | Membangun CSS otomatis selama mengedit tampilan. |
+| `npm run tailwind:watch` | Membangun CSS otomatis selama mengubah tampilan. |
 | `npm run tailwind:build` | Membangun `assets/css/output.css` satu kali. |
-| `npm run ts:build` | Membangun TypeScript ke `assets/js/dist/`. |
-| `npm run audit:portfolio` | Memeriksa data dan aset portfolio. |
-| `npm run audit:baseline:update` | Menerima perubahan data proyek, sertifikat, atau kategori yang sudah ditinjau. |
-| `npm test` | Menjalankan seluruh tes portfolio. |
-| `npm run verify` | Build CSS, audit data, build TypeScript, dan menjalankan seluruh tes. |
-| `npm run blog:dev` | Menjalankan blog dalam mode pengembangan. |
-| `npm run blog:build` | Membangun source blog ke folder `blog/`. |
-| `npm run blog:doctor` | Memeriksa konfigurasi dan hasil build blog. |
+| `npm run ts:build` | Mengompilasi TypeScript ke `assets/js/dist/`. |
+| `npm run audit:portfolio` | Memeriksa struktur data, baseline, dan aset portfolio. |
+| `npm run audit:baseline:update` | Memperbarui baseline setelah perubahan data yang sudah ditinjau. |
+| `npm test` | Menjalankan seluruh pengujian portfolio. |
+| `npm run verify` | Menjalankan build, audit data, dan seluruh pengujian. |
+
+Perintah blog tetap tersedia, tetapi penggunaannya dijelaskan terpisah dalam [panduan menulis postingan](docs/WRITE-POSTS.md) dan [panduan memperbarui Fuwari](docs/UPDATE-FUWARI.md).
 
 ## Struktur repository
 
 ```text
 .
-├── index.html, projects.html, certificates.html
-├── projects/<slug>/           halaman detail proyek yang sudah dipublikasikan
+├── index.html
+├── projects.html
+├── certificates.html
+├── 404.html
+├── projects/<slug>/              halaman detail proyek yang dipublikasikan
 ├── assets/
-│   ├── css/                   source CSS dan hasil build Tailwind
-│   ├── data/                  data JSON, CV, dan katalog bahasa
-│   ├── icons/                 sprite ikon lokal
-│   ├── img/                   gambar portfolio
-│   └── js/                    source TypeScript/JavaScript dan hasil build
-├── id/, en/, jp/, cn/         redirect URL lama
-├── blog-fuwari/               source blog; edit di sini
-├── blog/                      hasil build blog; jangan edit manual
-├── docs/                      panduan pemeliharaan
-├── scripts/                   audit data portfolio
-├── tests/                     tes otomatis
-└── .github/workflows/         pemeriksaan Pull Request
+│   ├── css/                      source dan hasil build CSS
+│   ├── data/                     data portfolio per bahasa dan CV
+│   ├── icons/                    sprite ikon lokal
+│   ├── img/                      gambar portfolio dan social preview
+│   └── js/                       source TypeScript/JavaScript dan hasil build
+├── id/, en/, jp/, cn/            redirect URL lama
+├── docs/                         panduan pemeliharaan
+├── scripts/                      audit data portfolio
+├── tests/                        pengujian otomatis
+├── blog-fuwari/                  source blog
+├── blog/                         hasil build blog
+└── .github/workflows/            konfigurasi CI
 ```
 
-## Aturan yang tidak boleh dilupakan
+## Dokumentasi pemeliharaan
 
-1. Edit `assets/css/main.css`, bukan `assets/css/output.css` secara manual.
-2. Edit file `.ts` atau `.tsx`, bukan file di `assets/js/dist/` secara manual.
-3. Edit blog di `blog-fuwari/`, bukan di `blog/`.
-4. Isi tiap bahasa boleh berbeda. Jangan memaksa proyek dan sertifikat menjadi terjemahan satu sama lain.
-5. Proyek berstatus `published` memerlukan kartu, artikel JSON, shell HTML, gambar, dan entri sitemap yang cocok.
-6. Setelah perubahan data proyek, sertifikat, atau kategori disengaja, tinjau diff lalu jalankan `npm run audit:baseline:update`.
-7. Sebelum commit atau Pull Request, selalu jalankan `npm run verify` dan `git diff --check`.
-8. Gunakan branch baru; jangan mengerjakan perubahan langsung di `main`.
+Mulai dari [pusat dokumentasi](docs/README.md). Panduan utama dipisahkan berdasarkan pekerjaan:
 
-## Catatan aset yang belum tersedia
+- [Menyiapkan repository di komputer baru](docs/SETUP-BARU.md)
+- [Mengubah tampilan dan kode](docs/ALUR-PENGEMBANGAN.md)
+- [Menulis dan menerbitkan proyek](docs/MENULIS-PROYEK.md)
+- [Menambah dan merawat sertifikat](docs/MENGELOLA-SERTIFIKAT.md)
+- [Mengelola riwayat dan keahlian](docs/MENGELOLA-RIWAYAT-DAN-KEAHLIAN.md)
+- [Mengelola bahasa, CV, gambar, dan metadata](docs/MENGELOLA-BAHASA-DAN-METADATA.md)
+- [Memeriksa dan memperbarui teknologi](docs/MEMPERBARUI-TEKNOLOGI.md)
+- [Melakukan pemeriksaan rutin bulanan](docs/PEMERIKSAAN-BULANAN.md)
+- [Menjalankan checklist sebelum publikasi](docs/CHECKLIST-PUBLIKASI.md)
+- [Mengatasi masalah umum](docs/TROUBLESHOOTING.md)
 
-Audit saat ini memperbolehkan tiga gambar proyek yang memang belum tersedia:
+## Aturan kerja
+
+1. Mulai setiap pekerjaan dari `main` terbaru dan gunakan branch baru.
+2. Edit source, bukan file hasil build.
+3. Stage hanya file yang memang menjadi bagian perubahan.
+4. Jangan menerima baseline audit sebelum diff data ditinjau.
+5. Jangan menulis klaim proyek, keahlian, atau sertifikat yang tidak dapat dibuktikan.
+6. Jalankan `npm run verify` dan `git diff --check` sebelum commit.
+7. Tunggu CI lulus dan periksa deployment sebelum menganggap pekerjaan selesai.
+
+## File hasil build
+
+- Edit `assets/css/main.css`; hasilnya berada di `assets/css/output.css`.
+- Edit file `.ts` atau `.tsx` dalam `assets/js/`; hasilnya berada di `assets/js/dist/`.
+- Edit blog dalam `blog-fuwari/`; folder `blog/` adalah hasil build.
+
+Jangan mengedit file hasil build secara manual karena perubahan akan hilang saat build berikutnya.
+
+## Warning aset yang diketahui
+
+Audit masih memperbolehkan tiga gambar proyek lama yang belum tersedia:
 
 - `assets/img/projects/id/antriankku.webp`
 - `assets/img/projects/id/kospintar.webp`
 - `assets/img/projects/id/lokerkita.webp`
 
-Ketiganya masih berupa proyek dalam pengembangan. Jika gambarnya sudah ditambahkan, hapus path terkait dari daftar `EXPECTED_KNOWN_MISSING_ASSETS` di `scripts/audit-portfolio-data.mjs`, perbarui baseline audit, lalu jalankan verifikasi.
+Warning tersebut bukan kegagalan, tetapi warning baru tetap harus diperiksa.
 
 ## Lisensi
 
-Kode repository menggunakan lisensi ISC sebagaimana tercantum di `package.json`. Konten pribadi, CV, foto, dan sertifikat tetap merupakan materi milik Sulu Edward Julianto.
+Kode repository menggunakan lisensi ISC sebagaimana tercantum dalam `package.json`. Konten pribadi, foto, CV, dan gambar sertifikat tetap merupakan materi milik Sulu Edward Julianto.
