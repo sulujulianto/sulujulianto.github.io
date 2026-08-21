@@ -1,7 +1,7 @@
 [
   {
     "title": "Junior Web Developer (BNSP)",
-    "description": "Sertifikasi kompetensi BNSP yang memvalidasi implementasi antarmuka pengguna, pemrograman terstruktur, pengorganisasian kode, pemanfaatan library, serta penerapan pedoman penulisan kode.",
+    "description": "Sertifikasi kompetensi BNSP untuk skema Pengembang Web Pratama, dengan fokus pada pembuatan antarmuka web, penulisan program terstruktur, pengelolaan kode, dan penggunaan library dalam proses pengembangan.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/id/junior-web-developer-bnsp.webp",
     "fullImageUrl": "../assets/img/certificates/id/junior-web-developer-bnsp.webp",
@@ -11,7 +11,7 @@
   },
   {
     "title": "Web Development With Node.js and React (BNSP)",
-    "description": "Sertifikasi kompetensi BNSP yang mencakup pemrograman berorientasi objek, pemodelan entitas dan relasi, manipulasi data dengan SQL, akses basis data, serta pengelolaan kode menggunakan version control.",
+    "description": "Sertifikasi kompetensi BNSP pada bidang pengembangan perangkat lunak dengan kualifikasi pengembangan web menggunakan Node.js dan React, didukung pemodelan data, SQL, akses basis data, serta version control.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/id/web-development-with-node-js-and-react-bnsp.webp",
     "fullImageUrl": "../assets/img/certificates/id/web-development-with-node-js-and-react-bnsp.webp",
@@ -21,7 +21,7 @@
   },
   {
     "title": "Belajar Fundamental Deep Learning",
-    "description": "Mencakup perancangan dan evaluasi jaringan saraf, transfer learning, pengelolaan eksperimen, serta penyesuaian hyperparameter untuk meningkatkan kinerja model secara terukur.",
+    "description": "Program lanjutan yang membahas perancangan dan evaluasi jaringan saraf, transfer learning, pengelolaan eksperimen, serta penyesuaian hyperparameter untuk meningkatkan kinerja model.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/id/belajar-fundamental-deep-learning.webp",
     "link": "https://www.dicoding.com/certificates/L4PQ2972OZO1",
@@ -31,7 +31,7 @@
   },
   {
     "title": "Belajar Back-End Pemula dengan JavaScript",
-    "description": "Mencakup pengembangan REST API dengan Node.js dan Hapi, validasi data, penanganan request-response, penyimpanan data, serta pengujian endpoint secara otomatis.",
+    "description": "Pembelajaran praktis tentang membangun REST API dengan Node.js dan Hapi, mulai dari validasi data dan alur request-response hingga penyimpanan data serta pengujian endpoint.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/id/belajar-back-end-pemula-dengan-javascript.webp",
     "link": "https://www.dicoding.com/certificates/ERZR245J2PYV",
@@ -41,7 +41,7 @@
   },
   {
     "title": "Belajar Machine Learning untuk Pemula",
-    "description": "Mencakup alur supervised learning, persiapan data, klasifikasi, pengenalan convolutional neural network, serta evaluasi performa model menggunakan metrik yang relevan.",
+    "description": "Fondasi machine learning yang membahas persiapan data, supervised learning, klasifikasi, pengenalan convolutional neural network, dan evaluasi model dengan metrik yang sesuai.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/id/belajar-machine-learning-untuk-pemula.webp",
     "link": "https://www.dicoding.com/certificates/1RXYQY1VQZVM",
@@ -51,7 +51,7 @@
   },
   {
     "title": "Belajar Membuat Front-End Web untuk Pemula",
-    "description": "Mencakup manipulasi DOM, penanganan event JavaScript, struktur komponen antarmuka, serta pemanfaatan Web Storage untuk mempertahankan data pada sisi klien.",
+    "description": "Pembelajaran dasar untuk membangun antarmuka web interaktif melalui manipulasi DOM, penanganan event JavaScript, penyusunan komponen, dan pemanfaatan Web Storage.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/id/belajar-membuat-front-end-web-untuk-pemula.webp",
     "link": "https://www.dicoding.com/certificates/1OP8187J8ZQK",
@@ -61,7 +61,7 @@
   },
   {
     "title": "Belajar Dasar Pemrograman Web",
-    "description": "Mencakup struktur HTML semantik, styling dengan CSS, layout Flexbox dan Grid, serta penerapan desain responsif untuk berbagai ukuran layar.",
+    "description": "Fondasi pengembangan web yang membahas HTML semantik, CSS, Flexbox, Grid, dan penerapan layout responsif untuk beragam ukuran layar.",
     "category": "web-development",
     "imageUrl": "../assets/img/certificates/id/belajar-dasar-pemrograman-web.webp",
     "link": "https://www.dicoding.com/certificates/KEXLLD21WXG2",
@@ -71,7 +71,7 @@
   },
   {
     "title": "Belajar Dasar Pemrograman JavaScript",
-    "description": "Mencakup sintaks dan struktur data JavaScript, pemrograman berorientasi objek dan fungsional, modularisasi kode, penanganan error, serta proses asynchronous.",
+    "description": "Fondasi JavaScript yang meliputi sintaks, struktur data, paradigma berorientasi objek dan fungsional, modularisasi, penanganan error, serta proses asynchronous.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/id/belajar-dasar-pemrograman-javascript.webp",
     "link": "https://www.dicoding.com/certificates/MEPJ2L53LP3V",
@@ -81,7 +81,7 @@
   },
   {
     "title": "Belajar Dasar AI",
-    "description": "Mencakup konsep dasar kecerdasan buatan, algoritma pencarian, representasi pengetahuan, serta cara agen cerdas menyelesaikan masalah berdasarkan tujuan dan lingkungan.",
+    "description": "Pengantar kecerdasan buatan yang membahas algoritma pencarian, representasi pengetahuan, dan cara agen cerdas mengambil keputusan berdasarkan tujuan serta lingkungannya.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/id/belajar-dasar-ai.webp",
     "link": "https://www.dicoding.com/certificates/4EXG7Q2GGPRL",
@@ -91,7 +91,7 @@
   },
   {
     "title": "Belajar Dasar Visualisasi Data",
-    "description": "Mencakup pengolahan data dengan spreadsheet, pemilihan bentuk visual yang sesuai, serta penyajian informasi agar pola dan temuan dapat dipahami dengan jelas.",
+    "description": "Dasar visualisasi data, mulai dari pengolahan data dengan spreadsheet dan pemilihan bentuk visual hingga penyajian pola serta temuan secara jelas.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/id/belajar-dasar-visualisasi-data.webp",
     "link": "https://www.dicoding.com/certificates/JMZVE4LVRPN9",
@@ -101,7 +101,7 @@
   },
   {
     "title": "Belajar Dasar Cloud dan Gen AI di AWS",
-    "description": "Mencakup konsep komputasi awan, layanan inti AWS untuk compute dan storage, model tanggung jawab keamanan, serta pengantar generative AI di lingkungan cloud.",
+    "description": "Pengantar komputasi awan dan generative AI di AWS, meliputi layanan inti untuk compute dan storage serta model tanggung jawab bersama dalam keamanan cloud.",
     "category": "ai-data",
     "imageUrl": "../assets/img/certificates/id/belajar-dasar-cloud-dan-gen-ai-di-aws.webp",
     "link": "https://www.dicoding.com/certificates/N9ZO23RY6PG5",
@@ -111,7 +111,7 @@
   },
   {
     "title": "Memulai Pemrograman dengan Python",
-    "description": "Mencakup sintaks dasar Python, tipe data, percabangan, perulangan, fungsi, serta penyusunan program modular untuk menyelesaikan masalah secara terstruktur.",
+    "description": "Fondasi pemrograman Python yang meliputi sintaks, tipe data, percabangan, perulangan, fungsi, dan penyusunan program modular untuk menyelesaikan masalah secara terstruktur.",
     "category": "programming",
     "imageUrl": "../assets/img/certificates/id/memulai-pemrograman-dengan-python.webp",
     "link": "https://www.dicoding.com/certificates/N9ZO9Y9Y8XG5",

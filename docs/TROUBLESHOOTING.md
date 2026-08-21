@@ -1,55 +1,56 @@
-# Troubleshooting Portfolio dan Blog
+# Troubleshooting Portfolio
 
-Mulai dari pemeriksaan umum:
+Mulai dari kondisi dasar:
 
 ```bash
-git status --short --branch
+nvm use
 npm ci
 npm run verify
+git status --short --branch
 ```
 
-## Portfolio hanya menampilkan loading atau data kosong
+Catat perintah yang gagal dan pesan error pertama. Jangan memperbaiki beberapa masalah sekaligus sebelum penyebab awal dipahami.
+
+## Halaman hanya menampilkan loading atau data kosong
 
 Penyebab paling umum adalah halaman dibuka melalui `file://`.
-
-Jalankan server lokal:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Buka <http://localhost:8080/> dan lihat Console/Network pada Browser DevTools jika masalah berlanjut.
+Buka <http://localhost:8080/>. Jika masalah berlanjut, periksa Console dan Network pada Browser DevTools untuk melihat JSON atau script yang gagal dimuat.
 
 ## Perubahan CSS tidak muncul
 
-Jangan edit `assets/css/output.css` manual. Edit `assets/css/main.css` atau class Tailwind di HTML/TSX, lalu:
+Edit `assets/css/main.css` atau class Tailwind pada HTML/TSX, lalu jalankan:
 
 ```bash
 npm run tailwind:build
+git diff -- assets/css/output.css
 ```
 
-Lakukan hard refresh (`Ctrl+Shift+R`). Pastikan `git diff -- assets/css/output.css` menunjukkan hasil build baru.
+Lakukan hard refresh dengan `Ctrl+Shift+R`. Jangan memperbaiki masalah dengan mengedit `output.css` langsung.
 
 ## Perubahan TypeScript tidak muncul
 
-File browser berada di `assets/js/dist/`. Setelah mengubah source `.ts` atau `.tsx`, jalankan:
-
 ```bash
 npm run ts:build
+git diff -- assets/js assets/js/dist
 ```
 
-Jangan memperbaiki masalah dengan mengedit file `dist` langsung.
+Browser memakai file dalam `assets/js/dist/`. Jika output tidak berubah, periksa apakah file source termasuk dalam `tsconfig.runtime.json`.
 
-## Teks terjemahan menghilang
-
-Biasanya key `data-i18n` di HTML tidak cocok dengan katalog locale atau tipe key berbeda antarbahasa.
+## Teks bahasa menghilang
 
 Periksa:
 
-- `assets/data/locales/ui-id.json`
-- `assets/data/locales/ui-en.json`
-- `assets/data/locales/ui-ja.json`
-- `assets/data/locales/ui-zh.json`
+```text
+assets/data/locales/ui-id.json
+assets/data/locales/ui-en.json
+assets/data/locales/ui-ja.json
+assets/data/locales/ui-zh.json
+```
 
 Kemudian jalankan:
 
@@ -57,17 +58,28 @@ Kemudian jalankan:
 npm run test:ui-locale
 ```
 
-Semua katalog harus memiliki key, urutan, dan tipe nilai yang sama.
+Biasanya key hilang, urutan key berbeda, tipe nilai berubah, atau atribut `data-i18n` tidak cocok dengan katalog.
 
-## Audit gagal setelah mengubah proyek atau sertifikat
+## JSON tidak dapat dibaca
 
-Audit sengaja membandingkan data dengan snapshot. Pertama tinjau perubahan:
+Validasi file tertentu:
+
+```bash
+node -e "JSON.parse(require('fs').readFileSync('path/file.json', 'utf8')); console.log('JSON valid')"
+```
+
+Periksa tanda kutip, koma terakhir, dan karakter yang tidak sengaja ditempel. Setelah itu jalankan audit atau test yang berkaitan.
+
+## Audit gagal setelah mengubah data
+
+Tinjau data dan aset terlebih dahulu:
 
 ```bash
 git diff -- assets/data assets/img
+npm run audit:portfolio
 ```
 
-Jika perubahan memang benar dan lengkap:
+Jika perubahan benar dan lengkap:
 
 ```bash
 npm run audit:baseline:update
@@ -75,36 +87,39 @@ git diff -- tests/fixtures/portfolio-data-baseline.json
 npm run verify
 ```
 
-Jangan menerima baseline jika kegagalan berasal dari typo, kategori tidak valid, atau aset yang lupa ditambahkan.
+Jangan memperbarui baseline jika kegagalan berasal dari typo, kategori tidak valid, atau aset yang belum ditambahkan.
 
 ## Audit menampilkan tiga warning gambar proyek
 
 Warning berikut sudah dikenal:
 
-- `antriankku.webp`
-- `kospintar.webp`
-- `lokerkita.webp`
+- `antriankku.webp`;
+- `kospintar.webp`;
+- `lokerkita.webp`.
 
-Ketiganya bukan failure. Jika gambar sudah tersedia, tambahkan file, hapus path dari `EXPECTED_KNOWN_MISSING_ASSETS`, lalu perbarui baseline.
+Ketiganya bukan failure. Jika gambarnya sudah tersedia, tambahkan file, hapus path terkait dari `EXPECTED_KNOWN_MISSING_ASSETS` dalam `scripts/audit-portfolio-data.mjs`, perbarui baseline, lalu jalankan verifikasi.
 
 ## Gambar proyek atau sertifikat rusak
 
-- Periksa huruf besar/kecil pada nama file; GitHub Pages bersifat case-sensitive.
-- Pastikan ekstensi pada JSON cocok dengan file.
-- Gunakan path sesuai contoh pada [UPDATE-KONTEN-PORTFOLIO.md](UPDATE-KONTEN-PORTFOLIO.md).
+- Periksa huruf besar dan kecil pada nama file.
+- Pastikan ekstensi JSON sama dengan file sebenarnya.
+- Pastikan path relatif dihitung dari halaman yang memuat dataset.
+- Buka URL gambar langsung melalui server lokal.
 - Jalankan `npm run audit:portfolio`.
+
+GitHub Pages bersifat case-sensitive meskipun filesystem lokal tertentu mungkin tidak.
 
 ## Detail proyek membuka 404
 
-Ini normal untuk proyek `in-development`. Untuk proyek `published`, pastikan tersedia:
+Untuk proyek `in-development`, 404 dapat menjadi perilaku yang disengaja. Untuk proyek `published`, pastikan tersedia:
 
-- `slug` pada kartu;
+- slug pada kartu;
 - `projects/<slug>/index.html`;
 - `assets/data/project-details/<bahasa>/<slug>.json`;
-- gambar yang dirujuk artikel;
-- entri `sitemap.xml`.
+- seluruh gambar artikel;
+- entri pada `sitemap.xml`.
 
-Jalankan:
+Kemudian jalankan:
 
 ```bash
 npm run test:projects
@@ -112,51 +127,44 @@ npm run test:projects
 
 ## Social preview belum berubah
 
-Platform sosial menyimpan cache cukup lama.
+Platform sosial menyimpan cache.
 
-- Pastikan `assets/img/social/portfolio-preview.png` sudah diekspor ulang pada ukuran 1200 × 630.
-- Buka URL gambar langsung dan pastikan file baru sudah ter-deploy.
-- Periksa metadata `og:image` dan `twitter:image` pada tiga halaman root.
-- Gunakan debugger resmi platform terkait untuk meminta pembacaan ulang bila tersedia.
+- Pastikan PNG 1200 × 630 sudah diperbarui.
+- Buka URL gambar publik secara langsung.
+- Periksa `og:image` dan `twitter:image` pada halaman.
+- Pastikan deployment terbaru sudah selesai.
+- Gunakan debugger resmi platform untuk meminta pembacaan ulang.
 
-## Blog tidak diperbarui atau postingan lama masih muncul
+## Pengujian browser Playwright gagal sekali
 
-Build ulang dari source:
-
-```bash
-npm run blog:build
-```
-
-Build membersihkan output `blog/` terlebih dahulu. Jangan edit output tersebut manual.
-
-## Favicon atau banner blog tidak berubah
-
-- Lakukan hard refresh atau buka incognito.
-- Pastikan source ada di `blog-fuwari/public/`.
-- Jalankan `npm run blog:build`.
-- Periksa hasilnya di `blog/favicon/` dan `blog/assets/images/`.
-
-## pnpm atau dependency blog bermasalah
-
-Aktifkan versi yang dikunci:
+Jangan langsung mengubah kode. Jalankan test terfokus satu kali lagi:
 
 ```bash
-corepack enable
-corepack prepare pnpm@9.14.4 --activate
-cd blog-fuwari
-pnpm install --frozen-lockfile
-cd ..
+npm run test:render-stability
 ```
 
-## Search blog tidak bekerja
+Jika percobaan kedua lulus, simpan output dan periksa apakah kegagalan pertama berasal dari timing atau resource sistem. Jika tetap gagal, anggap sebagai regresi nyata dan periksa metrik yang disebutkan pada pesan assertion.
 
-Pagefind dibuat saat build:
+## Playwright memperingatkan OS tidak didukung
+
+Linux Mint dapat memakai fallback build Ubuntu. Peringatan bukan kegagalan jika browser berhasil dipasang dan test lulus.
 
 ```bash
-npm run blog:build
+npx playwright install chromium
+npm run test:render-stability
 ```
 
-Pastikan folder `blog/_pagefind/` tersedia dan `npm run blog:doctor` lulus.
+## `npm audit` menemukan kerentanan
+
+Jangan langsung menjalankan perbaikan otomatis. Periksa dependency tree:
+
+```bash
+npm audit
+npm audit --omit=dev
+npm ls nama-paket
+```
+
+Gunakan [panduan pembaruan teknologi](MEMPERBARUI-TEKNOLOGI.md) untuk menilai risiko dan ruang lingkup perbaikan.
 
 ## Git menolak penghapusan branch
 
@@ -166,4 +174,17 @@ Gunakan penghapusan aman:
 git branch -d nama-branch
 ```
 
-Jika ditolak, branch mungkin belum tergabung. Jangan memakai `-D` sebelum memeriksa commit dan Pull Request.
+Jika ditolak, branch mungkin belum tergabung. Periksa Pull Request dan commit sebelum mempertimbangkan penghapusan paksa.
+
+## Deployment tidak menampilkan perubahan
+
+Periksa urutan berikut:
+
+1. commit sudah berada pada `main`;
+2. CI `main` berhasil;
+3. workflow Pages berhasil;
+4. URL yang dibuka benar;
+5. hard refresh atau incognito sudah dicoba;
+6. aset tidak gagal karena perbedaan huruf besar/kecil.
+
+Jika CI atau Pages gagal, periksa log run pertama yang gagal. Jangan menjalankan ulang berkali-kali tanpa memahami error awal.

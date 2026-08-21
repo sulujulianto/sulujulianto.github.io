@@ -1,127 +1,135 @@
-# Pemeriksaan Rutin Bulanan
+# Pemeriksaan Rutin Bulanan Portfolio
 
-Lakukan pemeriksaan ini satu kali pada minggu pertama setiap bulan. Tidak perlu memperbarui semua dependency hanya karena versi baru tersedia; tujuan pemeriksaan adalah mengetahui kondisi, menilai risiko, lalu mengubahnya dalam branch terpisah.
+Lakukan pemeriksaan pada minggu pertama setiap bulan atau sebelum mengirim portfolio untuk lamaran penting. Pemeriksaan tidak harus menghasilkan commit; tujuannya mengetahui kondisi dan menangani risiko yang nyata.
 
-## Ringkasan jadwal
+## Jadwal
 
-| Waktu | Yang diperiksa |
+| Waktu | Pemeriksaan |
 | --- | --- |
-| Setiap bulan | Link, data, sertifikat kedaluwarsa, dependency, build, tes, tampilan, dan GitHub Pages |
-| Saat ada proyek/sertifikat baru | Perbarui konten segera; tidak perlu menunggu jadwal bulanan |
-| Setiap 3 bulan | Tinjau CV, deskripsi profil, social preview, SEO, dan template Fuwari |
-| Setelah perubahan besar | Jalankan verifikasi penuh dan cek situs publik |
+| Setiap bulan | Dependency, build, test, tautan, aset, masa berlaku sertifikat, dan situs publik. |
+| Saat ada proyek atau sertifikat baru | Perbarui konten tanpa menunggu jadwal bulanan. |
+| Setiap tiga bulan | CV, profil, riwayat, keahlian, SEO, dan social preview. |
+| Setelah perubahan besar | Verifikasi lengkap, browser manual, CI, dan deployment. |
 
-## 1. Siapkan branch pemeliharaan
+## 1. Buat branch pemeliharaan
 
 ```bash
 git switch main
 git pull --ff-only origin main
 git switch -c chore/maintenance-YYYY-MM
+nvm install 24
+nvm use
 npm ci
 ```
 
-Ganti `YYYY-MM`, misalnya `chore/maintenance-2026-08`.
+Gunakan tahun dan bulan saat pemeriksaan, misalnya `chore/maintenance-2026-09`.
 
-## 2. Periksa kondisi dasar
+## 2. Periksa toolchain dan dependency
 
 ```bash
-npm run verify
+node --version
+npm --version
 npm audit
 npm outdated
+npm run verify
 ```
 
 Cara membaca hasil:
 
+- `npm audit` menunjukkan advisory pada dependency yang terpasang, bukan jaminan bahwa semua risiko sudah hilang;
+- `npm outdated` adalah daftar informasi, bukan perintah untuk memperbarui semuanya;
+- pembaruan major harus dikerjakan pada branch khusus;
 - `npm run verify` harus lulus.
-- `npm audit` digunakan untuk kerentanan dependency root.
-- `npm outdated` hanya memberi daftar versi; jangan langsung memperbarui semuanya sekaligus.
 
-Untuk blog:
+Gunakan [MEMPERBARUI-TEKNOLOGI.md](MEMPERBARUI-TEKNOLOGI.md) sebelum mengubah dependency.
 
-```bash
-cd blog-fuwari
-pnpm install --frozen-lockfile
-pnpm doctor
-pnpm outdated
-pnpm audit
-cd ..
-```
+## 3. Periksa proyek
 
-## 3. Kapan dependency perlu diperbarui?
+- Pastikan status `published` dan `in-development` masih benar.
+- Buka repository dan Live Demo setiap proyek.
+- Pastikan tech stack sesuai kode terbaru.
+- Cari deskripsi yang berlebihan atau tidak lagi akurat.
+- Pastikan tiga proyek unggulan masih mewakili kemampuan terbaik.
+- Periksa detail proyek, gambar, keterbatasan, dan sitemap.
 
-Prioritas pembaruan:
+Baca [MENULIS-PROYEK.md](MENULIS-PROYEK.md) jika perlu memperbarui isinya.
 
-1. Perbaikan keamanan yang relevan.
-2. Bug yang benar-benar memengaruhi situs.
-3. Versi patch dan minor yang kompatibel.
-4. Versi major hanya setelah membaca migration guide dan menguji branch khusus.
+## 4. Periksa sertifikat
 
-Tailwind root dikunci pada `3.4.19` karena build dan tes portfolio bergantung pada toolchain v3. Jangan memindahkan root portfolio ke Tailwind v4 hanya karena tersedia versi lebih baru.
+- Cari credential yang kedaluwarsa atau akan kedaluwarsa dalam 60 hari.
+- Buka link verifikasi dalam mode incognito.
+- Pastikan tiga sertifikat unggulan masih relevan.
+- Periksa apakah deskripsi tetap sesuai silabus atau credential.
+- Pastikan gambar penuh dapat dibaca dan tidak membocorkan data pribadi.
 
-Jangan memperbarui Astro/Fuwari bersamaan dengan banyak perubahan portfolio. Gunakan panduan [UPDATE-FUWARI.md](UPDATE-FUWARI.md) dan branch tersendiri.
+Baca [MENGELOLA-SERTIFIKAT.md](MENGELOLA-SERTIFIKAT.md) sebelum mengubah data.
 
-## 4. Periksa konten
+## 5. Periksa riwayat, keahlian, dan CV
 
-- Pastikan proyek yang selesai tidak masih berstatus `in-development`.
-- Pastikan tombol GitHub dan Live Demo menuju halaman yang benar.
-- Cari sertifikat yang akan kedaluwarsa dalam 60 hari.
-- Perbarui CV jika ada pengalaman, proyek utama, atau sertifikasi penting baru.
-- Tinjau bagian Riwayat jika ada perubahan status pekerjaan/pelatihan.
-- Periksa daftar Keahlian; hapus klaim yang tidak lagi dapat dibuktikan.
-- Jangan menaikkan teknologi dari `planned` atau `activeDevelopment` menjadi klaim biasa hanya karena pernah mencoba sebentar.
+- Tambahkan perubahan pengalaman, pendidikan, atau pelatihan yang benar-benar terjadi.
+- Periksa tanggal dan status kegiatan yang masih berlangsung.
+- Hapus atau turunkan status klaim teknologi yang tidak lagi dapat dibuktikan.
+- Naikkan status teknologi belajar hanya jika bukti telah berubah.
+- Pastikan CV Indonesia dan English masih sesuai portfolio.
+- Periksa tombol unduh CV pada empat bahasa.
 
-## 5. Periksa tampilan secara manual
+## 6. Periksa bahasa dan metadata
+
+- Uji `?lang=id`, `?lang=en`, `?lang=ja`, dan `?lang=zh`.
+- Pastikan navigasi mempertahankan bahasa aktif.
+- Periksa judul halaman, meta description, canonical, dan hreflang.
+- Pastikan gambar social preview tetap 1200 × 630.
+- Validasi `sitemap.xml` jika proyek baru ditambahkan.
+- Pastikan URL redirect lama tetap bekerja.
+
+## 7. Periksa browser
 
 Minimal buka:
 
-- `/`
-- `/projects.html`
-- `/certificates.html`
-- satu detail proyek Indonesia;
-- detail Atlas Country API berbahasa Inggris;
-- `/blog/`;
-- satu URL yang tidak ada untuk memeriksa `404.html`.
+- `/`;
+- `/projects.html`;
+- `/certificates.html`;
+- satu detail proyek;
+- satu URL yang tidak tersedia.
 
 Uji:
 
 - desktop dan mobile;
 - mode terang dan gelap;
-- `?lang=id`, `?lang=en`, `?lang=ja`, dan `?lang=zh`;
-- dropdown bahasa dan menu mobile;
-- gambar, tautan, filter, tombol unduh CV, dan form kontak;
-- judul Keahlian tetap terlihat pada empat bahasa.
+- menu dan dropdown bahasa;
+- navigasi keyboard;
+- filter proyek dan sertifikat;
+- gambar, tombol, link, CV, dan form kontak;
+- Console serta Network browser.
 
-## 6. Periksa situs publik
+## 8. Periksa situs publik
 
 Setelah merge dan deployment:
 
 - buka situs dalam incognito;
 - lakukan hard refresh;
-- cek halaman utama, proyek, sertifikat, detail proyek, blog, sitemap, dan social preview;
-- pastikan GitHub Actions lulus;
-- pastikan `main` lokal kembali sinkron dengan `origin/main`.
+- periksa GitHub Actions;
+- periksa deployment GitHub Pages;
+- pastikan `main` lokal sinkron dengan `origin/main`.
 
-## 7. Catatan pemeriksaan
-
-Salin template berikut ke deskripsi Pull Request atau issue pemeliharaan:
+## Template catatan bulanan
 
 ```md
 ## Pemeriksaan YYYY-MM
 
-- [ ] `npm run verify` lulus
+- [ ] Node dan npm diperiksa
 - [ ] `npm audit` diperiksa
-- [ ] dependency outdated ditinjau
-- [ ] blog doctor/audit diperiksa
-- [ ] link dan aset diperiksa
-- [ ] sertifikat kedaluwarsa ditinjau
-- [ ] CV dan Riwayat ditinjau
-- [ ] Keahlian ditinjau berdasarkan bukti
-- [ ] empat bahasa diperiksa
-- [ ] desktop/mobile dan terang/gelap diperiksa
-- [ ] situs publik diperiksa setelah deployment
+- [ ] dependency outdated dinilai
+- [ ] `npm run verify` lulus
+- [ ] proyek dan link diperiksa
+- [ ] masa berlaku sertifikat diperiksa
+- [ ] riwayat, keahlian, dan CV ditinjau
+- [ ] empat bahasa dan metadata ditinjau
+- [ ] desktop/mobile serta terang/gelap diperiksa
+- [ ] CI dan situs publik diperiksa
 
 Catatan:
 - ...
 ```
 
-Jika tidak ada perubahan yang diperlukan, tidak perlu membuat commit kosong. Simpan hasil pemeriksaan sebagai issue atau catatan pribadi.
+Jika tidak ada perubahan, jangan membuat commit kosong. Simpan hasil sebagai issue, catatan pribadi, atau checklist pada jadwal pemeliharaan berikutnya.
