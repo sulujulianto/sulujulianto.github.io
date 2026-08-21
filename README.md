@@ -27,6 +27,7 @@ Folder `id/`, `en/`, `jp/`, dan `cn/` hanya berisi redirect untuk menjaga tautan
 - Tailwind CSS 3.4.19 dan CSS khusus di `assets/css/main.css`.
 - JSON terpisah per bahasa untuk isi portfolio.
 - Astro/Fuwari untuk source blog di `blog-fuwari/`.
+- Node.js 24 LTS untuk build dan verifikasi portfolio.
 - GitHub Pages untuk hosting dan GitHub Actions untuk verifikasi.
 
 ## Mulai dari dokumentasi
@@ -43,7 +44,7 @@ Panduan utama:
 
 ## Menjalankan portfolio
 
-Gunakan Node.js 20 LTS, lalu:
+Gunakan Node.js 24 LTS, lalu:
 
 ```bash
 npm ci

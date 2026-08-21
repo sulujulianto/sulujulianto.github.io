@@ -7,7 +7,7 @@ Panduan ini menyiapkan portfolio root dan blog Fuwari dari awal.
 Gunakan:
 
 - Git;
-- Node.js 20 LTS;
+- Node.js 24 LTS;
 - npm yang disertakan bersama Node.js;
 - Corepack untuk pnpm blog.
 
