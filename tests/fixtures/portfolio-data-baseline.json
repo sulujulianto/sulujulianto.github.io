@@ -13,17 +13,17 @@
     "projects": {
       "id": {
         "file": "assets/data/projects/projects-id.json",
-        "sha256": "4aa35cd6068d95bb9c1930dd71ccd07b09891e787ade6c5b0b25e5c25d6244ef",
+        "sha256": "ffb46d452008b012ad89235c0533b1be1d706283da13714ea624cf6a2ef8c1cc",
         "counts": {
-          "total": 8,
-          "displayable": 8,
+          "total": 9,
+          "displayable": 9,
           "placeholder": 0,
           "featured": 3
         },
         "effectiveFeatured": [
           {
-            "title": "LokerKita",
-            "date": "2026-01-01"
+            "title": "LokerLens AI",
+            "date": "2026-08-11"
           },
           {
             "title": "Sistem Informasi Wilayah Indonesia",
@@ -124,7 +124,7 @@
             "title": "LokerKita",
             "category": "fullstack-web",
             "dateAdded": "2026-01-01",
-            "isFeatured": true,
+            "isFeatured": false,
             "imageUrl": "../assets/img/projects/id/lokerkita.webp",
             "githubUrl": "",
             "liveUrl": "",
@@ -171,6 +171,26 @@
               "Project IDX",
               "Google Gemini",
               "Firestore"
+            ]
+          },
+          {
+            "title": "LokerLens AI",
+            "category": "fullstack-web",
+            "dateAdded": "2026-08-11",
+            "isFeatured": true,
+            "imageUrl": "../assets/img/projects/id/loker-lens-ai.webp",
+            "githubUrl": "https://github.com/sulujulianto/lokerlens-ai",
+            "liveUrl": "",
+            "techStack": [
+              "TypeScript",
+              "React 19",
+              "Vite",
+              "Node.js",
+              "Express",
+              "Tailwind CSS 4",
+              "Zod",
+              "Gemini API",
+              "OpenAI Responses API"
             ]
           }
         ]

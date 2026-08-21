@@ -258,10 +258,14 @@ test('sitemap publishes root pages, the blog, and all completed project details'
         'sistem-informasi-wilayah-indonesia',
         'pixel-heist-co-op',
         'atlas-country-api',
+        'lokerlens-ai',
     ]) {
         assert.ok(sitemap.includes(`https://sulujulianto.github.io/projects/${slug}/`), slug);
     }
     assert.doesNotMatch(sitemap, /<loc>https:\/\/sulujulianto\.github\.io\/(?:id|en|jp|cn)\//);
     assert.doesNotMatch(sitemap, /<loc>https:\/\/sulujulianto\.github\.io\/404\.html/);
     for (const locale of [...locales, 'x-default']) assert.ok(sitemap.includes(`hreflang="${locale}"`));
+    const alternateLinks = sitemap.match(/<xhtml:link\b[^>]*>/g) || [];
+    assert.ok(alternateLinks.length > 0);
+    for (const link of alternateLinks) assert.match(link, /\/>$/);
 });

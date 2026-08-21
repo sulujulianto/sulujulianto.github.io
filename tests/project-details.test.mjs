@@ -31,6 +31,7 @@ const published = [
     { slug: 'japan-travel', locale: 'id' },
     { slug: 'sistem-informasi-wilayah-indonesia', locale: 'id' },
     { slug: 'pixel-heist-co-op', locale: 'id' },
+    { slug: 'lokerlens-ai', locale: 'id' },
     { slug: 'atlas-country-api', locale: 'en' },
 ];
 
@@ -48,7 +49,7 @@ const allStrings = (value, output = []) => {
 };
 
 test('published and in-development status is explicit for every displayable project', () => {
-    assert.equal(projectRecords.length, 9);
+    assert.equal(projectRecords.length, 10);
     assert.deepEqual(
         projectRecords.filter((record) => record.status === 'published').map((record) => record.slug).sort(),
         published.map((item) => item.slug).sort(),
@@ -241,6 +242,7 @@ test('copywriting preserves documented limitations instead of overstating readin
     const atlas = read('assets/data/project-details/en/atlas-country-api.json');
     const pixel = read('assets/data/project-details/id/pixel-heist-co-op.json');
     const wilayah = read('assets/data/project-details/id/sistem-informasi-wilayah-indonesia.json');
+    const lokerlens = read('assets/data/project-details/id/lokerlens-ai.json');
 
     assert.match(japan, /129 pengujian dan 509 assertion/);
     assert.match(japan, /tidak mengklaim persentase coverage/);
@@ -248,4 +250,7 @@ test('copywriting preserves documented limitations instead of overstating readin
     assert.match(atlas, /basic in-memory rate limiter/);
     assert.match(pixel, /belum menyediakan URL demo publik/);
     assert.match(wilayah, /bukan jaminan bahwa data selalu sama/);
+    assert.match(lokerlens, /bukan prediksi peluang diterima kerja/);
+    assert.match(lokerlens, /belum memiliki penerapan publik/);
+    assert.match(lokerlens, /Integrasi OpenAI langsung/);
 });
