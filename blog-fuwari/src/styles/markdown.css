@@ -20,8 +20,7 @@
     }
 
     a:not(.no-styling) {
-        /* PERBAIKAN: Menghapus class 'link' yang error dan menggantinya dengan utilitas bawaan Tailwind */
-        @apply relative bg-none transition rounded-md p-1 -m-1 font-medium text-[var(--primary)]
+        @apply relative bg-none link font-medium text-[var(--primary)]
         underline decoration-[var(--link-underline)] decoration-1 decoration-dashed underline-offset-4;
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
@@ -75,13 +74,13 @@
         @apply opacity-100 fill-white dark:fill-white/75;
     }
     .copy-btn.success .copy-icon {
-        @apply opacity-0 fill-[var(--deep-text)];
+        @apply opacity-0 fill-[var(--deep-text)]
     }
     .copy-btn .success-icon {
         @apply opacity-0 fill-white;
     }
     .copy-btn.success .success-icon {
-        @apply opacity-100;
+        @apply opacity-100
     }
 
     .expressive-code {
@@ -90,6 +89,7 @@
             @apply bg-[var(--codeblock-selection)];
         }
     }
+
 
     ul, ol {
         li::marker {
