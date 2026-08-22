@@ -35,7 +35,7 @@ Data proyek dan sertifikat disimpan terpisah untuk setiap bahasa. Setiap karya a
 | GitHub Actions | Verifikasi otomatis pada Pull Request dan branch `main`. |
 | GitHub Pages | Hosting situs statis. |
 
-React 19, Tailwind CSS 4, dan TypeScript 7 belum digunakan karena masing-masing memerlukan migrasi mayor. Alasan dan cara menilai pembaruannya dijelaskan dalam [panduan pembaruan teknologi](docs/MEMPERBARUI-TEKNOLOGI.md).
+React 19, Tailwind CSS 4, dan TypeScript 7 belum digunakan karena masing-masing memerlukan migrasi mayor. Alasan dan cara menilai pembaruannya dijelaskan dalam [panduan pembaruan teknologi](docs/portfolio/MEMPERBARUI-TEKNOLOGI.md).
 
 ## Menjalankan secara lokal
 
@@ -62,7 +62,7 @@ Buka <http://localhost:8080/>. Jangan membuka `index.html` melalui `file://` kar
 | `npm test` | Menjalankan seluruh pengujian portfolio. |
 | `npm run verify` | Menjalankan build, audit data, dan seluruh pengujian. |
 
-Perintah blog tetap tersedia, tetapi penggunaannya dijelaskan terpisah dalam [panduan menulis postingan](docs/WRITE-POSTS.md) dan [panduan memperbarui Fuwari](docs/UPDATE-FUWARI.md).
+Perintah blog tetap tersedia, tetapi penggunaannya dijelaskan terpisah dalam [panduan menulis postingan](docs/blog/MENULIS-POSTINGAN.md) dan [panduan memperbarui Fuwari](docs/blog/MEMPERBARUI-FUWARI.md).
 
 ## Struktur repository
 
@@ -80,7 +80,7 @@ Perintah blog tetap tersedia, tetapi penggunaannya dijelaskan terpisah dalam [pa
 │   ├── img/                      gambar portfolio dan social preview
 │   └── js/                       source TypeScript/JavaScript dan hasil build
 ├── id/, en/, jp/, cn/            redirect URL lama
-├── docs/                         panduan pemeliharaan
+├── docs/                         indeks dokumentasi\n│   ├── portfolio/                panduan khusus portfolio\n│   └── blog/                     panduan khusus blog
 ├── scripts/                      audit data portfolio
 ├── tests/                        pengujian otomatis
 ├── blog-fuwari/                  source blog
@@ -90,18 +90,18 @@ Perintah blog tetap tersedia, tetapi penggunaannya dijelaskan terpisah dalam [pa
 
 ## Dokumentasi pemeliharaan
 
-Mulai dari [pusat dokumentasi](docs/README.md). Panduan utama dipisahkan berdasarkan pekerjaan:
+Mulai dari [pusat dokumentasi](docs/README.md). Panduan dipisahkan antara [portfolio](docs/portfolio/README.md) dan [blog](docs/blog/README.md):
 
-- [Menyiapkan repository di komputer baru](docs/SETUP-BARU.md)
-- [Mengubah tampilan dan kode](docs/ALUR-PENGEMBANGAN.md)
-- [Menulis dan menerbitkan proyek](docs/MENULIS-PROYEK.md)
-- [Menambah dan merawat sertifikat](docs/MENGELOLA-SERTIFIKAT.md)
-- [Mengelola riwayat dan keahlian](docs/MENGELOLA-RIWAYAT-DAN-KEAHLIAN.md)
-- [Mengelola bahasa, CV, gambar, dan metadata](docs/MENGELOLA-BAHASA-DAN-METADATA.md)
-- [Memeriksa dan memperbarui teknologi](docs/MEMPERBARUI-TEKNOLOGI.md)
-- [Melakukan pemeriksaan rutin bulanan](docs/PEMERIKSAAN-BULANAN.md)
-- [Menjalankan checklist sebelum publikasi](docs/CHECKLIST-PUBLIKASI.md)
-- [Mengatasi masalah umum](docs/TROUBLESHOOTING.md)
+- [Menyiapkan portfolio di komputer baru](docs/portfolio/SETUP-BARU.md)\n- [Menyiapkan blog di komputer baru](docs/blog/SETUP-BARU.md)
+- [Mengubah tampilan dan kode](docs/portfolio/ALUR-PENGEMBANGAN.md)
+- [Menulis dan menerbitkan proyek](docs/portfolio/MENULIS-PROYEK.md)
+- [Menambah dan merawat sertifikat](docs/portfolio/MENGELOLA-SERTIFIKAT.md)
+- [Mengelola riwayat dan keahlian](docs/portfolio/MENGELOLA-RIWAYAT-DAN-KEAHLIAN.md)
+- [Mengelola bahasa, CV, gambar, dan metadata](docs/portfolio/MENGELOLA-BAHASA-DAN-METADATA.md)
+- [Memeriksa dan memperbarui teknologi](docs/portfolio/MEMPERBARUI-TEKNOLOGI.md)
+- [Melakukan pemeriksaan rutin bulanan](docs/portfolio/PEMERIKSAAN-BULANAN.md)
+- [Menjalankan checklist sebelum publikasi](docs/portfolio/CHECKLIST-PUBLIKASI.md)
+- [Mengatasi masalah umum](docs/portfolio/TROUBLESHOOTING.md)
 
 ## Aturan kerja
 
