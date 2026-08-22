@@ -8,26 +8,40 @@ const repositoryRoot = fileURLToPath(new URL('..', import.meta.url));
 const docsDirectory = path.join(repositoryRoot, 'docs');
 const requiredGuides = [
     'README.md',
-    'SETUP-BARU.md',
-    'ALUR-PENGEMBANGAN.md',
-    'MENULIS-PROYEK.md',
-    'MENGELOLA-SERTIFIKAT.md',
-    'MENGELOLA-RIWAYAT-DAN-KEAHLIAN.md',
-    'MENGELOLA-BAHASA-DAN-METADATA.md',
-    'MEMPERBARUI-TEKNOLOGI.md',
-    'PEMERIKSAAN-BULANAN.md',
-    'CHECKLIST-PUBLIKASI.md',
-    'TROUBLESHOOTING.md',
+    'portfolio/README.md',
+    'portfolio/SETUP-BARU.md',
+    'portfolio/ALUR-PENGEMBANGAN.md',
+    'portfolio/MENULIS-PROYEK.md',
+    'portfolio/MENGELOLA-SERTIFIKAT.md',
+    'portfolio/MENGELOLA-RIWAYAT-DAN-KEAHLIAN.md',
+    'portfolio/MENGELOLA-BAHASA-DAN-METADATA.md',
+    'portfolio/MEMPERBARUI-TEKNOLOGI.md',
+    'portfolio/PEMERIKSAAN-BULANAN.md',
+    'portfolio/CHECKLIST-PUBLIKASI.md',
+    'portfolio/TROUBLESHOOTING.md',
+    'blog/README.md',
+    'blog/SETUP-BARU.md',
+    'blog/MENULIS-POSTINGAN.md',
+    'blog/MEMPERBARUI-FUWARI.md',
+    'blog/CHECKLIST-PUBLIKASI.md',
+    'blog/TROUBLESHOOTING.md',
 ];
+
+function listMarkdownFiles(directory) {
+    return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+        const entryPath = path.join(directory, entry.name);
+
+        if (entry.isDirectory()) return listMarkdownFiles(entryPath);
+        return entry.isFile() && entry.name.endsWith('.md') ? [entryPath] : [];
+    });
+}
 
 const markdownFiles = [
     path.join(repositoryRoot, 'README.md'),
-    ...readdirSync(docsDirectory)
-        .filter((filename) => filename.endsWith('.md'))
-        .map((filename) => path.join(docsDirectory, filename)),
+    ...listMarkdownFiles(docsDirectory),
 ];
 
-test('panduan pemeliharaan portfolio dipisahkan berdasarkan pekerjaan', () => {
+test('panduan portfolio dan blog dipisahkan berdasarkan pekerjaan', () => {
     for (const guide of requiredGuides) {
         assert.ok(existsSync(path.join(docsDirectory, guide)), `panduan tidak ditemukan: docs/${guide}`);
     }
@@ -82,7 +96,7 @@ test('README mengarahkan pemeliharaan ke pusat dokumentasi berbahasa Indonesia',
 
     assert.match(repositoryReadme, /Dokumentasi pemeliharaan/u);
     assert.match(repositoryReadme, /docs\/README\.md/u);
-    assert.match(documentationReadme, /^# Pusat Dokumentasi Portfolio/mu);
+    assert.match(documentationReadme, /^# Pusat Dokumentasi Repository/mu);
     assert.doesNotMatch(repositoryReadme, /UPDATE-KONTEN-PORTFOLIO/u);
     assert.doesNotMatch(documentationReadme, /UPDATE-KONTEN-PORTFOLIO/u);
 });
@@ -90,12 +104,12 @@ test('README mengarahkan pemeliharaan ke pusat dokumentasi berbahasa Indonesia',
 test('dokumentasi mempertahankan pemisahan konten portfolio antarbahasa', () => {
     const repositoryReadme = readFileSync(path.join(repositoryRoot, 'README.md'), 'utf8');
     const languageGuide = readFileSync(
-        path.join(docsDirectory, 'MENGELOLA-BAHASA-DAN-METADATA.md'),
+        path.join(docsDirectory, 'portfolio', 'MENGELOLA-BAHASA-DAN-METADATA.md'),
         'utf8',
     );
-    const projectGuide = readFileSync(path.join(docsDirectory, 'MENULIS-PROYEK.md'), 'utf8');
+    const projectGuide = readFileSync(path.join(docsDirectory, 'portfolio', 'MENULIS-PROYEK.md'), 'utf8');
     const certificateGuide = readFileSync(
-        path.join(docsDirectory, 'MENGELOLA-SERTIFIKAT.md'),
+        path.join(docsDirectory, 'portfolio', 'MENGELOLA-SERTIFIKAT.md'),
         'utf8',
     );
 

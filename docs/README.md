@@ -1,61 +1,52 @@
-# Pusat Dokumentasi Portfolio
+# Pusat Dokumentasi Repository
 
-Halaman ini adalah daftar isi pemeliharaan portfolio. Pilih panduan berdasarkan pekerjaan yang akan dilakukan; Anda tidak perlu mengingat seluruh struktur repository.
+Repository ini berisi dua situs yang dipublikasikan bersama, tetapi mempunyai source, dependency, build, dan pemeriksaan yang berbeda.
 
-## Mulai di sini
+| Bagian | Source | Output publik | Dokumentasi |
+| --- | --- | --- | --- |
+| Portfolio | root repository, `assets/`, dan data portfolio | root GitHub Pages | [docs/portfolio/](portfolio/README.md) |
+| Blog | `blog-fuwari/` | `blog/` | [docs/blog/](blog/README.md) |
 
-| Kebutuhan | Panduan |
-| --- | --- |
-| Menyiapkan repository pada komputer baru | [SETUP-BARU.md](SETUP-BARU.md) |
-| Mengubah HTML, CSS, TypeScript, atau perilaku halaman | [ALUR-PENGEMBANGAN.md](ALUR-PENGEMBANGAN.md) |
-| Menambah kartu proyek atau menulis studi kasus | [MENULIS-PROYEK.md](MENULIS-PROYEK.md) |
-| Menambah sertifikat atau memperbaiki deskripsinya | [MENGELOLA-SERTIFIKAT.md](MENGELOLA-SERTIFIKAT.md) |
-| Mengubah pengalaman, pendidikan, pelatihan, atau keahlian | [MENGELOLA-RIWAYAT-DAN-KEAHLIAN.md](MENGELOLA-RIWAYAT-DAN-KEAHLIAN.md) |
-| Mengubah bahasa, CV, foto, social preview, atau metadata | [MENGELOLA-BAHASA-DAN-METADATA.md](MENGELOLA-BAHASA-DAN-METADATA.md) |
-| Memeriksa dependency atau merencanakan upgrade mayor | [MEMPERBARUI-TEKNOLOGI.md](MEMPERBARUI-TEKNOLOGI.md) |
-| Melakukan pemeriksaan rutin | [PEMERIKSAAN-BULANAN.md](PEMERIKSAAN-BULANAN.md) |
-| Memastikan perubahan siap di-commit dan dipublikasikan | [CHECKLIST-PUBLIKASI.md](CHECKLIST-PUBLIKASI.md) |
-| Menangani build, data, gambar, bahasa, atau deployment yang bermasalah | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
+Jangan menjalankan panduan salah satu bagian seolah-olah berlaku otomatis untuk bagian lainnya.
 
-## Urutan umum setiap perubahan
+## Jika menggunakan komputer baru
 
-1. Sinkronkan `main` dan buat branch baru.
-2. Baca panduan yang sesuai dengan jenis perubahan.
-3. Ubah hanya source dan data yang diperlukan.
-4. Tinjau diff sebelum memperbarui baseline atau hasil build.
-5. Jalankan pemeriksaan otomatis dan pemeriksaan browser.
-6. Stage hanya file yang berkaitan.
-7. Buat Pull Request, tunggu CI lulus, lalu periksa deployment.
+Satu kali clone sudah memuat portfolio dan blog. Ikuti dua panduan ini secara berurutan:
 
-Gunakan [CHECKLIST-PUBLIKASI.md](CHECKLIST-PUBLIKASI.md) sebagai daftar pemeriksaan terakhir.
+1. [Siapkan portfolio dan dependency root](portfolio/SETUP-BARU.md).
+2. [Siapkan dependency dan build blog](blog/SETUP-BARU.md).
 
-## Source dan hasil build
+## Memilih panduan
 
-| Yang diubah | Source yang diedit | Hasil build yang ikut di-commit |
-| --- | --- | --- |
-| Tampilan portfolio | `assets/css/main.css` dan class pada HTML/TSX | `assets/css/output.css` |
-| Logika portfolio | `assets/js/*.ts` dan `assets/js/*.tsx` | `assets/js/dist/*.js` |
-| Data portfolio | `assets/data/**/*.json` | Tidak ada; baseline audit mungkin berubah |
-| Blog | `blog-fuwari/` | `blog/` |
+### Portfolio
 
-Jangan memperbaiki source dengan mengedit file hasil build secara langsung.
+Gunakan [Pusat Dokumentasi Portfolio](portfolio/README.md) untuk:
 
-## Empat prinsip penulisan
+- mengubah tampilan atau logika;
+- menambah proyek dan sertifikat;
+- mengelola bahasa, CV, riwayat, dan metadata;
+- memeriksa dependency;
+- menjalankan pemeriksaan rutin;
+- mengatasi masalah portfolio.
 
-1. Tulis fakta yang dapat diperiksa dari repository, sertifikat, atau pengalaman nyata.
-2. Jelaskan fungsi dan keputusan teknis sebelum memakai kata sifat promosi.
-3. Sebutkan keterbatasan jika fitur, deployment, pengujian, atau integrasi belum selesai.
-4. Pertahankan nama resmi credential, organisasi, teknologi, dan proyek.
+### Blog
 
-## Dokumentasi blog
+Gunakan [Pusat Dokumentasi Blog](blog/README.md) untuk:
 
-Blog mempunyai alur terpisah dari portfolio root:
+- menyiapkan blog pada laptop baru;
+- menulis dan menerbitkan postingan;
+- memperbarui core Fuwari;
+- memeriksa hasil build;
+- mengatasi masalah blog.
 
-- [WRITE-POSTS.md](WRITE-POSTS.md) untuk menulis postingan;
-- [UPDATE-FUWARI.md](UPDATE-FUWARI.md) untuk memperbarui template blog.
+## Aturan umum
 
-Jangan mengubah blog bersamaan dengan migrasi besar portfolio kecuali memang direncanakan sebagai pekerjaan terpisah.
+1. Mulai dari `main` terbaru dan working tree bersih.
+2. Gunakan branch berbeda untuk pekerjaan portfolio dan blog.
+3. Edit source; jangan mengedit hasil build secara manual.
+4. Tinjau diff sebelum staging.
+5. Stage hanya file yang sudah diperiksa.
+6. Jalankan pemeriksaan otomatis dan pemeriksaan visual yang sesuai.
+7. Tunggu CI dan periksa deployment sebelum menutup pekerjaan.
 
-## Kembali ke gambaran repository
-
-Baca [README utama](../README.md) untuk arsitektur, teknologi, perintah, dan struktur repository.
+Baca [README utama](../README.md) untuk gambaran arsitektur repository.
