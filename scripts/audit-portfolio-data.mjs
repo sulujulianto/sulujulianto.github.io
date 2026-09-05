@@ -45,11 +45,7 @@ const LEGACY_PAGE_DIRECTORIES = {
     zh: 'cn',
 };
 
-const EXPECTED_KNOWN_MISSING_ASSETS = [
-    'assets/img/projects/id/antriankku.webp',
-    'assets/img/projects/id/kospintar.webp',
-    'assets/img/projects/id/lokerkita.webp',
-];
+const EXPECTED_KNOWN_MISSING_ASSETS = [];
 
 const EXPECTED_REQUIRED_ASSETS = [
     'assets/data/CV/EN/CV_SuluEdwardJulianto.pdf',

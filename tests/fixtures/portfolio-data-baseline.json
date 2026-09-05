@@ -1,10 +1,6 @@
 {
   "schemaVersion": 1,
-  "knownMissingAssets": [
-    "assets/img/projects/id/antriankku.webp",
-    "assets/img/projects/id/kospintar.webp",
-    "assets/img/projects/id/lokerkita.webp"
-  ],
+  "knownMissingAssets": [],
   "requiredAssets": [
     "assets/data/CV/EN/CV_SuluEdwardJulianto.pdf",
     "assets/data/CV/ID/CV_SuluEdwardJulianto.pdf"
@@ -13,10 +9,10 @@
     "projects": {
       "id": {
         "file": "assets/data/projects/projects-id.json",
-        "sha256": "ffb46d452008b012ad89235c0533b1be1d706283da13714ea624cf6a2ef8c1cc",
+        "sha256": "055f90d45b1397e3f19f7aa7c14336f0f5454896e4617f8a5cc4cb1d5d12cda1",
         "counts": {
-          "total": 9,
-          "displayable": 9,
+          "total": 6,
+          "displayable": 6,
           "placeholder": 0,
           "featured": 3
         },
@@ -101,58 +97,6 @@
               "GitHub Actions",
               "Pytest",
               "Shell Script"
-            ]
-          },
-          {
-            "title": "KosPintar",
-            "category": "fullstack-web",
-            "dateAdded": "2026-01-01",
-            "isFeatured": false,
-            "imageUrl": "../assets/img/projects/id/kospintar.webp",
-            "githubUrl": "",
-            "liveUrl": "",
-            "techStack": [
-              "Laravel 12",
-              "React",
-              "Inertia.js",
-              "MySQL",
-              "Tailwind CSS",
-              "Xendit"
-            ]
-          },
-          {
-            "title": "LokerKita",
-            "category": "fullstack-web",
-            "dateAdded": "2026-01-01",
-            "isFeatured": false,
-            "imageUrl": "../assets/img/projects/id/lokerkita.webp",
-            "githubUrl": "",
-            "liveUrl": "",
-            "techStack": [
-              "Node.js",
-              "Fastify",
-              "React",
-              "PostgreSQL",
-              "Redis",
-              "JWT",
-              "Tailwind CSS"
-            ]
-          },
-          {
-            "title": "AntrianKu",
-            "category": "fullstack-web",
-            "dateAdded": "2026-01-01",
-            "isFeatured": false,
-            "imageUrl": "../assets/img/projects/id/antriankku.webp",
-            "githubUrl": "",
-            "liveUrl": "",
-            "techStack": [
-              "Next.js 14",
-              "Supabase",
-              "Pusher",
-              "Tailwind CSS",
-              "Vercel",
-              "PWA"
             ]
           },
           {

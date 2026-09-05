@@ -121,16 +121,6 @@ Mulai dari [pusat dokumentasi](docs/README.md). Panduan dipisahkan antara [portf
 
 Jangan mengedit file hasil build secara manual karena perubahan akan hilang saat build berikutnya.
 
-## Warning aset yang diketahui
-
-Audit masih memperbolehkan tiga gambar proyek lama yang belum tersedia:
-
-- `assets/img/projects/id/antriankku.webp`
-- `assets/img/projects/id/kospintar.webp`
-- `assets/img/projects/id/lokerkita.webp`
-
-Warning tersebut bukan kegagalan, tetapi warning baru tetap harus diperiksa.
-
 ## Lisensi
 
 Kode repository menggunakan lisensi ISC sebagaimana tercantum dalam `package.json`. Konten pribadi, foto, CV, dan gambar sertifikat tetap merupakan materi milik Sulu Edward Julianto.

@@ -35,7 +35,6 @@ const published = [
     { slug: 'atlas-country-api', locale: 'en' },
 ];
 
-const inDevelopment = ['kospintar', 'lokerkita', 'antrianku'];
 const projectRecords = [
     ...readJson('assets/data/projects/projects-id.json'),
     ...readJson('assets/data/projects/projects-en.json'),
@@ -48,31 +47,23 @@ const allStrings = (value, output = []) => {
     return output;
 };
 
-test('published and in-development status is explicit for every displayable project', () => {
-    assert.equal(projectRecords.length, 10);
+test('published status is explicit for every displayable project', () => {
+    assert.equal(projectRecords.length, 7);
     assert.deepEqual(
         projectRecords.filter((record) => record.status === 'published').map((record) => record.slug).sort(),
         published.map((item) => item.slug).sort(),
     );
-    assert.deepEqual(
-        projectRecords.filter((record) => record.status === 'in-development').map((record) => record.slug).sort(),
-        [...inDevelopment].sort(),
-    );
     for (const record of projectRecords) {
         assert.match(record.slug, /^[a-z0-9]+(?:-[a-z0-9]+)*$/, record.title);
-        assert.ok(['published', 'in-development'].includes(record.status), record.title);
+        assert.equal(record.status, 'published', record.title);
         assert.equal('modalDescription' in record, false, record.title);
     }
 });
 
-test('only completed projects have real detail page shells and article JSON', () => {
+test('published projects have real detail page shells and article JSON', () => {
     for (const { slug, locale } of published) {
         assert.equal(existsSync(new URL(`projects/${slug}/index.html`, rootUrl)), true, slug);
         assert.equal(existsSync(new URL(`assets/data/project-details/${locale}/${slug}.json`, rootUrl)), true, slug);
-    }
-    for (const slug of inDevelopment) {
-        assert.equal(existsSync(new URL(`projects/${slug}/index.html`, rootUrl)), false, slug);
-        assert.equal(existsSync(new URL(`assets/data/project-details/id/${slug}.json`, rootUrl)), false, slug);
     }
 });
 

@@ -80,67 +80,6 @@
     "status": "published"
   },
   {
-    "title": "KosPintar",
-    "description": "Sistem manajemen kos yang sedang dikembangkan untuk mengelola kamar, penghuni, tagihan bulanan, pembayaran, dan notifikasi operasional melalui WhatsApp.",
-    "category": "fullstack-web",
-    "imageUrl": "../assets/img/projects/id/kospintar.webp",
-    "githubUrl": "",
-    "liveUrl": "",
-    "techStack": [
-      "Laravel 12",
-      "React",
-      "Inertia.js",
-      "MySQL",
-      "Tailwind CSS",
-      "Xendit"
-    ],
-    "dateAdded": "2026-01-01",
-    "isFeatured": false,
-    "slug": "kospintar",
-    "status": "in-development"
-  },
-  {
-    "title": "LokerKita",
-    "description": "Agregator lowongan kerja informal Indonesia yang sedang dikembangkan untuk menyatukan informasi dari berbagai sumber dalam pencarian dan filter yang konsisten.",
-    "category": "fullstack-web",
-    "imageUrl": "../assets/img/projects/id/lokerkita.webp",
-    "githubUrl": "",
-    "liveUrl": "",
-    "techStack": [
-      "Node.js",
-      "Fastify",
-      "React",
-      "PostgreSQL",
-      "Redis",
-      "JWT",
-      "Tailwind CSS"
-    ],
-    "dateAdded": "2026-01-01",
-    "isFeatured": false,
-    "slug": "lokerkita",
-    "status": "in-development"
-  },
-  {
-    "title": "AntrianKu",
-    "description": "Sistem antrean digital untuk UMKM yang sedang dikembangkan agar pelanggan dapat mengambil nomor melalui QR dan memantau giliran secara real-time dari browser.",
-    "category": "fullstack-web",
-    "imageUrl": "../assets/img/projects/id/antriankku.webp",
-    "githubUrl": "",
-    "liveUrl": "",
-    "techStack": [
-      "Next.js 14",
-      "Supabase",
-      "Pusher",
-      "Tailwind CSS",
-      "Vercel",
-      "PWA"
-    ],
-    "dateAdded": "2026-01-01",
-    "isFeatured": false,
-    "slug": "antrianku",
-    "status": "in-development"
-  },
-  {
     "title": "Pixel Heist Co-op",
     "description": "Game stealth co-op untuk dua pemain pada satu perangkat, dibangun dengan Next.js dan Firebase serta terpilih sebagai pemenang Firebase Studio Challenge di DevFest Depok 2025.",
     "category": "game-interactive",

@@ -89,16 +89,6 @@ npm run verify
 
 Jangan memperbarui baseline jika kegagalan berasal dari typo, kategori tidak valid, atau aset yang belum ditambahkan.
 
-## Audit menampilkan tiga warning gambar proyek
-
-Warning berikut sudah dikenal:
-
-- `antriankku.webp`;
-- `kospintar.webp`;
-- `lokerkita.webp`.
-
-Ketiganya bukan failure. Jika gambarnya sudah tersedia, tambahkan file, hapus path terkait dari `EXPECTED_KNOWN_MISSING_ASSETS` dalam `scripts/audit-portfolio-data.mjs`, perbarui baseline, lalu jalankan verifikasi.
-
 ## Gambar proyek atau sertifikat rusak
 
 - Periksa huruf besar dan kecil pada nama file.
