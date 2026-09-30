@@ -39,25 +39,28 @@
     "status": "published"
   },
   {
-    "title": "Japan Travel",
-    "description": "Platform konten wisata dan toko suvenir Jepang berbasis Laravel 12, dilengkapi pengalaman dwibahasa, tema gelap, dashboard admin, serta integrasi pembayaran Midtrans dan PayPal.",
-    "category": "fullstack-web",
-    "imageUrl": "../assets/img/projects/id/japanese-travel.webp",
-    "githubUrl": "https://github.com/sulujulianto/japanesetravel",
-    "liveUrl": "",
-    "techStack": [
-      "Laravel 12",
-      "Tailwind CSS",
-      "MySQL",
-      "Midtrans",
-      "PayPal",
-      "Chart.js",
-      "Vite"
-    ],
-    "dateAdded": "2025-11-20",
-    "isFeatured": true,
-    "slug": "japan-travel",
-    "status": "published"
+  "title": "Japan Travel",
+  "description": "Platform penjelajahan destinasi wisata Jepang dan toko suvenir online yang memisahkan eksplorasi pengguna dari alur transaksi. Dilengkapi ulasan terverifikasi, isolasi sesi admin, serta integrasi pembayaran Midtrans dan PayPal dalam lingkungan pengujian.",
+  "category": "fullstack-web",
+  "imageUrl": "../assets/img/projects/id/japanese-travel.webp",
+  "githubUrl": "https://github.com/sulujulianto/japanesetravel",
+  "liveUrl": "",
+  "techStack": [
+    "PHP 8.3",
+    "Laravel 12",
+    "Inertia.js",
+    "Vue 3",
+    "TypeScript",
+    "Tailwind CSS",
+    "MySQL",
+    "Midtrans",
+    "PayPal",
+    "Docker"
+  ],
+  "dateAdded": "2025-11-20",
+  "isFeatured": true,
+  "slug": "japan-travel",
+  "status": "published"
   },
   {
     "title": "Sistem Informasi Wilayah Indonesia",

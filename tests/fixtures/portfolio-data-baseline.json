@@ -9,7 +9,7 @@
     "projects": {
       "id": {
         "file": "assets/data/projects/projects-id.json",
-        "sha256": "055f90d45b1397e3f19f7aa7c14336f0f5454896e4617f8a5cc4cb1d5d12cda1",
+        "sha256": "c096eeca7fa5b4317ac4faf895e2f686f284948641b5b52f28910fa6438d3d14",
         "counts": {
           "total": 6,
           "displayable": 6,
@@ -73,13 +73,16 @@
             "githubUrl": "https://github.com/sulujulianto/japanesetravel",
             "liveUrl": "",
             "techStack": [
+              "PHP 8.3",
               "Laravel 12",
+              "Inertia.js",
+              "Vue 3",
+              "TypeScript",
               "Tailwind CSS",
               "MySQL",
               "Midtrans",
               "PayPal",
-              "Chart.js",
-              "Vite"
+              "Docker"
             ]
           },
           {
@@ -141,11 +144,11 @@
       },
       "en": {
         "file": "assets/data/projects/projects-en.json",
-        "sha256": "7ee19fd3408a91dca37353f8c28a7e9f790f09415d33efc7b23562b589d6d70e",
+        "sha256": "68cffd3defdbc7dd073a11fd1d801b279a3504842b7ebfb47bb9d51defa0c088",
         "counts": {
-          "total": 3,
+          "total": 2,
           "displayable": 1,
-          "placeholder": 2,
+          "placeholder": 1,
           "featured": 1
         },
         "effectiveFeatured": [
@@ -171,16 +174,6 @@
               "GitHub Actions",
               "Pytest"
             ]
-          },
-          {
-            "title": "",
-            "category": "",
-            "dateAdded": "",
-            "isFeatured": false,
-            "imageUrl": "",
-            "githubUrl": "",
-            "liveUrl": "",
-            "techStack": []
           },
           {
             "title": "",

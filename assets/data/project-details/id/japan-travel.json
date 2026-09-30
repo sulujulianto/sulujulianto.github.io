@@ -3,28 +3,40 @@
   "slug": "japan-travel",
   "contentLanguage": "id",
   "title": "Japan Travel",
-  "summary": "Proyek Laravel 12 berorientasi produksi yang memadukan penemuan destinasi Jepang, ulasan terverifikasi, toko suvenir, dan fondasi integrasi pembayaran.",
+  "summary": "Aplikasi web Laravel 12 yang memadukan penemuan destinasi Jepang, ulasan terverifikasi, toko suvenir, dan integrasi gateway pembayaran sandbox.",
   "category": "fullstack-web",
   "hero": {
     "src": "/assets/img/projects/id/japanese-travel.webp",
     "alt": "Tampilan utama aplikasi Japan Travel",
     "caption": "Japan Travel menghubungkan konten destinasi dengan pengalaman belanja suvenir dalam antarmuka dwibahasa."
   },
-  "techStack": ["PHP 8.3", "Laravel 12", "Blade", "Tailwind CSS", "Alpine.js", "MySQL", "Midtrans", "PayPal", "Chart.js", "Docker", "GitHub Actions"],
+  "techStack": [
+    "PHP 8.3",
+    "Laravel 12",
+    "Inertia.js",
+    "Vue 3",
+    "TypeScript",
+    "Tailwind CSS",
+    "MySQL",
+    "Midtrans",
+    "PayPal",
+    "Docker",
+    "GitHub Actions"
+  ],
   "content": [
     {
       "type": "paragraph",
-      "text": "Japan Travel adalah proyek portfolio Laravel 12 yang saya kembangkan untuk mendekati pola kerja aplikasi nyata: ruang lingkupnya jelas, alur pengguna dan admin dipisahkan, integrasi eksternal dibungkus dalam layanan, serta keterbatasan deployment didokumentasikan secara terbuka."
+      "text": "Japan Travel adalah proyek portofolio Laravel 12 yang dirancang dengan batasan sistem yang jelas. Alur pengguna dan admin dipisahkan, integrasi gateway pembayaran dibungkus dalam service terisolasi, serta status deployment didokumentasikan secara transparan."
     },
     {
       "type": "callout",
       "title": "Batas produk yang penting",
-      "text": "Aplikasi ini tidak menjual tiket atau memproses pemesanan perjalanan. Konten destinasi berfungsi untuk eksplorasi dan pertanyaan perjalanan melalui WhatsApp, sedangkan checkout serta pembayaran hanya berlaku untuk produk suvenir."
+      "text": "Aplikasi ini tidak menjual tiket perjalanan. Konten destinasi berfungsi murni untuk eksplorasi dan rujukan pertanyaan melalui WhatsApp. Proses checkout dan pembayaran hanya berlaku untuk produk suvenir fisik."
     },
     { "type": "heading", "level": 2, "text": "Satu platform, dua pengalaman utama" },
     {
       "type": "paragraph",
-      "text": "Bagian destinasi menyediakan katalog dwibahasa Indonesia–Inggris, halaman detail, penilaian, dan ulasan pengguna terverifikasi. Bagian toko menyediakan katalog suvenir, keranjang, checkout, retry pembayaran, serta riwayat pesanan. Seluruh tampilan mendukung mode terang, mode gelap, dan ukuran layar mobile."
+      "text": "Bagian destinasi menyediakan katalog dwibahasa Indonesia dan Inggris, halaman detail, sistem rating, serta ulasan pengguna terverifikasi. Bagian toko menyediakan katalog suvenir, keranjang belanja, checkout idempoten, dan riwayat pesanan. Seluruh antarmuka mendukung mode gelap dan tampilan responsif mobile."
     },
     {
       "type": "image",
@@ -41,7 +53,7 @@
     { "type": "heading", "level": 2, "text": "Arsitektur transaksi dan integrasi pembayaran" },
     {
       "type": "paragraph",
-      "text": "Midtrans dan PayPal diletakkan di balik antarmuka layanan pembayaran bersama. Saat checkout, aplikasi mengunci stok, menyimpan snapshot produk pada item pesanan, dan mengompensasi stok bila pembuatan transaksi gateway gagal. Handler webhook memverifikasi signature provider dan mencatat identitas event unik untuk mencegah pemrosesan berulang."
+      "text": "Midtrans dan PayPal berada di balik antarmuka layanan pembayaran bersama. Saat checkout berlangsung, aplikasi mengunci stok, menyimpan snapshot data produk pada item pesanan, dan mengembalikan stok jika transaksi gateway gagal. Handler webhook memverifikasi signature provider dan mencatat identitas event unik untuk mencegah pemrosesan berulang."
     },
     {
       "type": "image",
@@ -52,7 +64,7 @@
     { "type": "heading", "level": 2, "text": "Admin, media, dan pengalaman operasional" },
     {
       "type": "paragraph",
-      "text": "Admin memiliki sesi dan guard terpisah untuk mengelola destinasi, suvenir, persediaan, pesanan, dan metrik dashboard. Proses unggah media membatasi ukuran serta dimensi gambar, mengonversinya ke WebP, dan membatasi penghapusan pada direktori unggahan yang diizinkan."
+      "text": "Admin memiliki sesi dan guard terpisah untuk mengelola data destinasi, suvenir, mutasi stok, pesanan, serta metrik dashboard. Pengunggahan media memvalidasi batas dimensi gambar, mengonversi format ke WebP, dan membatasi penghapusan file hanya pada direktori yang diizinkan."
     },
     {
       "type": "image",
@@ -79,7 +91,7 @@
     {
       "type": "callout",
       "title": "Status publik",
-      "text": "Struktur deployment, Docker, dan checklist staging tersedia, tetapi demo publik serta validasi sandbox menggunakan akun provider masih dinyatakan belum selesai. Karena itu tombol Live Demo tidak ditampilkan."
+      "text": "Konfigurasi Docker, skrip deployment, dan checklist staging tersedia lengkap. Namun demo publik serta akun sandbox aktif belum dipublikasikan, sehingga tautan Live Demo sengaja dikosongkan."
     }
   ],
   "links": {
